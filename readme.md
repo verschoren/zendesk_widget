@@ -2,7 +2,7 @@
 ## Config
 `npx tailwindcss -i ./tailwind/input.css -o ./docs/css/style.css --watch`
 
-![Apple TV 4K Copy 6@0 5x](https://user-images.githubusercontent.com/894026/214596167-cca7e399-a7c6-4ab4-91c9-8b52bb157b28.jpg)
+![image](https://github.com/verschoren/zendesk_widget/assets/894026/08346076-dce8-4e05-804a-fb3264474acd)
 
 # JWT Generator
 **CHECK OUT THE FULL DEMO AND SETUP AT [INTERNALNOTE.COM](https://internalnote.com/jwt-messaging/)**
