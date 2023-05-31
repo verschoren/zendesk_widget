@@ -1,0 +1,118 @@
+<!doctype html>
+<html class="h-full bg-gray-200">
+  <head>
+    <meta charset="UTF-8">
+    <title>Internal Note - Zendesk Classic Widget Customization</title>
+    <meta name="description" content="Internal Note - Zendesk Classic Widget Customization">
+    <meta name="keywords" content="zendesk, messaging, authentication, jwt, internal note">
+    <meta name="author" content="Internal Note">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/atom-one-dark.css" rel="stylesheet">
+
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/view.js"></script>
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=0a2feffd-e8f6-4772-96bf-2e1ae82842a9"> </script>
+    <script defer data-domain="widget.internalnote.com, widget.internalnote.com" src="https://plausible.io/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+  </head>
+  <body class="h-full" data-name="classiccustom">
+    <header class="bg-white shadow"> 
+      <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+        <div class="md:flex md:items-center md:justify-between md:space-x-5">
+          <div class="">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Guide Integration - Classic</h1>
+            <h2 class="mt-2 text-xl tracking-tight text-gray-500">Code to authenticate logged in Chat users in Guide</h2>
+          </div>
+          <div class="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
+            <a href="https://internalnote.com/customize-and-brand-your-zendesk-widget/" target="_blank" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">Read more</a>
+          </div>
+        </div>       
+      </div>
+    </header>
+    <main>
+      <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:py-12 lg:px-8">
+          <pre class="text-sm" style="background-color:#282c34;padding:20px!IMPORTANT;">
+<code id="codeblock" class="language-json">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"&gt;&lt;/script&gt;
+  {{#if signed_in}}
+  &lt;script type="text/javascript"&gt;
+      console.log("User Logged In");
+  
+      //Get info on current User
+      var user = [];
+      $.ajax({
+          url: '/api/v2/users/me',
+          async: false,
+          dataType: 'json',
+          success: function (json) {
+              user = json;
+          }
+      });
+  
+      //get token for current user
+      var jwttoken = '';
+      $.ajax({
+          type: "POST",
+          url: 'https://jwt.verschoren.workers.dev/guide', //replace with your worker
+          data: JSON.stringify({
+            "external_id": user.user.id,
+            "user_email": user.user.email,
+            "user_name": user.user.name
+          }),
+          dataType: 'text',
+          async: false,
+          success: function (json) {
+              jwttoken = json;
+          }
+      });
+      console.log(jwttoken)
+  
+      //Prefill Forms and Chat
+      zE('webWidget', 'identify', {
+          name: user.user.name,
+          email: user.user.email,
+      });
+  
+      zE('webWidget', 'prefill', {
+          name: {
+              value: user.user.name,
+              readOnly: true
+          },
+          email: {
+              value: user.user.email,
+              readOnly: true
+          }
+      });
+  
+      //Authenticate
+      window.zESettings = {
+          webWidget: {
+              authenticate: {
+                  jwtFn: function (callback) {
+                      callback(jwttoken);
+                  }
+              }
+          }
+      }
+  &lt;/script&gt;
+  {{else}}
+  &lt;script&gt;
+      console.log("user logged out");
+      zE(function () {
+          zE.logout();
+      });
+      &lt;/script&gt;
+  {{/if}}
+  </code></pre>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+<script type="text/javascript">
+  hljs.highlightAll();
+</script>
