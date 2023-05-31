@@ -1,5 +1,5 @@
 {
-  "name": "wrangler",
+  "name": "jwt-widget",
   "version": "0.0.0",
   "private": true,
   "scripts": {

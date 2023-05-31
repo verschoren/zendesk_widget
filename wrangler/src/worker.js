@@ -1,8 +1,17 @@
+//var jwt = require("jwt-simple");
+
 export default {
 	async fetch(request, env, ctx) {
 		const { url } = request;
 		const { pathname } = new URL(url);
-	    const json = await request.json();
+		var json = {}
+		try {
+			json = await request.json();
+		} catch (e) {
+			console.log(e);
+			return new Response("Bad json", { status: 400 });
+
+		}
 		console.log(json);
 
 		switch (pathname) {
@@ -69,30 +78,30 @@ async function respondSDK(json,env) {
 }
 
 async function respondGuide(json,env) {
-		//{"external_id":JB007,"user_email":"james@universalexports.com","user_name":"James Bond"}
+	//{"external_id":"JB007","user_email":"james@universalexports.com","user_name":"James Bond"}
 
-		if (!json.external_id || !json.user_email || !json.user_name) {
-			return new Response("missing parameters", { status: 401 });
-		} else {
-			var secret = env.GUIDE_SECRET;
+	if (!json.external_id || !json.user_email || !json.user_name) {
+		return new Response("missing parameters", { status: 401 });
+	} else {
+		var secret = env.GUIDE_SECRET;
 
-			var token_raw = {
-				jti: Math.floor(Math.random() * 10000000),
-				iat: Math.floor(Date.now() / 1000),
-				name: json.user_name,
-				email: json.user_email,
-			};
-			console.log(token_raw);
+		var token_raw = {
+			jti: Math.floor(Math.random() * 10000000),
+			iat: Math.floor(Date.now() / 1000),
+			name: json.user_name,
+			email: json.user_email,
+		};
+		console.log(token_raw);
 
-			var token = jwt.encode(token_raw, secret);
-			var payload = token;
-			console.log(payload);
-			return new Response(payload);
-		}
+		var token = jwt.encode(token_raw, secret);
+		var payload = token;
+		console.log(payload);
+		return new Response(payload);
 	}
+}
 
-	async function respondMessaging(json,env) {
-	//{"external_id":JB007,"user_email":"james@universalexports.com","user_name":"James Bond"}
+async function respondMessaging(json,env) {
+	//{"external_id":"JB007","user_email":"james@universalexports.com","user_name":"James Bond"}
 
 	if (!json.external_id || !json.user_email || !json.user_name) {
 		return new Response("missing parameters", { status: 401 });

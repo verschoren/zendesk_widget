@@ -2,3 +2,4 @@ name = "jwt-widget"
 main = "src/worker.js"
 compatibility_date = "2023-05-31"
 account_id = "1e230692e8529617e34ee5ca900acae1"
+compatibility_flags = [ "nodejs_compat" ]
