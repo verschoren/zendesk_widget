@@ -34,4 +34,13 @@ $('document').ready(function() {
     $('.nav_item').removeClass('text-gray-300 hover:bg-gray-700 hover:text-white').addClass('text-gray-300 hover:bg-gray-700 hover:text-white');
     $('#' + body_data_name).removeClass('text-gray-300 hover:bg-gray-700 hover:text-white').addClass('bg-gray-900 text-white');
 
+    $('body').append(`
+    <footer class="bg-white" aria-labelledby="footer-heading">
+    <div class="mx-auto max-w-7xl px-6 pb-8 pt-16">
+      <div class="border-t border-gray-900/10 pt-8">
+        <p class="text-xs leading-5 text-gray-500">&copy; 2020 Your Company, Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>  
+    `)
 });
