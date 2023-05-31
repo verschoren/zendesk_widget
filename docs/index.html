@@ -144,3 +144,13 @@
         });
     }
 </script>
+
+<script type="text/javascript">
+    $(function() {
+      //check for URL parameter called "voice" and if it is set, open the voice channel
+      var urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('voice')) {
+        zE('messenger:open', 'voice', '6c0e70e6ef77d7a711a073f249ab6304')
+      }
+    }); 
+  </script>
