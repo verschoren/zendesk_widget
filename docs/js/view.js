@@ -18,6 +18,10 @@ $('document').ready(function() {
                   <a id="classic" href="classic.html" class="nav_item text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Classic Widget</a>
                   <a id="classiccustom" href="classiccustom.html" class="nav_item text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Customize Classic Widget</a>
                 </div>
+                <a href="https://github.com/verschoren/zendesk_widget" class="flex items-center gap-2 rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" target="_blank">
+                    <img src="img/github-mark.svg" class="h-5 inline-block" alt="GitHub">
+                    <span>GitHub</span>
+                </a>
             </div>
           </div>
         </div>
