@@ -2,7 +2,9 @@ export default {
 	async fetch(request, env, ctx) {
 		const { url } = request;
 		const { pathname } = new URL(url);
-	  
+	    const json = await request.json();
+		console.log(json);
+
 		switch (pathname) {
 			case "/":
 			  	return new Response("Bad path", { status: 401 });
