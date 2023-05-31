@@ -1,5 +1,3 @@
-//var jwt = require("jwt-simple");
-
 export default {
 	async fetch(request, env, ctx) {
 		const { url } = request;
@@ -16,89 +14,16 @@ export default {
 
 		switch (pathname) {
 			case "/":
-			  	return new Response("Bad path", { status: 401 });
-			case "/chat":
-			  	return respondChat(json,env);
-			case "/sdk":
-			  	return await respondSDK(json,env);
-			case "/guide":
-				var response_guide = await respondGuide(json,env);
-				response_guide.headers.set("access-control-allow-origin", "*");
-				return response_guide;
+				return Response.redirect('https://widget.internalnote.com', 302);
 			case "/messaging":
 				var response_messaging = await respondMessaging(json,env);
 				response_messaging.headers.set("access-control-allow-origin", "*");
 				return response_messaging;
+			default :
+				return new Response("Bad path", { status: 401 });
 		}
-		return new Response('Hello World!');
 	}
 };
-
-function respondChat(json,env) {
-	//{"name":"James Bond","email":"james@universalexports.com","external_id":"JB007"}
-	if (!json.name || !json.email || !json.external_id) {
-		return new Response("missing parameters", { status: 401 });
-	} else {
-		var secret = env.CHAT_SECRET;
-	
-		var token_raw = {
-			iat: Math.floor(Date.now() / 1000),
-			name: json.name,
-			external_id: json.external_id,
-			email: json.email,
-		};
-		console.log(token_raw);
-	
-		var token = jwt.encode(token_raw, secret);
-	
-		return new Response('{"jwt": "' + token + '"}');
-	}
-}
-
-async function respondSDK(json,env) {
-	//{"user_token":"james@universalexports.com"}
-
-	if (!json.user_token) {
-		return new Response("missing parameters", { status: 401 });
-	} else {
-		var secret = env.SDK_SECRET;
-
-		var token_raw = {
-			jti: Math.floor(Math.random() * 10000000),
-			iat: Math.floor(Date.now() / 1000),
-			name: json.user_token,
-			email: json.user_token,
-		};
-		console.log(token_raw);
-
-		var token = jwt.encode(token_raw, secret);
-
-		return new Response('{"jwt": "' + token + '"}');
-	}
-}
-
-async function respondGuide(json,env) {
-	//{"external_id":"JB007","user_email":"james@universalexports.com","user_name":"James Bond"}
-
-	if (!json.external_id || !json.user_email || !json.user_name) {
-		return new Response("missing parameters", { status: 401 });
-	} else {
-		var secret = env.GUIDE_SECRET;
-
-		var token_raw = {
-			jti: Math.floor(Math.random() * 10000000),
-			iat: Math.floor(Date.now() / 1000),
-			name: json.user_name,
-			email: json.user_email,
-		};
-		console.log(token_raw);
-
-		var token = jwt.encode(token_raw, secret);
-		var payload = token;
-		console.log(payload);
-		return new Response(payload);
-	}
-}
 
 async function respondMessaging(json,env) {
 	//{"external_id":"JB007","user_email":"james@universalexports.com","user_name":"James Bond"}
