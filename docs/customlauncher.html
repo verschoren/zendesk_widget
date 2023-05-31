@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="h-full bg-gray-200">
+  <head>
+    <meta charset="UTF-8">
+    <title>Internal Note - Custom Launcher for Messaging</title>
+    <meta name="description" content="Demo page to showcase the JWT Authentication for Zendesk Messaging">
+    <meta name="keywords" content="zendesk, messaging, authentication, jwt, internal note">
+    <meta name="author" content="Internal Note">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/view.js"></script>
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=a8969772-cc39-4eda-9f8c-b2adbe197a96"> </script>
+    <script defer data-domain="jwt.internalnote.com" src="https://plausible.io/js/script.js"></script>
+  </head>
+  <body class="h-full" data-name="customlauncher">
+    <!--Launcher-->
+    <div aria-live="assertive" id="showWidget" class="absolute bottom-6 right-6">
+      <div class="w-full flex flex-col items-center sm:items-end">
+        <div class="bg-cyan-600 hover:bg-blue-800 shadow-lg p-3 rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+            <div class="flex-shrink-0 flex">
+              <button type="button" onclick="OpenWidget()" class="rounded-md inline-flex text-white hover:text-blue-50 focus:outline-none">
+                <span class="sr-only">Help</span>
+                <!-- Heroicon name: solid/x -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-16 right-4" id="counter_blob">
+      <div class="bg-red-700 shadow-lg p-1 rounded-full pointer-events-auto overflow-hidden">
+        <div class="flex-shrink-0 flex">
+          <button type="button" onclick="OpenWidget()" class="h-4 w-4 flex justify-center rounded-md text-white focus:outline-none">
+            <span class="font-medium text-xs" id="counter">1</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--/Launcher-->
+    <header class="bg-white shadow"> 
+      <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+        <div class="md:flex md:items-center md:justify-between md:space-x-5">
+          <div class="">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Custom Launcher for the Zendesk Messaging Web Widget</h1>
+            <h2 class="mt-2 text-xl tracking-tight text-gray-500">Demo page to showcase replacement of the default Widget launcher with a custom design</h2>
+          </div>
+          <div class="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
+            <a href="https://internalnote.com/custom-launcher-for-zendesk-messaging-and-unread-counts/" target="_blank" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">Read more</a>
+          </div>
+        </div>       
+      </div>
+    </header>
+    <main>
+      <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto py-10 px-4 sm:px-6 lg:py-12 lg:px-8">
+          <p class="text-lg leading-6 text-blue-gray-500">
+            This page has 2 ways to open the Zendesk Widget. You can either use the <em>Contact Us</em> button below, or the Custom Launcher at the bottom.
+          </p>
+          <div class="bg-gray-50 sm:rounded-lg mt-8 ">
+            <div class="px-4 py-5 sm:p-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">Need Help?</h3>
+              <div class="mt-2 max-w-xl text-sm text-gray-500">
+                <p>Our Answer Bot is available 24/7 to assist you. Or you can talk to one of our agents directly. </p>
+              </div>
+              <div class="mt-5">
+                <button type="button" onclick="zE('messenger', 'open');" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">Contact Us</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-md bg-blue-50 p-4 mt-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <!-- Heroicon name: solid/information-circle -->
+                <svg class="h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3 flex-1 md:flex md:justify-between">
+                <p class="text-sm text-blue-700">This Custom Launcher also implements the new <a class="font-medium underline" href="https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/sdks/web/sdk_api_reference/#unread-messages" target="_blank">Unread Messages</a> callback</p>
+                <p class="mt-3 text-sm md:mt-0 md:ml-6">
+                  <button onclick="editCounter()" class="whitespace-nowrap font-medium text-blue-700 hover:text-blue-600">Demo <span aria-hidden="true">&rarr;</span></a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+<script type="text/javascript">
+  function OpenWidget(){
+    zE('messenger', 'open');
+  }
+
+  zE('messenger:on', 'unreadMessages', function (count) {
+    // if there are unread messages, show badge
+    if (count > 0){
+      $('#counter').html(`${count}`);
+      $('#counter_blob').show();
+    }
+    // if there are more than 4 unread messages, show the widget
+    else if (count >= 4){
+      zE('messenger', 'open');
+    } 
+    //else hide the counter
+    else {
+      $('#counter_blob').hide();
+    }
+  })
+  
+  function editCounter(){
+    $('#counter').html(9);
+    $('#counter_blob').show();
+  }
+</script>
