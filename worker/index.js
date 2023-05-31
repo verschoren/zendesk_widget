@@ -1,4 +1,4 @@
-var jwt = require("jwt-simple");
+import { jwt} from "jwt-simple";
 
 // 3 functions from https://github.com/tsndr/cloudflare-worker-jwt
 function base64URLParse(s) {
