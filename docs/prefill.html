@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <title>Internal Note - Zendesk Messaging Authentication</title>
+    <meta name="description" content="Demo page to showcase the Metadata prefill for Zendesk Messaging">
+    <meta name="keywords" content="zendesk, messaging, authentication, jwt, internal note">
+    <meta name="author" content="Internal Note">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://widget.internalnote.com/img/banner.png">
+
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/view.js"></script>
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4"> </script>
+    <script defer data-domain="jwt.internalnote.com, widget.internalnote.com" src="https://plausible.io/js/script.js"></script>
+
+</head>
+<body class="h-full" data-name="messaging">
+    <header>  
+        <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between md:space-x-5">
+                <div class="">
+                    <h1 class="text-3xl font-bold tracking-tight text-gray-900">Zendesk Messaging Metadata </h1>
+                    <h2 class="mt-2 text-xl tracking-tight text-gray-500">Prefill Form Fields and Tags in Flow Builder</h2>
+                </div>
+                <div class="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
+                    <a href="https://internalnote.com/jwt-messaging/" target="_blank" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">Read more</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="bg-white mt-8">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl lg:mx-0">
+                    <p class="mt-6 text-md leading-8 text-gray-600">
+                        Pick a movie and you will see its info prefilled in the Messaging Widget.<br>
+                        Note, you can't change a movie once a conversation has started.
+                    </p>
+                </div>
+                <ul role="list" class="mx-auto mt-8 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 sm:grid-cols-3 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                    <li><img class="movie aspect-[2/3] cursor-pointer w-full rounded-2xl object-cover hover:scale-105 hover:rotate-3" src="img/movies/bladerunner.jpeg" alt="" data-target="Blade Runner"></li>
+                    <li><img class="movie aspect-[2/3] cursor-pointer w-full rounded-2xl object-cover hover:scale-105 hover:-rotate-3" src="img/movies/starwars.jpeg" alt="" data-target="Star Wars"></li>
+                    <li><img class="movie aspect-[2/3] cursor-pointer w-full rounded-2xl object-cover hover:scale-105 hover:-rotate-3" src="img/movies/jaws.jpeg" alt="" data-target="Jaws"></li>
+                    <li><img class="movie aspect-[2/3] cursor-pointer w-full rounded-2xl object-cover hover:scale-105 hover:rotate-3" src="img/movies/jurassicpark.jpeg" alt="" data-target="Jurassic Park"></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        //button click
+        $('.movie').click(function(){
+            //get the value of the button
+            var movie = $(this).data('target');
+            //show the movie in the chat
+            showMovie(movie);
+            $('.movie').removeClass('border border-8 border-blue-500');
+            $(this).addClass('border border-8 border-blue-500');
+        });
+        function showMovie(movie){
+            zE('messenger:set', 'conversationFields', [{ id: '7662882404114', value: movie}]);
+        }
+    }); 
+</script>
+</html>
