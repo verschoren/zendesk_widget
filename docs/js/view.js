@@ -61,7 +61,7 @@ $('document').ready(function() {
         { id: 'messaging', name: 'Authentication', url: 'index.html' },
         { id: 'customlauncher', name: 'Customize', url: 'customlauncher.html' },
         { id: 'voice', name: 'Voice', url: 'voice.html' },
-        // { id: 'metadata', name: ' Metadata', url: 'prefill.html' },
+        { id: 'metadata', name: ' Metadata', url: 'prefill.html' },
         { id: 'split', name: 'Classic Widget', url: '' },
         { id: 'classic', name: 'Authentication', url: 'classic.html' },
         { id: 'classiccustom', name: 'Customize', url: 'classiccustom.html' },
