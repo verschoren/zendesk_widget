@@ -48,9 +48,9 @@
                     </p>
                 </div>
                 <ul role="list" class="mx-auto mt-8 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 sm:grid-cols-3 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-                    <li><img class="movie aspect-[2/3] cursor-pointer w-full rounded-2xl object-cover hover:scale-105 hover:rotate-3" src="img/locations/endor.png" alt="" data-target="endor"></li>
-                    <li><img class="movie aspect-[2/3] cursor-pointer w-full rounded-2xl object-cover hover:scale-105 hover:-rotate-3" src="img/locations/planethoth.png" alt="" data-target="hoth"></li>
-                    <li><img class="movie aspect-[2/3] cursor-pointer w-full rounded-2xl object-cover hover:scale-105 hover:-rotate-3" src="img/locations/tatooine.png" alt="" data-target="tatooine"></li>
+                    <li><img class="location aspect-[2/3] cursor-pointer w-full rounded-2xl object-cover hover:scale-105 hover:rotate-3" src="img/locations/endor.png" alt="" data-target="endor"></li>
+                    <li><img class="location aspect-[2/3] cursor-pointer w-full rounded-2xl object-cover hover:scale-105 hover:-rotate-3" src="img/locations/planethoth.png" alt="" data-target="hoth"></li>
+                    <li><img class="location aspect-[2/3] cursor-pointer w-full rounded-2xl object-cover hover:scale-105 hover:-rotate-3" src="img/locations/tatooine.png" alt="" data-target="tatooine"></li>
                 </ul>
             </div>
         </div>
@@ -59,16 +59,17 @@
 <script type="text/javascript">
     $(document).ready(function() {
         //button click
-        $('.movie').click(function(){
+        $('.location').click(function(){
             //get the value of the button
-            var movie = $(this).data('target');
+            var location = $(this).data('target');
             //show the movie in the chat
             showMovie(movie);
-            $('.movie').removeClass('border border-8 border-blue-500');
+            $('.location').removeClass('border border-8 border-blue-500');
             $(this).addClass('border border-8 border-blue-500');
         });
         function showMovie(movie){
-            zE('messenger:set', 'conversationFields', [{ id: '12367640319506', value: movie}]);
+            zE('messenger:set', 'conversationFields', [{ id: '12367640319506', value: location}]);
+            zE('messenger', 'open');
         }
     }); 
 </script>
