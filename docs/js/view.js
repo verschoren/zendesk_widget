@@ -2,8 +2,8 @@
 $('document').ready(function() {
     //add header
     $('body').prepend(`
-    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-      <div class="flex lg:flex-1">
+    <nav class="mx-auto flex max-w-7xl justify-between lg:justify-start p-6 lg:px-8" aria-label="Global">
+      <div class="flex">
         <a href="https://internalnote.com" class="-m-1.5 p-1.5">
           <img class="h-8 w-auto" src="img/logo.svg" alt="Internal Note">
         </a>
@@ -16,8 +16,11 @@ $('document').ready(function() {
           </svg>
         </button>
       </div>
-      <div class="desktop_nav hidden lg:flex lg:gap-x-8 ml-8"></div>
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+      <div class="hidden lg:inline-block lg:flex-1">
+        <div class="desktop_nav_messaging lg:flex lg:justify-start lg:gap-x-8 ml-8 mb-4"></div>
+        <div class="desktop_nav_classic lg:flex lg:gap-x-8 ml-8"></div>
+      </div>
+      <div class="hidden lg:inline-block">
         <a href="https://github.com/verschoren/zendesk_widget" class="flex items-center gap-2 rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" target="_blank">
           <img src="img/github-mark.svg" class="h-5 inline-block" alt="GitHub">
           <span>GitHub</span>
@@ -42,7 +45,8 @@ $('document').ready(function() {
           </div>
           <div class="mt-6 flow-root">
             <div class="-my-6 divide-y divide-gray-500/10">
-              <div class="mobile_nav space-y-2 py-6"></div>
+              <div class="mobile_nav_messaging space-y-2 py-6"></div>
+              <div class="mobile_nav_classic space-y-2 py-6"></div>
               <div class="py-6">
                 <a href="https://github.com/verschoren/zendesk_widget" class="flex items-center gap-2 rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" target="_blank">
                   <img src="img/github-mark.svg" class="h-5 inline-block" alt="GitHub">
@@ -57,30 +61,38 @@ $('document').ready(function() {
 
     //Customlinks
     var links = [
-        { id: 'split', name: 'Messaging Widget', url: 'index.html' },
-        { id: 'messaging', name: 'Authentication', url: 'index.html' },
-        { id: 'customlauncher', name: 'Customize', url: 'customlauncher.html' },
-        { id: 'voice', name: 'Voice', url: 'voice.html' },
-        { id: 'metadata', name: ' Metadata', url: 'prefill.html' },
-        { id: 'nobot', name: ' No bot', url: 'no-bot.html' },
-        { id: 'split', name: 'Classic Widget', url: '' },
+      {
+        "type": "messaging",
+        "links": [
+          { id: 'messaging', name: 'Authentication', url: 'index.html' },
+          { id: 'customlauncher', name: 'Customize', url: 'customlauncher.html' },
+          { id: 'voice', name: 'Voice', url: 'voice.html' },
+          { id: 'metadata', name: ' Metadata', url: 'prefill.html' },
+          { id: 'nobot', name: ' No bot', url: 'no-bot.html' }
+        ]
+      },
+      {
+        "type": "classic",
+        "links": [
         { id: 'classic', name: 'Authentication', url: 'classic.html' },
-        { id: 'classiccustom', name: 'Customize', url: 'classiccustom.html' },
+        { id: 'classiccustom', name: 'Customize', url: 'classiccustom.html' }
+        ]
+      }
     ]
 
     //add links
-    $.each(links, function(index, value) {
-      if (value.id == 'split') {
-        $('.desktop_nav').append(`<div class="text-sm font-bold leading-6">${value.name}</div>`);
-        $('.mobile_nav').append(`<div class="-mx-3 block rounded-lg px-3 py-2 text-base font-bold leading-7 text-gray-900">${value.name}</div>`);
-      } else {
-        $('.desktop_nav').append(`
-        <a href="${value.url}" class="text-sm font-medium leading-6 text-gray-900">${value.name}</a>
-      `);
-        $('.mobile_nav').append(`
-        <a href="${value.url}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50">${value.name}</a>
-      `);
-      }
+    $.each(links, function(index,value) {
+      console.log(value.type)
+        $('.desktop_nav_'+value.type).append(`<div class="capitalize text-sm font-bold leading-6">${value.type} Widget</div>`);
+        $('.mobile_nav_'+value.type).append(`<div class="capitalize -mx-3 block rounded-lg px-3 py-2 text-base font-bold leading-7 text-gray-900">${value.type} Widget</div>`);
+        $.each(value.links, function(index,link){
+          $('.desktop_nav_'+value.type).append(`
+            <a href="${link.url}" class="text-sm font-medium leading-6 text-gray-900 hover:text-blue-600">${link.name}</a>
+          `);
+          $('.mobile_nav_'+value.type).append(`
+            <a href="${link.url}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50">${link.name}</a>
+          `);
+        });
     });
 
     $('body').append(`

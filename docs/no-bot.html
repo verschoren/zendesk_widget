@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Internal Note - Zendesk Widget - No Bot</title>
-    <meta name="description" content="Demo page to showcase the Metadata prefill for Zendesk Messaging">
+    <meta name="description" content="Demo page to showcase using the Zendesk Messaging Widget without a Bot">
     <meta name="keywords" content="zendesk, messaging, authentication, jwt, internal note">
     <meta name="author" content="Internal Note">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,8 +42,8 @@
                     </p>
                 </div>
                 <ul role="list" class="mx-auto mt-8 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 sm:grid-cols-3 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-                <li data-target="red_pill" class="movie inline-flex items-center rounded-full bg-red-100 hover:bg-red-500 px-8 py-4 text-xl font-medium text-red-700 hover:text-red-100"><span class="mx-auto">Red Pill</span></li>
-                <li data-target="blue_pill" class="movie inline-flex items-center rounded-full bg-blue-100 hover:bg-blue-500 px-8 py-4 text-xl font-medium text-blue-700 hover:text-blue-100"><span class="mx-auto">Blue Pill</span></li>
+                <li data-target="red_pill" class="pill inline-flex items-center rounded-full bg-red-100 hover:bg-red-500 px-8 py-4 text-xl font-medium text-red-700 hover:text-red-100"><span class="mx-auto">Red Pill</span></li>
+                <li data-target="blue_pill" class="pill inline-flex items-center rounded-full bg-blue-100 hover:bg-blue-500 px-8 py-4 text-xl font-medium text-blue-700 hover:text-blue-100"><span class="mx-auto">Blue Pill</span></li>
                 </ul>
             </div>
         </div>
@@ -51,22 +51,22 @@
 <script type="text/javascript">
     $(document).ready(function() {
         //button click
-        $('.movie').click(function(){
+        $('.pill').click(function(){
             //get the value of the button
-            var movie = $(this).data('target');
-            //show the movie in the chat
-            showMovie(movie);
-            $('.movie').removeClass('border border-2 border-red-500');
-            $('.movie').removeClass('border border-2 border-blue-500');
-            if (movie == 'red_pill') {
+            var pill = $(this).data('target');
+            //show the pill in the chat
+            showpill(pill);
+            $('.pill').removeClass('border border-2 border-red-500');
+            $('.pill').removeClass('border border-2 border-blue-500');
+            if (pill == 'red_pill') {
                 $(this).addClass('border border-2 border-red-500');
             }
-            if (movie == 'blue_pill') {
+            if (pill == 'blue_pill') {
                 $(this).addClass('border border-2 border-blue-500');
             }
         });
-        function showMovie(movie){
-            zE('messenger:set', 'conversationFields', [{ id: '13281147569042', value: movie}]);
+        function showpill(pill){
+            zE('messenger:set', 'conversationFields', [{ id: '13281147569042', value: pill}]);
             zE('messenger', 'open');
         }
     }); 
