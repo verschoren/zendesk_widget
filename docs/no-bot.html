@@ -32,9 +32,23 @@
         </div>
     </header>
     <main>
-    </main>
-</body>
-<!-- <script type="text/javascript">
+        
+        <div class="bg-white mt-8">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl lg:mx-0">
+                    <p class="mt-6 text-md leading-8 text-gray-600">
+                        Pick a movie and you will see its info prefilled in the Messaging Widget.<br>
+                        Note, you can't change a movie via the posters once a conversation has started.
+                    </p>
+                </div>
+                <ul role="list" class="mx-auto mt-8 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 sm:grid-cols-3 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                <li data-target="red_pill" class="movie inline-flex items-center rounded-full bg-red-100 hover:bg-red-500 px-8 py-4 text-xl font-medium text-red-700 hover:text-red-100"><span class="mx-auto">Red Pill</span></li>
+                <li data-target="blue_pill" class="movie inline-flex items-center rounded-full bg-blue-100 hover:bg-blue-500 px-8 py-4 text-xl font-medium text-blue-700 hover:text-blue-100"><span class="mx-auto">Blue Pill</span></li>
+                </ul>
+            </div>
+        </div>
+    </main></body>
+<script type="text/javascript">
     $(document).ready(function() {
         //button click
         $('.movie').click(function(){
@@ -42,13 +56,19 @@
             var movie = $(this).data('target');
             //show the movie in the chat
             showMovie(movie);
-            $('.movie').removeClass('border border-8 border-blue-500');
-            $(this).addClass('border border-8 border-blue-500');
+            $('.movie').removeClass('border border-2 border-red-500');
+            $('.movie').removeClass('border border-2 border-blue-500');
+            if (movie == 'red_pill') {
+                $(this).addClass('border border-2 border-red-500');
+            }
+            if (movie == 'blue_pill') {
+                $(this).addClass('border border-2 border-blue-500');
+            }
         });
         function showMovie(movie){
-            zE('messenger:set', 'conversationFields', [{ id: '7662882404114', value: movie}]);
+            zE('messenger:set', 'conversationFields', [{ id: '13281147569042', value: movie}]);
             zE('messenger', 'open');
         }
     }); 
-</script> -->
+</script>
 </html>
