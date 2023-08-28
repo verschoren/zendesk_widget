@@ -64,6 +64,7 @@
         $('.movie').click(function(){
             //get the value of the button
             var movie = $(this).data('target');
+            console.log(movie)
             //show the movie in the chat
             showMovie(movie);
             $('.movie').removeClass('border border-8 border-blue-500');

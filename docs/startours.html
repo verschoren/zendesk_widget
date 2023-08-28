@@ -63,11 +63,11 @@
             //get the value of the button
             var location = $(this).data('target');
             //show the movie in the chat
-            showMovie(movie);
+            showMovie(location);
             $('.location').removeClass('border border-8 border-blue-500');
             $(this).addClass('border border-8 border-blue-500');
         });
-        function showMovie(movie){
+        function showMovie(location){
             zE('messenger:set', 'conversationFields', [{ id: '12367640319506', value: location}]);
             zE('messenger', 'open');
         }
