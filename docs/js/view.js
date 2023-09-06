@@ -69,6 +69,7 @@ $('document').ready(function() {
           { id: 'voice', name: 'Voice', url: 'voice.html' },
           { id: 'metadata', name: ' Metadata', url: 'prefill.html' },
           { id: 'nobot', name: ' No bot', url: 'no-bot.html' }
+          { id: 'availability', name: ' Agent Availability', url: 'agent-availability-in-zendesk-messaging.html' }
         ]
       },
       {
