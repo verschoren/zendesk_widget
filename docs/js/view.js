@@ -1,132 +1,181 @@
-//document ready
 $('document').ready(function() {
-    //add header
-    $('body').prepend(`
-      <nav class="mx-auto flex max-w-7xl justify-between lg:justify-start p-6 lg:px-8" aria-label="Global">
-        <div class="flex">
-          <a href="https://internalnote.com" class="-m-1.5 p-1.5">
-            <img class="h-8 w-auto" src="img/logo.svg" alt="Internal Note">
-          </a>
-        </div>
-        <div class="flex lg:hidden">
-          <button id="openmenu" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-            <span class="sr-only">Open main menu</span>
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </button>
-        </div>
-        <div class="hidden lg:inline-block lg:flex-1 space-y-4">
-          <div class="desktop_nav_messaging lg:flex lg:justify-start lg:gap-x-8 ml-8"></div>
-          <div class="desktop_nav_classic lg:flex lg:gap-x-8 ml-8"></div>
-          <div class="desktop_nav_proactive lg:flex lg:gap-x-8 ml-8"></div>
-        </div>
-        <div class="hidden lg:inline-block">
-          <a href="https://github.com/verschoren/zendesk_widget" class="flex items-center gap-2 rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" target="_blank">
-            <img src="img/github-mark.svg" class="h-5 inline-block" alt="GitHub">
-            <span>GitHub</span>
-          </a>
-        </div>
-      </nav>
-      <!-- Mobile menu, show/hide based on menu open state. -->
-      <div id="mobilemenu" class="hidden lg:hidden" role="dialog" aria-modal="true">
-        <!-- Background backdrop, show/hide based on slide-over state. -->
-        <div class="fixed inset-0 z-10"></div>
-        <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div class="flex items-center justify-between">
-            <a href="https://internalnote.com" class="-m-1.5 p-1.5">
-              <img class="h-8 w-auto" src="img/logo.svg" alt="Internal Note">
-            </a>
-            <button id="closemenu" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-              <span class="sr-only">Close menu</span>
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <div class="mt-6 flow-root">
-            <div class="-my-6 divide-y divide-gray-500/10">
-              <div class="mobile_nav_messaging space-y-2 py-6"></div>
-              <div class="mobile_nav_classic space-y-2 py-6"></div>
-              <div class="mobile_nav_proactive space-y-2 py-6"></div>
-              <div class="py-6">
-                <a href="https://github.com/verschoren/zendesk_widget" class="flex items-center gap-2 rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" target="_blank">
-                  <img src="img/github-mark.svg" class="h-5 inline-block" alt="GitHub">
-                  <span>GitHub</span>
-                </a>  
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    
+  $('#show_menu').click(function() {
+    $('#menu').removeClass('hidden');
+    $('#menu_background').removeClass('transition-opacity ease-linear duration-300 from-opacity-100 to-opacity-0');
+    $('#menu_background').addClass('transition-opacity ease-linear duration-300 from-opacity-0 to-opacity-100');
+    $('#menu_sidebar').removeClass('transition ease-in-out duration-300 transform from-translate-x-0 to-translate-x-full');
+    $('#menu_sidebar').addClass('transition ease-in-out duration-300 transform from-translate-x-full to-translate-x-0');
+  });
+ 
+  $('#hide_menu').click(function() {
+    $('#menu').addClass('hidden');
+    $('#menu_background').removeClass('transition-opacity ease-linear duration-300 from-opacity-0 to-opacity-100');
+    $('#menu_background').addClass('transition-opacity ease-linear duration-300 from-opacity-100 to-opacity-0');
+    $('#menu_sidebar').removeClass('transition ease-in-out duration-300 transform from-translate-x-full to-translate-x-0');
+    $('#menu_sidebar').addClass('transition ease-in-out duration-300 transform from-translate-x-0 to-translate-x-full');
+
+  });
+
+  $('head').append(`
+    <meta charset="UTF-8">
+    <meta name="author" content="Internal Note">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://widget.internalnote.com/img/banner.png">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/atom-one-dark.css" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <script defer data-domain="jwt.internalnote.com, widget.internalnote.com" src="https://plausible.io/js/script.js"></script>
     `);
 
-    //Customlinks
-    var links = [
-      {
-        "type": "messaging",
-        "name" : "Messaging Widget",
-        "links": [
-          { id: 'messaging', name: 'Authentication', url: 'index.html' },
-          { id: 'customlauncher', name: 'Customize', url: 'customlauncher.html' },
-          { id: 'voice', name: 'Voice', url: 'voice.html' },
-          { id: 'metadata', name: ' Metadata', url: 'prefill.html' },
-          { id: 'nobot', name: ' No bot', url: 'no-bot.html' },
-          { id: 'availability', name: ' Agent Availability', url: 'agent-availability-in-zendesk-messaging.html' }
-        ]
-      },
-      {
-        "type": "classic",
-        "name" : "Classic Widget",
-        "links": [
-        { id: 'classic', name: 'Authentication', url: 'classic.html' },
-        { id: 'classiccustom', name: 'Customize', url: 'classiccustom.html' }
-        ]
-      },
-      { 
-        "type": "proactive",
-        "name" : "Proactive Messaging",
-        "links": [
-          { id: 'proactive', name: 'Proactive Messaging', url: 'https://proactive.internalnote.com' }
-        ]
-      }
-    ]
-
-    //add links
-    $.each(links, function(index,value) {
-      console.log(value.type)
-        $('.desktop_nav_'+value.type).append(`<div class="capitalize text-sm font-bold leading-6">${value.name}</div>`);
-        $('.mobile_nav_'+value.type).append(`<div class="capitalize -mx-3 block rounded-lg px-3 py-2 text-base font-bold leading-7 text-gray-900">${value.name}</div>`);
-        $.each(value.links, function(index,link){
-          $('.desktop_nav_'+value.type).append(`
-            <a href="${link.url}" class="text-sm font-medium leading-6 text-gray-900 hover:text-blue-600">${link.name}</a>
-          `);
-          $('.mobile_nav_'+value.type).append(`
-            <a href="${link.url}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50">${link.name}</a>
-          `);
-        });
-    });
-
-    $('body').append(`
-      <footer class="bg-white" aria-labelledby="footer-heading">
-        <div class="mx-auto max-w-7xl px-6 pb-8 pt-16">
-          <div class="border-t border-gray-900/10 pt-8">
-            <p class="text-xs leading-5 text-gray-500">&copy; 2023 Internal Note, Inc. All rights reserved.</p>
+  $('main').before(`
+    <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
+    <div id="menu" class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
+      <div id="menu_background" class="fixed inset-0 bg-gray-900/80"></div>
+  
+      <div id="menu_sidebar" class="fixed inset-0 flex">
+          <div class="relative mr-16 flex w-full max-w-xs flex-1">
+            <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
+                <button id="hide_menu" type="button" class="-m-2.5 p-2.5">
+                <span class="sr-only">Close sidebar</span>
+                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                </button>
+            </div>
+    
+            <!-- Sidebar component, swap this element with another sidebar if you like -->
+            <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
+                <div class="flex h-16 shrink-0 items-center">
+                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+                </div>
+                <nav class="flex flex-1 flex-col">
+                    <ul id="menu_mobile" role="list" class="flex flex-1 flex-col gap-6">                        
+                    </ul>
+                </nav>
+            </div>
           </div>
-        </div>
-      </footer>  
-    `)
+      </div>
+    </div>
+    
+    <!-- Static sidebar for desktop -->
+    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+      <!-- Sidebar component, swap this element with another sidebar if you like -->
+      <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
+          <div class="flex h-16 shrink-0 items-center">
+          <img class="h-8 w-auto" src="img/logo.svg" alt="Internal Note">
+          </div>
+          <nav class="flex flex-1 flex-col">
+            <ul id="menu_desktop" role="list" class="flex flex-1 flex-col gap-y-7"></ul>
+          </nav>
+      </div>
+    </div>
+  `);
 
-    $('#openmenu').click(function() {
-      $('#mobilemenu').removeClass('hidden');
+  $('main').prepend(`
+    <div class="lg:hidden sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 bg-white px-4 sm:gap-x-6 sm:px-6 lg:px-8">
+      <button id="show_menu" type="button" class="-m-2.5 p-2.5 text-gray-700 hover:text-gray-900 lg:hidden">
+          <span class="sr-only">Open sidebar</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+      </button>
+      <img src="img/logo.svg" alt="Internal Note" class="h-8 w-auto">
+    </div>  
+  `);
+
+  var meta = $('meta[name=loader]').attr("content");
+  console.log(meta);  
+
+  var links = [
+    {
+      "type": "messaging",
+      "name" : "Messaging Widget",
+      "links": [
+        { icon: '🔐', id: 'authentication', name: 'Authentication', url: 'index.html', title: 'Zendesk Messaging Authentication', description: 'Demo page to showcase the JWT Authentication for Zendesk Messaging'},
+        { icon: '🎨', id: 'customlauncher', name: 'Customize', url: 'customlauncher.html' , title:'Custom Launcher for Messaging', description: 'Demo page to showcase the Custom Launcher for Zendesk Messaging'},
+        { icon: '📞', id: 'voice', name: 'Voice', url: 'voice.html', title: 'Voice API for Messaging', description: 'Demo page to showcase the Voice API for Zendesk Messaging'},
+        { icon: '🍿', id: 'metadata', name: ' Metadata', url: 'prefill.html', title: 'Metadata for Zendesk Messaging', description: 'Demo page to showcase the Metadata for Zendesk Messaging'},
+        { icon: '🤖', id: 'nobot', name: ' No bot', url: 'no-bot.html', title: 'No Bot for Zendesk Messaging', description: 'Demo page to showcase using the Zendesk Messaging Widget without a Bot'},
+        { icon: '✅', id: 'availability', name: ' Agent Availability', url: 'agent-availability-in-zendesk-messaging.html', title:'Agent Availability', description: 'Demo page to showcase using the Zendesk Messaging Widget with Agent Availability Checks'}
+      ]
+    },
+    {
+      "type": "classic",
+      "name" : "Classic Widget",
+      "links": [
+      { icon: '🔐', id: 'classic', name: 'Authentication', url: 'classic.html', title: 'Zendesk Classic Widget Customization',description: 'Demo page to showcase the JWT Authentication for the Classic Zendesk Widget'  },
+      { icon: '🎨', id: 'classiccustom', name: 'Customize', url: 'classiccustom.html', title:'Zendesk Classic Widget Customization', description: 'Demo page to showcase the Customization for the Classic Zendesk Widget'},
+      ]
+    },
+    { 
+      "type": "proactive",
+      "name" : "Proactive Messaging",
+      "links": [
+        { icon: '🔔', id: 'proactive', name: 'Proactive Messaging', url: 'proactive.html', title: 'Proactive Messaging', description: 'Demo page to showcase the Proactive Messaging for Zendesk Messaging'},
+        { icon: '🧑🏻‍💻', id: 'proactive_contact', name: 'Contact', url: 'proactive-contact.html', title: 'Proactive Messaging', description: 'Demo page to showcase the Proactive Messaging for Zendesk Messaging'},
+        { icon: '👑', id: 'proactive_contact_vip', name: 'VIP Contact', url: 'proactive-contact.html#vip', title: 'Proactive Messaging', description: 'Demo page to showcase the Proactive Messaging for Zendesk Messaging'},
+        { icon: '🦖', id: 'proactive_product', name: 'Product', url: 'proactive-product.html', title: 'Proactive Messaging', description: 'Demo page to showcase the Proactive Messaging for Zendesk Messaging'},
+        { icon: '🦕', id: 'proactive_product_campaign', name: 'Product with Campaign', url: 'proactive-product.html?utm_campaign=trex', title: 'Proactive Messaging', description: 'Demo page to showcase the Proactive Messaging for Zendesk Messaging'},
+        { icon: '🇪🇸', id: 'proactive_es', name: 'Spanish Locale', url: 'es.html', title: 'Proactive Messaging - Spanish', description: 'Demo page to showcase the Proactive Messaging for Zendesk Messaging'},
+        { icon: '🇫🇷', id: 'proactive_fr', name: 'French Locale', url: 'fr.html', title: 'Proactive Messaging - French', description: 'Demo page to showcase the Proactive Messaging for Zendesk Messaging'}
+      ]
+    }
+  ]
+
+  //add links
+  $('#menu_mobile').html('');
+  $('#menu_desktop').html('');
+  $.each(links, function(index,value) {
+    console.log(value.type)
+    $('#menu_mobile').append(`
+      <li>
+        <div class="text-xs font-semibold leading-6 text-gray-400">${value.name}</div>
+        <ul id="mobile_nav_ul_${value.type}" role="list" class="-mx-2 mt-2 space-y-1"></ul>
+      </li>
+    `);
+    $('#menu_desktop').append(`
+      <li>
+        <div class="text-xs font-semibold leading-6 text-gray-400">${value.name}</div>
+        <ul id="desktop_nav_ul_${value.type}" role="list" class="-mx-2 mt-2 space-y-1"></ul>
+      </li>
+    `);
+    $.each(value.links, function(index,link){
+      $('#mobile_nav_ul_'+value.type).append(`
+        <li>
+            <a href="${link.url}" class="${link.id} text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600">${link.icon}</span>
+                <span class="truncate">${link.name}</span>
+            </a>
+        </li>
+      `);
+      $('#desktop_nav_ul_'+value.type).append(`
+        <li>
+            <a href="${link.url}" class="${link.id} text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600">${link.icon}</span>
+                <span class="truncate">${link.name}</span>
+            </a>
+        </li>
+      `);
+      if(link.id == meta){
+        $('.'+link.id).addClass('bg-gray-50 text-indigo-600');
+        $('.'+link.id).removeClass('text-gray-700 hover:text-indigo-600 hover:bg-gray-50');
+        $('head').append(`<title>Internal Note - ${link.title}</title>`);
+        $('head').append(`<meta name="description" content="${link.description}">`);
+      }
     });
+  });
 
-    $('#closemenu').click(function() {
-      $('#mobilemenu').addClass('hidden');
-    });
+  $('main').append(`
+    <footer class="w-full bg-white fixed bottom-0" aria-labelledby="footer-heading">
+      <div class="border-t border-gray-900/10 p-4">
+        <p class="text-xs leading-5 text-gray-500">&copy; 2023 Internal Note, Inc. All rights reserved.</p>
+      </div>
+    </footer>  
+  `)
 
-    $('main').append(`
-    <div class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-4 sm:pb-3 lg:px-4">
+  $('main').append(`
+    <div class="pointer-events-none fixed inset-x-0 top-2 sm:flex sm:justify-center sm:px-4 sm:pb-3 lg:px-4 z-50">
         <div class="pointer-events-auto flex items-center justify-between gap-x-6 bg-gray-900 px-6 py-2.5 sm:rounded-xl sm:py-3 sm:pl-4 sm:pr-3.5 border border-gray-800 shadow-sm">
             <div type="button" class="-m-1.5 flex-none p-1.5">
                 <span class="sr-only">Dismiss</span>
