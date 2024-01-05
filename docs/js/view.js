@@ -93,6 +93,7 @@ $('document').ready(function() {
       "name" : "Messaging Widget",
       "links": [
         { icon: '🔐', id: 'authentication', name: 'Authentication', url: 'index.html', title: 'Zendesk Messaging Authentication', description: 'Demo page to showcase the JWT Authentication for Zendesk Messaging'},
+        { icon: '🔐', id: 'guide_messaging', name: 'Guide Authentication', url: 'guide_messaging.html', title: 'Zendesk Messaging Authentication', description: 'Demo page to showcase the JWT Authentication for Zendesk Messaging'},
         { icon: '🎨', id: 'customlauncher', name: 'Customize', url: 'customlauncher.html' , title:'Custom Launcher for Messaging', description: 'Demo page to showcase the Custom Launcher for Zendesk Messaging'},
         { icon: '📞', id: 'voice', name: 'Voice', url: 'voice.html', title: 'Voice API for Messaging', description: 'Demo page to showcase the Voice API for Zendesk Messaging'},
         { icon: '🍿', id: 'metadata', name: ' Metadata', url: 'prefill.html', title: 'Metadata for Zendesk Messaging', description: 'Demo page to showcase the Metadata for Zendesk Messaging'},
@@ -104,7 +105,8 @@ $('document').ready(function() {
       "type": "classic",
       "name" : "Classic Widget",
       "links": [
-      { icon: '🔐', id: 'classic', name: 'Authentication', url: 'classic.html', title: 'Zendesk Classic Widget Customization',description: 'Demo page to showcase the JWT Authentication for the Classic Zendesk Widget'  },
+      { icon: '🔐', id: 'classic', name: 'Authentication', url: 'classic.html', title: 'Zendesk Classic Widget Authentication',description: 'Demo page to showcase the JWT Authentication for the Classic Zendesk Widget'  },
+      { icon: '🔐', id: 'classic_guide', name: 'Guide Authentication', url: 'guide_classic.html', title:'Zendesk Classic Widget Customization', description: 'Authentication in Zendesk Guide'},
       { icon: '🎨', id: 'classiccustom', name: 'Customize', url: 'classiccustom.html', title:'Zendesk Classic Widget Customization', description: 'Demo page to showcase the Customization for the Classic Zendesk Widget'},
       ]
     },
