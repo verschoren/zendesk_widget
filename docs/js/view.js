@@ -125,7 +125,7 @@ $('document').ready(function() {
         { icon: '🎨', id: 'customlauncher', name: 'Customize', url: 'customlauncher.html' , title:'Custom Launcher for Messaging', description: 'Demo page to showcase the Custom Launcher for Zendesk Messaging'},
         { icon: '📞', id: 'voice', name: 'Voice', url: 'voice.html', title: 'Voice API for Messaging', description: 'Demo page to showcase the Voice API for Zendesk Messaging'},
         { icon: '🍿', id: 'metadata', name: ' Metadata', url: 'prefill.html', title: 'Metadata for Zendesk Messaging', description: 'Demo page to showcase the Metadata for Zendesk Messaging'},
-        { icon: '🤖', id: 'nobot', name: ' No bot', url: 'no-bot.html', title: 'No Bot for Zendesk Messaging', description: 'Demo page to showcase using the Zendesk Messaging Widget without a Bot'},
+        { icon: '🚫', id: 'nobot', name: ' No bot', url: 'no-bot.html', title: 'No Bot for Zendesk Messaging', description: 'Demo page to showcase using the Zendesk Messaging Widget without a Bot'},
         { icon: '✅', id: 'availability', name: ' Agent Availability', url: 'agent-availability-in-zendesk-messaging.html', title:'Agent Availability', description: 'Demo page to showcase using the Zendesk Messaging Widget with Agent Availability Checks'}
       ]
     },
@@ -149,6 +149,13 @@ $('document').ready(function() {
         { icon: '🦕', id: 'proactive_product_campaign', name: 'Product with Campaign', url: 'proactive-product.html?utm_campaign=trex', title: 'Proactive Messaging', description: 'Demo page to showcase the Proactive Messaging for Zendesk Messaging'},
         { icon: '🇪🇸', id: 'proactive_es', name: 'Spanish Locale', url: 'es.html', title: 'Proactive Messaging - Spanish', description: 'Demo page to showcase the Proactive Messaging for Zendesk Messaging'},
         { icon: '🇫🇷', id: 'proactive_fr', name: 'French Locale', url: 'fr.html', title: 'Proactive Messaging - French', description: 'Demo page to showcase the Proactive Messaging for Zendesk Messaging'}
+      ]
+    },
+    {
+      "type": "answerbot",
+      "name" : "Answer Bot",
+      "links": [
+        { icon: '🤖', id: 'answerbot', name: 'Answer Bot API Demo', url: 'answerbot.html', title: 'Zendesk Answer Bot Demo', description: 'Demo page to showcase theZendesk Answer Bot API'},
       ]
     }
   ]
