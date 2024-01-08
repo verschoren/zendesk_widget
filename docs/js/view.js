@@ -16,16 +16,6 @@ $('document').ready(function() {
     $('#menu_sidebar').addClass('transition ease-in-out duration-300 transform from-translate-x-0 to-translate-x-full');
   });
 
-  $('head').append(`
-    <meta charset="UTF-8">
-    <meta name="author" content="Internal Note">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image" content="https://widget.internalnote.com/img/banner.png">
-    <link href="css/atom-one-dark.css" rel="stylesheet">
-    <link rel="icon" href="img/favicon.png" type="image/x-icon">
-    <script defer data-domain="jwt.internalnote.com, widget.internalnote.com" src="https://plausible.io/js/script.js"></script>
-  `);
-
   $('main').before(`
     <div id="menu" class="hidden relative z-50 md:hidden" role="dialog" aria-modal="true">
       <div id="menu_background" class="fixed inset-0 bg-gray-900/80"></div>
