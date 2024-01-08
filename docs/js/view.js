@@ -143,6 +143,13 @@ $('document').ready(function() {
       "links": [
         { icon: '🤖', id: 'answerbot', name: 'Answer Bot API Demo', url: 'answerbot.html', title: 'Zendesk Answer Bot Demo', description: 'Demo page to showcase theZendesk Answer Bot API'},
       ]
+    },
+    {
+      "type": "storagelimits",
+      "name" : "Storage Limits",
+      "links": [
+        { icon: '💾', id: 'storagelimits', name: 'Storage Calculator', url: 'storagelimits.html', title: 'Zendesk AStorage Limits Calculator', description: 'Utility page to calculate Zendesk Storage Limits'},
+      ]
     }
   ]
 
@@ -197,15 +204,15 @@ $('document').ready(function() {
       `);
       $('#desktop_nav_ul_'+value.type).append(`
         <li>
-            <a href="${link.url}" class="${link.id} text-gray-700 hover:text-white hover:bg-blue-600 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
-                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-blue-600 group-hover:text-blue-600">${link.icon}</span>
+            <a href="${link.url}" class="${link.id} text-gray-00 hover:text-blue-600 hover:bg-transparant group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                <span class="${link.id}_icon flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-blue-600 group-hover:text-blue-600">${link.icon}</span>
                 <span class="truncate">${link.name}</span>
             </a>
         </li>
       `);
       if(link.id == meta){
-        $('.'+link.id).addClass('bg-blue-600 text-white');
-        $('.'+link.id).removeClass('text-gray-700 hover:text-white hover:bg-[#006DFF');
+        $('.'+link.id+'_icon').addClass('border-blue-600 bg-blue-200');
+        $('.'+link.id+'_icon').removeClass('border-gray-200 bg-white');
         $('head').append(`<title>Internal Note - ${link.title}</title>`);
         $('head').append(`<meta name="description" content="${link.description}">`);
 
@@ -221,8 +228,9 @@ $('document').ready(function() {
 
   $('main').append(`
     <footer class="w-full fixed bottom-0 bg-[#FEFAF2]" aria-labelledby="footer-heading">
-      <div class="border-t border-gray-900/10 p-4">
-        <p class="text-xs leading-5 text-gray-500">&copy; 2023 Internal Note, Inc. All rights reserved.</p>
+      <div class="border-t border-gray-900/10 p-4 flex gap-2">
+        <p class="text-xs leading-5 text-gray-500">Crafted by <a class="text-blue-400 hover:text-underline hover:text-blue-700"href="https://internalnote.com?utm_source=storagecalculator">Internal Note</a>.</p>
+        <p class="text-xs leading-5 text-gray-500"> &copy; 2022-2024 If you like it, share it, don't copy.</p>
       </div>
     </footer>  
   `)
