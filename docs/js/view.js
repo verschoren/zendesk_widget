@@ -43,7 +43,7 @@ $('document').ready(function() {
     
             <div class="flex grow flex-col gap-y-5 overflow-y-autopx-6 pb-4">
                 <div class="flex h-16 shrink-0 items-center">
-                    <img class="h-8 w-auto" src="img/logo.svg" alt="Your Company">
+                  <a href="index.html"><img class="h-8 w-auto" src="img/logo.svg" alt="Internal Note"></a>    
                 </div>
                 <nav class="flex flex-1 flex-col">
                     <ul id="menu_mobile" role="list" class="flex flex-1 flex-col gap-6"></ul>
@@ -72,7 +72,7 @@ $('document').ready(function() {
     <div class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:w-72 md:flex-col">
       <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 px-6 pb-4">
           <div class="flex h-16 shrink-0 items-center">
-            <img class="h-8 w-auto" src="img/logo.svg" alt="Internal Note">
+            <a href="index.html"><img class="h-8 w-auto" src="img/logo.svg" alt="Internal Note"></a>
           </div>
           <nav class="flex flex-1 flex-col">
             <ul id="menu_desktop" role="list" class="flex flex-1 flex-col gap-y-7"></ul>
@@ -116,7 +116,7 @@ $('document').ready(function() {
       "type": "messaging",
       "name" : "Messaging Widget",
       "links": [
-        { icon: '🔐', id: 'authentication', name: 'Authentication', url: 'index.html', title: 'Zendesk Messaging Authentication', description: 'Demo page to showcase the JWT Authentication for Zendesk Messaging'},
+        { icon: '🔐', id: 'authentication', name: 'Authentication', url: 'messaging.html', title: 'Zendesk Messaging Authentication', description: 'Demo page to showcase the JWT Authentication for Zendesk Messaging'},
         { icon: '🔐', id: 'guide_messaging', name: 'Guide Authentication', url: 'guide_messaging.html', title: 'Zendesk Messaging Authentication', description: 'Demo page to showcase the JWT Authentication for Zendesk Messaging'},
         { icon: '🎨', id: 'customlauncher', name: 'Customize', url: 'customlauncher.html' , title:'Custom Launcher for Messaging', description: 'Demo page to showcase the Custom Launcher for Zendesk Messaging'},
         { icon: '📞', id: 'voice', name: 'Voice', url: 'voice.html', title: 'Voice API for Messaging', description: 'Demo page to showcase the Voice API for Zendesk Messaging'},
