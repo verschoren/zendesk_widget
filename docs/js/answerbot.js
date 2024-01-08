@@ -28,7 +28,7 @@ $('body').on('click', '#enquiry', function(){
 
         response.articles.forEach(function(article){
             $('#list').append(`
-            <li data-source="${article.article_id}" class="col-span-1 divide-y divide-gray-200 rounded-lg border border-gray-200">
+            <li data-source="${article.article_id}" class="col-span-1 divide-y divide-gray-200 rounded-lg border border-gray-200 bg-white">
             <div class="flex w-full items-center justify-between space-x-6 p-6">
                 <div class="flex-1">
                     <div class="flex items-center space-x-3 justify-between mb-4">
