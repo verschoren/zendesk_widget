@@ -20,12 +20,12 @@ $('document').ready(function() {
     <div id="menu" class="hidden relative z-50 md:hidden" role="dialog" aria-modal="true">
       <div id="menu_background" class="fixed inset-0 bg-gray-900/80"></div>
   
-      <div id="menu_sidebar" class="fixed inset-0 flex">
+      <div id="menu_sidebar" class="bg-[#FEFAF2] fixed inset-0 flex">
           <div class="relative mr-16 flex w-full max-w-xs flex-1">
             <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
                 <button id="hide_menu" type="button" class="-m-2.5 p-2.5">
                 <span class="sr-only">Close sidebar</span>
-                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <svg class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
                 </button>
