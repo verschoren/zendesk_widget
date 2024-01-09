@@ -31,7 +31,7 @@ $('document').ready(function() {
                 </button>
             </div>
     
-            <div class="flex grow flex-col gap-y-5 overflow-y-autopx-6 pb-4">
+            <div class="flex grow flex-col gap-y-5 overflow-y-autopx-6 pl-4 pb-4">
                 <div class="flex h-16 shrink-0 items-center">
                   <a href="index.html"><img class="h-8 w-auto" src="img/logo.svg" alt="Internal Note"></a>    
                 </div>
