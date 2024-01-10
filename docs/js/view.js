@@ -160,14 +160,12 @@ $('document').ready(function() {
 
   $('body').on('click', '.list_header', function(e) {
     var target = $(this).attr('data-target');
-    console.log(target);
     $('#'+target).toggleClass('hidden');
     //rotate svg in this 90 degrees
     $(this).find('svg').toggleClass('rotate-90');
   });
 
   $.each(links, function(index,value) {
-    console.log(value.type)
     var list_mobile = `
     <li>
       <div class="list_header text-xs font-semibold leading-6 text-gray-500 flex justify-between items-center" data-target="mobile_nav_ul_${value.type}">
@@ -227,11 +225,6 @@ $('document').ready(function() {
   });
 
   $('main').append(`
-    <footer class="w-full fixed bottom-0 bg-[#FEFAF2]" aria-labelledby="footer-heading">
-      <div class="border-t border-gray-900/10 p-4 flex gap-2">
-        <p class="text-xs leading-5 text-gray-500">Crafted by <a class="text-blue-400 hover:text-underline hover:text-blue-700"href="https://internalnote.com?utm_source=storagecalculator">Internal Note</a>.</p>
-        <p class="text-xs leading-5 text-gray-500"> &copy; 2022-2024 If you like it, share it, don't copy.</p>
-      </div>
-    </footer>  
+
   `)
 });
