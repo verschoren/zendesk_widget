@@ -29,8 +29,7 @@ $('body').on('click', '#enquiry', function(){
         response.articles.forEach(function(article){
             $('#list').append(`
             <li data-source="${article.article_id}" class="col-span-1 divide-y divide-gray-200 rounded-lg border border-gray-200 bg-white">
-            <div class="flex w-full items-center justify-between space-x-6 p-6">
-                <div class="flex-1">
+                <div class="p-6">
                     <div class="flex items-center space-x-3 justify-between mb-4">
                         <h3 class="truncate text-sm font-medium text-gray-900">${article.title}</h3>
                         <a href="${article.html_url}" target="_blank">
@@ -42,28 +41,23 @@ $('body').on('click', '#enquiry', function(){
                     </div>
                     <p class="mt-1 text-sm text-gray-500 h-32 break-words">${article.snippet}</p>
                 </div>
-            </div>
-            <div data-buttons="${article.article_id}">
-                <div class="-mt-px flex divide-x divide-gray-200">
-                    <div class="flex w-0 flex-1">
-                        <div data-token="${response.interaction_access_token}" data-article="${article.article_id}" class="resolve relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-gray-500">
+                <div data-buttons="${article.article_id}">
+                    <div class="-mt-px flex divide-x divide-gray-200">
+                        <div data-token="${response.interaction_access_token}" data-article="${article.article_id}" class="resolve w-1/2 p-4 flex items-center gap-2 text-sm font-medium">
                             <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
                             </svg>
-                            <span class="ml-1">Mark as solved</span>
+                            <span>Mark as solved</span>
                         </div>
-                    </div>
-                    <div class="-ml-px flex w-0 flex-1">
-                        <div data-token="${response.interaction_access_token}" data-article="${article.article_id}" class="reject relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-gray-500">
+                        <div data-token="${response.interaction_access_token}" data-article="${article.article_id}" class="reject w-1/2 p-4 flex items-center gap-2 text-sm font-medium">
                             <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
                             </svg>  
-                            <span class="ml-3">Doesn't help</span>
+                            <span>Doesn't help</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </li>
+            </li>
             `)
         });
     });
