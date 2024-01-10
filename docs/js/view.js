@@ -211,8 +211,9 @@ $('document').ready(function() {
       if(link.id == meta){
         $('.'+link.id+'_icon').addClass('border-blue-600 bg-blue-200');
         $('.'+link.id+'_icon').removeClass('border-gray-200 bg-white');
-        $('head').append(`<title>Internal Note - ${link.title}</title>`);
-        $('head').append(`<meta name="description" content="${link.description}">`);
+        //set title to link title
+        $('title').html('Internal Note - '+link.title);
+       $('head').append(`<meta name="description" content="${link.description}">`);
 
         $('#desktop_nav_ul_'+value.type).toggleClass('hidden');
         $('#mobile_nav_ul_'+value.type).toggleClass('hidden');
