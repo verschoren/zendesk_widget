@@ -54,7 +54,7 @@ async function respondMessaging(json,env,type) {
 				scope: "user",
 				name: json.user_name,
 				email: json.user_email,
-				external_id: "user_" + json.user_email,
+				external_id: json.external_id,
 				exp: Math.floor(new Date().getTime() / 1000.0) + 86400,
 			});
 		} else {

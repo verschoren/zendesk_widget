@@ -81,10 +81,7 @@
 
                         <div class="sm:col-span-6">
                             <label for="username" class="block text-sm font-medium text-blue-gray-900"> External ID </label>
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                                <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-blue-gray-300 bg-blue-gray-50 text-blue-gray-500 sm:text-sm"> UUID</span>
-                                <input type="text" readonly name="external_id" id="external_id" autocomplete="username" value="" class="flex-1 block w-full min-w-0 border-blue-gray-300 rounded-none rounded-r-md text-blue-gray-900 sm:text-sm focus:ring-gray-50 focus:border-blue-gray-300  bg-gray-50">
-                            </div>
+                            <input type="text" readonly name="external_id" id="external_id" autocomplete="username" value="" class="mt-1 flex-1 block w-full min-w-0 border-blue-gray-300 rounded-md text-gray-500 sm:text-sm focus:ring-gray-50 focus:border-blue-gray-300  bg-gray-50">
                         </div>
                     </div>
 
@@ -197,11 +194,11 @@
     }
 
     function Login(type){
-        $('#external_id').val('user_'+$('#email').val());
+        $('#external_id').val(btoa($('#email').val()));
         var user = {
             name: $('#name').val(),
             email: $('#email').val(),
-            external_id: 'user_'+$('#email').val()
+            external_id: btoa($('#email').val())
         }        
         console.log("User logged in", user);
 
