@@ -29,7 +29,7 @@ export default {
 	}
 };
 
-async function respondMessaging(json,env) {
+async function respondMessaging(json,env,type) {
 	//{"external_id":"JB007","user_email":"james@universalexports.com","user_name":"James Bond"}
 
 	if (!json.external_id || !json.user_email || !json.user_name) {
