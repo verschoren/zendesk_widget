@@ -19,12 +19,8 @@ export default {
 				var response_messaging = await respondMessaging(json,env,"external_id");
 				response_messaging.headers.set("access-control-allow-origin", "*");
 				return response_messaging;
-			case "/messaging_email_verified":
-				var response_messaging = await respondMessaging(json,env,"email_verified");
-				response_messaging.headers.set("access-control-allow-origin", "*");
-				return response_messaging;
-			case "/messaging_email_unverified":
-				var response_messaging = await respondMessaging(json,env,"email_unverified");
+			case "/messaging_email":
+				var response_messaging = await respondMessaging(json,env,"email");
 				response_messaging.headers.set("access-control-allow-origin", "*");
 				return response_messaging;
 			default :
@@ -61,15 +57,6 @@ async function respondMessaging(json,env,type) {
 				external_id: "user_" + json.user_email,
 				exp: Math.floor(new Date().getTime() / 1000.0) + 86400,
 			});
-		} else if (type == "email_verified") {
-			payload = JSON.stringify({
-				scope: "user",
-				name: json.user_name,
-				email: json.user_email,
-				exp: Math.floor(new Date().getTime() / 1000.0) + 86400,
-				external_id: "user_" + json.user_email,
-				email_verified: true
-			});
 		} else {
 			payload = JSON.stringify({
 				scope: "user",
@@ -77,6 +64,7 @@ async function respondMessaging(json,env,type) {
 				email: json.user_email,
 				exp: Math.floor(new Date().getTime() / 1000.0) + 86400,
 				external_id: "user_" + json.user_email,
+				email_verified: true
 			});
 		}
 
