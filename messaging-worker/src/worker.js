@@ -14,9 +14,13 @@ export default {
 
 		switch (pathname) {
 			case "/":
-				return Response.redirect('https://widget.internalnote.com', 302);
+				return Response.redirect('https://demo.internalnote.com', 302);
 			case "/messaging":
-				var response_messaging = await respondMessaging(json,env);
+				var response_messaging = await respondMessaging(json,env,"external_id");
+				response_messaging.headers.set("access-control-allow-origin", "*");
+				return response_messaging;
+			case "/messaging_email":
+				var response_messaging = await respondMessaging(json,env,"email");
 				response_messaging.headers.set("access-control-allow-origin", "*");
 				return response_messaging;
 			default :
@@ -44,14 +48,24 @@ async function respondMessaging(json,env) {
 
 		const header = JSON.stringify({ alg: "HS256", typ: "JWT", kid: app_id });
 
-		//exp = now + 24h
-		const payload = JSON.stringify({
+		var payload;
+		if (type == "external_id") {
+		  payload = JSON.stringify({
 			scope: "user",
 			name: json.user_name,
 			email: json.user_email,
 			external_id: "user_" + json.user_email,
 			exp: Math.floor(new Date().getTime() / 1000.0) + 86400,
-		});
+		  });
+		} else {
+		  payload = JSON.stringify({
+			scope: "user",
+			name: json.user_name,
+			email: json.user_email,
+			exp: Math.floor(new Date().getTime() / 1000.0) + 86400,
+			email_verified: true
+		  });
+		}
 
 		const partialToken = `${base64URLStringify(
 			utf8ToUint8Array(header)
