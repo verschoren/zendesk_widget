@@ -105,18 +105,12 @@
                             </div>
                         </div>    
                         <div class="flex justify-end gap-3">
-                                <button onclick="Login('email')" id="login" type="button" class="relative inline-flex items-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
+                                <button onclick="Login()" id="login" type="button" class="relative inline-flex items-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
                                     <svg class="-ml-0.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                         <path d="M3 4a2 2 0 0 0-2 2v1.161l8.441 4.221a1.25 1.25 0 0 0 1.118 0L19 7.162V6a2 2 0 0 0-2-2H3Z" />
                                         <path d="m19 8.839-7.77 3.885a2.75 2.75 0 0 1-2.46 0L1 8.839V14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.839Z" />
                                     </svg>
-                                    Login with verified email
-                                </button>
-                                <button type="button" onclick="Login('external_id')" id="login" class="relative -ml-px gap-x-1.5 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
-                                    <svg class="-ml-0.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M1 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3V6Zm4 1.5a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm2 3a4 4 0 0 0-3.665 2.395.75.75 0 0 0 .416 1A8.98 8.98 0 0 0 7 14.5a8.98 8.98 0 0 0 3.249-.604.75.75 0 0 0 .416-1.001A4.001 4.001 0 0 0 7 10.5Zm5-3.75a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Zm0 6.5a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Zm.75-4a.75.75 0 0 0 0 1.5h2.5a.75.75 0 0 0 0-1.5h-2.5Z" clip-rule="evenodd" />
-                                    </svg>
-                                    Login with external_id
+                                    Login
                                 </button>
                             <button type="button" onclick="Logout()" id="logout" class="bg-red-100 py-2 px-4 border border-red-300 rounded-md shadow-sm text-sm font-medium text-red-900 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Logout</button>
                         </div>      
@@ -193,30 +187,23 @@
         $('#login_ok').hide();
     }
 
-    function Login(type){
-        $('#external_id').val(btoa($('#email').val()));
+    function Login(){
         var user = {
             name: $('#name').val(),
             email: $('#email').val(),
             external_id: btoa($('#email').val())
         }        
+        $('#external_id').val(user.external_id);
         console.log("User logged in", user);
 
-        //replace with your worker URLs
         url = 'https://jwtauth.internalnote.com/messaging';
-        if (type == 'external_id'){
-            url = 'https://jwtauth.internalnote.com/messaging';
-        }
-        if (type == 'email'){
-            url = 'https://jwtauth.internalnote.com/messaging_email';
-        }
 
         //get token for current user
         var jwttoken = '';
         $.ajax({
             type: "POST",
             url: url, 
-            data: JSON.stringify({ "external_id": user.external_id, "user_email": user.email, "user_name": user.name }),
+            data: JSON.stringify({ "external_id": user.external_id, "email": user.email, "name": user.name }),
             dataType: 'text',
             async: false,
             success: function (json) {

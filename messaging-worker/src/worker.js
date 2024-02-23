@@ -16,11 +16,7 @@ export default {
 			case "/":
 				return Response.redirect('https://demo.internalnote.com', 302);
 			case "/messaging":
-				var response_messaging = await respondMessaging(json,env,"external_id");
-				response_messaging.headers.set("access-control-allow-origin", "*");
-				return response_messaging;
-			case "/messaging_email":
-				var response_messaging = await respondMessaging(json,env,"email");
+				var response_messaging = await respondMessaging(json,env);
 				response_messaging.headers.set("access-control-allow-origin", "*");
 				return response_messaging;
 			default :
@@ -29,10 +25,10 @@ export default {
 	}
 };
 
-async function respondMessaging(json,env,type) {
-	//{"external_id":"JB007","user_email":"james@universalexports.com","user_name":"James Bond"}
+async function respondMessaging(json,env) {
+	//{"external_id":"JB007","email":"james@universalexports.com","name":"James Bond"}
 
-	if (!json.external_id || !json.user_email || !json.user_name) {
+	if (!json.external_id || !json.email || !json.name) {
 		return new Response("missing parameters", { status: 401 });
 	} else {
 		var app_id = env.MESSAGING_APP_ID;
@@ -48,25 +44,14 @@ async function respondMessaging(json,env,type) {
 
 		const header = JSON.stringify({ alg: "HS256", typ: "JWT", kid: app_id });
 
-		var payload;
-		if (type == "external_id") {
-			payload = JSON.stringify({
-				scope: "user",
-				name: json.user_name,
-				email: json.user_email,
-				external_id: json.external_id,
-				exp: Math.floor(new Date().getTime() / 1000.0) + 86400,
-			});
-		} else {
-			payload = JSON.stringify({
-				scope: "user",
-				name: json.user_name,
-				email: json.user_email,
-				exp: Math.floor(new Date().getTime() / 1000.0) + 86400,
-				external_id: "user_" + json.user_email,
-				email_verified: true
-			});
-		}
+		var payload = JSON.stringify({
+			scope: "user",
+			name: json.name,
+			email: json.email,
+			exp: Math.floor(new Date().getTime() / 1000.0) + 86400,
+			external_id: json.external_id,
+			email_verified: true
+		});
 
 		const partialToken = `${base64URLStringify(
 			utf8ToUint8Array(header)
