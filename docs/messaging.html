@@ -71,12 +71,12 @@
 
                         <div class="sm:col-span-3">
                             <label for="name" class="block text-sm font-medium text-blue-gray-900">Name </label>
-                            <input type="text" name="name" id="name" value="John Smith" autocomplete="given-name" class="mt-1 block w-full border-blue-gray-300 rounded-md shadow-sm text-blue-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500">
+                            <input type="text" name="name" id="name" autocomplete="given-name" class="mt-1 block w-full border-blue-gray-300 rounded-md shadow-sm text-blue-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
 
                         <div class="sm:col-span-3">
                             <label for="email" class="block text-sm font-medium text-blue-gray-900"> Email</label>
-                            <input type="email" name="email" id="email" value="john@example.com" autocomplete="email" class="mt-1 block w-full border-blue-gray-300 rounded-md shadow-sm text-blue-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500">
+                            <input type="email" name="email" id="email" autocomplete="email" class="mt-1 block w-full border-blue-gray-300 rounded-md shadow-sm text-blue-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
 
                         <div class="sm:col-span-6">
@@ -173,16 +173,21 @@
         var target = $(this).attr('data-target');
         if (target == 'user'){
             $('#name').val('Maximus Decimus Meridius');
-            $('#email').val('>maximus@gladiator.example');
+            $('#email').val('maximus@gladiator.example');
+            $('#external_id').val(btoa('maximus@gladiator.example'));
         }
         if (target == 'vip'){
             $('#name').val('Vito Corleone');
             $('#email').val('vito@corleone.example');
+            $('#external_id').val(btoa('vito@corleone.example'));
         }
     });
     function Logout(){
         console.log("user logged out");
         zE('messenger', 'logoutUser');
+        $('#external_id').val('');
+        $('#name').val('');
+        $('#email').val('');
         $('#logout_ok').show();
         $('#login_ok').hide();
     }
