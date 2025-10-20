@@ -122,6 +122,7 @@ $('document').ready(function() {
       { icon: '🔐', id: 'classic', name: 'Authentication', url: 'classic.html', title: 'Zendesk Classic Widget Authentication',description: 'Demo page to showcase the JWT Authentication for the Classic Zendesk Widget'  },
       { icon: '🔐', id: 'classic_guide', name: 'Guide Authentication', url: 'guide_classic.html', title:'Zendesk Classic Widget Customization', description: 'Authentication in Zendesk Guide'},
       { icon: '🎨', id: 'classiccustom', name: 'Customize', url: 'classiccustom.html', title:'Zendesk Classic Widget Customization', description: 'Demo page to showcase the Customization for the Classic Zendesk Widget'},
+      { icon: '🎨', id: 'configurator', name: 'Customize', url: 'https://widget.internalnote.com', title:'Zendesk Classic Widget Configurator', description: 'Demo page to showcase the Customization for the Classic Zendesk Widget'},
       ]
     },
     { 
