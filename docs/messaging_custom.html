@@ -50,7 +50,8 @@
         </div>
         <div class="flex gap-3 items-center mt-3">
             <button id="preset-red" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Load red preset</button>
-            <button id="preset-blue" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Load blue preset</button>
+            <button id="preset-blue" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Load green preset</button>
+            <button id="preset-note" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Load Internal Note preset</button>
         </div>
     </div>
       
@@ -209,7 +210,7 @@
       background: '#FFF3F3',
       onBackground: '#3E0000'
     },
-    blue: {
+    old: {
       primary: '#0D47A1',
       onPrimary: '#FFFFFF',
       message: '#BBDEFB',
@@ -218,7 +219,27 @@
       onAction: '#FFFFFF',
       background: '#F3F8FF',
       onBackground: '#002171'
-    }
+    },
+    blue: {
+        primary: '#2E7D32',
+        onPrimary: '#FFFFFF',
+        message: '#C8E6C9',
+        onMessage: '#1B5E20',
+        action: '#43A047',
+        onAction: '#FFFFFF',
+        background: '#F1F8F4',
+        onBackground: '#1B5E20'
+    },
+    internalnote: {
+      primary: '#006DFF',
+      onPrimary: '#FFFFFF',
+      message: '#BBDEFB',
+      onMessage: '#002171',
+      action: '#1976D2',
+      onAction: '#FFFFFF',
+      background: '#fefaf2',
+      onBackground: '#002171'
+    } 
   };
 
   // wired up after DOM ready
@@ -228,6 +249,7 @@
     var resetBtn = document.getElementById('reset-theme');
     var presetRed = document.getElementById('preset-red');
     var presetBlue = document.getElementById('preset-blue');
+    var presetNote = document.getElementById('preset-note');
     var liveCB = document.getElementById('live-update');
 
     function setFormValues(obj){
@@ -252,8 +274,19 @@
       updatePreview();
     });
 
-    presetRed.addEventListener('click', function(){ setFormValues(PRESETS.red); if (liveCB.checked) { applyTheme(PRESETS.red); } });
-    presetBlue.addEventListener('click', function(){ setFormValues(PRESETS.blue); if (liveCB.checked) { applyTheme(PRESETS.blue); } });
+    presetRed.addEventListener('click', function(){ 
+        setFormValues(PRESETS.red); 
+        applyTheme(PRESETS.red); 
+    });
+    
+    presetBlue.addEventListener('click', function(){ 
+        setFormValues(PRESETS.blue); 
+        applyTheme(PRESETS.blue);
+    });
+    presetNote.addEventListener('click', function(){ 
+        setFormValues(PRESETS.internalnote); 
+        applyTheme(PRESETS.internalnote);
+    });
 
     // live update on input
     form.addEventListener('input', function(e){
@@ -271,6 +304,11 @@
 
     // initial preview
     updatePreview();
+
+    // Load PRESETS.old when the page loads
+    setFormValues(PRESETS.old);
+    applyTheme(PRESETS.old);
+
   });
 })();
 </script>
