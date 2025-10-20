@@ -14,8 +14,22 @@
   gtag('js', new Date());
 
   gtag('config', 'G-E0NK47TRL4');
-</script>    <link href="css/style.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</script>    
+
+<link href="css/style.css" rel="stylesheet">
+<style>
+    .border-purple-600 {
+        border-color: oklch(55.8% 0.288 302.321);
+    }
+    .text-purple-600 {
+        color: oklch(55.8% 0.288 302.321);
+    }
+    .bg-purple-50:hover {
+        background-color: oklch(97.7% 0.014 308.299);
+    }
+
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/view.js"></script>
     <meta name="loader" content='authentication'>
     <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4"> </script>
@@ -45,6 +59,7 @@
       <div class="mt-4">
         <div class="flex gap-3 items-center">
             <button id="apply-theme" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700" type="button">Apply theme</button>
+            <button id="random-theme" class="inline-flex items-center justify-center rounded-md border border-purple-600 bg-white px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50" type="button">✨ Random Theme</button>
             <button id="reset-theme" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Reset</button>
             <label class="ml-auto text-sm"><input id="live-update" type="checkbox"> Live update</label>
         </div>
@@ -198,6 +213,37 @@
     }
   }
 
+  function generateRandomColor(){
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++){
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  function generateRandomTheme(){
+    var primaryColor = generateRandomColor();
+    var backgroundColor = generateRandomColor();
+    return {
+      primary: primaryColor,
+      onPrimary: '#FFFFFF',
+      message: generateRandomColor(),
+      onMessage: '#000000',
+      businessMessage: '#FFFFFF',
+      onBusinessMessage: '#000000',
+      action: generateRandomColor(),
+      onAction: '#FFFFFF',
+      background: backgroundColor,
+      onBackground: '#000000',
+      error: '#FF1744',
+      onError: '#FFFFFF',
+      notify: generateRandomColor(),
+      onNotify: '#FFFFFF',
+      onSecondaryAction: '#000000'
+    };
+  }
+
   // presets
   var PRESETS = {
     red: {
@@ -246,6 +292,7 @@
   document.addEventListener('DOMContentLoaded', function(){
     var form = document.getElementById('theme-form');
     var applyBtn = document.getElementById('apply-theme');
+    var randomBtn = document.getElementById('random-theme');
     var resetBtn = document.getElementById('reset-theme');
     var presetRed = document.getElementById('preset-red');
     var presetBlue = document.getElementById('preset-blue');
@@ -267,6 +314,12 @@
       } catch (e){
         alert(e.message);
       }
+    });
+
+    randomBtn.addEventListener('click', function(){
+      var randomTheme = generateRandomTheme();
+      setFormValues(randomTheme);
+      applyTheme(randomTheme);
     });
 
     resetBtn.addEventListener('click', function(){
