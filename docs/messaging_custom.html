@@ -1,0 +1,131 @@
+<!doctype html>
+<html class="h-full">
+<head>
+ <title>Internal Note Demo Page</title><meta charset="UTF-8">
+    <meta name="author" content="Internal Note">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://demo.internalnote.com/img/banner.png">
+    <link href="css/atom-one-dark.css" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E0NK47TRL4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E0NK47TRL4');
+</script>    <link href="css/style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/view.js"></script>
+    <meta name="loader" content='authentication'>
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4"> </script>
+</head>    
+<body class="h-full bg-[#FEFAF2]" data-name="messaging">
+    <main id="content" class="md:pl-72 py-10 px-4 sm:px-6 md:px-8">
+        <header>  
+            <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 md:px-8">
+                <div class="md:flex md:items-center md:justify-between md:space-x-5">
+                    <div class="w-2/3">
+                        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Zendesk Messaging Authentication</h1>
+                        <h2 class="mt-2 text-xl tracking-tight text-gray-500">Demo page to showcase the JWT Authentication for Zendesk Messaging</h2>
+                    </div>
+                    <div class=" w-1/3 mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
+                        <a href="https://demo.internalnote.com/guide_messaging?utm_source=widget_demo&campaign=demo" target="_blank" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600">Guide Embed</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 mb-32">
+            <div class="max-w-3xl mx-auto">
+
+            </div>
+        </div>
+        <footer class="w-full fixed bottom-0 bg-[#FEFAF2]" aria-labelledby="footer-heading">
+            <div class="border-t border-gray-900/10 p-4">
+                <div class="pb-2" style="min-height: 58px; max-width: 440px;">
+                    <h1 class="text-sm font-medium pb-2">Subscribe to Internal Note</h1>
+                    <script src="https://cdn.jsdelivr.net/ghost/signup-form@~0.1/umd/signup-form.min.js" data-button-color="#006DFF" data-button-text-color="#FFFFFF" data-site="https://internalnote.com/" async></script>
+                </div>
+                <div class="md:flex gap-4">
+                    <p class="text-xs leading-5 text-gray-500">Crafted by <a class="text-blue-400 hover:text-underline hover:text-blue-700"href="https://internalnote.com?utm_source=storagecalculator">Internal Note</a>.</p>
+                    <p class="text-xs leading-5 text-gray-500"> &copy; 2022-2024 If you like it, share it, don't copy.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+  </body>
+</html>
+
+<script type="text/javascript">
+    //when clicked on .profile fill in name and email fields
+    $('.profile').click(function(){
+        var target = $(this).attr('data-target');
+        if (target == 'user'){
+            $('#name').val('Maximus Decimus Meridius');
+            $('#email').val('maximus@gladiator.example');
+            $('#external_id').val(btoa('maximus@gladiator.example'));
+        }
+        if (target == 'vip'){
+            $('#name').val('Vito Corleone');
+            $('#email').val('vito@corleone.example');
+            $('#external_id').val(btoa('vito@corleone.example'));
+        }
+        if (target == 'toy'){
+            $('#name').val('Woody');
+            $('#email').val('woody@toystory.example');
+            $('#external_id').val(btoa('woody@toystory.example'));
+        }
+    });
+    function Logout(){
+        console.log("user logged out");
+        zE('messenger', 'logoutUser');
+        $('#external_id').val('');
+        $('#name').val('');
+        $('#email').val('');
+        $('#logout_ok').show();
+        $('#login_ok').hide();
+    }
+
+    function Login(){
+        var user = {
+            name: $('#name').val(),
+            email: $('#email').val(),
+            external_id: btoa($('#email').val())
+        }        
+        $('#external_id').val(user.external_id);
+        console.log("User logged in", user);
+
+        url = 'https://jwtauth.internalnote.com/messaging';
+
+        //get token for current user
+        var jwttoken = '';
+        $.ajax({
+            type: "POST",
+            url: url, 
+            data: JSON.stringify({ "external_id": user.external_id, "email": user.email, "name": user.name }),
+            dataType: 'text',
+            async: false,
+            success: function (json) {
+                jwttoken = json;
+                $('#login_ok').show();
+                $('#logout_ok').hide();
+            }
+        });
+        console.log(jwttoken)
+
+        //authenticate messaging
+        zE('messenger', 'loginUser', function (callback) {
+            callback(jwttoken);
+        });
+    }
+</script>
+
+<script type="text/javascript">
+    $(function() {
+      //check for URL parameter called "voice" and if it is set, open the voice channel
+      var urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('voice')) {
+        zE('messenger:open', 'voice', '6c0e70e6ef77d7a711a073f249ab6304')
+      }
+    }); 
+  </script>
