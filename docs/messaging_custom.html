@@ -37,8 +37,67 @@
         </header>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 mb-32">
             <div class="max-w-3xl mx-auto">
+  <section class="rounded-lg shadow-sm">
+    <h3 class="text-xl font-semibold mb-4">Messenger theme customiser</h3>
+    <p class="text-sm text-gray-600 mb-4">Tweak colours and preview the messenger theme. Values must be valid CSS colour strings (hex, rgb(), hsl() or named colours).</p>
 
-            </div>
+    <form id="theme-form" class="grid gap-3" onsubmit="return false;">
+      <div class="mt-4">
+        <div class="flex gap-3 items-center">
+            <button id="apply-theme" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700" type="button">Apply theme</button>
+            <button id="reset-theme" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Reset</button>
+            <label class="ml-auto text-sm"><input id="live-update" type="checkbox"> Live update</label>
+        </div>
+        <div class="flex gap-3 items-center mt-3">
+            <button id="preset-red" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Load red preset</button>
+            <button id="preset-blue" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Load blue preset</button>
+        </div>
+    </div>
+      
+        <div class="grid grid-cols-2 gap-3">
+        <label class="text-sm">Primary<br><input name="primary" class="theme-input w-full p-2 border rounded-md" placeholder="#FE5E41"></label>
+        <label class="text-sm">onPrimary<br><input name="onPrimary" class="theme-input w-full p-2 border rounded-md" placeholder="#FFFFFF"></label>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <label class="text-sm">Message<br><input name="message" class="theme-input w-full p-2 border rounded-md" placeholder="#F3C178"></label>
+        <label class="text-sm">onMessage<br><input name="onMessage" class="theme-input w-full p-2 border rounded-md" placeholder="#5F0F00"></label>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <label class="text-sm">BusinessMessage<br><input name="businessMessage" class="theme-input w-full p-2 border rounded-md" placeholder="#FFFFFF"></label>
+        <label class="text-sm">onBusinessMessage<br><input name="onBusinessMessage" class="theme-input w-full p-2 border rounded-md" placeholder="#000000"></label>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <label class="text-sm">Action<br><input name="action" class="theme-input w-full p-2 border rounded-md" placeholder="#B0DB43"></label>
+        <label class="text-sm">onAction<br><input name="onAction" class="theme-input w-full p-2 border rounded-md" placeholder="#000000"></label>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <label class="text-sm">Background<br><input name="background" class="theme-input w-full p-2 border rounded-md" placeholder="#DFE0E2"></label>
+        <label class="text-sm">onBackground<br><input name="onBackground" class="theme-input w-full p-2 border rounded-md" placeholder="#F10404"></label>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <label class="text-sm">Error<br><input name="error" class="theme-input w-full p-2 border rounded-md" placeholder="#FF1744"></label>
+        <label class="text-sm">onError<br><input name="onError" class="theme-input w-full p-2 border rounded-md" placeholder="#FFFFFF"></label>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <label class="text-sm">Notify<br><input name="notify" class="theme-input w-full p-2 border rounded-md" placeholder="#FF007F"></label>
+        <label class="text-sm">onNotify<br><input name="onNotify" class="theme-input w-full p-2 border rounded-md" placeholder="#FFFFFF"></label>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <label class="text-sm">onSecondaryAction<br><input name="onSecondaryAction" class="theme-input w-full p-2 border rounded-md" placeholder="#000000"></label>
+        <div></div>
+      </div>
+
+      <div class="mt-6">
+        <h4 class="text-sm font-medium mb-2">Preview</h4>
+        <div id="preview" class="grid grid-cols-4 gap-3">
+          <!-- preview swatches inserted here -->
+        </div>
+      </div>
+
+      <p class="mt-3 text-xs text-gray-500">Note: invalid CSS colours will be rejected by the widget API and will log an error in the browser console. This form validates values before sending to reduce errors.</p>
+    </form>
+  </section>
+</div>
         </div>
         <footer class="w-full fixed bottom-0 bg-[#FEFAF2]" aria-labelledby="footer-heading">
             <div class="border-t border-gray-900/10 p-4">
@@ -55,71 +114,6 @@
     </main>
   </body>
 </html>
-
-<script type="text/javascript">
-    //when clicked on .profile fill in name and email fields
-    $('.profile').click(function(){
-        var target = $(this).attr('data-target');
-        if (target == 'user'){
-            $('#name').val('Maximus Decimus Meridius');
-            $('#email').val('maximus@gladiator.example');
-            $('#external_id').val(btoa('maximus@gladiator.example'));
-        }
-        if (target == 'vip'){
-            $('#name').val('Vito Corleone');
-            $('#email').val('vito@corleone.example');
-            $('#external_id').val(btoa('vito@corleone.example'));
-        }
-        if (target == 'toy'){
-            $('#name').val('Woody');
-            $('#email').val('woody@toystory.example');
-            $('#external_id').val(btoa('woody@toystory.example'));
-        }
-    });
-    function Logout(){
-        console.log("user logged out");
-        zE('messenger', 'logoutUser');
-        $('#external_id').val('');
-        $('#name').val('');
-        $('#email').val('');
-        $('#logout_ok').show();
-        $('#login_ok').hide();
-    }
-
-    function Login(){
-        var user = {
-            name: $('#name').val(),
-            email: $('#email').val(),
-            external_id: btoa($('#email').val())
-        }        
-        $('#external_id').val(user.external_id);
-        console.log("User logged in", user);
-
-        url = 'https://jwtauth.internalnote.com/messaging';
-
-        //get token for current user
-        var jwttoken = '';
-        $.ajax({
-            type: "POST",
-            url: url, 
-            data: JSON.stringify({ "external_id": user.external_id, "email": user.email, "name": user.name }),
-            dataType: 'text',
-            async: false,
-            success: function (json) {
-                jwttoken = json;
-                $('#login_ok').show();
-                $('#logout_ok').hide();
-            }
-        });
-        console.log(jwttoken)
-
-        //authenticate messaging
-        zE('messenger', 'loginUser', function (callback) {
-            callback(jwttoken);
-        });
-    }
-</script>
-
 <script type="text/javascript">
     $(function() {
       //check for URL parameter called "voice" and if it is set, open the voice channel
@@ -129,3 +123,154 @@
       }
     }); 
   </script>
+
+<script type="text/javascript">
+(function(){
+  // helpers
+  function isValidCssColor(val){
+    if (!val) return false;
+    var s = new Option().style;
+    s.color = '';
+    s.color = val;
+    return s.color !== '';
+  }
+
+  function buildThemeFromForm(){
+    var form = document.getElementById('theme-form');
+    var inputs = form.querySelectorAll('.theme-input');
+    var theme = {};
+    inputs.forEach(function(inp){
+      var name = inp.name;
+      var val = inp.value && inp.value.trim();
+      if (val){
+        if (!isValidCssColor(val)){
+          throw new Error('Invalid CSS colour for "' + name + '": "' + val + '"');
+        }
+        theme[name] = val;
+      }
+    });
+    return theme;
+  }
+
+  function updatePreview(){
+    var preview = document.getElementById('preview');
+    preview.innerHTML = '';
+    var inputs = document.querySelectorAll('.theme-input');
+    inputs.forEach(function(inp){
+      var name = inp.name;
+      var val = inp.value && inp.value.trim();
+      var sw = document.createElement('div');
+      sw.style.border = '1px solid rgba(0,0,0,0.08)';
+      sw.style.padding = '8px';
+      sw.style.borderRadius = '6px';
+      sw.style.minHeight = '48px';
+      sw.style.display = 'flex';
+      sw.style.flexDirection = 'column';
+      sw.style.justifyContent = 'center';
+      sw.style.alignItems = 'center';
+      var title = document.createElement('div');
+      title.style.fontSize = '12px';
+      title.style.marginBottom = '6px';
+      title.textContent = name;
+      var colourBox = document.createElement('div');
+      colourBox.style.width = '100%';
+      colourBox.style.height = '20px';
+      colourBox.style.borderRadius = '4px';
+      colourBox.style.background = val || 'transparent';
+      colourBox.title = val || '';
+      sw.appendChild(title);
+      sw.appendChild(colourBox);
+      preview.appendChild(sw);
+    });
+  }
+
+  function applyTheme(theme){
+    if (typeof zE !== 'undefined'){
+      try {
+        zE('messenger:set', 'customization', { theme: theme });
+        console.info('Applied messenger theme:', theme);
+      } catch (e){
+        console.error('Failed to apply theme to messenger:', e);
+      }
+    } else {
+      console.warn('zE is not defined — messenger not present on page yet. Theme object:', theme);
+    }
+  }
+
+  // presets
+  var PRESETS = {
+    red: {
+      primary: '#B71C1C',
+      onPrimary: '#FFFFFF',
+      message: '#FFCDD2',
+      onMessage: '#3E0000',
+      action: '#D32F2F',
+      onAction: '#FFFFFF',
+      background: '#FFF3F3',
+      onBackground: '#3E0000'
+    },
+    blue: {
+      primary: '#0D47A1',
+      onPrimary: '#FFFFFF',
+      message: '#BBDEFB',
+      onMessage: '#002171',
+      action: '#1976D2',
+      onAction: '#FFFFFF',
+      background: '#F3F8FF',
+      onBackground: '#002171'
+    }
+  };
+
+  // wired up after DOM ready
+  document.addEventListener('DOMContentLoaded', function(){
+    var form = document.getElementById('theme-form');
+    var applyBtn = document.getElementById('apply-theme');
+    var resetBtn = document.getElementById('reset-theme');
+    var presetRed = document.getElementById('preset-red');
+    var presetBlue = document.getElementById('preset-blue');
+    var liveCB = document.getElementById('live-update');
+
+    function setFormValues(obj){
+      var inputs = form.querySelectorAll('.theme-input');
+      inputs.forEach(function(inp){
+        inp.value = obj[inp.name] || '';
+      });
+      updatePreview();
+    }
+
+    applyBtn.addEventListener('click', function(){
+      try {
+        var theme = buildThemeFromForm();
+        applyTheme(theme);
+      } catch (e){
+        alert(e.message);
+      }
+    });
+
+    resetBtn.addEventListener('click', function(){
+      form.reset();
+      updatePreview();
+    });
+
+    presetRed.addEventListener('click', function(){ setFormValues(PRESETS.red); if (liveCB.checked) { applyTheme(PRESETS.red); } });
+    presetBlue.addEventListener('click', function(){ setFormValues(PRESETS.blue); if (liveCB.checked) { applyTheme(PRESETS.blue); } });
+
+    // live update on input
+    form.addEventListener('input', function(e){
+      updatePreview();
+      if (liveCB.checked){
+        try {
+          var theme = buildThemeFromForm();
+          applyTheme(theme);
+        } catch (err){
+          // don't spam user with alerts on typing; show console only
+          console.warn(err.message);
+        }
+      }
+    });
+
+    // initial preview
+    updatePreview();
+  });
+})();
+</script>
