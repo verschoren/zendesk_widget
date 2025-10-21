@@ -15,22 +15,10 @@
 
   gtag('config', 'G-E0NK47TRL4');
 </script>    
-
 <link href="css/style.css" rel="stylesheet">
-<style>
-    .border-purple-600 {
-        border-color: oklch(55.8% 0.288 302.321);
-    }
-    .text-purple-600 {
-        color: oklch(55.8% 0.288 302.321);
-    }
-    .bg-purple-50:hover {
-        background-color: oklch(97.7% 0.014 308.299);
-    }
-
-</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/view.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
     <meta name="loader" content='customtheme'>
     <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4"> </script>
 </head>    
@@ -44,62 +32,62 @@
                         <h2 class="mt-2 text-xl tracking-tight text-gray-500">Customize and preview Zendesk Messaging themes with live color adjustments</h2>
                     </div>
                     <div class=" w-1/3 mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
-                        <a href="https://demo.internalnote.com/guide_messaging?utm_source=widget_demo&campaign=demo" target="_blank" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600">Guide Embed</a>
+                        <a href="https://internalnote.com/custom-widget-themes?utm_source=widget_demo&campaign=demo" target="_blank" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600">Show article</a>
                     </div>
                 </div>
             </div>
         </header>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 mb-32">
-            <div class="max-w-3xl mx-auto">
-  <section class="rounded-lg shadow-sm">
-    <h3 class="text-xl font-semibold mb-4">Messenger theme customiser</h3>
-    <p class="text-sm text-gray-600 mb-4">Tweak colours and preview the messenger theme. Values must be valid CSS colour strings (hex, rgb(), hsl() or named colours).</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <!-- Left column: Form -->
+              <div>
+                <section class="rounded-lg shadow-sm">
+                  <h3 class="text-xl font-semibold mb-4">Messenger theme customiser</h3>
+                  <p class="text-sm text-gray-600 mb-4">Tweak colours and preview the messenger theme. Values must be valid CSS colour strings (hex, rgb(), hsl() or named colours).</p>
 
-    <form id="theme-form" class="grid gap-3" onsubmit="return false;">
+                  <form id="theme-form" class="grid gap-3" onsubmit="return false;">
       <div class="mt-4">
         <div class="flex gap-3 items-center">
-            <button id="apply-theme" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700" type="button">Apply theme</button>
             <button id="random-theme" class="inline-flex items-center justify-center rounded-md border border-purple-600 bg-white px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50" type="button">✨ Random Theme</button>
             <button id="reset-theme" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Reset</button>
-            <label class="ml-auto text-sm"><input id="live-update" type="checkbox"> Live update</label>
         </div>
         <div class="flex gap-3 items-center mt-3">
-            <button id="preset-red" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Load red preset</button>
-            <button id="preset-blue" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Load green preset</button>
-            <button id="preset-note" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Load Internal Note preset</button>
+            <button id="preset-red" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Red theme</button>
+            <button id="preset-blue" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Green theme</button>
+            <button id="preset-note" class="inline-flex items-center justify-center rounded-md border border-blue-600 bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50" type="button">Internal Note theme</button>
         </div>
     </div>
       
         <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">Primary<br><input name="primary" class="theme-input w-full p-2 border rounded-md" placeholder="#FE5E41"></label>
-        <label class="text-sm">onPrimary<br><input name="onPrimary" class="theme-input w-full p-2 border rounded-md" placeholder="#FFFFFF"></label>
+        <label class="text-sm">Primary<br><input name="primary" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FE5E41"></label>
+        <label class="text-sm">onPrimary<br><input name="onPrimary" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">Message<br><input name="message" class="theme-input w-full p-2 border rounded-md" placeholder="#F3C178"></label>
-        <label class="text-sm">onMessage<br><input name="onMessage" class="theme-input w-full p-2 border rounded-md" placeholder="#5F0F00"></label>
+        <label class="text-sm">Message<br><input name="message" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#F3C178"></label>
+        <label class="text-sm">onMessage<br><input name="onMessage" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#5F0F00"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">BusinessMessage<br><input name="businessMessage" class="theme-input w-full p-2 border rounded-md" placeholder="#FFFFFF"></label>
-        <label class="text-sm">onBusinessMessage<br><input name="onBusinessMessage" class="theme-input w-full p-2 border rounded-md" placeholder="#000000"></label>
+        <label class="text-sm">BusinessMessage<br><input name="businessMessage" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
+        <label class="text-sm">onBusinessMessage<br><input name="onBusinessMessage" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#000000"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">Action<br><input name="action" class="theme-input w-full p-2 border rounded-md" placeholder="#B0DB43"></label>
-        <label class="text-sm">onAction<br><input name="onAction" class="theme-input w-full p-2 border rounded-md" placeholder="#000000"></label>
+        <label class="text-sm">Action<br><input name="action" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#B0DB43"></label>
+        <label class="text-sm">onAction<br><input name="onAction" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#000000"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">Background<br><input name="background" class="theme-input w-full p-2 border rounded-md" placeholder="#DFE0E2"></label>
-        <label class="text-sm">onBackground<br><input name="onBackground" class="theme-input w-full p-2 border rounded-md" placeholder="#F10404"></label>
+        <label class="text-sm">Background<br><input name="background" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#DFE0E2"></label>
+        <label class="text-sm">onBackground<br><input name="onBackground" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#F10404"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">Error<br><input name="error" class="theme-input w-full p-2 border rounded-md" placeholder="#FF1744"></label>
-        <label class="text-sm">onError<br><input name="onError" class="theme-input w-full p-2 border rounded-md" placeholder="#FFFFFF"></label>
+        <label class="text-sm">Error<br><input name="error" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FF1744"></label>
+        <label class="text-sm">onError<br><input name="onError" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">Notify<br><input name="notify" class="theme-input w-full p-2 border rounded-md" placeholder="#FF007F"></label>
-        <label class="text-sm">onNotify<br><input name="onNotify" class="theme-input w-full p-2 border rounded-md" placeholder="#FFFFFF"></label>
+        <label class="text-sm">Notify<br><input name="notify" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FF007F"></label>
+        <label class="text-sm">onNotify<br><input name="onNotify" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">onSecondaryAction<br><input name="onSecondaryAction" class="theme-input w-full p-2 border rounded-md" placeholder="#000000"></label>
+        <label class="text-sm">onSecondaryAction<br><input name="onSecondaryAction" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#000000"></label>
         <div></div>
       </div>
 
@@ -113,7 +101,23 @@
       <p class="mt-3 text-xs text-gray-500">Note: invalid CSS colours will be rejected by the widget API and will log an error in the browser console. This form validates values before sending to reduce errors.</p>
     </form>
   </section>
-</div>
+              </div>
+
+              <!-- Right column: Code output -->
+              <div>
+                <section class="rounded-lg shadow-sm">
+                  <h3 class="text-xl font-semibold mb-4">Generated Code</h3>
+                  <p class="text-sm text-gray-600 mb-4">Copy this code to implement the theme in your application.</p>
+                  <pre class="bg-gray-900 p-4 rounded-md overflow-x-auto text-sm" style="background-color:#282c34;padding:20px!IMPORTANT;"><code id="code-output" class="language-javascript">// Configure your theme
+zE('messenger:set', 'customization', {
+  theme: {
+    // Add colors using the form
+  }
+});</code></pre>
+                  <button id="copy-code" type="button" class="mt-3 inline-flex items-center justify-center rounded-md border border-green-600 bg-white px-4 py-2 text-sm font-medium text-green-600 hover:bg-green-50">Copy Code</button>
+                </section>
+              </div>
+            </div>
         </div>
         <footer class="w-full fixed bottom-0 bg-[#FEFAF2]" aria-labelledby="footer-heading">
             <div class="border-t border-gray-900/10 p-4">
@@ -244,6 +248,27 @@
     };
   }
 
+  function updateCodeOutput(){
+    try {
+      var theme = buildThemeFromForm();
+      var codeStr = "zE('messenger:set', 'customization', {\n  theme: " + JSON.stringify(theme, null, 4).replace(/\n/g, '\n  ') + "\n});";
+      var codeOutput = document.getElementById('code-output');
+      if (codeOutput){
+        codeOutput.textContent = codeStr;
+        delete codeOutput.dataset.highlighted;
+        hljs.highlightElement(codeOutput);
+      }
+    } catch (e){
+      // If form has errors, show placeholder
+      var codeOutput = document.getElementById('code-output');
+      if (codeOutput){
+        codeOutput.textContent = "// Configure your theme\nzE('messenger:set', 'customization', {\n  theme: {\n    // Add colors using the form\n  }\n});";
+        delete codeOutput.dataset.highlighted;
+        hljs.highlightElement(codeOutput);
+      }
+    }
+  }
+
   // presets
   var PRESETS = {
     red: {
@@ -291,13 +316,12 @@
   // wired up after DOM ready
   document.addEventListener('DOMContentLoaded', function(){
     var form = document.getElementById('theme-form');
-    var applyBtn = document.getElementById('apply-theme');
     var randomBtn = document.getElementById('random-theme');
     var resetBtn = document.getElementById('reset-theme');
     var presetRed = document.getElementById('preset-red');
     var presetBlue = document.getElementById('preset-blue');
     var presetNote = document.getElementById('preset-note');
-    var liveCB = document.getElementById('live-update');
+    var copyBtn = document.getElementById('copy-code');
 
     function setFormValues(obj){
       var inputs = form.querySelectorAll('.theme-input');
@@ -305,16 +329,8 @@
         inp.value = obj[inp.name] || '';
       });
       updatePreview();
+      updateCodeOutput();
     }
-
-    applyBtn.addEventListener('click', function(){
-      try {
-        var theme = buildThemeFromForm();
-        applyTheme(theme);
-      } catch (e){
-        alert(e.message);
-      }
-    });
 
     randomBtn.addEventListener('click', function(){
       var randomTheme = generateRandomTheme();
@@ -341,27 +357,57 @@
         applyTheme(PRESETS.internalnote);
     });
 
-    // live update on input
+    // live update on input (always on)
     form.addEventListener('input', function(e){
       updatePreview();
-      if (liveCB.checked){
-        try {
-          var theme = buildThemeFromForm();
-          applyTheme(theme);
-        } catch (err){
-          // don't spam user with alerts on typing; show console only
-          console.warn(err.message);
-        }
+      updateCodeOutput();
+      try {
+        var theme = buildThemeFromForm();
+        applyTheme(theme);
+      } catch (err){
+        // don't spam user with alerts on typing; show console only
+        console.warn(err.message);
       }
+    });
+
+    // copy code button
+    copyBtn.addEventListener('click', function(){
+      var codeOutput = document.getElementById('code-output');
+      var textToCopy = codeOutput.textContent;
+      navigator.clipboard.writeText(textToCopy).then(function(){
+        var originalText = copyBtn.textContent;
+        copyBtn.textContent = 'Copied!';
+        copyBtn.classList.remove('text-green-600', 'border-green-600');
+        copyBtn.classList.add('text-green-700', 'border-green-700', 'bg-green-100');
+        setTimeout(function(){
+          copyBtn.textContent = originalText;
+          copyBtn.classList.remove('text-green-700', 'border-green-700', 'bg-green-100');
+          copyBtn.classList.add('text-green-600', 'border-green-600');
+        }, 2000);
+      }).catch(function(err){
+        console.error('Failed to copy:', err);
+        alert('Failed to copy code to clipboard');
+      });
     });
 
     // initial preview
     updatePreview();
+    updateCodeOutput();
 
     // Load PRESETS.old when the page loads
     setFormValues(PRESETS.old);
     applyTheme(PRESETS.old);
 
+    // Open messenger widget on page load
+    if (typeof zE !== 'undefined'){
+      zE('messenger', 'open');
+    }
+
   });
 })();
+</script>
+
+
+<script type="text/javascript">
+  hljs.highlightAll();
 </script>
