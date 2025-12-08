@@ -17,10 +17,10 @@ $('document').ready(function() {
   });
 
   $('main').before(`
-    <div id="menu" class="hidden relative z-50 md:hidden" role="dialog" aria-modal="true">
+    <div id="menu" class="hidden relative z-50 md:hidden font-brand" role="dialog" aria-modal="true">
       <div id="menu_background" class="fixed inset-0 bg-gray-900/80"></div>
   
-      <div id="menu_sidebar" class="bg-[#FEFAF2] fixed inset-0 flex">
+      <div id="menu_sidebar" class="bg-white fixed inset-0 flex">
           <div class="relative mr-16 flex w-full max-w-xs flex-1">
             <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
                 <button id="hide_menu" type="button" class="-m-2.5 p-2.5">
@@ -41,7 +41,7 @@ $('document').ready(function() {
                 <nav class="flex flex-1 flex-col">
                     <ul id="menu_mobile" role="list" class="flex flex-1 flex-col gap-6"></ul>
                 </nav>
-                <div class="rounded-md bg-blue-50 p-4">
+                <div class="rounded-md bg-lime p-4">
                   <div class="flex">
                     <div class="shrink-0">
                       <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -49,8 +49,8 @@ $('document').ready(function() {
                       </svg>
                     </div>
                     <div class="ml-3">
-                      <h3 class="text-sm font-medium text-blue-800">Caching</h3>
-                      <div class="mt-2 text-sm text-blue-700">
+                      <h3 class="text-sm font-medium text-licorice">Caching</h3>
+                      <div class="mt-2 text-sm text-licorice">
                         <p>If you experience issues triggering the proactive alerts, clear your LocalStorage and try again.</p>
                       </div>
                     </div>
@@ -63,7 +63,7 @@ $('document').ready(function() {
     
     <!-- Static sidebar for desktop -->
     <div class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:w-72 md:flex-col">
-      <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 px-6 pb-4">
+      <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r px-6 pb-4">
           <div class="flex h-16 shrink-0 items-center">
             <a href="index.html" class="flex gap-4 items-center">
               <img class="h-8 w-auto" src="img/zendesk.svg" alt="Zendesk">
@@ -73,16 +73,16 @@ $('document').ready(function() {
           <nav class="flex flex-1 flex-col">
             <ul id="menu_desktop" role="list" class="flex flex-1 flex-col gap-y-7"></ul>
           </nav>
-          <div class="rounded-md bg-blue-50 p-4">
+          <div class="rounded-md bg-lime p-4">
             <div class="flex">
               <div class="shrink-0">
-                <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <svg class="h-5 w-5 text-licorice" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
                 </svg>
               </div>
               <div class="ml-3">
-                <h3 class="text-sm font-medium text-blue-800">Caching</h3>
-                <div class="mt-2 text-sm text-blue-700">
+                <h3 class="text-sm font-medium text-licorice">Caching</h3>
+                <div class="mt-2 text-sm text-licorice">
                   <p>If you experience issues triggering the proactive alerts, clear your LocalStorage and try again.</p>
                 </div>
               </div>
@@ -95,7 +95,7 @@ $('document').ready(function() {
   $('main').prepend(`
     <div class="md:hidden sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between gap-x-4px-4 sm:gap-x-6 sm:px-6 md:px-8">
       <img src="img/logo.svg" alt="Internal Note" class="h-8 w-auto">
-      <button id="show_menu" type="button" class="-m-2.5 p-2.5 text-gray-700 hover:text-gray-900 md:hidden">
+      <button id="show_menu" type="button" class="-m-2.5 p-2.5 text-licorice hover:text-licorice md:hidden">
           <span class="sr-only">Open sidebar</span>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -176,7 +176,7 @@ $('document').ready(function() {
   $.each(links, function(index,value) {
     var list_mobile = `
     <li>
-      <div class="list_header text-xs font-semibold leading-6 text-gray-500 flex justify-between items-center" data-target="mobile_nav_ul_${value.type}">
+      <div class="list_header text-sm font-semibold leading-6 text-licorice flex justify-between items-center" data-target="mobile_nav_ul_${value.type}">
         ${value.name}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
           <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
@@ -188,7 +188,7 @@ $('document').ready(function() {
 
     var list_desktop = `
     <li>
-      <div class="list_header text-xs font-semibold leading-6 text-gray-500 flex justify-between items-center" data-target="desktop_nav_ul_${value.type}">
+      <div class="list_header text-sm font-semibold leading-6 text-licorice flex justify-between items-center" data-target="desktop_nav_ul_${value.type}">
         ${value.name}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
           <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
@@ -202,23 +202,23 @@ $('document').ready(function() {
     $.each(value.links, function(index,link){
       $('#mobile_nav_ul_'+value.type).append(`
         <li>
-            <a href="${link.url}" class="${link.id} text-gray-700 hover:text-white hover:bg-blue-600 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
-                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-blue-600 group-hover:text-blue-600">${link.icon}</span>
+            <a href="${link.url}" class="${link.id} text-licorice hover:text-white hover:bg-matcha group flex gap-x-3 rounded-md p-2 text-sm leading-6">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[0.625rem] font-medium text-licorice group-hover:border-cactus">${link.icon}</span>
                 <span class="truncate">${link.name}</span>
             </a>
         </li>
       `);
       $('#desktop_nav_ul_'+value.type).append(`
         <li>
-            <a href="${link.url}" class="${link.id} text-gray-00 hover:text-blue-600 hover:bg-transparant group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
-                <span class="${link.id}_icon flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-blue-600 group-hover:text-blue-600">${link.icon}</span>
+            <a href="${link.url}" class="${link.id} text-gray-00 hover:text-licorice hover:bg-transparant group flex gap-x-2 rounded-md p-2 text-sm leading-6">
+                <span class="${link.id}_icon flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[1rem] font-medium text-licorice group-hover:border-cactus">${link.icon}</span>
                 <span class="truncate">${link.name}</span>
             </a>
         </li>
       `);
       if(link.id == meta){
-        $('.'+link.id+'_icon').addClass('border-blue-600 bg-blue-200');
-        $('.'+link.id+'_icon').removeClass('border-gray-200 bg-white');
+        $('.'+link.id).addClass('bg-lime');
+        $('.'+link.id).removeClass('bg-white');
         //set title to link title
         $('title').html('Internal Note - '+link.title);
        $('head').append(`<meta name="description" content="${link.description}">`);

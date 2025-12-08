@@ -26,7 +26,7 @@ $(document).ready(function(){
         var formatted = formatBytes(average);
         $('#average_'+type+'_storage').html(`
             <span>${formatted[0]}</span>
-            <span class="ml-2 text-sm font-medium text-gray-500">${formatted[1]} per ticket</span>
+            <span class="ml-2 text-sm text-licorice">${formatted[1]} per ticket</span>
         `);    
         
         //calculate goal tickets
@@ -34,9 +34,9 @@ $(document).ready(function(){
         var result = goal_tickets * average;
         var result_formatted = formatBytes(result);
         $('#result_'+type+'_gb').html(`
-            <span class="text-sm font-medium text-gray-500">You saved &nbsp;</span>
+            <span class="text-sm text-licorice">You saved &nbsp;</span>
             <span>${result_formatted[0]}</span>
-            <span class="ml-2 text-sm font-medium text-gray-500">${result_formatted[1]} of ${type} Storage</span>
+            <span class="ml-2 text-sm text-licorice">${result_formatted[1]} of ${type} Storage</span>
         `); 
     }
 
@@ -70,9 +70,9 @@ $(document).ready(function(){
         var result_tickets = goal_data / average_file_storage;
         var result_data_tickets = formatBytes(result_tickets*average_data_storage);
         $('#result_tickets').html(`
-            <span class="text-sm font-medium text-gray-500">You need to delete&nbsp;</span>
+            <span class="text-sm text-licorice">You need to delete&nbsp;</span>
             <span>${formatInteger(result_tickets.toFixed(0))}</span>
-            <span class="ml-2 text-sm font-medium text-gray-500">tickets</span>
+            <span class="ml-2 text-sm text-licorice">tickets</span>
         `);
         $('#result_data_tickets').html(`
            This also removes ${result_data_tickets[0]}${result_data_tickets[1]} of Data Storage

@@ -12,18 +12,24 @@
     <script src="js/view.js"></script>
     <meta name="loader" content='storagelimits'>
     <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4"> </script>
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-roman.woff2" crossorigin="anonymous">
+<link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Light.woff2" crossorigin="anonymous">
+<link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Regular.woff2"" crossorigin="anonymous">
+<link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Medium.woff2"" crossorigin="anonymous">
+<link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-SemiBold.woff2" crossorigin="anonymous">
+<link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Bold.woff2" crossorigin="anonymous">
 </head>    
-<body class="h-full bg-[#FEFAF2]" data-name="messaging">
+<body class="h-full bg-white" data-name="messaging">
     <main id="content" class="md:pl-72 py-10 px-4 sm:px-6 md:px-8">
         <header>  
             <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 md:px-8">
                 <div class="md:flex md:items-center md:justify-between md:space-x-5">
                     <div class="w-2/3">
-                        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Zendesk Storage Calculator</h1>
-                        <h2 class="mt-2 text-xl tracking-tight text-gray-500">This page allows you to calculate the amount of data you need to remove to stay under the Zendesk Storage Limits</h2>
+                        <h1 class="text-3xl text-licorice">Zendesk Storage Calculator</h1>
+                        <h2 class="mt-2 text-xl text-licorice">This page allows you to calculate the amount of data you need to remove to stay under the Zendesk Storage Limits</h2>
                     </div>
                     <div class="w-1/3 justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
-                        <a href="internalnote.com/storage-limits/?utm_source=widget_demo&campaign=demo" target="_blank" class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-xs hover:bg-blue-700 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">Read Article</a>
+                        <a href="internalnote.com/storage-limits/?utm_source=widget_demo&campaign=demo" target="_blank" class="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice shadow-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">Read Article</a>
                     </div>
                 </div>
             </div>
@@ -31,37 +37,37 @@
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
             <form id="calculator" class="p-4 mx-auto max-w-3xl">
                 <div>
-                    <h3 class="text-base font-semibold leading-6 text-gray-900">Current Zendesk Storage Usage</h3>
+                    <h3 class="text-base font-semibold leading-6 text-licorice">Current Zendesk Storage Usage</h3>
                     <dl class="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white border border-gray-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
                         <div class="p-4">
                             <dd class="mt-1 flex items-center justify-left">
                                 <div class="w-32">
-                                    <input type="number" name="total_data_storage" id="total_data_storage" class="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="42">
+                                    <input type="number" name="total_data_storage" id="total_data_storage" class="text-center block w-full rounded-md border-0 py-1.5 text-licorice shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="42">
                                 </div>
-                                <div class="ml-2 text-sm font-medium text-gray-500">GB Data Storage</div>
+                                <div class="ml-2 text-sm text-licorice">GB Data Storage</div>
                             </dd>
                             <dd class="mt-1 flex items-center justify-left">
                                 <div class="w-32">
-                                    <input type="number" name="total_file_storage" id="total_file_storage" class="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="42">
+                                    <input type="number" name="total_file_storage" id="total_file_storage" class="text-center block w-full rounded-md border-0 py-1.5 text-licorice shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="42">
                                 </div>
-                                <div class="ml-2 text-sm font-medium text-gray-500">GB File Storage</div>
+                                <div class="ml-2 text-sm text-licorice">GB File Storage</div>
                             </dd>
                             <dd class="mt-1 flex items-center justify-left">
                                 <div class="w-32">
-                                    <input type="number" name="total_tickets" id="total_tickets" class="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="1138">
+                                    <input type="number" name="total_tickets" id="total_tickets" class="text-center block w-full rounded-md border-0 py-1.5 text-licorice shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="1138">
                                 </div>
-                                <div class="ml-2 text-sm font-medium text-gray-500">tickets</div>
+                                <div class="ml-2 text-sm text-licorice">tickets</div>
                             </dd>
                         </div>
                         <div class="p-4">
                             <div>
-                                <div class="mb-4 text-base font-normal text-gray-900">Average Storage</div>
+                                <div class="mb-4 text-base font-normal text-licorice">Average Storage</div>
                                 <div class="flex gap-2 items-center">
-                                    <dt class="text-sm font-medium text-gray-500">Data Storage:</dt>
+                                    <dt class="text-sm text-licorice">Data Storage:</dt>
                                     <dd  id="average_data_storage" class="flex items-baseline justify-between text-xl font-semibold text-green-600">N/A</dd>
                                 </div>
                                 <div class="flex gap-2 items-center">
-                                    <dt class="text-sm font-medium text-gray-500">File Storage:</dt>
+                                    <dt class="text-sm text-licorice">File Storage:</dt>
                                     <dd id="average_file_storage" class="flex items-baseline justify-between text-xl font-semibold text-green-600">N/A</dd>
                                 </div>
                             </div>
@@ -69,15 +75,15 @@
                     </dl>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-base font-semibold leading-6 text-gray-900">Reduce Storage</h3>
+                    <h3 class="text-base font-semibold leading-6 text-licorice">Reduce Storage</h3>
                     <dl class="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white border border-gray-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
                         <div class="p-4">
                             <dd class="mt-1 flex items-center justify-left">
-                                <div class="text-sm font-medium text-gray-500">I'll to delete&nbsp;</div>
+                                <div class="text-sm text-licorice">I'll to delete&nbsp;</div>
                                 <div class="w-24">
-                                    <input type="number" name="goal_tickets" id="goal_tickets" class="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="1138">
+                                    <input type="number" name="goal_tickets" id="goal_tickets" class="text-center block w-full rounded-md border-0 py-1.5 text-licorice shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="1138">
                                 </div>
-                                <div class="ml-2 text-sm font-medium text-gray-500">tickets</div>
+                                <div class="ml-2 text-sm text-licorice">tickets</div>
                             </dd>
                             <dd class="mt-1">
                                 <div id="result_data_gb" class="mb-2 flex items-baseline text-2xl font-semibold text-red-600"></div>
@@ -86,30 +92,30 @@
                         </div>
                         <div class="p-4">
                             <dd class="mt-1 flex items-center justify-left">
-                                <div class="text-sm font-medium text-gray-500">I want to clear&nbsp;</div>
+                                <div class="text-sm text-licorice">I want to clear&nbsp;</div>
                                 <div class="w-24">
-                                    <input type="number" name="goal_data" id="goal_data" class="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="42">
+                                    <input type="number" name="goal_data" id="goal_data" class="text-center block w-full rounded-md border-0 py-1.5 text-licorice shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="42">
                                 </div>
-                                <div class="ml-2 text-sm font-medium text-gray-500">GB of File Storage</div>
+                                <div class="ml-2 text-sm text-licorice">GB of File Storage</div>
                             </dd>
                             <dd class="mt-1">
                                 <div id="result_tickets" class="flex items-baseline text-2xl font-semibold text-red-600"></div>
-                                <div id="result_data_tickets" class="mt-2 text-xs font-base text-gray-500"></div>
+                                <div id="result_data_tickets" class="mt-2 text-xs font-base text-licorice"></div>
                             </dd>
                         </div>                    
                     </dl>
                 </div>
             </form>
         </div>
-        <footer class="w-full fixed bottom-0 bg-[#FEFAF2]" aria-labelledby="footer-heading">
+        <footer class="w-full fixed bottom-0 bg-white" aria-labelledby="footer-heading">
         <div class="border-t border-gray-900/10 p-4">
             <div class="pb-2" style="min-height: 58px; max-width: 440px;">
                 <h1 class="text-sm font-medium pb-2">Subscribe to Internal Note</h1>
-                <script src="https://cdn.jsdelivr.net/ghost/signup-form@~0.1/umd/signup-form.min.js" data-button-color="#006DFF" data-button-text-color="#FFFFFF" data-site="https://internalnote.com/" async></script>
+                <script src="https://cdn.jsdelivr.net/ghost/signup-form@~0.1/umd/signup-form.min.js" data-button-color="#D1F470" data-button-text-color="#11110D" data-site="https://internalnote.com/" async></script>
             </div>
             <div class="md:flex gap-4">
-                <p class="text-xs leading-5 text-gray-500">Crafted by <a class="text-blue-400 hover:text-underline hover:text-blue-700"href="https://internalnote.com?utm_source=storagecalculator">Internal Note</a>.</p>
-                <p class="text-xs leading-5 text-gray-500"> &copy; 2022-2024 If you like it, share it, don't copy.</p>
+                <p class="text-xs leading-5 text-licorice">Crafted by <a class="text-blue-400 hover:text-underline hover:text-blue-700"href="https://internalnote.com?utm_source=storagecalculator">Internal Note</a>.</p>
+                <p class="text-xs leading-5 text-licorice"> &copy; 2022-2024 If you like it, share it, don't copy.</p>
             </div>
         </div>
       </footer>

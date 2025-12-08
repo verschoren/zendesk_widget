@@ -31,7 +31,7 @@ $('body').on('click', '#enquiry', function(){
             <li data-source="${article.article_id}" class="col-span-1 divide-y divide-gray-200 rounded-lg border border-gray-200 bg-white">
                 <div class="p-6">
                     <div class="flex items-center space-x-3 justify-between mb-4">
-                        <h3 class="truncate text-sm font-medium text-gray-900">${article.title}</h3>
+                        <h3 class="truncate text-sm text-licorice">${article.title}</h3>
                         <a href="${article.html_url}" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-600">
                             <path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z" clip-rule="evenodd" />
@@ -39,7 +39,7 @@ $('body').on('click', '#enquiry', function(){
                         </svg>
                         </a>
                     </div>
-                    <p class="mt-1 text-sm text-gray-500 h-32 wrap-break-word">${article.snippet}</p>
+                    <p class="mt-1 text-sm text-licorice h-32 wrap-break-word">${article.snippet}</p>
                 </div>
                 <div data-buttons="${article.article_id}">
                     <div class="-mt-px flex divide-x divide-gray-200">
