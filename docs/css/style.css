@@ -2649,6 +2649,11 @@
       outline-color: var(--color-blue-600);
     }
   }
+  .focus-within\:outline-green-600 {
+    &:focus-within {
+      outline-color: var(--color-green-600);
+    }
+  }
   .focus-within\:outline-indigo-600 {
     &:focus-within {
       outline-color: var(--color-indigo-600);
@@ -5342,6 +5347,13 @@
     @media (prefers-color-scheme: dark) {
       &:focus-within {
         outline-color: var(--color-blue-500);
+      }
+    }
+  }
+  .dark\:focus-within\:outline-green-500 {
+    @media (prefers-color-scheme: dark) {
+      &:focus-within {
+        outline-color: var(--color-green-500);
       }
     }
   }
