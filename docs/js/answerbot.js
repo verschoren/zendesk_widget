@@ -39,7 +39,7 @@ $('body').on('click', '#enquiry', function(){
                         </svg>
                         </a>
                     </div>
-                    <p class="mt-1 text-sm text-gray-500 h-32 break-words">${article.snippet}</p>
+                    <p class="mt-1 text-sm text-gray-500 h-32 wrap-break-word">${article.snippet}</p>
                 </div>
                 <div data-buttons="${article.article_id}">
                     <div class="-mt-px flex divide-x divide-gray-200">
