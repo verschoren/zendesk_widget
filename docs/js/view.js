@@ -33,7 +33,10 @@ $('document').ready(function() {
     
             <div class="flex grow flex-col gap-y-5 overflow-y-autopx-6 pl-4 pb-4">
                 <div class="flex h-16 shrink-0 items-center">
-                  <a href="index.html"><img class="h-8 w-auto" src="img/logo.svg" alt="Internal Note"></a>    
+                  <a href="index.html">
+                    <img class="h-8 w-auto" src="img/zendesk.svg" alt="Zendesk">
+                    <img class="h-8 w-auto" src="img/logo.svg" alt="Internal Note">
+                  </a>    
                 </div>
                 <nav class="flex flex-1 flex-col">
                     <ul id="menu_mobile" role="list" class="flex flex-1 flex-col gap-6"></ul>
@@ -62,7 +65,10 @@ $('document').ready(function() {
     <div class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:w-72 md:flex-col">
       <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 px-6 pb-4">
           <div class="flex h-16 shrink-0 items-center">
-            <a href="index.html"><img class="h-8 w-auto" src="img/logo.svg" alt="Internal Note"></a>
+            <a href="index.html" class="flex gap-4 items-center">
+              <img class="h-8 w-auto" src="img/zendesk.svg" alt="Zendesk">
+              <img class="h-8 w-auto" src="img/logo.svg" alt="Internal Note">
+            </a>
           </div>
           <nav class="flex flex-1 flex-col">
             <ul id="menu_desktop" role="list" class="flex flex-1 flex-col gap-y-7"></ul>
