@@ -94,7 +94,10 @@ $('document').ready(function() {
 
   $('main').prepend(`
     <div class="md:hidden sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between gap-x-4px-4 sm:gap-x-6 sm:px-6 md:px-8">
-      <img src="img/logo.svg" alt="Internal Note" class="h-8 w-auto">
+      <div class="flex items-center gap-4">
+        <img class="h-8 w-auto" src="img/zendesk.svg" alt="Zendesk">
+        <img src="img/logo.svg" alt="Internal Note" class="h-8 w-auto">
+      </div>
       <button id="show_menu" type="button" class="-m-2.5 p-2.5 text-licorice hover:text-licorice md:hidden">
           <span class="sr-only">Open sidebar</span>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
