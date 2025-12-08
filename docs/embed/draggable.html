@@ -1,79 +1,268 @@
+<html class="h-full bg-white dark:bg-gray-900">
+<head>
+      <title>Internal Note | Widget Embedded mode demo</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Internal Note">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://demo.internalnote.com/img/banner.png">
+
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4"> </script>
     <script>
         window.zEMessenger = {
             autorender: false,
         }
-        </script>
+    </script>
+</head>
+<div id="support_modal" class="fixed inset-0 pointer-events-none z-20">
+  <div id="dragme" class="absolute h-[600px] w-[302px] text-center bg-white rounded-lg shadow-xl pointer-events-auto">
+    <div class="px-2 pt-2 bg-[#026adb] text-white cursor-move flex justify-between items-center">
+        <div>&nbsp;</div>
+        <div id="close_widget" class="hover:text-blue-400 text-white fill-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clip-rule="evenodd" />
+            </svg>
+                    </div>
+                </div>
+                <div id="widget"></div>
+            </div>
+        </div>
 
-<div id="mydiv">
-  <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-  <div id="mydivheader">Click here to move</div>
-    <div id="widget"></div>
+<div class="bg-white">
+  <!-- Hero section -->
+  <div class="relative bg-gray-900">
+    <!-- Decorative image and overlay -->
+    <div aria-hidden="true" class="absolute inset-0 overflow-hidden">
+      <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-hero-full-width.jpg" alt="" class="size-full object-cover" />
+    </div>
+    <div aria-hidden="true" class="absolute inset-0 bg-gray-900 opacity-50"></div>
+
+    <!-- Navigation -->
+    <header class="relative z-10">
+      <nav aria-label="Top">
+        <!-- Secondary navigation -->
+        <div class="bg-white/10 backdrop-blur-md backdrop-filter">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div>
+              <div class="flex h-16 items-center justify-between">
+                <!-- Logo (lg+) -->
+                <div class="hidden lg:flex lg:flex-1 lg:items-center">
+                  <a href="#">
+                    <span class="sr-only">Your Company</span>
+                    <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=white" alt="" class="h-8 w-auto" />
+                  </a>
+                </div>
+
+                <div class="hidden h-full lg:flex">
+                  <!-- Flyout menus -->
+                  <el-popover-group class="group/popover-group inset-x-0 bottom-0 px-4">
+                    <div class="flex h-full justify-center space-x-8">
+                      <a href="#" class="flex items-center text-sm font-medium text-white">Company</a>
+                      <a href="#" class="flex items-center text-sm font-medium text-white">Stores</a>
+                    </div>
+                  </el-popover-group>
+                </div>
+
+                <!-- Mobile menu and search (lg-) -->
+                <div class="flex flex-1 items-center lg:hidden">
+                  <button type="button" command="show-modal" commandfor="mobile-menu" class="-ml-2 p-2 text-white">
+                    <span class="sr-only">Open menu</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
+                      <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+
+                  <!-- Search -->
+                  <a href="#" class="ml-2 p-2 text-white">
+                    <span class="sr-only">Search</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
+                      <path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+
+                <!-- Logo (lg-) -->
+                <a href="#" class="lg:hidden">
+                  <span class="sr-only">Your Company</span>
+                  <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=white" alt="" class="h-8 w-auto" />
+                </a>
+
+                <div class="flex flex-1 items-center justify-end">
+                  <div class="flex items-center lg:ml-8">
+                    <button id="gethelp" class="text-sm font-medium text-white lg:block">Get Help</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center sm:py-64 lg:px-0">
+      <h1 class="text-4xl font-bold tracking-tight text-white lg:text-6xl">New arrivals are here</h1>
+      <p class="mt-4 text-xl text-white">The new arrivals have, well, newly arrived. Check out the latest options from our summer small-batch release while they're still in stock.</p>
+      <a href="#" class="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100">Shop New Arrivals</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Category section -->
+    <section aria-labelledby="category-heading" class="pt-24 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8">
+      <div class="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
+        <h2 id="category-heading" class="text-2xl font-bold tracking-tight text-gray-900">Shop by Category</h2>
+        <a href="#" class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+          Browse all categories
+          <span aria-hidden="true"> &rarr;</span>
+        </a>
+      </div>
+
+      <div class="mt-4 flow-root">
+        <div class="-my-2">
+          <div class="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
+            <div class="absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0">
+              <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                <span aria-hidden="true" class="absolute inset-0">
+                  <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-category-01.jpg" alt="" class="size-full object-cover" />
+                </span>
+                <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-gray-800 opacity-50"></span>
+                <span class="relative mt-auto text-center text-xl font-bold text-white">New Arrivals</span>
+              </a>
+              <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                <span aria-hidden="true" class="absolute inset-0">
+                  <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-category-02.jpg" alt="" class="size-full object-cover" />
+                </span>
+                <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-gray-800 opacity-50"></span>
+                <span class="relative mt-auto text-center text-xl font-bold text-white">Productivity</span>
+              </a>
+              <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                <span aria-hidden="true" class="absolute inset-0">
+                  <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-category-04.jpg" alt="" class="size-full object-cover" />
+                </span>
+                <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-gray-800 opacity-50"></span>
+                <span class="relative mt-auto text-center text-xl font-bold text-white">Workspace</span>
+              </a>
+              <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                <span aria-hidden="true" class="absolute inset-0">
+                  <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-category-05.jpg" alt="" class="size-full object-cover" />
+                </span>
+                <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-gray-800 opacity-50"></span>
+                <span class="relative mt-auto text-center text-xl font-bold text-white">Accessories</span>
+              </a>
+              <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                <span aria-hidden="true" class="absolute inset-0">
+                  <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-category-03.jpg" alt="" class="size-full object-cover" />
+                </span>
+                <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-gray-800 opacity-50"></span>
+                <span class="relative mt-auto text-center text-xl font-bold text-white">Sale</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 px-4 sm:hidden">
+        <a href="#" class="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
+          Browse all categories
+          <span aria-hidden="true"> &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Featured section -->
+    <section aria-labelledby="social-impact-heading" class="mx-auto max-w-7xl px-4 pt-24 sm:px-6 sm:pt-32 lg:px-8">
+      <div class="relative overflow-hidden rounded-lg">
+        <div class="absolute inset-0">
+          <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-feature-section-01.jpg" alt="" class="size-full object-cover" />
+        </div>
+        <div class="relative bg-gray-900/75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
+          <div class="relative mx-auto flex max-w-3xl flex-col items-center text-center">
+            <h2 id="social-impact-heading" class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <span class="block sm:inline">Level up</span>
+              <span class="block sm:inline">your desk</span>
+            </h2>
+            <p class="mt-3 text-xl text-white">Make your desk beautiful and organized. Post a picture to social media and watch it get more likes than life-changing announcements. Reflect on the shallow nature of existence. At least you have a really nice desk setup.</p>
+            <a href="#" class="mt-8 block w-full rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto">Shop Workspace</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collection section -->
+    <section aria-labelledby="collection-heading" class="mx-auto max-w-xl px-4 pt-24 sm:px-6 sm:pt-32 lg:max-w-7xl lg:px-8">
+      <h2 id="collection-heading" class="text-2xl font-bold tracking-tight text-gray-900">Shop by Collection</h2>
+      <p class="mt-4 text-base text-gray-500">Each season, we collaborate with world-class designers to create a collection inspired by the natural world.</p>
+
+      <div class="mt-10 space-y-12 lg:grid lg:grid-cols-3 lg:space-y-0 lg:gap-x-8">
+        <a href="#" class="group block">
+          <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-collection-01.jpg" alt="Brown leather key ring with brass metal loops and rivets on wood table." class="aspect-3/2 w-full rounded-lg object-cover group-hover:opacity-75 lg:aspect-5/6" />
+          <h3 class="mt-4 text-base font-semibold text-gray-900">Handcrafted Collection</h3>
+          <p class="mt-2 text-sm text-gray-500">Keep your phone, keys, and wallet together, so you can lose everything at once.</p>
+        </a>
+        <a href="#" class="group block">
+          <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-collection-02.jpg" alt="Natural leather mouse pad on white desk next to porcelain mug and keyboard." class="aspect-3/2 w-full rounded-lg object-cover group-hover:opacity-75 lg:aspect-5/6" />
+          <h3 class="mt-4 text-base font-semibold text-gray-900">Organized Desk Collection</h3>
+          <p class="mt-2 text-sm text-gray-500">The rest of the house will still be a mess, but your desk will look great.</p>
+        </a>
+        <a href="#" class="group block">
+          <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-collection-03.jpg" alt="Person placing task list card into walnut card holder next to felt carrying case on leather desk pad." class="aspect-3/2 w-full rounded-lg object-cover group-hover:opacity-75 lg:aspect-5/6" />
+          <h3 class="mt-4 text-base font-semibold text-gray-900">Focus Collection</h3>
+          <p class="mt-2 text-sm text-gray-500">Be more productive than enterprise project managers with a single piece of paper.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer aria-labelledby="footer-heading" class="bg-gray-900">
+    <h2 id="footer-heading" class="sr-only">Footer</h2>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="border-t border-gray-800 py-10">
+        <p class="text-sm text-gray-400">Copyright &copy; 2021 Your Company, Inc.</p>
+      </div>
+    </div>
+  </footer>
 </div>
 
-<style>
-    #mydiv {
-  position: absolute;
-  z-index: 9;
-  background-color: #f1f1f1;
-  border: 1px solid #d3d3d3;
-  text-align: center;
-  height: 450px;
-}
-
-#mydivheader {
-  padding: 10px;
-  cursor: move;
-  z-index: 10;
-  background-color: #2196F3;
-  color: #fff;
-}
-</style>
-
 <script>
-    // Make the DIV element draggable:
-dragElement(document.getElementById("mydiv"));
+$('#gethelp, #close_widget').on('click', function () {
+    $('#support_modal').toggle('hidden');
+});
+
+dragElement(document.getElementById("dragme"));
 
 function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id + "header")) {
-    // if present, the header is where you move the DIV from:
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
-    // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
-  }
+  let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+  const header = elmnt.querySelector('.cursor-move') || elmnt;
+  header.onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
-    e = e || window.event;
     e.preventDefault();
-    // get the mouse cursor position at startup:
     pos3 = e.clientX;
     pos4 = e.clientY;
     document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
   }
 
   function elementDrag(e) {
-    e = e || window.event;
     e.preventDefault();
-    // calculate the new cursor position:
     pos1 = pos3 - e.clientX;
     pos2 = pos4 - e.clientY;
     pos3 = e.clientX;
     pos4 = e.clientY;
-    // set the element's new position:
+
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
   }
 
   function closeDragElement() {
-    // stop moving when mouse button is released:
     document.onmouseup = null;
     document.onmousemove = null;
   }
 }
+
 </script>
 
 <script>
