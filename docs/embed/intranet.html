@@ -15,8 +15,12 @@
             autorender: false,
         }
     </script>
+    <meta name="loader" content='intranet'>
+    <script src="../js/embeddable.js"></script>
 </head>
-<div class="h-full">
+<body class="h-full">
+  <container class="absolute top-16 w-full">
+
   <header class="bg-linear-to-r from-sky-800 to-cyan-600 pb-24">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <div class="relative flex flex-wrap items-center justify-center lg:justify-between">
@@ -408,7 +412,8 @@
       <div class="border-t border-gray-200 py-8 text-center text-sm text-gray-500 sm:text-left"><span class="block sm:inline">&copy; 2021 Your Company, Inc.</span> <span class="block sm:inline">All rights reserved.</span></div>
     </div>
   </footer>
-</div>
+  </container> 
+</body>
 <script>
     //on click #support or #support_mobile, remove class hidden view #view_support and add to #view_start
     zE('messenger', 'render', {

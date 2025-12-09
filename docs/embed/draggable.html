@@ -15,18 +15,23 @@
             autorender: false,
         }
     </script>
+    <meta name="loader" content='draggable'>
+    <script src="../js/embeddable.js"></script>
 </head>
-<div id="support_modal" class="hidden fixed inset-0 pointer-events-none z-20">
-  <div id="dragme" class="rounded-tl-lg rounded-tr-lg absolute h-[600px] w-[320px] text-center bg-white rounded-lg shadow-xl pointer-events-auto">
-    <div class="rounded-tl-lg rounded-tr-lg px-2 pb-1 pt-2 bg-[#026adb] text-white cursor-move flex justify-between items-center">
-        <div>&nbsp;</div>
+<body class="h-full">
+    <container class="absolute top-16 w-full">
+
+<div id="support_modal" class="fixed inset-26 left-96 pointer-events-none z-20">
+  <div id="dragme" class="rounded-tl-lg rounded-tr-lg absolute h-[500px] w-[320px] text-center bg-white rounded-lg shadow-xl pointer-events-auto">
+    <div class="rounded-tl-lg rounded-tr-lg h-9 px-2 pb-1 pt-2 bg-[#026adb] text-white cursor-move flex justify-between items-center">
+        <div class="text-sm">Drag me</div>
         <div id="close_widget" class="hover:text-blue-400 text-white fill-white">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
             <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clip-rule="evenodd" />
             </svg>
         </div>
     </div>
-    <div id="widget" class="rounded-bl-lg rounded-br-lg"></div>
+    <div id="widget" class="rounded-bl-lg rounded-br-lg bg-red-100 overflow-hidden"></div>
     </div>
 </div>
 
@@ -171,48 +176,7 @@
       </div>
     </section>
 
-    <!-- Featured section -->
-    <section aria-labelledby="social-impact-heading" class="mx-auto max-w-7xl px-4 pt-24 sm:px-6 sm:pt-32 lg:px-8">
-      <div class="relative overflow-hidden rounded-lg">
-        <div class="absolute inset-0">
-          <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-feature-section-01.jpg" alt="" class="size-full object-cover" />
-        </div>
-        <div class="relative bg-gray-900/75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
-          <div class="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-            <h2 id="social-impact-heading" class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              <span class="block sm:inline">Level up</span>
-              <span class="block sm:inline">your desk</span>
-            </h2>
-            <p class="mt-3 text-xl text-white">Make your desk beautiful and organized. Post a picture to social media and watch it get more likes than life-changing announcements. Reflect on the shallow nature of existence. At least you have a really nice desk setup.</p>
-            <a href="#" class="mt-8 block w-full rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto">Shop Workspace</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Collection section -->
-    <section aria-labelledby="collection-heading" class="mx-auto max-w-xl px-4 pt-24 sm:px-6 sm:pt-32 lg:max-w-7xl lg:px-8">
-      <h2 id="collection-heading" class="text-2xl font-bold tracking-tight text-gray-900">Shop by Collection</h2>
-      <p class="mt-4 text-base text-gray-500">Each season, we collaborate with world-class designers to create a collection inspired by the natural world.</p>
-
-      <div class="mt-10 space-y-12 lg:grid lg:grid-cols-3 lg:space-y-0 lg:gap-x-8">
-        <a href="#" class="group block">
-          <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-collection-01.jpg" alt="Brown leather key ring with brass metal loops and rivets on wood table." class="aspect-3/2 w-full rounded-lg object-cover group-hover:opacity-75 lg:aspect-5/6" />
-          <h3 class="mt-4 text-base font-semibold text-gray-900">Handcrafted Collection</h3>
-          <p class="mt-2 text-sm text-gray-500">Keep your phone, keys, and wallet together, so you can lose everything at once.</p>
-        </a>
-        <a href="#" class="group block">
-          <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-collection-02.jpg" alt="Natural leather mouse pad on white desk next to porcelain mug and keyboard." class="aspect-3/2 w-full rounded-lg object-cover group-hover:opacity-75 lg:aspect-5/6" />
-          <h3 class="mt-4 text-base font-semibold text-gray-900">Organized Desk Collection</h3>
-          <p class="mt-2 text-sm text-gray-500">The rest of the house will still be a mess, but your desk will look great.</p>
-        </a>
-        <a href="#" class="group block">
-          <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-collection-03.jpg" alt="Person placing task list card into walnut card holder next to felt carrying case on leather desk pad." class="aspect-3/2 w-full rounded-lg object-cover group-hover:opacity-75 lg:aspect-5/6" />
-          <h3 class="mt-4 text-base font-semibold text-gray-900">Focus Collection</h3>
-          <p class="mt-2 text-sm text-gray-500">Be more productive than enterprise project managers with a single piece of paper.</p>
-        </a>
-      </div>
-    </section>
+    
   </main>
 
   <footer aria-labelledby="footer-heading" class="bg-gray-900">
@@ -224,7 +188,8 @@
     </div>
   </footer>
 </div>
-
+</container>
+</body>
 <script>
 $('#gethelp, #close_widget').on('click', function () {
     $('#support_modal').toggle('hidden');
@@ -234,6 +199,8 @@ dragElement(document.getElementById("dragme"));
 
 function dragElement(elmnt) {
   let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  let vx = 0, vy = 0;            // velocity
+  let momentumFrame = null;
 
   const header = elmnt.querySelector('.cursor-move') || elmnt;
   header.onmousedown = dragMouseDown;
@@ -242,34 +209,77 @@ function dragElement(elmnt) {
     e.preventDefault();
     pos3 = e.clientX;
     pos4 = e.clientY;
+
+    // stop any ongoing momentum
+    if (momentumFrame) cancelAnimationFrame(momentumFrame);
+
     document.onmouseup = closeDragElement;
     document.onmousemove = elementDrag;
   }
 
   function elementDrag(e) {
     e.preventDefault();
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
+
+    // calculate mouse movement
+    const dx = pos3 - e.clientX;
+    const dy = pos4 - e.clientY;
+
     pos3 = e.clientX;
     pos4 = e.clientY;
 
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    // apply movement
+    elmnt.style.top = (elmnt.offsetTop - dy) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - dx) + "px";
+
+    // update velocity (used for momentum)
+    vx = dx;
+    vy = dy;
   }
 
   function closeDragElement() {
     document.onmouseup = null;
     document.onmousemove = null;
+
+    // start momentum
+    applyMomentum();
+  }
+
+  function applyMomentum() {
+    // friction factor (tune this)
+    const friction = 0.95;
+
+    // apply physics update
+    function step() {
+      // apply velocity
+      elmnt.style.top = (elmnt.offsetTop - vy) + "px";
+      elmnt.style.left = (elmnt.offsetLeft - vx) + "px";
+
+      // reduce velocity
+      vx *= friction;
+      vy *= friction;
+
+      // stop when velocity negligible
+      if (Math.abs(vx) < 0.1 && Math.abs(vy) < 0.1) {
+        momentumFrame = null;
+        return;
+      }
+
+      // keep moving
+      momentumFrame = requestAnimationFrame(step);
+    }
+
+    step();
   }
 }
+
 
 </script>
 
 <script>
-        zE('messenger', 'render', {
-        mode: 'embedded',
-        widget: {
-            targetElement: '#widget',
-        },
-    });
+  zE('messenger', 'render', {
+    mode: 'embedded',
+    widget: {
+        targetElement: '#widget',
+    },
+  });
 </script>
