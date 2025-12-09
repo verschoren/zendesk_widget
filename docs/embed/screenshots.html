@@ -1,0 +1,75 @@
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4"> </script>
+<script>
+    window.zEMessenger = {
+        autorender: false,
+    }
+</script>
+<script>
+zE('messenger', 'render', {
+  mode: 'embedded',
+  conversationList: {
+    targetElement: '#conversation-sidebar',
+  },
+  messageLog: {
+    targetElement: '#messages-sidebar',
+  },
+});
+
+zE('messenger:set', 'customization', {
+    common: {
+      hideHeader: false
+    },
+    conversationList: {
+      hideHeader: false,
+      hideNewConversationButton: true
+    },
+    messageLog: {
+      hideHeader: true
+    },
+    theme: {
+        primary: "#D1F470",
+        onPrimary: "#11110D",
+        message: "#FEEB7E",
+        onMessage: "#11110D",
+        action: "#B0DB43",
+        onAction: "#11110D",
+        businessMessage: "#A1D78F",
+        onBusinessMessage: "#11110D",
+        background: "#F5F5F2",
+        onBackground: "#11110D",
+        error: "#FF1744",
+        onError: "#FFFFFF",
+        notify: "#FF007F",
+        onNotify: "#FFFFFF",
+        onSecondaryAction: "#000000"
+    }
+});
+
+zE('messenger:ui', 'newConversation', {
+  displayName: 'Support Request', 
+  iconUrl: 'https://example.com/icon.png',
+  metadata: {
+    source: 'help_button',
+    priority: 'high'
+  },
+});
+
+</script>
+<link href="../css/style.css" rel="stylesheet">
+
+<div class="h-full w-full bg-gray-50 p-24">
+    <div class="w-[900px] mx-auto border-b border-gray-200 px-4 py-5 bg-[#F5F5F2] sm:px-6 dark:border-white/10">
+        <div class="-mt-2 -ml-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
+            <div class="mt-2 ml-4">
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white">Your conversations</h3>
+            </div>
+            <div class="mt-2 ml-4 shrink-0">
+            <button type="button" class="relative inline-flex items-center rounded-md bg-matcha px-3 py-2 text-sm font-semibold text-licorice shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:shadow-none dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500">New conversation</button>
+            </div>
+        </div>
+    </div>
+    <div class="w-[900px] flex h-[500px] mx-auto">
+        <div id="conversation-sidebar" class="w-[300px] border-r border-gray-100"></div>
+        <div id="messages-sidebar" class="w-[600px]"></div>
+    </div>
+</div>
