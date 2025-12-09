@@ -594,6 +594,9 @@
   .mr-16 {
     margin-right: calc(var(--spacing) * 16);
   }
+  .-mb-16 {
+    margin-bottom: calc(var(--spacing) * -16);
+  }
   .-mb-px {
     margin-bottom: -1px;
   }
@@ -830,6 +833,12 @@
   }
   .h-\[800px\] {
     height: 800px;
+  }
+  .h-\[calc\(100\%_-_64px\)\] {
+    height: calc(100% - 64px);
+  }
+  .h-\[calc\(100\%_-_128px\)\] {
+    height: calc(100% - 128px);
   }
   .h-full {
     height: 100%;
