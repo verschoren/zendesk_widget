@@ -25,12 +25,20 @@
   <div id="dragme" class="rounded-tl-lg rounded-tr-lg absolute h-[500px] w-[320px] text-center bg-white rounded-lg shadow-xl pointer-events-auto">
     <div class="rounded-tl-lg rounded-tr-lg h-9 px-2 pb-1 pt-2 bg-[#026adb] text-white cursor-move flex justify-between items-center">
         <div class="text-sm">Drag me</div>
-        <div id="close_widget" class="hover:text-blue-400 text-white fill-white">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clip-rule="evenodd" />
+        <div class="flex gap-2 items-center">
+          <div id="close_widget" class="hover:text-blue-400 text-white fill-white">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+              <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clip-rule="evenodd" />
+              </svg>
+          </div>
+          <!-- <div id="dock_widget" class="hover:text-blue-400 text-blue-600 bg-white fill-blue-600 p-0.5 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+              <path fill-rule="evenodd" d="M4.22 4.22a.75.75 0 0 0 0 1.06l5.22 5.22H5.75a.75.75 0 0 0 0 1.5h5.5a.75.75 0 0 0 .75-.75v-5.5a.75.75 0 0 0-1.5 0v3.69L5.28 4.22a.75.75 0 0 0-1.06 0Z" clip-rule="evenodd" />
             </svg>
+          </div> -->
+
         </div>
-    </div>
+      </div>
     <div id="widget" class="rounded-bl-lg rounded-br-lg bg-red-100 overflow-hidden"></div>
     </div>
 </div>
@@ -282,4 +290,21 @@ function dragElement(elmnt) {
         targetElement: '#widget',
     },
   });
+</script>
+
+<script>
+//   $('#dock_widget').on('click', function () {
+//           window.zEMessenger = {
+//             autorender: true,
+//         }
+//     zE('messenger', 'render', {
+//         mode: 'floating',
+//       });
+//   });
+
+//   zE("messenger:on", "open", function () {
+//   console.log(`You have opened the messaging Web Widget`)
+// })
+
+
 </script>

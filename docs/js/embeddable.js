@@ -41,8 +41,4 @@ $(document).ready(function () {
     `;
 
     $('body').prepend(banner);
-
-    //add two pages
-    zE('messenger:ui', 'newConversation');
-    zE('messenger:ui', 'newConversation');
 });
