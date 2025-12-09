@@ -20,258 +20,317 @@
 </head>
 <body>
   <container class="absolute top-16 w-full">
+  <header class="relative">
+    <nav aria-label="Top">
+    
+      <!-- Secondary navigation -->
+      <div class="bg-white shadow-xs">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex h-16 items-center justify-between">
+            <!-- Logo (lg+) -->
+            <div class="hidden lg:flex lg:flex-1 lg:items-center">
+              <a href="#">
+                <span class="sr-only">Your Company</span>
+                <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto" />
+              </a>
+            </div>
 
-    <header class="flex h-16 top-16 border-b border-gray-900/10 dark:border-white/10">
-    <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-1 items-center gap-x-6">
-        <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-3 p-3 md:hidden">
-          <span class="sr-only">Open main menu</span>
-          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 text-gray-900 dark:text-white">
-            <path d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75ZM2 10a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" fill-rule="evenodd" />
-          </svg>
-        </button>
-        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=blue&shade=600" alt="Your Company" class="h-8 w-auto dark:hidden" />
-        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=blue&shade=500" alt="Your Company" class="h-8 w-auto not-dark:hidden" />
-      </div>
-      <nav class="hidden md:flex md:gap-x-11 md:text-sm/6 md:font-semibold md:text-gray-700 dark:md:text-gray-300">
-        <a href="#">Home</a>
-        <a href="#">Invoices</a>
-        <a href="#">Clients</a>
-        <a href="#">Expenses</a>
-      </nav>
-      <div class="flex flex-1 items-center justify-end gap-x-8">
-        <button command="show-modal" commandfor="drawer" class="rounded-md px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10 dark:bg-white/10 dark:text-white dark:inset-ring dark:inset-ring-white/5 dark:hover:bg-white/20">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
-          </svg>
-        </button>
-  
-        <a href="#" class="-m-1.5 p-1.5">
-          <span class="sr-only">Your profile</span>
-          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full bg-gray-100 outline -outline-offset-1 outline-black/5 dark:bg-gray-800 dark:outline-white/10" />
-        </a>
-      </div>
-    </div>
-    <el-dialog>
-      <dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
-        <div tabindex="0" class="fixed inset-0 focus:outline-none">
-          <el-dialog-panel class="fixed inset-y-0 left-0 z-50 w-full overflow-y-auto bg-white px-4 pb-6 sm:max-w-sm sm:px-6 sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900 dark:sm:ring-white/10">
-            <div class="-ml-0.5 flex h-16 items-center gap-x-6">
-              <button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 p-2.5 text-gray-700 dark:text-gray-400">
-                <span class="sr-only">Close menu</span>
+            <div class="hidden h-full lg:flex">
+              <!-- Flyout menus -->
+              <el-popover-group class="group/popover-group inset-x-0 bottom-0 px-4">
+                <!-- Presentational element to emulate a border that sits on top of the popover -->
+                <div class="absolute inset-x-0 -bottom-px h-px w-full bg-white opacity-0 transition-opacity duration-200 ease-in group-has-open/popover-group:opacity-100 group-has-open/popover-group:duration-150 group-has-open/popover-group:ease-out">
+                  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div class="h-px w-full bg-gray-200"></div>
+                  </div>
+                </div>
+                <div class="flex h-full justify-center space-x-8">
+                  <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Company</a>
+                  <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Stores</a>
+                </div>
+              </el-popover-group>
+            </div>
+
+            <!-- Mobile menu and search (lg-) -->
+            <div class="flex flex-1 items-center lg:hidden">
+              <button type="button" command="show-modal" commandfor="mobile-menu" class="-ml-2 rounded-md bg-white p-2 text-gray-400">
+                <span class="sr-only">Open menu</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-                  <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </button>
-              <div class="-ml-0.5">
-                <a href="#" class="-m-1.5 block p-1.5">
-                  <span class="sr-only">Your Company</span>
-                  <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=blue&shade=600" alt="" class="h-8 w-auto dark:hidden" />
-                  <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=blue&shade=500" alt="" class="h-8 w-auto not-dark:hidden" />
-                </a>
+            </div>
+
+            <!-- Logo (lg-) -->
+            <a href="#" class="lg:hidden">
+              <span class="sr-only">Your Company</span>
+              <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto" />
+            </a>
+
+            <div class="flex flex-1 items-center justify-end">
+              <div class="flex items-center lg:ml-8">
+                <!-- Help -->
+                 <button command="show-modal" commandfor="drawer" class="p-2 text-gray-400 hover:text-gray-500">
+                  <span class="sr-only">Help</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
+                    <path d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+
               </div>
             </div>
-            <div class="mt-2 space-y-2">
-              <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Home</a>
-              <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Invoices</a>
-              <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Clients</a>
-              <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Expenses</a>
-            </div>
-          </el-dialog-panel>
+          </div>
         </div>
-      </dialog>
-    </el-dialog>
+      </div>
+    </nav>
   </header>
   
-  <main>
-    <header class="relative isolate pt-8">
-      <div aria-hidden="true" class="absolute inset-0 -z-10 overflow-hidden">
-        <div class="absolute top-full left-16 -mt-16 transform-gpu opacity-50 blur-3xl xl:left-1/2 xl:-ml-80 dark:opacity-30">
-          <div style="clip-path: polygon(100% 38.5%, 82.6% 100%, 60.2% 37.7%, 52.4% 32.1%, 47.5% 41.8%, 45.2% 65.6%, 27.5% 23.4%, 0.1% 35.3%, 17.9% 0%, 27.7% 23.4%, 76.2% 2.5%, 74.2% 56%, 100% 38.5%)" class="aspect-1154/678 w-288.5 bg-linear-to-br from-[#FF80B5] to-[#9089FC]"></div>
+<!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
+<div class="bg-white">
+  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <div class="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
+      <!-- Image gallery -->
+      <el-tab-group class="flex flex-col-reverse">
+        <!-- Image selector -->
+        <div class="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
+          <el-tab-list class="grid grid-cols-4 gap-6">
+            <button class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium text-gray-900 uppercase hover:bg-gray-50 focus:ring-3 focus:ring-indigo-500/50 focus:ring-offset-4 focus:outline-hidden">
+              <span class="sr-only">Angled view</span>
+              <span class="absolute inset-0 overflow-hidden rounded-md">
+                <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-03-product-01.jpg" alt="" class="size-full object-cover" />
+              </span>
+              <span aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2 in-aria-selected:ring-indigo-500"></span>
+            </button>
+            <button class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium text-gray-900 uppercase hover:bg-gray-50 focus:ring-3 focus:ring-indigo-500/50 focus:ring-offset-4 focus:outline-hidden">
+              <span class="sr-only">Front view</span>
+              <span class="absolute inset-0 overflow-hidden rounded-md">
+                <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-03-product-02.jpg" alt="" class="size-full object-cover" />
+              </span>
+              <span aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2 in-aria-selected:ring-indigo-500"></span>
+            </button>
+            <button class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium text-gray-900 uppercase hover:bg-gray-50 focus:ring-3 focus:ring-indigo-500/50 focus:ring-offset-4 focus:outline-hidden">
+              <span class="sr-only">Back view</span>
+              <span class="absolute inset-0 overflow-hidden rounded-md">
+                <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-03-product-03.jpg" alt="" class="size-full object-cover" />
+              </span>
+              <span aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2 in-aria-selected:ring-indigo-500"></span>
+            </button>
+            <button class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium text-gray-900 uppercase hover:bg-gray-50 focus:ring-3 focus:ring-indigo-500/50 focus:ring-offset-4 focus:outline-hidden">
+              <span class="sr-only">Back angle open view</span>
+              <span class="absolute inset-0 overflow-hidden rounded-md">
+                <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-03-product-04.jpg" alt="" class="size-full object-cover" />
+              </span>
+              <span aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2 in-aria-selected:ring-indigo-500"></span>
+            </button>
+          </el-tab-list>
         </div>
-        <div class="absolute inset-x-0 bottom-0 h-px bg-gray-900/5 dark:bg-white/5"></div>
-      </div>
-  
-      <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <div class="mx-auto flex max-w-2xl items-center justify-between gap-x-8 lg:mx-0 lg:max-w-none">
-          <div class="flex items-center gap-x-6">
-            <h1>
-              <div class="text-sm/6 text-gray-500 dark:text-gray-400">Invoice <span class="text-gray-700 dark:text-gray-300">#00011</span></div>
-              <div class="mt-1 text-base font-semibold text-gray-900 dark:text-white">Tuple, Inc</div>
-            </h1>
+
+        <el-tab-panels>
+          <div>
+            <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-03-product-01.jpg" alt="Angled front view with bag zipped and handles upright." class="aspect-square w-full object-cover sm:rounded-lg" />
           </div>
-          <div class="flex items-center gap-x-4 sm:gap-x-6">
-            <button type="button" class="hidden text-sm/6 font-semibold text-gray-900 sm:block dark:text-white">Copy URL</button>
-            <a href="#" class="hidden text-sm/6 font-semibold text-gray-900 sm:block dark:text-white">Edit</a>
-            <a href="#" class="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:bg-blue-500 dark:shadow-none dark:hover:bg-blue-400 dark:focus-visible:outline-blue-500">Send</a>
-  
-            <el-dropdown class="relative sm:hidden">
-              <button class="relative block">
-                <span class="absolute -inset-3"></span>
-                <span class="sr-only">More</span>
-                <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 text-gray-500 dark:text-gray-400">
-                  <path d="M10 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM10 8.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM11.5 15.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
-                </svg>
-              </button>
-  
-              <el-menu anchor="bottom end" popover class="w-32 origin-top-right rounded-md bg-white py-2 shadow-lg outline-1 outline-gray-900/5 transition transition-discrete [--anchor-gap:--spacing(0.5)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in dark:bg-gray-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
-                <button type="button" class="block w-full px-3 py-1 text-left text-sm/6 text-gray-900 focus:bg-gray-50 focus:outline-hidden dark:text-white dark:focus:bg-white/5">Copy URL</button>
-                <a href="#" class="block px-3 py-1 text-sm/6 text-gray-900 focus:bg-gray-50 focus:outline-hidden dark:text-white dark:focus:bg-white/5">Edit</a>
-              </el-menu>
-            </el-dropdown>
+          <div hidden>
+            <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-03-product-02.jpg" alt="Front view with bag zipped and handles upright." class="aspect-square w-full object-cover sm:rounded-lg" />
+          </div>
+          <div hidden>
+            <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-03-product-03.jpg" alt="Back view with bag zipped and straps hanging down." class="aspect-square w-full object-cover sm:rounded-lg" />
+          </div>
+          <div hidden>
+            <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-03-product-04.jpg" alt="Back angled view with bag open and handles to the side." class="aspect-square w-full object-cover sm:rounded-lg" />
+          </div>
+        </el-tab-panels>
+      </el-tab-group>
+
+      <!-- Product info -->
+      <div class="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Zip Tote Basket</h1>
+
+        <div class="mt-3">
+          <h2 class="sr-only">Product information</h2>
+          <p class="text-3xl tracking-tight text-gray-900">$140</p>
+        </div>
+
+        <!-- Reviews -->
+        <div class="mt-3">
+          <h3 class="sr-only">Reviews</h3>
+          <div class="flex items-center">
+            <div class="flex items-center">
+              <!-- Active: "text-indigo-500", Inactive: "text-gray-300" -->
+              <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 shrink-0 text-indigo-500">
+                <path d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" clip-rule="evenodd" fill-rule="evenodd" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 shrink-0 text-indigo-500">
+                <path d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" clip-rule="evenodd" fill-rule="evenodd" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 shrink-0 text-indigo-500">
+                <path d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" clip-rule="evenodd" fill-rule="evenodd" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 shrink-0 text-indigo-500">
+                <path d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" clip-rule="evenodd" fill-rule="evenodd" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 shrink-0 text-gray-300">
+                <path d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" clip-rule="evenodd" fill-rule="evenodd" />
+              </svg>
+            </div>
+            <p class="sr-only">4 out of 5 stars</p>
           </div>
         </div>
-      </div>
-    </header>
-  
-    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-      <div class="mx-auto grid max-w-2xl grid-cols-1 grid-rows-1 items-start gap-x-8 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-        <!-- Invoice summary -->
-        <div class="lg:col-start-3 lg:row-end-1">
-          <h2 class="sr-only">Summary</h2>
-          <div class="rounded-lg bg-gray-50 shadow-xs outline-1 outline-gray-900/5 dark:bg-gray-800/50 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
-            <dl class="flex flex-wrap">
-              <div class="flex-auto pt-6 pl-6">
-                <dt class="text-sm/6 font-semibold text-gray-900 dark:text-white">Amount</dt>
-                <dd class="mt-1 text-base font-semibold text-gray-900 dark:text-white">$10,560.00</dd>
-              </div>
-              <div class="flex-none self-end px-6 pt-4">
-                <dt class="sr-only">Status</dt>
-                <dd class="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-600 ring-1 ring-green-600/20 ring-inset dark:bg-green-500/10 dark:text-green-500 dark:ring-green-500/30">Paid</dd>
-              </div>
-              <div class="mt-6 flex w-full flex-none gap-x-4 border-t border-gray-900/5 px-6 pt-6 dark:border-white/10">
-                <dt class="flex-none">
-                  <span class="sr-only">Client</span>
-                  <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="h-6 w-5 text-gray-400 dark:text-gray-500">
-                    <path d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z" clip-rule="evenodd" fill-rule="evenodd" />
-                  </svg>
-                </dt>
-                <dd class="text-sm/6 font-medium text-gray-900 dark:text-white">Alex Curren</dd>
-              </div>
-              <div class="mt-4 flex w-full flex-none gap-x-4 px-6">
-                <dt class="flex-none">
-                  <span class="sr-only">Due date</span>
-                  <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="h-6 w-5 text-gray-400 dark:text-gray-500">
-                    <path d="M5.25 12a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H6a.75.75 0 0 1-.75-.75V12ZM6 13.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V14a.75.75 0 0 0-.75-.75H6ZM7.25 12a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H8a.75.75 0 0 1-.75-.75V12ZM8 13.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V14a.75.75 0 0 0-.75-.75H8ZM9.25 10a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H10a.75.75 0 0 1-.75-.75V10ZM10 11.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V12a.75.75 0 0 0-.75-.75H10ZM9.25 14a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H10a.75.75 0 0 1-.75-.75V14ZM12 9.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V10a.75.75 0 0 0-.75-.75H12ZM11.25 12a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75V12ZM12 13.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V14a.75.75 0 0 0-.75-.75H12ZM13.25 10a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H14a.75.75 0 0 1-.75-.75V10ZM14 11.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V12a.75.75 0 0 0-.75-.75H14Z" />
-                    <path d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clip-rule="evenodd" fill-rule="evenodd" />
-                  </svg>
-                </dt>
-                <dd class="text-sm/6 text-gray-500 dark:text-gray-400">
-                  <time datetime="2023-01-31">January 31, 2023</time>
-                </dd>
-              </div>
-              <div class="mt-4 flex w-full flex-none gap-x-4 px-6">
-                <dt class="flex-none">
-                  <span class="sr-only">Status</span>
-                  <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="h-6 w-5 text-gray-400 dark:text-gray-500">
-                    <path d="M2.5 4A1.5 1.5 0 0 0 1 5.5V6h18v-.5A1.5 1.5 0 0 0 17.5 4h-15ZM19 8.5H1v6A1.5 1.5 0 0 0 2.5 16h15a1.5 1.5 0 0 0 1.5-1.5v-6ZM3 13.25a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75Zm4.75-.75a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Z" clip-rule="evenodd" fill-rule="evenodd" />
-                  </svg>
-                </dt>
-                <dd class="text-sm/6 text-gray-500 dark:text-gray-400">Paid with MasterCard</dd>
-              </div>
-            </dl>
-            <div class="mt-6 border-t border-gray-900/5 px-6 py-6 dark:border-white/10">
-              <a href="#" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Download receipt <span aria-hidden="true">&rarr;</span></a>
-            </div>
+
+        <div class="mt-6">
+          <h3 class="sr-only">Description</h3>
+
+          <div class="space-y-6 text-base text-gray-700">
+            <p>The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.</p>
           </div>
         </div>
-  
-        <!-- Invoice -->
-        <div class="-mx-4 px-4 py-8 shadow-xs ring-1 ring-gray-900/5 sm:mx-0 sm:rounded-lg sm:px-8 sm:pb-14 lg:col-span-2 lg:row-span-2 lg:row-end-2 xl:px-16 xl:pt-16 xl:pb-20 dark:shadow-none dark:ring-white/10">
-          <h2 class="text-base font-semibold text-gray-900 dark:text-white">Invoice</h2>
-          <dl class="mt-6 grid grid-cols-1 text-sm/6 sm:grid-cols-2">
-            <div class="sm:pr-4">
-              <dt class="inline text-gray-500 dark:text-gray-400">Issued on</dt>
-              <dd class="inline text-gray-700 dark:text-gray-300"><time datetime="2023-23-01">January 23, 2023</time></dd>
+
+        <form class="mt-6">
+          <!-- Colors -->
+          <div>
+            <h3 class="text-sm font-medium text-gray-600">Color</h3>
+
+            <fieldset aria-label="Choose a color" class="mt-2">
+              <div class="flex items-center gap-x-3">
+                <div class="flex rounded-full outline -outline-offset-1 outline-black/10">
+                  <input type="radio" name="color" value="washed-black" checked aria-label="Washed Black" class="size-8 appearance-none rounded-full bg-gray-700 forced-color-adjust-none checked:outline-2 checked:outline-offset-2 checked:outline-gray-700 focus-visible:outline-3 focus-visible:outline-offset-3" />
+                </div>
+                <div class="flex rounded-full outline -outline-offset-1 outline-black/10">
+                  <input type="radio" name="color" value="white" aria-label="White" class="size-8 appearance-none rounded-full bg-white forced-color-adjust-none checked:outline-2 checked:outline-offset-2 checked:outline-gray-400 focus-visible:outline-3 focus-visible:outline-offset-3" />
+                </div>
+                <div class="flex rounded-full outline -outline-offset-1 outline-black/10">
+                  <input type="radio" name="color" value="washed-gray" aria-label="Washed Gray" class="size-8 appearance-none rounded-full bg-gray-500 forced-color-adjust-none checked:outline-2 checked:outline-offset-2 checked:outline-gray-500 focus-visible:outline-3 focus-visible:outline-offset-3" />
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="mt-10 flex">
+            <button type="submit" class="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-hidden sm:w-full">Add to bag</button>
+
+            <button type="button" class="ml-4 flex items-center justify-center rounded-md px-3 py-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 shrink-0">
+                <path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span class="sr-only">Add to favorites</span>
+            </button>
+          </div>
+        </form>
+
+        <section aria-labelledby="details-heading" class="mt-12">
+          <h2 id="details-heading" class="sr-only">Additional details</h2>
+
+          <div class="divide-y divide-gray-200 border-t border-gray-200">
+            <div>
+              <h3>
+                <button type="button" command="--toggle" commandfor="detail-0" class="group relative flex w-full items-center justify-between py-6 text-left">
+                  <span class="text-sm font-medium not-in-aria-expanded:text-gray-900 in-aria-expanded:text-indigo-600">Features</span>
+                  <span class="ml-6 flex items-center">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 text-gray-400 group-hover:text-gray-500 in-aria-expanded:hidden">
+                      <path d="M12 4.5v15m7.5-7.5h-15" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 text-indigo-400 not-in-aria-expanded:hidden group-hover:text-indigo-500">
+                      <path d="M5 12h14" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <el-disclosure id="detail-0" class="contents">
+                <div class="pb-6">
+                  <ul role="list" class="list-disc space-y-1 pl-5 text-sm/6 text-gray-700 marker:text-gray-300">
+                    <li class="pl-2">Multiple strap configurations</li>
+                    <li class="pl-2">Spacious interior with top zip</li>
+                    <li class="pl-2">Leather handle and tabs</li>
+                    <li class="pl-2">Interior dividers</li>
+                    <li class="pl-2">Stainless strap loops</li>
+                    <li class="pl-2">Double stitched construction</li>
+                    <li class="pl-2">Water-resistant</li>
+                  </ul>
+                </div>
+              </el-disclosure>
             </div>
-            <div class="mt-2 sm:mt-0 sm:pl-4">
-              <dt class="inline text-gray-500 dark:text-gray-400">Due on</dt>
-              <dd class="inline text-gray-700 dark:text-gray-300"><time datetime="2023-31-01">January 31, 2023</time></dd>
+            <div>
+              <h3>
+                <button type="button" command="--toggle" commandfor="detail-1" class="group relative flex w-full items-center justify-between py-6 text-left">
+                  <span class="text-sm font-medium not-in-aria-expanded:text-gray-900 in-aria-expanded:text-indigo-600">Care</span>
+                  <span class="ml-6 flex items-center">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 text-gray-400 group-hover:text-gray-500 in-aria-expanded:hidden">
+                      <path d="M12 4.5v15m7.5-7.5h-15" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 text-indigo-400 not-in-aria-expanded:hidden group-hover:text-indigo-500">
+                      <path d="M5 12h14" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <el-disclosure id="detail-1" hidden class="contents">
+                <div class="pb-6">
+                  <ul role="list" class="list-disc space-y-1 pl-5 text-sm/6 text-gray-700 marker:text-gray-300">
+                    <li class="pl-2">Spot clean as needed</li>
+                    <li class="pl-2">Hand wash with mild soap</li>
+                    <li class="pl-2">Machine wash interior dividers</li>
+                    <li class="pl-2">Treat handle and tabs with leather conditioner</li>
+                  </ul>
+                </div>
+              </el-disclosure>
             </div>
-            <div class="mt-6 border-t border-gray-900/5 pt-6 sm:pr-4 dark:border-white/10">
-              <dt class="font-semibold text-gray-900 dark:text-white">From</dt>
-              <dd class="mt-2 text-gray-500 dark:text-gray-400"><span class="font-medium text-gray-900 dark:text-white">Acme, Inc.</span><br />7363 Cynthia Pass<br />Toronto, ON N3Y 4H8</dd>
+            <div>
+              <h3>
+                <button type="button" command="--toggle" commandfor="detail-2" class="group relative flex w-full items-center justify-between py-6 text-left">
+                  <span class="text-sm font-medium not-in-aria-expanded:text-gray-900 in-aria-expanded:text-indigo-600">Shipping</span>
+                  <span class="ml-6 flex items-center">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 text-gray-400 group-hover:text-gray-500 in-aria-expanded:hidden">
+                      <path d="M12 4.5v15m7.5-7.5h-15" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 text-indigo-400 not-in-aria-expanded:hidden group-hover:text-indigo-500">
+                      <path d="M5 12h14" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <el-disclosure id="detail-2" hidden class="contents">
+                <div class="pb-6">
+                  <ul role="list" class="list-disc space-y-1 pl-5 text-sm/6 text-gray-700 marker:text-gray-300">
+                    <li class="pl-2">Free shipping on orders over $300</li>
+                    <li class="pl-2">International shipping available</li>
+                    <li class="pl-2">Expedited shipping options</li>
+                    <li class="pl-2">Signature required upon delivery</li>
+                  </ul>
+                </div>
+              </el-disclosure>
             </div>
-            <div class="mt-8 sm:mt-6 sm:border-t sm:border-gray-900/5 sm:pt-6 sm:pl-4 dark:sm:border-white/10">
-              <dt class="font-semibold text-gray-900 dark:text-white">To</dt>
-              <dd class="mt-2 text-gray-500 dark:text-gray-400"><span class="font-medium text-gray-900 dark:text-white">Tuple, Inc</span><br />886 Walter Street<br />New York, NY 12345</dd>
+            <div>
+              <h3>
+                <button type="button" command="--toggle" commandfor="detail-3" class="group relative flex w-full items-center justify-between py-6 text-left">
+                  <span class="text-sm font-medium not-in-aria-expanded:text-gray-900 in-aria-expanded:text-indigo-600">Returns</span>
+                  <span class="ml-6 flex items-center">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 text-gray-400 group-hover:text-gray-500 in-aria-expanded:hidden">
+                      <path d="M12 4.5v15m7.5-7.5h-15" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 text-indigo-400 not-in-aria-expanded:hidden group-hover:text-indigo-500">
+                      <path d="M5 12h14" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <el-disclosure id="detail-3" hidden class="contents">
+                <div class="pb-6">
+                  <ul role="list" class="list-disc space-y-1 pl-5 text-sm/6 text-gray-700 marker:text-gray-300">
+                    <li class="pl-2">Easy return requests</li>
+                    <li class="pl-2">Pre-paid shipping label included</li>
+                    <li class="pl-2">10% restocking fee for returns</li>
+                    <li class="pl-2">60 day return window</li>
+                  </ul>
+                </div>
+              </el-disclosure>
             </div>
-          </dl>
-          <table class="mt-16 w-full text-left text-sm/6 whitespace-nowrap">
-            <colgroup>
-              <col class="w-full" />
-              <col />
-              <col />
-              <col />
-            </colgroup>
-            <thead class="border-b border-gray-200 text-gray-900 dark:border-white/15 dark:text-white">
-              <tr>
-                <th scope="col" class="px-0 py-3 font-semibold">Projects</th>
-                <th scope="col" class="hidden py-3 pr-0 pl-8 text-right font-semibold sm:table-cell">Hours</th>
-                <th scope="col" class="hidden py-3 pr-0 pl-8 text-right font-semibold sm:table-cell">Rate</th>
-                <th scope="col" class="py-3 pr-0 pl-8 text-right font-semibold">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b border-gray-100 dark:border-white/10">
-                <td class="max-w-0 px-0 py-5 align-top">
-                  <div class="truncate font-medium text-gray-900 dark:text-white">Logo redesign</div>
-                  <div class="truncate text-gray-500 dark:text-gray-400">New logo and digital asset playbook.</div>
-                </td>
-                <td class="hidden py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums sm:table-cell dark:text-gray-300">20.0</td>
-                <td class="hidden py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums sm:table-cell dark:text-gray-300">$100.00</td>
-                <td class="py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums dark:text-gray-300">$2,000.00</td>
-              </tr>
-              <tr class="border-b border-gray-100 dark:border-white/10">
-                <td class="max-w-0 px-0 py-5 align-top">
-                  <div class="truncate font-medium text-gray-900 dark:text-white">Website redesign</div>
-                  <div class="truncate text-gray-500 dark:text-gray-400">Design and program new company website.</div>
-                </td>
-                <td class="hidden py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums sm:table-cell dark:text-gray-300">52.0</td>
-                <td class="hidden py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums sm:table-cell dark:text-gray-300">$100.00</td>
-                <td class="py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums dark:text-gray-300">$5,200.00</td>
-              </tr>
-              <tr class="border-b border-gray-100 dark:border-white/10">
-                <td class="max-w-0 px-0 py-5 align-top">
-                  <div class="truncate font-medium text-gray-900 dark:text-white">Business cards</div>
-                  <div class="truncate text-gray-500 dark:text-gray-400">Design and production of 3.5&quot; x 2.0&quot; business cards.</div>
-                </td>
-                <td class="hidden py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums sm:table-cell dark:text-gray-300">12.0</td>
-                <td class="hidden py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums sm:table-cell dark:text-gray-300">$100.00</td>
-                <td class="py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums dark:text-gray-300">$1,200.00</td>
-              </tr>
-              <tr class="border-b border-gray-100 dark:border-white/10">
-                <td class="max-w-0 px-0 py-5 align-top">
-                  <div class="truncate font-medium text-gray-900 dark:text-white">T-shirt design</div>
-                  <div class="truncate text-gray-500 dark:text-gray-400">Three t-shirt design concepts.</div>
-                </td>
-                <td class="hidden py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums sm:table-cell dark:text-gray-300">4.0</td>
-                <td class="hidden py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums sm:table-cell dark:text-gray-300">$100.00</td>
-                <td class="py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums dark:text-gray-300">$400.00</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th scope="row" class="px-0 pt-6 pb-0 font-normal text-gray-700 sm:hidden dark:text-gray-300">Subtotal</th>
-                <th scope="row" colspan="3" class="hidden px-0 pt-6 pb-0 text-right font-normal text-gray-700 sm:table-cell dark:text-gray-300">Subtotal</th>
-                <td class="pt-6 pr-0 pb-0 pl-8 text-right text-gray-900 tabular-nums dark:text-white">$8,800.00</td>
-              </tr>
-              <tr>
-                <th scope="row" class="pt-4 font-normal text-gray-700 sm:hidden dark:text-gray-300">Tax</th>
-                <th scope="row" colspan="3" class="hidden pt-4 text-right font-normal text-gray-700 sm:table-cell dark:text-gray-300">Tax</th>
-                <td class="pt-4 pr-0 pb-0 pl-8 text-right text-gray-900 tabular-nums dark:text-white">$1,760.00</td>
-              </tr>
-              <tr>
-                <th scope="row" class="pt-4 font-semibold text-gray-900 sm:hidden dark:text-white">Total</th>
-                <th scope="row" colspan="3" class="hidden pt-4 text-right font-semibold text-gray-900 sm:table-cell dark:text-white">Total</th>
-                <td class="pt-4 pr-0 pb-0 pl-8 text-right font-semibold text-gray-900 tabular-nums dark:text-white">$10,560.00</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
+          </div>
+        </section>
       </div>
     </div>
-  </main>
+  </div>
+</div>
+
   <el-dialog>
     <dialog id="drawer" aria-labelledby="drawer-title" class="fixed inset-0 size-auto max-h-none max-w-none overflow-hidden bg-transparent backdrop:bg-transparent">
       <div tabindex="0" class="absolute inset-0 pl-10 focus:outline-none sm:pl-16">
