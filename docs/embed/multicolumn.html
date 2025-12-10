@@ -236,7 +236,7 @@
             </div>
         </div>
     
-        <div class="xl:pl-72" id="view_start">
+        <div class="xl:pl-72 hidden" id="view_start">
             <!-- Sticky search header -->
             <div class="sticky top-16 z-40 flex h-16 shrink-0 items-center gap-x-6 border-b border-gray-200 bg-white px-4 shadow-xs sm:px-6 lg:px-8 dark:border-white/5 dark:bg-gray-900 dark:shadow-none">
                 <button type="button" command="show-modal" commandfor="sidebar" class="-m-2.5 p-2.5 text-gray-900 xl:hidden dark:text-white">
@@ -569,18 +569,10 @@
                 </div>
             </main>
         </div>
-        <div id="view_support" class="lg:pl-72 hidden">
-            <main>
-                <div class="pt-16  xl:pl-96">
-                    <div class="h-[calc(100%_-_64px)]" id="widget_messages">
-                    <!-- Main area -->
-                    </div>
-                </div>
-            </main>
-        
-            <aside id="widget_conversations" class="fixed inset-y-0 xl:top-16 left-72 hidden w-96 overflow-y-auto border-r border-gray-200 xl:block dark:border-white/10">
-            <!-- Secondary column (hidden on smaller screens) -->
-            </aside>
+
+        <div id="view_support" class="flex h-full xl:pl-72 pt-16">
+            <aside id="widget_conversations" class="hidden xl:flex flex-col w-96 shrink-0 overflow-y-auto border-r border-gray-200 dark:border-white/10 min-w-72" style="resize:horizontal;"></aside>
+            <main id="widget_messages" class="flex-1"></main>
         </div>
     </container>
 
