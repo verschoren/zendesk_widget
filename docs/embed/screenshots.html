@@ -1,50 +1,23 @@
 <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4"> </script>
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script>
     window.zEMessenger = {
         autorender: false,
     }
-</script>
+</script> -->
 <script>
-zE('messenger', 'render', {
-  mode: 'embedded',
-  conversationList: {
-    targetElement: '#conversation-sidebar',
-  },
-  messageLog: {
-    targetElement: '#messages-sidebar',
-  },
-});
 
 zE('messenger:set', 'customization', {
     common: {
-      hideHeader: false
     },
     conversationList: {
-      hideHeader: false,
-      hideNewConversationButton: true
     },
     messageLog: {
-      hideHeader: true
     },
-    theme: {
-        primary: "#D1F470",
-        onPrimary: "#11110D",
-        message: "#FEEB7E",
-        onMessage: "#11110D",
-        action: "#B0DB43",
-        onAction: "#11110D",
-        businessMessage: "#A1D78F",
-        onBusinessMessage: "#11110D",
-        background: "#F5F5F2",
-        onBackground: "#11110D",
-        error: "#FF1744",
-        onError: "#FFFFFF",
-        notify: "#FF007F",
-        onNotify: "#FFFFFF",
-        onSecondaryAction: "#000000"
-    }
 });
 
+$(document).ready(function() {
+        $('#new_conversation').on('click', function () {
 zE('messenger:ui', 'newConversation', {
   displayName: 'Support Request', 
   iconUrl: 'https://example.com/icon.png',
@@ -53,12 +26,14 @@ zE('messenger:ui', 'newConversation', {
     priority: 'high'
   },
 });
+        })
+      });
 
 </script>
 <link href="../css/style.css" rel="stylesheet">
-
+<div id="new_conversation">click</div>
 <div class="h-full w-full bg-gray-50 p-24">
-    <div class="w-[900px] mx-auto border-b border-gray-200 px-4 py-5 bg-[#F5F5F2] sm:px-6 dark:border-white/10">
+    <!-- <div class="w-[900px] mx-auto border-b border-gray-200 px-4 py-5 bg-[#F5F5F2] sm:px-6 dark:border-white/10">
         <div class="-mt-2 -ml-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
             <div class="mt-2 ml-4">
             <h3 class="text-base font-semibold text-gray-900 dark:text-white">Your conversations</h3>
@@ -71,5 +46,5 @@ zE('messenger:ui', 'newConversation', {
     <div class="w-[900px] flex h-[500px] mx-auto">
         <div id="conversation-sidebar" class="w-[300px] border-r border-gray-100"></div>
         <div id="messages-sidebar" class="w-[600px]"></div>
-    </div>
+    </div> -->
 </div>

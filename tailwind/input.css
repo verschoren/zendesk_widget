@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@add-plugin "@tailwindcss/forms";
 
 @theme {
   --color-blue-gray-50: #f8fafc;
