@@ -36,7 +36,7 @@ $(document).ready(function () {
             <p class="text-sm/6 text-licorice dark:text-white flex gap-1">
                 ${option ? option.message : ''}
             </p>
-            <a href="https://internalnote.com" class="flex-none rounded-full bg-licorice px-3.5 py-1 text-sm font-semibold text-white shadow-xs hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 dark:bg-white/10 dark:inset-ring-white/20 dark:hover:bg-white/15 dark:focus-visible:outline-white">View article <span aria-hidden="true">&rarr;</span></a>
+            <a href="https://internalnote.com/embeddable-zendesk-widget?utm_source=demo_pages" class="flex-none rounded-full bg-licorice px-3.5 py-1 text-sm font-semibold text-white shadow-xs hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 dark:bg-white/10 dark:inset-ring-white/20 dark:hover:bg-white/15 dark:focus-visible:outline-white">View article <span aria-hidden="true">&rarr;</span></a>
         </div>
     `;
 
