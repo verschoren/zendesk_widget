@@ -23,6 +23,10 @@ $(document).ready(function () {
             "name": "draggable",
             "message": `Click get Help and drag the widget around.`
         },
+        {
+            "name": "homescreen",
+            "message": `Open the widget to enjoy a custom launcher experience.`
+        },
     ]
 
     var option = options.find(o => o.name === meta);

@@ -1,0 +1,178 @@
+<html class="h-full bg-white dark:bg-gray-900">
+<head>
+    <title>Internal Note | Widget Embedded mode demo</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Internal Note">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://demo.internalnote.com/img/banner.png">
+
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4"> </script>
+    <script>
+        window.zEMessenger = {
+            autorender: false,
+        }
+    </script>
+    <meta name="loader" content='homescreen'>
+    <script src="../js/embeddable.js"></script>
+</head>
+<body class="h-full">
+<!--launcher-->
+<div class="absolute bottom-8 right-8">
+    <div id="launcher" class="size-12 rounded-full bg-fuchsia-200 hover:bg-fuchsia-300 cursor-pointer p-3 shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+        </svg>
+    </div>
+</div>
+<!--widget-->
+<div id="widget" style="display:none" class="absolute bottom-24 right-8">
+
+    <!-- 2. INNER: actual panel box with fixed height -->
+    <div class="rounded-xl relative w-[380px] h-[600px] shadow-lg overflow-hidden flex flex-col">
+
+    <!-- background -->
+    <div class="rounded-xl  absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        <!-- Top blob -->
+        <div aria-hidden="true"
+            class="absolute inset-x-0 -top-40 transform-gpu blur-3xl sm:-top-80">
+            <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+                class="relative left-[calc(50%-11rem)] aspect-1155/678 w-[36rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72rem]">
+            </div>
+        </div>
+
+        <!-- Bottom blob -->
+        <div aria-hidden="true"
+            class="absolute inset-x-0 top-[calc(100%-13rem)] transform-gpu blur-3xl sm:top-[calc(100%-30rem)]">
+            <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+                class="relative left-[calc(50%+3rem)] aspect-1155/678 w-[36rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72rem]">
+            </div>
+        </div>
+    </div>
+    <!--widget-->
+        <div class="flex-1 overflow-y-auto flex flex-col gap-2">
+        <!-- Welcome panel -->
+        <section id="profile-overview">
+            <div class="overflow-hidden rounded-lg">
+            <h2 id="profile-overview-title" class="sr-only">Profile Overview</h2>
+            <div class="p-6">
+                <div class="">
+                <div class="">
+                    <div class="shrink-0">
+                    <img src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="mx-auto size-20 rounded-full" />
+                    </div>
+                    <div class="mt-4 text-center">
+                    <p class="text-sm font-medium text-gray-600">Welcome back,</p>
+                    <p class="text-xl font-bold text-gray-900 sm:text-2xl">Chelsea Hagon</p>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div id="get_support" class="mt-5 flex items-center justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50">Start a conversation</div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        <!-- Announcements -->
+        <section id="announcements" class="px-4">
+            <div class="overflow-hidden rounded-lg bg-white border-1 border-gray-200">
+            <div class="p-4">
+                <div class="mt-2 flow-root">
+                <ul role="list" class="-my-5 divide-y divide-gray-200">
+                    <li class="py-3">
+                    <div class="relative focus-within:ring-2 focus-within:ring-cyan-500">
+                        <h3 class="text-sm font-semibold text-gray-800">
+                            Office closed on July 2nd
+                        </h3>
+                        <p class="mt-1 line-clamp-2 text-sm text-gray-600">Cum qui rem deleniti. Suscipit in dolor veritatis sequi aut. Vero ut earum quis deleniti. Ut a sunt eum cum ut repudiandae possimus. Nihil ex tempora neque cum consectetur dolores.</p>
+                    </div>
+                    </li>
+                    <li class="py-3">
+                    <div class="relative focus-within:ring-2 focus-within:ring-cyan-500">
+                        <h3 class="text-sm font-semibold text-gray-800">
+                            New password policy
+                        </h3>
+                        <p class="mt-1 line-clamp-2 text-sm text-gray-600">Alias inventore ut autem optio voluptas et repellendus. Facere totam quaerat quam quo laudantium cumque eaque excepturi vel. Accusamus maxime ipsam reprehenderit rerum id repellendus rerum. Culpa cum vel natus. Est sit autem mollitia.</p>
+                    </div>
+                    </li>                    
+                </ul>
+                </div>
+                <div class="mt-6">
+                <a href="#" class="flex w-full items-center justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50">View all</a>
+                </div>
+            </div>
+            </div>
+        </section>
+        <!--Open tickets-->
+        <section id="conversations" class="mx-4 h-[300px] rounded-lg bg-white border-1 border-gray-200">
+            <h3 class="px-4 pt-4 text-sm font-semibold text-gray-800">
+                Your conversations
+            </h3>
+            <div class="h-[300px] overflow-hidden" id="widget_conversations"></div>
+        </section>
+        <!--Open tickets-->
+        <section id="messages" style="display:none" class="mx-4 h-[500px] rounded-lg bg-white border-1 border-gray-200">
+            <h3 id="back" class="cursor-pointer flex gap-1 items-center px-4 pt-4 text-xs font-semibold text-gray-500 hover:text-gray-800">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                    <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+                </svg>
+                Back to list
+            </h3>
+            <div class="h-[500px] overflow-hidden" id="widget_messages"></div>
+        </section>
+    </div>
+</div>
+</div>
+
+<script>
+    //on click #support or #support_mobile, remove class hidden view #view_support and add to #view_start
+    $('#launcher').on('click', function () {
+        $('#widget').toggle();
+    });
+    $('#get_support').on('click', function () {
+        $('#announcements').hide();
+        $('#conversations').hide();
+        $('#get_support').hide();
+        $('#messages').show();
+    });
+
+    $('#back').on('click', function () {
+        $('#announcements').show();
+        $('#conversations').show();
+        $('#get_support').show();
+        $('#messages').hide();
+    });
+
+    zE('messenger', 'render', {
+        mode: 'embedded',
+        widget: {
+            targetElement: '#widget_conversations',
+        },
+        messageLog: {
+            targetElement: '#widget_messages',
+        },
+
+    });
+
+    zE('messenger:set', 'customization', {
+        // Global settings 
+        common: {
+            hideHeader: false,  // Maintain headers by default
+        },
+        
+        // Conversation list settings
+        conversationList: {
+            hideHeader: true,
+            hideNewConversationButton: true
+        },
+        // Message log settings
+        messageLog: {
+            hideHeader: true  // Hides the header in conversations to maximize available space
+        }
+    });
+</script>
+
+</body>
+</html>
