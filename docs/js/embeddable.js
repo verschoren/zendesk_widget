@@ -9,7 +9,7 @@ $(document).ready(function () {
         },
         {
             "name": "multicolumn",
-            "message": `Click <strong>Get Support</strong> to view a full a columnised widget`
+            "message": `Change the column sizes at the bottom of the conversation column`
         },
         {
             "name": "intranet",
