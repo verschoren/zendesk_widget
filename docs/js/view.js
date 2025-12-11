@@ -237,7 +237,7 @@ $('document').ready(function() {
     });
   });
 
-  $('footer').html(`
+  $('footer').replaceWith(`
     <footer class="md:w-[calc(100%_-_288px)] w-full fixed bottom-0 bg-white" aria-labelledby="footer-heading">
     <div class="border-t border-gray-900/10 p-4 flex flex-col md:flex-row justify-between w-full items-start md:items-end gap-4 md:gap-0 md:pr-24">
 
