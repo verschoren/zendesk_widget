@@ -32,12 +32,12 @@ $(document).ready(function () {
     var option = options.find(o => o.name === meta);
 
     const banner = `
-        <div class="fixed w-full flex h-16 justify-between items-center gap-x-6 bg-matcha px-6 py-2.5 dark:bg-gray-800 z-10">
+        <div class="fixed w-full flex sm:h-16 justify-between items-center gap-x-6 bg-matcha px-6 py-2.5 dark:bg-gray-800 z-10">
             <a href="index.html" class="flex gap-4 items-center">
                 <img class="h-8 w-auto" src="https://demo.internalnote.com/img/zendesk.svg" alt="Zendesk">
                 <img class="h-8 w-auto" src="https://demo.internalnote.com/img/logo.svg" alt="Internal Note">
             </a>    
-            <p class="text-sm/6 text-licorice dark:text-white flex gap-1">
+            <p class="hidden sm:flex text-sm/6 text-licorice dark:text-white gap-1 w-max-96 text-center">
                 ${option ? option.message : ''}
             </p>
             <a href="https://internalnote.com/embeddable-zendesk-widget?utm_source=demo_pages" class="flex-none rounded-full bg-licorice px-3.5 py-1 text-sm font-semibold text-white shadow-xs hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 dark:bg-white/10 dark:inset-ring-white/20 dark:hover:bg-white/15 dark:focus-visible:outline-white">View article <span aria-hidden="true">&rarr;</span></a>
