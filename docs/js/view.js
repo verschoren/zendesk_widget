@@ -118,6 +118,7 @@ $('document').ready(function() {
         { icon: '🔐', id: 'authentication', name: 'Authentication', url: 'messaging.html', title: 'Zendesk Messaging Authentication', description: 'Demo page to showcase the JWT Authentication for Zendesk Messaging'},
         { icon: '🔐', id: 'guide_messaging', name: 'Guide Authentication', url: 'guide_messaging.html', title: 'Zendesk Messaging Authentication', description: 'Demo page to showcase the JWT Authentication for Zendesk Messaging'},
         { icon: '🎨', id: 'customlauncher', name: 'Customize', url: 'customlauncher.html' , title:'Custom Launcher for Messaging', description: 'Demo page to showcase the Custom Launcher for Zendesk Messaging'},
+        { icon: '↔️', id: 'embeddable_mode', name: 'Embeddable Mode', url: 'embed.index.html' , title:'Embeddable Mode', description: 'Demo pages for the new embeddable mode'}, 
         { icon: '🎨', id: 'customtheme', name: 'Custom Theme', url: 'messaging_custom.html' , title:'Customize Widget theme', description: 'Tweak colors and theming for the web widget'}, 
         { icon: '📞', id: 'voice', name: 'Voice', url: 'voice.html', title: 'Voice API for Messaging', description: 'Demo page to showcase the Voice API for Zendesk Messaging'},
         { icon: '🍿', id: 'metadata', name: ' Metadata', url: 'prefill.html', title: 'Metadata for Zendesk Messaging', description: 'Demo page to showcase the Metadata for Zendesk Messaging'},
