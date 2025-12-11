@@ -33,7 +33,7 @@ $('document').ready(function() {
     
             <div class="flex grow flex-col gap-y-5 overflow-y-autopx-6 pl-4 pb-4">
                 <div class="flex h-16 shrink-0 items-center">
-                  <a href="index.html" class="flex gap-4 items-center">
+                  <a href="index.html" class="flex gap-4 items-center dark:text-white dark:fill-white">
                     <img class="h-8 w-auto" src="https://demo.internalnote.com/img/zendesk.svg" alt="Zendesk">
                     <img class="h-8 w-auto" src="https://demo.internalnote.com/img/logo.svg" alt="Internal Note">
                   </a>    
@@ -65,7 +65,7 @@ $('document').ready(function() {
     <div class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:w-72 md:flex-col">
       <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r px-6 pb-4">
           <div class="flex h-16 shrink-0 items-center">
-            <a href="index.html" class="flex gap-4 items-center">
+            <a href="index.html" class="flex gap-4 items-center dark:text-white dark:fill-white">
               <img class="h-8 w-auto" src="https://demo.internalnote.com/img/zendesk.svg" alt="Zendesk">
               <img class="h-8 w-auto" src="https://demo.internalnote.com/img/logo.svg" alt="Internal Note">
             </a>
@@ -214,7 +214,7 @@ $('document').ready(function() {
       `);
       $('#desktop_nav_ul_'+value.type).append(`
         <li>
-            <a href="${link.url}" class="${link.id} text-gray-00 hover:text-licorice hover:bg-transparant group flex gap-x-2 rounded-md p-2 text-sm leading-6">
+            <a href="${link.url}" class="${link.id} text-licorice dark:text-white hover:text-licorice hover:bg-transparant group flex gap-x-2 rounded-md p-2 text-sm leading-6">
                 <span class="${link.id}_icon flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[1rem] font-medium text-licorice group-hover:border-cactus">${link.icon}</span>
                 <span class="truncate">${link.name}</span>
             </a>
@@ -223,6 +223,8 @@ $('document').ready(function() {
       if(link.id == meta){
         $('.'+link.id).addClass('bg-lime');
         $('.'+link.id).removeClass('bg-white');
+        $('.'+link.id).addClass('text-licorice');
+        $('.'+link.id).removeClass('dark:text-white');
         //set title to link title
         $('title').html('Internal Note - '+link.title);
        $('head').append(`<meta name="description" content="${link.description}">`);
