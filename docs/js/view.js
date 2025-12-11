@@ -34,8 +34,10 @@ $('document').ready(function() {
             <div class="flex grow flex-col gap-y-5 overflow-y-autopx-6 pl-4 pb-4">
                 <div class="flex h-16 shrink-0 items-center">
                   <a href="index.html" class="flex gap-4 items-center dark:text-white dark:fill-white">
-                    <img class="h-8 w-auto" src="https://demo.internalnote.com/img/zendesk.svg" alt="Zendesk">
-                    <img class="h-8 w-auto" src="https://demo.internalnote.com/img/logo.svg" alt="Internal Note">
+              <img class="dark:hidden block h-8 w-auto" src="https://demo.internalnote.com/img/zendesk.svg" alt="Zendesk">
+              <img class="hidden dark:block h-8 w-auto" src="https://demo.internalnote.com/img/zendesk_dark.svg" alt="Zendesk">
+              <img class="dark:hidden block h-8 w-auto" src="https://demo.internalnote.com/img/logo.svg" alt="Internal Note">
+              <img class="hidden dark:block h-8 w-auto" src="https://demo.internalnote.com/img/logo_dark.svg" alt="Internal Note">
                   </a>    
                 </div>
                 <nav class="flex flex-1 flex-col">
@@ -66,9 +68,10 @@ $('document').ready(function() {
       <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r px-6 pb-4">
           <div class="flex h-16 shrink-0 items-center">
             <a href="index.html" class="flex gap-4 items-center dark:text-white dark:fill-white">
-              <img class="dark:hidden blockh-8 w-auto" src="https://demo.internalnote.com/img/zendesk.svg" alt="Zendesk">
+              <img class="dark:hidden block h-8 w-auto" src="https://demo.internalnote.com/img/zendesk.svg" alt="Zendesk">
               <img class="hidden dark:block h-8 w-auto" src="https://demo.internalnote.com/img/zendesk_dark.svg" alt="Zendesk">
-              <img class="h-8 w-auto" src="https://demo.internalnote.com/img/logo.svg" alt="Internal Note">
+              <img class="dark:hidden block h-8 w-auto" src="https://demo.internalnote.com/img/logo.svg" alt="Internal Note">
+              <img class="hidden dark:block h-8 w-auto" src="https://demo.internalnote.com/img/logo_dark.svg" alt="Internal Note">
             </a>
           </div>
           <nav class="flex flex-1 flex-col">
@@ -96,8 +99,10 @@ $('document').ready(function() {
   $('main').prepend(`
     <div class="md:hidden sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between gap-x-4px-4 sm:gap-x-6 sm:px-6 md:px-8">
       <div class="flex items-center gap-4">
-        <img class="h-8 w-auto" src="https://demo.internalnote.com/img/zendesk.svg" alt="Zendesk">
-        <img src="https://demo.internalnote.com/img/logo.svg" alt="Internal Note" class="h-8 w-auto">
+              <img class="dark:hidden block h-8 w-auto" src="https://demo.internalnote.com/img/zendesk.svg" alt="Zendesk">
+              <img class="hidden dark:block h-8 w-auto" src="https://demo.internalnote.com/img/zendesk_dark.svg" alt="Zendesk">
+              <img class="dark:hidden block h-8 w-auto" src="https://demo.internalnote.com/img/logo.svg" alt="Internal Note">
+              <img class="hidden dark:block h-8 w-auto" src="https://demo.internalnote.com/img/logo_dark.svg" alt="Internal Note">
       </div>
       <button id="show_menu" type="button" class="-m-2.5 p-2.5 text-licorice hover:text-licorice dark:text-white hover:text-lime md:hidden">
           <span class="sr-only">Open sidebar</span>
