@@ -44,7 +44,7 @@ $('document').ready(function() {
                 <div class="rounded-md bg-lime p-4">
                   <div class="flex">
                     <div class="shrink-0">
-                      <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <svg class="h-5 w-5 text-licorice" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
                       </svg>
                     </div>
@@ -98,7 +98,7 @@ $('document').ready(function() {
         <img class="h-8 w-auto" src="https://demo.internalnote.com/img/zendesk.svg" alt="Zendesk">
         <img src="https://demo.internalnote.com/img/logo.svg" alt="Internal Note" class="h-8 w-auto">
       </div>
-      <button id="show_menu" type="button" class="-m-2.5 p-2.5 text-licorice hover:text-licorice md:hidden">
+      <button id="show_menu" type="button" class="-m-2.5 p-2.5 text-licorice hover:text-licorice dark:text-white hover:text-lime md:hidden">
           <span class="sr-only">Open sidebar</span>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -192,7 +192,7 @@ $('document').ready(function() {
 
     var list_desktop = `
     <li>
-      <div class="list_header text-sm font-semibold leading-6 text-licorice flex justify-between items-center" data-target="desktop_nav_ul_${value.type}">
+      <div class="list_header text-sm font-semibold leading-6 text-licorice dark:text-white flex justify-between items-center" data-target="desktop_nav_ul_${value.type}">
         ${value.name}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
           <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
