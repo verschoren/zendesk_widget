@@ -265,7 +265,7 @@ $('document').ready(function() {
                 <a class="text-blue-400 hover:text-underline hover:text-blue-700"
                    href="https://internalnote.com?utm_source=storagecalculator">
                    Internal Note
-                </a>.
+                </a>
             </p>
         </div>
 
