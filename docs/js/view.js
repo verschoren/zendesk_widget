@@ -212,7 +212,7 @@ $('document').ready(function() {
     $.each(value.links, function(index,link){
       $('#mobile_nav_ul_'+value.type).append(`
         <li>
-            <a href="${link.url}" class="${link.id} text-licorice hover:text-white hover:bg-matcha group flex gap-x-3 rounded-md p-2 text-sm leading-6">
+            <a href="https://demo.internalnote.com/${link.url}" class="${link.id} text-licorice hover:text-white hover:bg-matcha group flex gap-x-3 rounded-md p-2 text-sm leading-6">
                 <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[0.625rem] font-medium text-licorice group-hover:border-cactus">${link.icon}</span>
                 <span class="truncate">${link.name}</span>
             </a>
@@ -220,7 +220,7 @@ $('document').ready(function() {
       `);
       $('#desktop_nav_ul_'+value.type).append(`
         <li>
-            <a href="${link.url}" class="${link.id} text-licorice dark:text-white hover:text-licorice hover:bg-transparant group flex gap-x-2 rounded-md p-2 text-sm leading-6">
+            <a href="https://demo.internalnote.com/${link.url}" class="${link.id} text-licorice dark:text-white hover:text-licorice hover:bg-transparant group flex gap-x-2 rounded-md p-2 text-sm leading-6">
                 <span class="${link.id}_icon flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[1rem] font-medium text-licorice group-hover:border-cactus">${link.icon}</span>
                 <span class="truncate">${link.name}</span>
             </a>
