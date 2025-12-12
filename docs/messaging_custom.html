@@ -18,8 +18,13 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Medium.woff2"" crossorigin="anonymous">
 <link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-SemiBold.woff2" crossorigin="anonymous">
 <link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Bold.woff2" crossorigin="anonymous">
+    <script>
+        window.zEMessenger = {
+            autorender: false,
+        }
+    </script>
 </head>    
-<body class="h-full bg-white" data-name="messaging">
+<body class="h-full bg-white dark:bg-licorice" data-name="messaging">
     <main id="content" class="md:pl-72 py-10 px-4 sm:px-6 md:px-8">
         <header>  
             <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 md:px-8">
@@ -38,9 +43,8 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <!-- Left column: Form -->
               <div>
-                <section class="rounded-lg shadow-xs">
-                  <h3 class="text-xl font-semibold mb-4">Messenger theme customiser</h3>
-                  <p class="text-sm text-gray-600 mb-4">Tweak colours and preview the messenger theme. Values must be valid CSS colour strings (hex, rgb(), hsl() or named colours).</p>
+                <section class="">
+                  <h3 class="text-xl font-semibold mb-4">Configure your theme</h3>
 
                   <form id="theme-form" class="grid gap-3" onsubmit="return false;">
       <div class="mt-4">
@@ -56,53 +60,47 @@
     </div>
       
         <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">Primary<br><input name="primary" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FE5E41"></label>
-        <label class="text-sm">onPrimary<br><input name="onPrimary" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
+        <label class="text-sm">Primary<br><input name="primary" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FE5E41"></label>
+        <label class="text-sm">onPrimary<br><input name="onPrimary" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">Message<br><input name="message" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#F3C178"></label>
-        <label class="text-sm">onMessage<br><input name="onMessage" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#5F0F00"></label>
+        <label class="text-sm">Message<br><input name="message" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#F3C178"></label>
+        <label class="text-sm">onMessage<br><input name="onMessage" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#5F0F00"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">BusinessMessage<br><input name="businessMessage" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
-        <label class="text-sm">onBusinessMessage<br><input name="onBusinessMessage" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#000000"></label>
+        <label class="text-sm">BusinessMessage<br><input name="businessMessage" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
+        <label class="text-sm">onBusinessMessage<br><input name="onBusinessMessage" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#000000"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">Action<br><input name="action" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#B0DB43"></label>
-        <label class="text-sm">onAction<br><input name="onAction" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#000000"></label>
+        <label class="text-sm">Action<br><input name="action" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#B0DB43"></label>
+        <label class="text-sm">onAction<br><input name="onAction" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#000000"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">Background<br><input name="background" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#DFE0E2"></label>
-        <label class="text-sm">onBackground<br><input name="onBackground" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#F10404"></label>
+        <label class="text-sm">Background<br><input name="background" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#DFE0E2"></label>
+        <label class="text-sm">onBackground<br><input name="onBackground" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#F10404"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">Error<br><input name="error" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FF1744"></label>
-        <label class="text-sm">onError<br><input name="onError" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
+        <label class="text-sm">Error<br><input name="error" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FF1744"></label>
+        <label class="text-sm">onError<br><input name="onError" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">Notify<br><input name="notify" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FF007F"></label>
-        <label class="text-sm">onNotify<br><input name="onNotify" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
+        <label class="text-sm">Notify<br><input name="notify" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FF007F"></label>
+        <label class="text-sm">onNotify<br><input name="onNotify" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <label class="text-sm">onSecondaryAction<br><input name="onSecondaryAction" class="theme-input w-full px-2 py-1.5 border rounded-md text-sm text-gray-600" placeholder="#000000"></label>
+        <label class="text-sm">onSecondaryAction<br><input name="onSecondaryAction" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#000000"></label>
         <div></div>
       </div>
-
-      <div class="mt-6">
-        <h4 class="text-sm font-medium mb-2">Preview</h4>
-        <div id="preview" class="grid grid-cols-4 gap-3">
-          <!-- preview swatches inserted here -->
-        </div>
-      </div>
-
-      <p class="mt-3 text-xs text-licorice">Note: invalid CSS colours will be rejected by the widget API and will log an error in the browser console. This form validates values before sending to reduce errors.</p>
     </form>
   </section>
               </div>
-
               <!-- Right column: Code output -->
               <div>
-                <section class="rounded-lg shadow-xs">
+                <section class="mb-4">
+                  <h3 class="text-xl font-semibold mb-4">Preview</h3>
+                  <div id="widget" class="w-[320px] h-[450px] rounded-md border-gray-100 overflow-hidden"></div>
+                </section>
+                <section class="">
                   <h3 class="text-xl font-semibold mb-4">Generated Code</h3>
                   <p class="text-sm text-gray-600 mb-4">Copy this code to implement the theme in your application.</p>
                   <pre class="bg-gray-900 p-4 rounded-md overflow-x-auto text-sm" style="background-color:#282c34;padding:20px!IMPORTANT;"><code id="code-output" class="language-javascript">// Configure your theme
@@ -158,37 +156,43 @@ zE('messenger:set', 'customization', {
     return theme;
   }
 
-  function updatePreview(){
-    var preview = document.getElementById('preview');
-    preview.innerHTML = '';
+  function updatePreview() {
     var inputs = document.querySelectorAll('.theme-input');
-    inputs.forEach(function(inp){
-      var name = inp.name;
-      var val = inp.value && inp.value.trim();
-      var sw = document.createElement('div');
-      sw.style.border = '1px solid rgba(0,0,0,0.08)';
-      sw.style.padding = '8px';
-      sw.style.borderRadius = '6px';
-      sw.style.minHeight = '48px';
-      sw.style.display = 'flex';
-      sw.style.flexDirection = 'column';
-      sw.style.justifyContent = 'center';
-      sw.style.alignItems = 'center';
-      var title = document.createElement('div');
-      title.style.fontSize = '12px';
-      title.style.marginBottom = '6px';
-      title.textContent = name;
-      var colourBox = document.createElement('div');
-      colourBox.style.width = '100%';
-      colourBox.style.height = '20px';
-      colourBox.style.borderRadius = '4px';
-      colourBox.style.background = val || 'transparent';
-      colourBox.title = val || '';
-      sw.appendChild(title);
-      sw.appendChild(colourBox);
-      preview.appendChild(sw);
+
+    inputs.forEach(function (inp) {
+
+        // ensure a swatch exists
+        if (!inp.previousElementSibling || !inp.previousElementSibling.classList.contains('color-swatch')) {
+            var swatch = document.createElement('div');
+            swatch.className = 'color-swatch';
+            swatch.style.width = '32px';
+            swatch.style.height = '34px';
+            swatch.style.borderRadius = '8px 0 0 8px';
+            swatch.style.border = '1px solid oklch(0.928 0.006 264.531)';
+            swatch.style.borderRight = '0px'
+            swatch.style.marginRight = '0px';
+            swatch.style.flexShrink = '0';
+            swatch.style.display = 'inline-block';
+
+            // wrap input and swatch together
+            var wrapper = document.createElement('div');
+            wrapper.style.display = 'flex';
+            wrapper.style.alignItems = 'center';
+            wrapper.style.marginBottom = '8px';
+
+            inp.parentNode.insertBefore(wrapper, inp);
+            wrapper.appendChild(swatch);
+            wrapper.appendChild(inp);
+        }
+
+        // update swatch colour
+        var sw = inp.previousElementSibling;
+        var val = inp.value && inp.value.trim();
+        sw.style.background = val || 'transparent';
+        sw.title = val || '';
     });
-  }
+}
+
 
   function applyTheme(theme){
     if (typeof zE !== 'undefined'){
@@ -391,8 +395,14 @@ zE('messenger:set', 'customization', {
 
   });
 })();
-</script>
 
+    zE('messenger', 'render', {
+        mode: 'embedded',
+        widget: {
+            targetElement: '#widget',
+        }
+    });
+    </script>
 
 <script type="text/javascript">
   hljs.highlightAll();
