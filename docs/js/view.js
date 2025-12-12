@@ -267,7 +267,7 @@ $('document').ready(function() {
         <p class="text-xs leading-5 text-licorice dark:text-white">
           &copy; 2022–2025
           <a class="text-blue-400 hover:text-underline hover:text-blue-700"
-             href="https://internalnote.com?utm_source=storagecalculator">Internal Note</a>
+             href="https://internalnote.com?utm_source=demo_page">Internal Note</a>
         </p>
       </div>
 
