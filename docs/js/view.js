@@ -245,37 +245,50 @@ $('document').ready(function() {
     });
   });
 
-$('footer').replaceWith(`
-  <footer class="md:w-[calc(100%_-_288px)] w-full fixed bottom-0 bg-white dark:bg-gray-900" aria-labelledby="footer-heading">
+  $('footer').replaceWith(`
+  <footer class="md:w-[calc(100%_-_288px)] w-full fixed bottom-0 bg-white dark:bg-gray-900">
     <div class="border-t border-gray-900/10 p-4 flex flex-col md:flex-row justify-between w-full items-start md:items-end gap-4 md:gap-0 md:pr-24">
 
       <div class="min-w-24 w-[calc(100%_-_32px)] md:w-96">
-          <h1 class="text-sm font-medium pb-2">Subscribe to Internal Note</h1>
-          <!-- the script will be injected here -->
+        <h1 id="subscribe-title" class="text-sm font-medium pb-2">Subscribe to Internal Note</h1>
+
+        <div id="ghost-script-container">
+            <script id="ghost-signup-loader"
+                src="https://cdn.jsdelivr.net/ghost/signup-form@~0.1/umd/signup-form.min.js"
+                data-button-color="#D1F470"
+                data-button-text-color="#11110D"
+                data-site="https://internalnote.com/"
+                async>
+            </script>
+        </div>
       </div>
 
       <div class="flex flex-col md:flex-row gap-2 md:gap-4">
-          <p class="text-xs leading-5 text-licorice dark:text-white">
-              &copy; 2022–2025
-              <a class="text-blue-400 hover:text-underline hover:text-blue-700"
-                 href="https://internalnote.com?utm_source=storagecalculator">
-                 Internal Note
-              </a>
-          </p>
+        <p class="text-xs leading-5 text-licorice dark:text-white">
+          &copy; 2022–2025
+          <a class="text-blue-400 hover:text-underline hover:text-blue-700"
+             href="https://internalnote.com?utm_source=storagecalculator">Internal Note</a>
+        </p>
       </div>
 
     </div>
   </footer>
 `);
+// Find the inert script that was injected
+const inert = document.getElementById('ghost-signup-loader');
 
-// Inject script *after the h1*
-const script = document.createElement('script');
-script.src = "https://cdn.jsdelivr.net/ghost/signup-form@~0.1/umd/signup-form.min.js";
-script.dataset.buttonColor = "#D1F470";
-script.dataset.buttonTextColor = "#11110D";
-script.dataset.site = "https://internalnote.com/";
-script.async = true;
+// Create a *real* executable script node
+const exec = document.createElement('script');
+exec.src = inert.src;
 
-// Insert immediately after the H1
-$('h1:textContains("Subscribe to Internal Note")').after(script);
+for (const attr of inert.attributes) {
+    if (attr.name.startsWith('data-')) {
+        exec.setAttribute(attr.name, attr.value);
+    }
+}
+
+exec.async = true;
+
+// Replace inert version with executable version
+inert.replaceWith(exec);
 });
