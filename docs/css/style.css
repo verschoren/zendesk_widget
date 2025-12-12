@@ -1160,10 +1160,6 @@
     border-top-left-radius: var(--radius-md);
     border-bottom-left-radius: var(--radius-md);
   }
-  .rounded-l-none {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
   .rounded-tl-lg {
     border-top-left-radius: var(--radius-lg);
   }
@@ -1823,9 +1819,6 @@
   .text-blue-gray-500 {
     color: var(--color-blue-gray-500);
   }
-  .text-blue-gray-900 {
-    color: var(--color-blue-gray-900);
-  }
   .text-cactus {
     color: var(--color-cactus);
   }
@@ -1882,9 +1875,6 @@
   }
   .text-licorice {
     color: var(--color-licorice);
-  }
-  .text-matcha {
-    color: var(--color-matcha);
   }
   .text-orange-700 {
     color: var(--color-orange-700);
@@ -2418,6 +2408,13 @@
       }
     }
   }
+  .hover\:border-cactus {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-cactus);
+      }
+    }
+  }
   .hover\:border-gray-300 {
     &:hover {
       @media (hover: hover) {
@@ -2513,6 +2510,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-indigo-700);
+      }
+    }
+  }
+  .hover\:bg-lime {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-lime);
       }
     }
   }
