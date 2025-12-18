@@ -4,21 +4,24 @@
  <title>Internal Note Demo Page</title><meta charset="UTF-8">
     <meta name="author" content="Internal Note">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:image" content="https://demo.internalnote.com/img/banner.png">
-    <link href="css/atom-one-dark.css" rel="stylesheet">
     <link rel="icon" href="img/favicon.png" type="image/x-icon">
-
-<link href="css/style.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/view.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <link href="css/atom-one-dark.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+   
     <meta name="loader" content='customtheme'>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/view.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
     <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4"> </script>
-<link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Light.woff2" crossorigin="anonymous">
-<link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Regular.woff2"" crossorigin="anonymous">
-<link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Medium.woff2"" crossorigin="anonymous">
-<link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-SemiBold.woff2" crossorigin="anonymous">
-<link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Bold.woff2" crossorigin="anonymous">
-    <script>
+   
+    <link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Light.woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Regular.woff2"" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Medium.woff2"" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-SemiBold.woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="fonts/VanillaSans-Bold.woff2" crossorigin="anonymous">
+   
+   <script>
         window.zEMessenger = {
             autorender: false,
         }
@@ -46,9 +49,8 @@
                   <div class="flex justify-between items-center mb-2">
                     <h2 class="text-xl font-semibold">Generated Code</h2>
                     <button id="copy-code" type="button" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50">Copy Code</button>
-
                   </div>
-                  <pre class="bg-gray-900 p-4 rounded-md overflow-x-auto text-sm" style="background-color:#282c34;padding:20px!IMPORTANT;"><code id="code-output" class="language-javascript">// Configure your theme
+<pre class="bg-gray-900 p-4 rounded-md overflow-x-auto text-sm" style="background-color:#282c34;padding:20px!IMPORTANT;"><code id="code-output" class="language-javascript">// Configure your theme
 zE('messenger:set', 'customization', {
   theme: {
     // Add colors using the form
@@ -157,10 +159,10 @@ zE('messenger:set', 'customization', {
                   <h3 class="text-lg font-semibold mb-4">Configure your theme</h3>
                   <form id="theme-form" class="grid gap-3" onsubmit="return false;">
                     <div class="grid grid-cols-4 gap-2">
-                        <button id="preset-red" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Red theme</button>
-                        <button id="preset-blue" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Green theme</button>
-                        <button id="preset-note" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Blue theme</button>
-                        <button id="random-theme" class="inline-flex items-center justify-center rounded-md border border-purple-600 bg-white px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50" type="button">Random Theme</button>
+                      <button id="preset-red" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Red theme</button>
+                      <button id="preset-blue" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Green theme</button>
+                      <button id="preset-note" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Blue theme</button>
+                      <button id="random-theme" class="inline-flex items-center justify-center rounded-md border border-purple-600 bg-white px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50" type="button">Random Theme</button>
                     </div>  
                     <div class="grid grid-cols-4 gap-2">
                       <label class="text-sm">Primary<br><input name="primary" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FE5E41"></label>
@@ -193,7 +195,7 @@ zE('messenger:set', 'customization', {
                 <section>
                   <div class="flex gap-4 justify-between w-[320px] mb-2">
                       <h2 class="text-xl font-semibold">Preview</h2>
-                    <button id="reset-theme" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Reset</button>
+                      <button id="reset-theme" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Reset</button>
                   </div>
                   <div id="widget" class="w-[320px] h-[500px] rounded-md border-gray-100 overflow-hidden"></div>
                 </section>                
@@ -205,134 +207,127 @@ zE('messenger:set', 'customization', {
   </body>
 </html>
 <script type="text/javascript">
-    $(function() {
-      //check for URL parameter called "voice" and if it is set, open the voice channel
-      var urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.has('voice')) {
-        zE('messenger:open', 'voice', '6c0e70e6ef77d7a711a073f249ab6304')
-      }
-    }); 
-  </script>
+  $(function() {
+    //check for URL parameter called "voice" and if it is set, open the voice channel
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('voice')) {
+      zE('messenger:open', 'voice', '6c0e70e6ef77d7a711a073f249ab6304')
+    }
+  }); 
+</script>
 
 <script type="text/javascript">
 (function(){
-
   // helpers
-function getWidgetState(output) {
-  var hideHeader = document.getElementById('hideHeader').checked;
-  var conversationList = document.getElementById('conversationList').checked;
-  var messageLog = document.getElementById('messageLog').checked;
-  var hideNewConversationButton = document.getElementById('hideNewConversationButton').checked;
-  var contentScale = getCurrentScale(); // DOM is source of truth
+  function getWidgetState(output) {
+    var hideHeader = document.getElementById('hideHeader').checked;
+    var conversationList = document.getElementById('conversationList').checked;
+    var messageLog = document.getElementById('messageLog').checked;
+    var hideNewConversationButton = document.getElementById('hideNewConversationButton').checked;
+    var contentScale = getCurrentScale(); // DOM is source of truth
 
-  var widget = {};
-  var widgetRender = {};
+    var widget = {};
+    var widgetRender = {};
 
-// ---- content scale ----
-  if (contentScale !== null) {
-    // preview always shows scale
-    widgetRender.common = widgetRender.common || {};
-    widgetRender.common.contentScale = contentScale;
+    if (contentScale !== null) {
+      widgetRender.common = widgetRender.common || {};
+      widgetRender.common.contentScale = contentScale;
 
-    // runtime only if not default (100)
-    if (contentScale !== 100) {
-      widget.common = widget.common || {};
-      widget.common.contentScale = contentScale;
-    }
-  }
-
-  // ---- common / header logic ----
-  if (hideHeader) {
-    widget.common = widget.common || {};
-    widget.common.hideHeader = true;
-
-    widgetRender.conversationList = { hideHeader: true };
-    widgetRender.messageLog = { hideHeader: true };
-
-    if (hideNewConversationButton) {
-      widget.conversationList = { hideNewConversationButton: true };
-      widgetRender.conversationList.hideNewConversationButton = true;
-    }
-  }
-
-  // ---- conversation list ----
-  if (!hideHeader && (conversationList || hideNewConversationButton)) {
-    widget.conversationList = {};
-    widgetRender.conversationList = {};
-
-    if (conversationList) {
-      widget.conversationList.hideHeader = true;
-      widgetRender.conversationList.hideHeader = true;
-    }
-
-    if (hideNewConversationButton) {
-      widget.conversationList.hideNewConversationButton = true;
-      widgetRender.conversationList.hideNewConversationButton = true;
-    }
-  }
-
-  // ---- message log ----
-  if (!hideHeader && messageLog) {
-    widget.messageLog = { hideHeader: true };
-    widgetRender.messageLog = { hideHeader: true };
-  }
-
-  return output === 'render' ? widgetRender : widget;
-}
-
-function initScaleTabs(navSelector) {
-  var nav = document.querySelector(navSelector);
-  if (!nav) return;
-
-  nav.addEventListener('click', function (e) {
-    var tab = e.target.closest('[data-scale]');
-    if (!tab || !nav.contains(tab)) return;
-
-    nav.querySelectorAll('[data-scale]').forEach(function (el) {
-      el.removeAttribute('aria-current');
-
-      var indicator = el.querySelector('span[aria-hidden="true"]');
-      if (indicator) {
-        indicator.classList.remove('bg-indigo-500', 'dark:bg-indigo-400');
-        indicator.classList.add('bg-transparent');
+      if (contentScale !== 100) {
+        widget.common = widget.common || {};
+        widget.common.contentScale = contentScale;
       }
-    });
-
-    tab.setAttribute('aria-current', 'page');
-
-    var activeIndicator = tab.querySelector('span[aria-hidden="true"]');
-    if (activeIndicator) {
-      activeIndicator.classList.remove('bg-transparent');
-      activeIndicator.classList.add('bg-indigo-500', 'dark:bg-indigo-400');
     }
 
-    // trigger widget update on click only
-    updateCodeOutput();
-    applyTheme(buildThemeFromForm());
-  });
-}
+    if (hideHeader) {
+      widget.common = widget.common || {};
+      widget.common.hideHeader = true;
 
-function getCurrentScale() {
-  var active = document.querySelector(
-    'nav[aria-label="Tabs"] [data-scale][aria-current="page"]'
-  );
+      widgetRender.conversationList = { hideHeader: true };
+      widgetRender.messageLog = { hideHeader: true };
 
-  return active ? Number(active.dataset.scale) : null;
-}
+      if (hideNewConversationButton) {
+        widget.conversationList = { hideNewConversationButton: true };
+        widgetRender.conversationList.hideNewConversationButton = true;
+      }
+    }
 
-function syncCheckboxState() {
-  var hideHeader = document.getElementById('hideHeader').checked;
-  var convo = document.getElementById('conversationList');
-  var log = document.getElementById('messageLog');
+    if (!hideHeader && (conversationList || hideNewConversationButton)) {
+      widget.conversationList = {};
+      widgetRender.conversationList = {};
 
-  convo.disabled = hideHeader;
-  log.disabled = hideHeader;
+      if (conversationList) {
+        widget.conversationList.hideHeader = true;
+        widgetRender.conversationList.hideHeader = true;
+      }
 
-  if (hideHeader) {
-    convo.checked = false;
-    log.checked = false;
+      if (hideNewConversationButton) {
+        widget.conversationList.hideNewConversationButton = true;
+        widgetRender.conversationList.hideNewConversationButton = true;
+      }
+    }
+
+    if (!hideHeader && messageLog) {
+      widget.messageLog = { hideHeader: true };
+      widgetRender.messageLog = { hideHeader: true };
+    }
+
+    return output === 'render' ? widgetRender : widget;
   }
-}
+
+  function initScaleTabs(navSelector) {
+    var nav = document.querySelector(navSelector);
+    if (!nav) return;
+
+    nav.addEventListener('click', function (e) {
+      var tab = e.target.closest('[data-scale]');
+      if (!tab || !nav.contains(tab)) return;
+
+      nav.querySelectorAll('[data-scale]').forEach(function (el) {
+        el.removeAttribute('aria-current');
+
+        var indicator = el.querySelector('span[aria-hidden="true"]');
+        if (indicator) {
+          indicator.classList.remove('bg-indigo-500', 'dark:bg-indigo-400');
+          indicator.classList.add('bg-transparent');
+        }
+      });
+
+      tab.setAttribute('aria-current', 'page');
+
+      var activeIndicator = tab.querySelector('span[aria-hidden="true"]');
+      if (activeIndicator) {
+        activeIndicator.classList.remove('bg-transparent');
+        activeIndicator.classList.add('bg-indigo-500', 'dark:bg-indigo-400');
+      }
+
+      // trigger widget update on click only
+      updateCodeOutput();
+      applyTheme(buildThemeFromForm());
+    });
+  }
+
+  function getCurrentScale() {
+    var active = document.querySelector(
+      'nav[aria-label="Tabs"] [data-scale][aria-current="page"]'
+    );
+
+    return active ? Number(active.dataset.scale) : null;
+  }
+
+  function syncCheckboxState() {
+    var hideHeader = document.getElementById('hideHeader').checked;
+    var convo = document.getElementById('conversationList');
+    var log = document.getElementById('messageLog');
+
+    convo.disabled = hideHeader;
+    log.disabled = hideHeader;
+
+    if (hideHeader) {
+      convo.checked = false;
+      log.checked = false;
+    }
+  }
 
   function isValidCssColor(val){
     if (!val) return false;
@@ -363,68 +358,66 @@ function syncCheckboxState() {
     var inputs = document.querySelectorAll('.theme-input');
 
     inputs.forEach(function (inp) {
+      // ensure a swatch exists
+      if (!inp.previousElementSibling || !inp.previousElementSibling.classList.contains('color-swatch')) {
+        var swatch = document.createElement('div');
+        swatch.className = 'color-swatch';
+        swatch.style.width = '32px';
+        swatch.style.height = '34px';
+        swatch.style.borderRadius = '8px 0 0 8px';
+        swatch.style.border = '1px solid oklch(0.928 0.006 264.531)';
+        swatch.style.borderRight = '0px'
+        swatch.style.marginRight = '0px';
+        swatch.style.flexShrink = '0';
+        swatch.style.display = 'inline-block';
 
-        // ensure a swatch exists
-        if (!inp.previousElementSibling || !inp.previousElementSibling.classList.contains('color-swatch')) {
-            var swatch = document.createElement('div');
-            swatch.className = 'color-swatch';
-            swatch.style.width = '32px';
-            swatch.style.height = '34px';
-            swatch.style.borderRadius = '8px 0 0 8px';
-            swatch.style.border = '1px solid oklch(0.928 0.006 264.531)';
-            swatch.style.borderRight = '0px'
-            swatch.style.marginRight = '0px';
-            swatch.style.flexShrink = '0';
-            swatch.style.display = 'inline-block';
+        // wrap input and swatch together
+        var wrapper = document.createElement('div');
+        wrapper.style.display = 'flex';
+        wrapper.style.alignItems = 'center';
+        wrapper.style.marginBottom = '8px';
 
-            // wrap input and swatch together
-            var wrapper = document.createElement('div');
-            wrapper.style.display = 'flex';
-            wrapper.style.alignItems = 'center';
-            wrapper.style.marginBottom = '8px';
+        inp.parentNode.insertBefore(wrapper, inp);
+        wrapper.appendChild(swatch);
+        wrapper.appendChild(inp);
+      }
 
-            inp.parentNode.insertBefore(wrapper, inp);
-            wrapper.appendChild(swatch);
-            wrapper.appendChild(inp);
-        }
-
-        // update swatch colour
-        var sw = inp.previousElementSibling;
-        var val = inp.value && inp.value.trim();
-        sw.style.background = val || 'transparent';
-        sw.title = val || '';
+      // update swatch colour
+      var sw = inp.previousElementSibling;
+      var val = inp.value && inp.value.trim();
+      sw.style.background = val || 'transparent';
+      sw.title = val || '';
     });
-}
-
+  }
 
   function applyTheme(theme){
-  if (typeof zE === 'undefined') return;
+    if (typeof zE === 'undefined') return;
 
-  var widget = getWidgetState('render');
+    var widget = getWidgetState('render');
 
-  try {
-    // HARD RESET — always send false first
-    zE('messenger:set', 'customization', {
-        conversationList: {
-            hideHeader: false,
-            hideNewConversationButton: false
-        },
-        messageLog: {
-            hideHeader: false  // Hides the header in conversations to maximize available space
-        }
-    });
+    try {
+      // HARD RESET — always send false first
+      zE('messenger:set', 'customization', {
+          conversationList: {
+              hideHeader: false,
+              hideNewConversationButton: false
+          },
+          messageLog: {
+              hideHeader: false  // Hides the header in conversations to maximize available space
+          }
+      });
 
-    // APPLY ACTUAL STATE
-    zE('messenger:set', 'customization', {
-      theme: theme,
-      ...widget
-    });
+      // APPLY ACTUAL STATE
+      zE('messenger:set', 'customization', {
+        theme: theme,
+        ...widget
+      });
 
-    console.info('Applied messenger config:', { theme, widget });
-  } catch (e){
-    console.error('Failed to apply messenger config:', e);
+      console.info('Applied messenger config:', { theme, widget });
+    } catch (e){
+      console.error('Failed to apply messenger config:', e);
+    }
   }
-}
 
   function generateRandomColor(){
     var letters = '0123456789ABCDEF';
@@ -458,90 +451,90 @@ function syncCheckboxState() {
   }
 
   function updateCodeOutput(){
-  try {
-    var theme = buildThemeFromForm();
-    var widget = getWidgetState();
+    try {
+      var theme = buildThemeFromForm();
+      var widget = getWidgetState();
 
-    var customization = {
-      theme: theme,
-      ...widget
-    }
-    var codeStr = `zE('messenger:set', 'customization', ${JSON.stringify(customization, null, 2)});`;
+      var customization = {
+        theme: theme,
+        ...widget
+      }
+      var codeStr = `zE('messenger:set', 'customization', ${JSON.stringify(customization, null, 2)});`;
 
-    var codeOutput = document.getElementById('code-output');
-    if (codeOutput){
-      codeOutput.textContent = codeStr;
-      delete codeOutput.dataset.highlighted;
-      hljs.highlightElement(codeOutput);
-    }
-  } catch (e){
-    var codeOutput = document.getElementById('code-output');
-    if (codeOutput){
-      codeOutput.textContent =
-`// Configure your theme and widget
-zE('messenger:set', 'customization', {
-  theme: {}
-});`;
-      delete codeOutput.dataset.highlighted;
-      hljs.highlightElement(codeOutput);
+      var codeOutput = document.getElementById('code-output');
+      if (codeOutput){
+        codeOutput.textContent = codeStr;
+        delete codeOutput.dataset.highlighted;
+        hljs.highlightElement(codeOutput);
+      }
+    } catch (e){
+      var codeOutput = document.getElementById('code-output');
+      if (codeOutput){
+        codeOutput.textContent =
+  `// Configure your theme and widget
+  zE('messenger:set', 'customization', {
+    theme: {}
+  });`;
+        delete codeOutput.dataset.highlighted;
+        hljs.highlightElement(codeOutput);
+      }
     }
   }
-}
 
-function resetCustomizations() {
-  // 1. Reset checkboxes
-  [
-    'hideHeader',
-    'conversationList',
-    'messageLog',
-    'hideNewConversationButton'
-  ].forEach(function (id) {
-    var el = document.getElementById(id);
-    if (el) el.checked = false;
-  });
-
-  // 2. Reset scale tabs to 100
-  var nav = document.querySelector('nav[aria-label="Tabs"]');
-  if (nav) {
-    nav.querySelectorAll('[data-scale]').forEach(function (tab) {
-      tab.removeAttribute('aria-current');
-
-      var indicator = tab.querySelector('span[aria-hidden="true"]');
-      if (indicator) {
-        indicator.classList.remove('bg-indigo-500', 'dark:bg-indigo-400');
-        indicator.classList.add('bg-transparent');
-      }
+  function resetCustomizations() {
+    // 1. Reset checkboxes
+    [
+      'hideHeader',
+      'conversationList',
+      'messageLog',
+      'hideNewConversationButton'
+    ].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.checked = false;
     });
 
-    var tab100 = nav.querySelector('[data-scale="100"]');
-    if (tab100) {
-      tab100.setAttribute('aria-current', 'page');
+    // 2. Reset scale tabs to 100
+    var nav = document.querySelector('nav[aria-label="Tabs"]');
+    if (nav) {
+      nav.querySelectorAll('[data-scale]').forEach(function (tab) {
+        tab.removeAttribute('aria-current');
 
-      var activeIndicator = tab100.querySelector('span[aria-hidden="true"]');
-      if (activeIndicator) {
-        activeIndicator.classList.remove('bg-transparent');
-        activeIndicator.classList.add('bg-indigo-500', 'dark:bg-indigo-400');
+        var indicator = tab.querySelector('span[aria-hidden="true"]');
+        if (indicator) {
+          indicator.classList.remove('bg-indigo-500', 'dark:bg-indigo-400');
+          indicator.classList.add('bg-transparent');
+        }
+      });
+
+      var tab100 = nav.querySelector('[data-scale="100"]');
+      if (tab100) {
+        tab100.setAttribute('aria-current', 'page');
+
+        var activeIndicator = tab100.querySelector('span[aria-hidden="true"]');
+        if (activeIndicator) {
+          activeIndicator.classList.remove('bg-transparent');
+          activeIndicator.classList.add('bg-indigo-500', 'dark:bg-indigo-400');
+        }
       }
     }
-  }
 
-  // 3. Apply Zendesk reset
-  if (typeof zE !== 'undefined') {
-    zE('messenger:set', 'customization', {
-      common: { contentScale: 100 },
-      conversationList: {
-        hideHeader: false,
-        hideNewConversationButton: false
-      },
-      messageLog: {
-        hideHeader: false
-      }
-    });
-  }
+    // 3. Apply Zendesk reset
+    if (typeof zE !== 'undefined') {
+      zE('messenger:set', 'customization', {
+        common: { contentScale: 100 },
+        conversationList: {
+          hideHeader: false,
+          hideNewConversationButton: false
+        },
+        messageLog: {
+          hideHeader: false
+        }
+      });
+    }
 
-  // 4. Refresh preview + code output
-  updateCodeOutput();
-}
+    // 4. Refresh preview + code output
+    updateCodeOutput();
+  }
 
   // presets
   var PRESETS = {
@@ -597,25 +590,24 @@ function resetCustomizations() {
     var presetNote = document.getElementById('preset-note');
     var copyBtn = document.getElementById('copy-code');
 
-initScaleTabs('nav[aria-label="Tabs"]');
-
+    initScaleTabs('nav[aria-label="Tabs"]');
 
     ['hideHeader','conversationList','messageLog','hideNewConversationButton']
-  .forEach(function(id){
-    document.getElementById(id).addEventListener('change', function(){
-      syncCheckboxState();
-      updateCodeOutput();
+    .forEach(function(id){
+      document.getElementById(id).addEventListener('change', function(){
+        syncCheckboxState();
+        updateCodeOutput();
 
-      try {
-        var theme = buildThemeFromForm();
-        applyTheme(theme);
-      } catch (e){
-        console.warn(e.message);
-      }
+        try {
+          var theme = buildThemeFromForm();
+          applyTheme(theme);
+        } catch (e){
+          console.warn(e.message);
+        }
+      });
     });
-  });
 
-  syncCheckboxState();
+    syncCheckboxState();
 
     function setFormValues(obj){
       var inputs = form.querySelectorAll('.theme-input');
@@ -699,17 +691,16 @@ initScaleTabs('nav[aria-label="Tabs"]');
     if (typeof zE !== 'undefined'){
       zE('messenger', 'open');
     }
-
   });
 })();
 
-    zE('messenger', 'render', {
-        mode: 'embedded',
-        widget: {
-            targetElement: '#widget',
-        }
-    });
-    </script>
+zE('messenger', 'render', {
+  mode: 'embedded',
+  widget: {
+    targetElement: '#widget',
+  }
+});
+</script>
 
 <script type="text/javascript">
   hljs.highlightAll();
