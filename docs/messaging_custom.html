@@ -31,7 +31,6 @@
                 <div class="md:flex md:items-center md:justify-between md:space-x-5">
                     <div class="w-2/3">
                         <h1 class="text-3xl text-licorice">Zendesk Messaging Theme Customizer</h1>
-                        <h2 class="mt-2 text-xl text-licorice">Customize and preview Zendesk Messaging themes with live color adjustments</h2>
                     </div>
                     <div class=" w-1/3 mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
                         <a href="https://internalnote.com/custom-widget-themes?utm_source=widget_demo&campaign=demo" target="_blank" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice">Show article</a>
@@ -44,9 +43,54 @@
               <!-- Left column: Form -->
               <div>
                 <section>
-                  <h3 class="text-xl font-semibold mb-4">Configure your layout</h3>
-                  <fieldset>
-                    <legend class="sr-only">Notifications</legend>
+                  <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-xl font-semibold">Generated Code</h2>
+                    <button id="copy-code" type="button" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50">Copy Code</button>
+
+                  </div>
+                  <pre class="bg-gray-900 p-4 rounded-md overflow-x-auto text-sm" style="background-color:#282c34;padding:20px!IMPORTANT;"><code id="code-output" class="language-javascript">// Configure your theme
+zE('messenger:set', 'customization', {
+  theme: {
+    // Add colors using the form
+  }
+});</code></pre>
+                </section>
+                <section class="mt-4">
+                    <div class="block">
+                      <nav aria-label="Tabs" class="isolate flex divide-x divide-gray-200 rounded-lg bg-white border-gray-200 border-1 dark:divide-white/10 dark:bg-gray-800/50 dark:shadow-none dark:outline dark:-outline-offset-1 dark:outline-white/10">
+                        <div data-scale="50" class="group relative min-w-0 flex-1 overflow-hidden rounded-l-lg px-4 py-2 text-center text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 focus:z-10 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white">
+                          <span>50%</span>
+                          <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-transparent"></span>
+                        </div>
+                        <div data-scale="75" class="group relative min-w-0 flex-1 overflow-hidden px-4 py-2 text-center text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 focus:z-10 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white">
+                          <span>75%</span>
+                          <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-transparent"></span>
+                        </div>
+                        <div data-scale="100" aria-current="page" class="group relative min-w-0 flex-1 overflow-hidden px-4 py-2 text-center text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 dark:text-white dark:hover:bg-white/5">
+                          <span>100%</span>
+                          <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-indigo-500 dark:bg-indigo-400"></span>
+                        </div>
+                        <div data-scale="125" class="group relative min-w-0 flex-1 overflow-hidden px-4 py-2 text-center text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 focus:z-10 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white">
+                          <span>125%</span>
+                          <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-transparent"></span>
+                        </div>
+                        <div data-scale="150" class="group relative min-w-0 flex-1 overflow-hidden px-4 py-2 text-center text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 focus:z-10 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white">
+                          <span>150%</span>
+                          <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-transparent"></span>
+                        </div>
+                        <div data-scale="175" class="group relative min-w-0 flex-1 overflow-hidden px-4 py-2 text-center text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 focus:z-10 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white">
+                          <span>175%</span>
+                          <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-transparent"></span>
+                        </div>
+                        <div data-scale="200" class="group relative min-w-0 flex-1 overflow-hidden rounded-r-lg px-4 py-2 text-center text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 focus:z-10 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white">
+                          <span>200%</span>
+                          <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-transparent"></span>
+                        </div>
+                      </nav>
+                  </div>
+                </section>
+                <section class="mt-4">
+                  <fieldset class="grid grid-cols-2">
                     <div class="space-y-2">
                       <div class="flex gap-3">
                         <div class="flex h-6 shrink-0 items-center">
@@ -59,7 +103,8 @@
                           </div>
                         </div>
                         <div class="text-sm/6">
-                          <label for="hideHeader" class="font-medium text-gray-900 dark:text-white">Hide headers everywhere</label>                        </div>
+                          <label for="hideHeader" class="font-medium text-gray-900 dark:text-white">Hide headers everywhere</label>
+                        </div>
                       </div>
                       <div class="flex gap-3">
                         <div class="flex h-6 shrink-0 items-center">
@@ -75,6 +120,8 @@
                           <label for="conversationList" class="font-medium text-gray-900 dark:text-white">Hide header for conversation list</label>
                         </div>
                       </div>
+                    </div>
+                    <div class="space-y-2">
                       <div class="flex gap-3">
                         <div class="flex h-6 shrink-0 items-center">
                           <div class="group grid size-4 grid-cols-1">
@@ -106,74 +153,50 @@
                     </div>
                   </fieldset>
                 </section>
-                <section class="mt-8">
-                <section class="">
-                  <h3 class="text-xl font-semibold mb-4">Configure your theme</h3>
+                <section class="mt-4">
+                  <h3 class="text-lg font-semibold mb-4">Configure your theme</h3>
                   <form id="theme-form" class="grid gap-3" onsubmit="return false;">
-                    <div class="mt-4">
-                      <div class="flex gap-3 items-center">
-                          <button id="random-theme" class="inline-flex items-center justify-center rounded-md border border-purple-600 bg-white px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50" type="button">✨ Random Theme</button>
-                          <button id="reset-theme" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Reset</button>
-                      </div>
-                      <div class="flex gap-3 items-center mt-3">
-                          <button id="preset-red" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Red theme</button>
-                          <button id="preset-blue" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Green theme</button>
-                          <button id="preset-note" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Internal Note theme</button>
-                      </div>
-                  </div>
-                    
-                      <div class="grid grid-cols-2 gap-3">
+                    <div class="grid grid-cols-4 gap-2">
+                        <button id="preset-red" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Red theme</button>
+                        <button id="preset-blue" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Green theme</button>
+                        <button id="preset-note" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Blue theme</button>
+                        <button id="random-theme" class="inline-flex items-center justify-center rounded-md border border-purple-600 bg-white px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50" type="button">Random Theme</button>
+                    </div>  
+                    <div class="grid grid-cols-4 gap-2">
                       <label class="text-sm">Primary<br><input name="primary" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FE5E41"></label>
                       <label class="text-sm">onPrimary<br><input name="onPrimary" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
                       <label class="text-sm">Message<br><input name="message" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#F3C178"></label>
                       <label class="text-sm">onMessage<br><input name="onMessage" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#5F0F00"></label>
                     </div>
-                    <div class="grid grid-cols-2 gap-3">
+                    <div class="grid grid-cols-4 gap-2">
                       <label class="text-sm">BusinessMessage<br><input name="businessMessage" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
                       <label class="text-sm">onBusinessMessage<br><input name="onBusinessMessage" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#000000"></label>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
                       <label class="text-sm">Action<br><input name="action" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#B0DB43"></label>
                       <label class="text-sm">onAction<br><input name="onAction" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#000000"></label>
                     </div>
-                    <div class="grid grid-cols-2 gap-3">
+                    <div class="grid grid-cols-4 gap-2">
                       <label class="text-sm">Background<br><input name="background" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#DFE0E2"></label>
                       <label class="text-sm">onBackground<br><input name="onBackground" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#F10404"></label>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
                       <label class="text-sm">Error<br><input name="error" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FF1744"></label>
                       <label class="text-sm">onError<br><input name="onError" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
                     </div>
-                    <div class="grid grid-cols-2 gap-3">
+                    <div class="grid grid-cols-4 gap-2">
                       <label class="text-sm">Notify<br><input name="notify" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FF007F"></label>
                       <label class="text-sm">onNotify<br><input name="onNotify" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#FFFFFF"></label>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
                       <label class="text-sm">onSecondaryAction<br><input name="onSecondaryAction" class="theme-input w-full px-2 py-1.5 border rounded-r-md text-sm text-gray-600" placeholder="#000000"></label>
-                      <div></div>
                     </div>
                   </form>
                 </section>
               </div>
               <!-- Right column: Code output -->
               <div>
-                <section class="mb-4">
-                  <h3 class="text-xl font-semibold mb-4">Preview</h3>
-                  <div id="widget" class="w-[320px] h-[450px] rounded-md border-gray-100 overflow-hidden"></div>
-                </section>
-                <section class="">
-                  <h3 class="text-xl font-semibold mb-4">Generated Code</h3>
-                  <p class="text-sm text-gray-600 mb-4">Copy this code to implement the theme in your application.</p>
-                  <pre class="bg-gray-900 p-4 rounded-md overflow-x-auto text-sm" style="background-color:#282c34;padding:20px!IMPORTANT;"><code id="code-output" class="language-javascript">// Configure your theme
-zE('messenger:set', 'customization', {
-  theme: {
-    // Add colors using the form
-  }
-});</code></pre>
-                  <button id="copy-code" type="button" class="mt-3 inline-flex items-center justify-center rounded-md border border-green-600 bg-white px-4 py-2 text-sm font-medium text-green-600 hover:bg-green-50">Copy Code</button>
-                </section>
+                <section>
+                  <div class="flex gap-4 justify-between w-[320px] mb-2">
+                      <h2 class="text-xl font-semibold">Preview</h2>
+                    <button id="reset-theme" class="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice hover:bg-blue-50" type="button">Reset</button>
+                  </div>
+                  <div id="widget" class="w-[320px] h-[500px] rounded-md border-gray-100 overflow-hidden"></div>
+                </section>                
               </div>
             </div>
         </div>
@@ -193,30 +216,46 @@ zE('messenger:set', 'customization', {
 
 <script type="text/javascript">
 (function(){
+
   // helpers
-  function getWidgetState(output) {
+function getWidgetState(output) {
   var hideHeader = document.getElementById('hideHeader').checked;
   var conversationList = document.getElementById('conversationList').checked;
   var messageLog = document.getElementById('messageLog').checked;
   var hideNewConversationButton = document.getElementById('hideNewConversationButton').checked;
+  var contentScale = getCurrentScale(); // DOM is source of truth
 
   var widget = {};
   var widgetRender = {};
 
-    // common
+// ---- content scale ----
+  if (contentScale !== null) {
+    // preview always shows scale
+    widgetRender.common = widgetRender.common || {};
+    widgetRender.common.contentScale = contentScale;
+
+    // runtime only if not default (100)
+    if (contentScale !== 100) {
+      widget.common = widget.common || {};
+      widget.common.contentScale = contentScale;
+    }
+  }
+
+  // ---- common / header logic ----
   if (hideHeader) {
-    widget.common = { hideHeader: true };
+    widget.common = widget.common || {};
+    widget.common.hideHeader = true;
 
     widgetRender.conversationList = { hideHeader: true };
     widgetRender.messageLog = { hideHeader: true };
 
     if (hideNewConversationButton) {
+      widget.conversationList = { hideNewConversationButton: true };
       widgetRender.conversationList.hideNewConversationButton = true;
-      widget.conversationList = {hideNewConversationButton: true};
     }
   }
 
-  // conversation list
+  // ---- conversation list ----
   if (!hideHeader && (conversationList || hideNewConversationButton)) {
     widget.conversationList = {};
     widgetRender.conversationList = {};
@@ -232,7 +271,7 @@ zE('messenger:set', 'customization', {
     }
   }
 
-  // message log
+  // ---- message log ----
   if (!hideHeader && messageLog) {
     widget.messageLog = { hideHeader: true };
     widgetRender.messageLog = { hideHeader: true };
@@ -241,7 +280,45 @@ zE('messenger:set', 'customization', {
   return output === 'render' ? widgetRender : widget;
 }
 
+function initScaleTabs(navSelector) {
+  var nav = document.querySelector(navSelector);
+  if (!nav) return;
 
+  nav.addEventListener('click', function (e) {
+    var tab = e.target.closest('[data-scale]');
+    if (!tab || !nav.contains(tab)) return;
+
+    nav.querySelectorAll('[data-scale]').forEach(function (el) {
+      el.removeAttribute('aria-current');
+
+      var indicator = el.querySelector('span[aria-hidden="true"]');
+      if (indicator) {
+        indicator.classList.remove('bg-indigo-500', 'dark:bg-indigo-400');
+        indicator.classList.add('bg-transparent');
+      }
+    });
+
+    tab.setAttribute('aria-current', 'page');
+
+    var activeIndicator = tab.querySelector('span[aria-hidden="true"]');
+    if (activeIndicator) {
+      activeIndicator.classList.remove('bg-transparent');
+      activeIndicator.classList.add('bg-indigo-500', 'dark:bg-indigo-400');
+    }
+
+    // trigger widget update on click only
+    updateCodeOutput();
+    applyTheme(buildThemeFromForm());
+  });
+}
+
+function getCurrentScale() {
+  var active = document.querySelector(
+    'nav[aria-label="Tabs"] [data-scale][aria-current="page"]'
+  );
+
+  return active ? Number(active.dataset.scale) : null;
+}
 
 function syncCheckboxState() {
   var hideHeader = document.getElementById('hideHeader').checked;
@@ -411,6 +488,60 @@ zE('messenger:set', 'customization', {
   }
 }
 
+function resetCustomizations() {
+  // 1. Reset checkboxes
+  [
+    'hideHeader',
+    'conversationList',
+    'messageLog',
+    'hideNewConversationButton'
+  ].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.checked = false;
+  });
+
+  // 2. Reset scale tabs to 100
+  var nav = document.querySelector('nav[aria-label="Tabs"]');
+  if (nav) {
+    nav.querySelectorAll('[data-scale]').forEach(function (tab) {
+      tab.removeAttribute('aria-current');
+
+      var indicator = tab.querySelector('span[aria-hidden="true"]');
+      if (indicator) {
+        indicator.classList.remove('bg-indigo-500', 'dark:bg-indigo-400');
+        indicator.classList.add('bg-transparent');
+      }
+    });
+
+    var tab100 = nav.querySelector('[data-scale="100"]');
+    if (tab100) {
+      tab100.setAttribute('aria-current', 'page');
+
+      var activeIndicator = tab100.querySelector('span[aria-hidden="true"]');
+      if (activeIndicator) {
+        activeIndicator.classList.remove('bg-transparent');
+        activeIndicator.classList.add('bg-indigo-500', 'dark:bg-indigo-400');
+      }
+    }
+  }
+
+  // 3. Apply Zendesk reset
+  if (typeof zE !== 'undefined') {
+    zE('messenger:set', 'customization', {
+      common: { contentScale: 100 },
+      conversationList: {
+        hideHeader: false,
+        hideNewConversationButton: false
+      },
+      messageLog: {
+        hideHeader: false
+      }
+    });
+  }
+
+  // 4. Refresh preview + code output
+  updateCodeOutput();
+}
 
   // presets
   var PRESETS = {
@@ -466,6 +597,9 @@ zE('messenger:set', 'customization', {
     var presetNote = document.getElementById('preset-note');
     var copyBtn = document.getElementById('copy-code');
 
+initScaleTabs('nav[aria-label="Tabs"]');
+
+
     ['hideHeader','conversationList','messageLog','hideNewConversationButton']
   .forEach(function(id){
     document.getElementById(id).addEventListener('change', function(){
@@ -500,6 +634,8 @@ zE('messenger:set', 'customization', {
 
     resetBtn.addEventListener('click', function(){
       form.reset();
+      resetCustomizations();
+      setFormValues(PRESETS.old)
       applyTheme(PRESETS.old);
       updatePreview();
     });
