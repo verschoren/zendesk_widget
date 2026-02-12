@@ -195,6 +195,7 @@ $('document').ready(function() {
       <ul id="mobile_nav_ul_${value.type}" role="list" class="hidden -mx-2 mt-2 space-y-1"></ul>
     </li>
     `
+    $('#menu_mobile').append(list_mobile);
 
     var list_desktop = `
     <li>
@@ -207,8 +208,18 @@ $('document').ready(function() {
       <ul id="desktop_nav_ul_${value.type}" role="list" class="hidden -mx-2 mt-2 space-y-1"></ul>
     </li>
     `
-    $('#menu_mobile').append(list_mobile);
     $('#menu_desktop').append(list_desktop);
+
+    var list_home = `
+    <div class="mb-4">
+      <div class="list_header font-semibold leading-6 text-licorice dark:text-white flex justify-between items-center mb-2" data-target="home_nav_ul_${value.type}">
+        ${value.name}
+      </div>
+      <div id="home_nav_ul_${value.type}" role="list" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+    </div>
+    `;
+    $('#home').append(list_home);
+    
     $.each(value.links, function(index,link){
       $('#mobile_nav_ul_'+value.type).append(`
         <li class="ml-4">
@@ -240,8 +251,18 @@ $('document').ready(function() {
         $('#mobile_nav_ul_'+value.type).parent().find('svg').toggleClass('rotate-90');
         $('#desktop_nav_ul_'+value.type).parent().find('svg').toggleClass('rotate-90');
       }
+
+      $('#home_nav_ul_' + value.type).append(`
+        <div class="border-matcha border-1 hover:bg-matcha rounded-md p-2 transition-colors">
+            <a href="https://demo.internalnote.com/${link.url}" class="${link.id} text-licorice dark:text-white hover:text-licorice text-sm leading-6 block">
+                <div class="font-semibold truncate">${link.name}</div>
+                <div class="truncate opacity-80">${link.description}</div>
+            </a>
+        </div>
+      `);
     });
   });
+
 
   $('footer').replaceWith(`
   <footer class="md:w-[calc(100%_-_288px)] w-full fixed bottom-0 bg-white dark:bg-gray-900">
