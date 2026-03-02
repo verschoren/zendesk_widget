@@ -165,7 +165,7 @@ npm run deploy
 
 ## Testing Deployment
 
-After deployment, test all endpoints:
+### Quick Test - Verify Endpoints Work
 
 ```bash
 # Test Messaging
@@ -178,6 +178,30 @@ curl -X POST https://jwt.internalnote.com/guide \
   -H "Content-Type: application/json" \
   -d '{"external_id":"test","user_email":"test@example.com","user_name":"Test User"}'
 ```
+
+### Verify JWT Structure (Development Only)
+
+Use the test endpoint to verify JWT tokens are correctly formatted:
+
+```bash
+# Test Messaging JWT structure
+curl -X POST http://localhost:8788/api/test-jwt \
+  -H "Content-Type: application/json" \
+  -d '{"type":"messaging"}'
+
+# Test Guide JWT structure
+curl -X POST http://localhost:8788/api/test-jwt \
+  -H "Content-Type: application/json" \
+  -d '{"type":"guide"}'
+```
+
+This will return the decoded JWT and verification results showing:
+- ✅ All required fields are present
+- ✅ No extra fields (for Classic Widget)
+- ✅ Correct header structure
+- ✅ Valid expiration time (for Messaging)
+
+**See JWT_VERIFICATION.md for detailed JWT format requirements**
 
 ## Local Development
 
