@@ -19,7 +19,7 @@
   --color-cactus: #A1D78F;
   --color-shamrock: #2D4C33;
   --color-lime: #E6FAAB;
-  --font-brand: "Vanilla Sans", Arial, sans-serif;
+  --font-family-brand: "Vanilla Sans", Arial, sans-serif;
 }
 
 /*
@@ -34,6 +34,12 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer utilities {
+  .font-brand {
+    font-family: var(--font-family-brand);
   }
 }
 

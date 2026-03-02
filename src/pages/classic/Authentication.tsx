@@ -57,7 +57,7 @@ export default function ClassicAuthentication() {
     setLogoutSuccess(false)
 
     try {
-      const response = await fetch('https://jwt-demo.verschoren.workers.dev/guide', {
+      const response = await fetch('/api/guide', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

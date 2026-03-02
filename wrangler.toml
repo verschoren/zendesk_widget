@@ -1,0 +1,23 @@
+# Optional wrangler.toml for Cloudflare Pages
+# This file is NOT required for deployment, but useful for:
+# - Local development with wrangler pages dev
+# - Documentation of your project configuration
+
+name = "zendesk-widget-demo"
+compatibility_date = "2024-01-01"
+
+# Pages configuration
+pages_build_output_dir = "dist"
+
+# Custom domains are managed in Cloudflare Dashboard
+# Current domains:
+# - demo.internalnote.com (main)
+# - jwt.internalnote.com (JWT API alias)
+
+# Local development
+[env.development]
+# Environment variables for local dev should be in .dev.vars file
+# Do not commit secrets to this file!
+
+# Note: For Cloudflare Pages, you typically configure everything
+# in the Cloudflare Dashboard, not this file. This file is optional.

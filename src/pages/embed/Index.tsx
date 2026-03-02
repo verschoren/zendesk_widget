@@ -2,13 +2,14 @@ import { PageMetadata } from '@/types/page'
 
 export const metadata: PageMetadata = {
   id: 'embed-index',
-  category: 'embed',
-  categoryName: 'Embeddable Mode',
+  category: 'messaging',
+  categoryName: 'Messaging Widget',
   name: 'Overview',
   icon: '📱',
   path: '/embed',
   title: 'Messaging Embed Mode',
-  description: 'Demo pages showcasing different embeddable widget modes'
+  description: 'Demo pages showcasing different embeddable widget modes',
+  parentId: 'embeddable_mode'
 }
 
 const demos = [

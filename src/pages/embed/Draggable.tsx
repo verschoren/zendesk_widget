@@ -3,13 +3,14 @@ import { PageMetadata } from '@/types/page'
 
 export const metadata: PageMetadata = {
   id: 'embed-draggable',
-  category: 'embed',
-  categoryName: 'Embeddable Mode',
+  category: 'messaging',
+  categoryName: 'Messaging Widget',
   name: 'Draggable',
   icon: '🖱️',
   path: '/embed/draggable',
   title: 'Draggable Widget Demo',
-  description: 'Draggable popup widget you can move around'
+  description: 'Draggable popup widget you can move around',
+  parentId: 'embeddable_mode'
 }
 
 export default function Draggable() {

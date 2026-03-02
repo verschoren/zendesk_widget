@@ -90,7 +90,7 @@ export default function GuideCustom() {
     var jwttoken = '';
     $.ajax({
         type: "POST",
-        url: 'https://jwt.verschoren.workers.dev/guide', //replace with your worker
+        url: 'https://jwtauth.internalnote.com/guide', //replace with your worker
         data: JSON.stringify({
           "external_id": user.user.id,
           "user_email": user.user.email,

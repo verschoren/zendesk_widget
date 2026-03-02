@@ -3,13 +3,14 @@ import { PageMetadata } from '@/types/page'
 
 export const metadata: PageMetadata = {
   id: 'embed-multicolumn',
-  category: 'embed',
-  categoryName: 'Embeddable Mode',
+  category: 'messaging',
+  categoryName: 'Messaging Widget',
   name: 'Multi Column',
   icon: '📊',
   path: '/embed/multicolumn',
   title: 'Multi-Column Widget Demo',
-  description: 'Conversation and message list as separate embedded elements'
+  description: 'Conversation and message list as separate embedded elements',
+  parentId: 'embeddable_mode'
 }
 
 export default function MultiColumn() {

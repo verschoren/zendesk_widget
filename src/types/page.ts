@@ -12,6 +12,7 @@ export interface PageMetadata {
   external?: boolean      // Whether this is an external link
   url?: string            // External URL if applicable
   component?: ComponentType  // React component for the page
+  parentId?: string       // Optional parent navigation item ID (for nested navigation)
 }
 
 export interface PageModule {

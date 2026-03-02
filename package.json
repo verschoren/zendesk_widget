@@ -7,10 +7,11 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:functions": "npm run build && wrangler pages dev dist --live-reload",
     "build": "npm run generate-registry && vite build",
     "generate-registry": "tsx scripts/generate-registry.ts",
     "preview": "vite preview",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler pages deploy dist"
   },
   "dependencies": {
     "hono": "^4.0.0",

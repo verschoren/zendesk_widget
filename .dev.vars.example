@@ -1,0 +1,16 @@
+# Environment variables for local development
+# Copy this file to .dev.vars and fill in your values
+# DO NOT commit .dev.vars to version control
+
+# Zendesk Messaging JWT credentials (Messaging SDK)
+MESSAGING_APP_ID=your_messaging_app_id_here
+MESSAGING_SECRET=your_messaging_secret_here
+
+# Zendesk Classic Widget / Guide JWT credentials
+GUIDE_SECRET=your_guide_secret_here
+
+# Zendesk Chat JWT credentials
+CHAT_SECRET=your_chat_secret_here
+
+# Zendesk SDK JWT credentials
+SDK_SECRET=your_sdk_secret_here

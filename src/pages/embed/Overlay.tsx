@@ -3,13 +3,14 @@ import { PageMetadata } from '@/types/page'
 
 export const metadata: PageMetadata = {
   id: 'embed-overlay',
-  category: 'embed',
-  categoryName: 'Embeddable Mode',
+  category: 'messaging',
+  categoryName: 'Messaging Widget',
   name: 'Overlay',
   icon: '📲',
   path: '/embed/overlay',
   title: 'Overlay Widget Demo',
-  description: 'Slide-over overlay widget demonstration'
+  description: 'Slide-over overlay widget demonstration',
+  parentId: 'embeddable_mode'
 }
 
 export default function Overlay() {

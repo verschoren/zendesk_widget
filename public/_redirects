@@ -1,0 +1,14 @@
+# Cloudflare Pages Redirects
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Redirect old worker URLs to new API endpoints
+https://jwt-demo.verschoren.workers.dev/messaging https://demo.internalnote.com/api/messaging 301
+https://jwt-demo.verschoren.workers.dev/guide https://demo.internalnote.com/api/guide 301
+https://jwt.verschoren.workers.dev/guide https://demo.internalnote.com/api/guide 301
+
+# Optional: Redirect jwt.internalnote.com root to main site
+# Uncomment if you want jwt.internalnote.com to only serve API endpoints
+# https://jwt.internalnote.com/ https://demo.internalnote.com/ 302
+
+# Keep jwt.internalnote.com API paths working
+# (No redirect needed - functions work on all custom domains automatically)

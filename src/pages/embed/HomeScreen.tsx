@@ -3,13 +3,14 @@ import { PageMetadata } from '@/types/page'
 
 export const metadata: PageMetadata = {
   id: 'embed-homescreen',
-  category: 'embed',
-  categoryName: 'Embeddable Mode',
+  category: 'messaging',
+  categoryName: 'Messaging Widget',
   name: 'Custom Launcher',
   icon: '🏠',
   path: '/embed/homescreen',
   title: 'Custom Launcher Demo',
-  description: 'Custom launcher experience with home screen'
+  description: 'Custom launcher experience with home screen',
+  parentId: 'embeddable_mode'
 }
 
 export default function HomeScreen() {

@@ -3,13 +3,14 @@ import { PageMetadata } from '@/types/page'
 
 export const metadata: PageMetadata = {
   id: 'embed-intranet',
-  category: 'embed',
-  categoryName: 'Embeddable Mode',
+  category: 'messaging',
+  categoryName: 'Messaging Widget',
   name: 'Intranet',
   icon: '🏢',
   path: '/embed/intranet',
   title: 'Intranet Widget Demo',
-  description: 'Inline single message thread embedded in page'
+  description: 'Inline single message thread embedded in page',
+  parentId: 'embeddable_mode'
 }
 
 export default function Intranet() {

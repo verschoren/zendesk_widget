@@ -15,6 +15,7 @@ export interface NavigationLink {
   title: string
   description: string
   external?: boolean
+  children?: NavigationLink[] // For nested navigation items
 }
 
 export function pageMetadataToNavigationLink(page: PageMetadata): NavigationLink {

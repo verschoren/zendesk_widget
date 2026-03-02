@@ -3,13 +3,14 @@ import { PageMetadata } from '@/types/page'
 
 export const metadata: PageMetadata = {
   id: 'embed-contact',
-  category: 'embed',
-  categoryName: 'Embeddable Mode',
+  category: 'messaging',
+  categoryName: 'Messaging Widget',
   name: 'Contact Page',
   icon: '📧',
   path: '/embed/contact',
   title: 'Contact Page Widget Demo',
-  description: 'Widget embedded within a contact form page'
+  description: 'Widget embedded within a contact form page',
+  parentId: 'embeddable_mode'
 }
 
 export default function Contact() {

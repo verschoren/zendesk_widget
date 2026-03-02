@@ -204,42 +204,138 @@ npx tailwindcss -i ./tailwind/input.css -o ./docs/css/style.css --watch
 
 **CHECK OUT THE FULL DEMO AND SETUP AT [INTERNALNOTE.COM](https://internalnote.com/jwt-messaging/)**
 
-### Current Setup (Cloudflare Workers)
-The project uses Cloudflare Workers to generate JWTs for:
-- Zendesk Messaging SDK
-- Classic Widget
+### Current Setup (Cloudflare Pages Functions)
+The project uses Cloudflare Pages Functions (serverless) to generate JWTs for:
+- **Zendesk Messaging SDK** → `/api/messaging`
+- **Zendesk Guide/Classic Widget** → `/api/guide`
+- **Zendesk Chat** → `/api/chat`
+- **Zendesk SDK** → `/api/sdk`
 
-**Workers to migrate:**
-- `messaging-worker/src/worker.js` → Hono route
-- `classic-worker/index.js` → Hono route
+Located in: `functions/api/`
 
-### Messaging JWT Endpoint
+### Environment Variables
 
-Endpoint: `https://jwtauth.internalnote.com/messaging`
+Set these in Cloudflare Pages Dashboard (Settings → Environment Variables):
 
-Request payload:
-```json
-{
-  "name": "John Appleseed",
-  "email": "john@example.com",
-  "external_id": "123456"
-}
+**Production & Preview:**
+```
+MESSAGING_APP_ID=your_messaging_app_id
+MESSAGING_SECRET=your_messaging_secret_key
+GUIDE_SECRET=your_guide_secret_key
+CHAT_SECRET=your_chat_secret_key
+SDK_SECRET=your_sdk_secret_key
 ```
 
-Returns:
+**Local Development:**
+1. Copy `.dev.vars.example` to `.dev.vars`
+2. Fill in your credentials
+3. Run `npm run dev` (Vite will proxy `/api/*` requests)
+
+### API Endpoints
+
+#### Messaging JWT Endpoint
+
+**URL:** `/api/messaging` or `https://jwtauth.internalnote.com/messaging`
+
+**For:** Zendesk Messaging SDK authentication
+
+**Request:**
+```bash
+curl -X POST https://demo.internalnote.com/api/messaging \
+  -H "Content-Type: application/json" \
+  -d '{
+    "external_id": "123456",
+    "email": "john@example.com",
+    "name": "John Appleseed"
+  }'
+```
+
+**Response:** JWT token (plain text)
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+#### Guide JWT Endpoint
+
+**URL:** `/api/guide` or `https://jwtauth.internalnote.com/guide`
+
+**For:** Zendesk Classic Widget / Guide authentication
+
+**Request:**
+```bash
+curl -X POST https://demo.internalnote.com/api/guide \
+  -H "Content-Type: application/json" \
+  -d '{
+    "external_id": "123456",
+    "user_email": "john@example.com",
+    "user_name": "John Appleseed"
+  }'
+```
+
+**Response:** JWT token (plain text)
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+#### Chat JWT Endpoint
+
+**URL:** `/api/chat`
+
+**For:** Zendesk Chat authentication
+
+**Request:**
+```bash
+curl -X POST https://demo.internalnote.com/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Appleseed",
+    "email": "john@example.com",
+    "external_id": "123456"
+  }'
+```
+
+**Response:** JSON with JWT
 ```json
 {
   "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
 
-JWT structure:
+#### SDK JWT Endpoint
+
+**URL:** `/api/sdk`
+
+**For:** Zendesk SDK authentication
+
+**Request:**
+```bash
+curl -X POST https://demo.internalnote.com/api/sdk \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_token": "john@example.com"
+  }'
+```
+
+**Response:** JSON with JWT
+```json
+{
+  "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+### JWT Structure
+
+**Header:**
 ```json
 {
   "alg": "HS256",
   "typ": "JWT",
-  "kid": "act_5963ceb97cde542d000dbdb1"
+  "kid": "your_app_id"
 }
+```
+
+**Payload:**
+```json
 {
   "scope": "user",
   "name": "John Appleseed",
@@ -249,6 +345,18 @@ JWT structure:
   "email_verified": true
 }
 ```
+
+### Custom Domain Setup (jwtauth.internalnote.com)
+
+To set up the custom domain in Cloudflare Pages:
+
+1. Go to your Pages project → **Custom domains**
+2. Add `jwtauth.internalnote.com` as a custom domain
+3. Update your DNS to point to Cloudflare Pages:
+   - CNAME `jwtauth` → `your-project.pages.dev`
+4. The functions will be available at:
+   - `https://jwtauth.internalnote.com/messaging`
+   - `https://jwtauth.internalnote.com/guide`
 
 ## 🚀 Deployment (Coming Soon)
 

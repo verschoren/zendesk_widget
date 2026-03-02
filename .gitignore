@@ -1,3 +1,15 @@
 node_modules
 /node_modules
 todo.md
+
+# Build output
+dist
+.wrangler
+
+# Environment variables
+.dev.vars
+.env
+.env.local
+
+# Cloudflare
+wrangler.toml.local

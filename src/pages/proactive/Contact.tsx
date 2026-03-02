@@ -86,7 +86,7 @@ export default function ProactiveContact() {
 
     // Login with JWT
     try {
-      const response = await fetch('https://jwt-demo.verschoren.workers.dev/messaging', {
+      const response = await fetch('/api/messaging', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
