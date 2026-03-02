@@ -11,15 +11,15 @@ export default function HomePage() {
     document.title = 'Internal Note Demo Page'
 
     // Load Zendesk widget for homepage
-    const script = document.createElement('script')
-    script.id = 'ze-snippet'
-    script.src = 'https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4'
-    script.async = true
-    document.body.appendChild(script)
+    const zendeskScript = document.createElement('script')
+    zendeskScript.id = 'ze-snippet'
+    zendeskScript.src = 'https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4'
+    zendeskScript.async = true
+    document.body.appendChild(zendeskScript)
 
     return () => {
-      const existing = document.getElementById('ze-snippet')
-      if (existing) existing.remove()
+      const existingZendesk = document.getElementById('ze-snippet')
+      if (existingZendesk) existingZendesk.remove()
     }
   }, [])
 
@@ -47,6 +47,22 @@ export default function HomePage() {
           </div>
         </div>
       </header>
+
+      {/* Migration Banner */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-4">
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <p className="text-sm text-licorice">
+            We recently migrated this website to React. Found a bug? Let me know via{' '}
+            <a
+              href="mailto:note@internalnote.com"
+              className="text-blue-600 hover:text-blue-800 underline"
+            >
+              note@internalnote.com
+            </a>
+            . Thanks!
+          </p>
+        </div>
+      </div>
 
       <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 mb-24">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
@@ -110,34 +126,6 @@ export default function HomePage() {
           )}
         </div>
       </div>
-
-      <footer className="md:w-[calc(100%_-_288px)] w-full fixed bottom-0 bg-white" aria-labelledby="footer-heading">
-        <div className="border-t border-gray-900/10 p-4 flex flex-col md:flex-row justify-between w-full items-start md:items-end gap-4 md:gap-0 md:pr-24">
-          <div className="min-w-24 w-[calc(100%_-_32px)] md:w-96">
-            <h1 className="text-sm font-medium pb-2">Subscribe to Internal Note</h1>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: `<script src="https://cdn.jsdelivr.net/ghost/signup-form@~0.1/umd/signup-form.min.js" data-button-color="#D1F470" data-button-text-color="#11110D" data-site="https://internalnote.com/" async></script>`
-              }}
-            />
-          </div>
-
-          <div className="flex flex-col md:flex-row gap-2 md:gap-4">
-            <p className="text-xs leading-5 text-licorice">
-              &copy; 2022–2025{' '}
-              <a
-                className="text-blue-400 hover:underline hover:text-blue-700"
-                href="https://internalnote.com?utm_source=storagecalculator"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Internal Note
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </footer>
     </>
   )
 }
