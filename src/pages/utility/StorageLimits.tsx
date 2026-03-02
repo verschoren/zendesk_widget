@@ -3,8 +3,8 @@ import { PageMetadata } from '@/types/page'
 
 export const metadata: PageMetadata = {
   id: 'storage-limits',
-  category: 'utility',
-  categoryName: 'Utility & Tools',
+  category: 'storage',
+  categoryName: 'Storage Limits',
   name: 'Storage Calculator',
   icon: '💾',
   path: '/utility/storage-limits',

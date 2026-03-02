@@ -3,8 +3,8 @@ import { PageMetadata } from '@/types/page'
 
 export const metadata: PageMetadata = {
   id: 'answerbot',
-  category: 'utility',
-  categoryName: 'Utility & Tools',
+  category: 'answerbot',
+  categoryName: 'Answer Bot',
   name: 'Answer Bot API',
   icon: '🤖',
   path: '/utility/answerbot',

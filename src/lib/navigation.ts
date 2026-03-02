@@ -1,6 +1,15 @@
 import { NavigationSection, pageMetadataToNavigationLink } from '@/types/navigation'
 import { PageMetadata } from '@/types/page'
 
+// Define the desired order of categories
+const CATEGORY_ORDER = [
+  'messaging',
+  'classic',
+  'proactive',
+  'utility',
+  'embed'
+]
+
 // This will be imported from pageRegistry once it's generated
 // For now, we export a function that takes pages as input
 export function buildNavigation(pages: PageMetadata[]): NavigationSection[] {
@@ -16,7 +25,10 @@ export function buildNavigation(pages: PageMetadata[]): NavigationSection[] {
     return acc
   }, {} as Record<string, NavigationSection>)
 
-  return Object.values(grouped)
+  // Sort by the defined order
+  return CATEGORY_ORDER
+    .map(category => grouped[category])
+    .filter(Boolean) // Remove undefined entries
 }
 
 // Helper to get navigation with pages from registry
