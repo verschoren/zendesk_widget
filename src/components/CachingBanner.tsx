@@ -59,6 +59,9 @@ export default function CachingBanner() {
                 <p>
                   If you experience issues triggering the proactive alerts, clear your LocalStorage and try again.
                 </p>
+                <p>
+                  If the widget does not appear, refresh the page. Since we load different widgets depending on the demo React routing sometimes gets confused.
+                </p>
               </div>
             </div>
             <button

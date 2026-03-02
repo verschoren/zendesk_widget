@@ -72,17 +72,36 @@ url: 'https://jwtauth.internalnote.com/guide', //replace with your worker
 
 ---
 
-## Other Workers - Not Migrated
+## Answer Bot API - Migrated ✅
 
 ### Answer Bot Worker
 **File:** `src/pages/utility/AnswerBot.tsx`
 
-**Endpoints:**
-- `https://answer-bot-demo.verschoren.workers.dev/recommendations`
-- `https://answer-bot-demo.verschoren.workers.dev/resolve`
-- `https://answer-bot-demo.verschoren.workers.dev/reject`
+**Before:**
+```typescript
+fetch('https://answer-bot-demo.verschoren.workers.dev/recommendations', {
+fetch('https://answer-bot-demo.verschoren.workers.dev/resolve', {
+fetch('https://answer-bot-demo.verschoren.workers.dev/reject', {
+```
 
-**Status:** ℹ️ **NOT MIGRATED** - This is a separate Answer Bot worker, not the JWT authentication worker. These endpoints remain unchanged.
+**After:**
+```typescript
+fetch('/api/answerbot/recommendations', {
+fetch('/api/answerbot/resolve', {
+fetch('/api/answerbot/reject', {
+```
+
+**Status:** ✅ **MIGRATED** - Answer Bot API has been migrated to Cloudflare Pages Functions
+
+**Functions Created:**
+- `functions/api/answerbot/recommendations.ts` - Get article recommendations
+- `functions/api/answerbot/resolve.ts` - Mark article as resolved
+- `functions/api/answerbot/reject.ts` - Mark article as rejected
+
+**Environment Variables Required:**
+- `ANSWERBOT_DOMAIN` - Your Zendesk subdomain
+- `ANSWERBOT_ADMIN_EMAIL` - Admin email for API authentication
+- `ANSWERBOT_API_TOKEN` - API token for authentication
 
 ---
 

@@ -62,7 +62,21 @@ CHAT_SECRET=your_chat_secret
 
 # SDK (if used)
 SDK_SECRET=your_sdk_secret
+
+# Answer Bot API
+ANSWERBOT_DOMAIN=your_zendesk_subdomain
+ANSWERBOT_ADMIN_EMAIL=admin@example.com
+ANSWERBOT_API_TOKEN=your_api_token
 ```
+
+**Where to find Answer Bot credentials:**
+1. Go to Zendesk Admin Center
+2. Navigate to: Apps and integrations → APIs → Zendesk API
+3. Enable Token Access
+4. Create an API token
+5. Copy the token (this is your `ANSWERBOT_API_TOKEN`)
+6. Your admin email is the email associated with your Zendesk account
+7. Your domain is the subdomain from your Zendesk URL (e.g., `mycompany` from `mycompany.zendesk.com`)
 
 ### 3. Custom Domains
 
