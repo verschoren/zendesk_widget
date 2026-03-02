@@ -1,0 +1,83 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-blue-gray-50: #f8fafc;
+  --color-blue-gray-100: #f1f5f9;
+  --color-blue-gray-200: #e2e8f0;
+  --color-blue-gray-300: #cbd5e1;
+  --color-blue-gray-400: #94a3b8;
+  --color-blue-gray-500: #64748b;
+  --color-blue-gray-600: #475569;
+  --color-blue-gray-700: #334155;
+  --color-blue-gray-800: #1e293b;
+  --color-blue-gray-900: #0f172a;
+  --color-blue-gray-950: #020617;
+  --color-matcha: #D1F470;
+  --color-licorice: #11110D;
+  --color-cactus: #A1D78F;
+  --color-shamrock: #2D4C33;
+  --color-lime: #E6FAAB;
+  --font-brand: "Vanilla Sans", Arial, sans-serif;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@font-face {
+  font-family: "Vanilla Sans";
+  font-style: normal;
+  font-weight: 300;
+  font-display: optional;
+  src: url("/fonts/VanillaSans-Light.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Vanilla Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url("/fonts/VanillaSans-Regular.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Vanilla Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: optional;
+  src: url("/fonts/VanillaSans-Medium.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Vanilla Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: optional;
+  src: url("/fonts/VanillaSans-SemiBold.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Vanilla Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: optional;
+  src: url("/fonts/VanillaSans-Bold.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
