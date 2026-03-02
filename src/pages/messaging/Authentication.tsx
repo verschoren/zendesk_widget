@@ -82,7 +82,7 @@ export default function MessagingAuthentication() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('https://jwtauth.internalnote.com/messaging', {
+      const response = await fetch('/api/messaging', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
