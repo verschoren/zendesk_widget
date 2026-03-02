@@ -67,7 +67,7 @@ export default function AnswerBot() {
     setEnquiryCode(JSON.stringify(payload, null, 2))
 
     try {
-      const response = await fetch('https://answer-bot-demo.verschoren.workers.dev/recommendations', {
+      const response = await fetch('/api/answerbot/recommendations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ export default function AnswerBot() {
     }
 
     try {
-      await fetch('https://answer-bot-demo.verschoren.workers.dev/resolve', {
+      await fetch('/api/answerbot/resolve', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ export default function AnswerBot() {
     }
 
     try {
-      await fetch('https://answer-bot-demo.verschoren.workers.dev/reject', {
+      await fetch('/api/answerbot/reject', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

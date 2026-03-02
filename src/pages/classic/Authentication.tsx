@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { PageMetadata } from '@/types/page'
+import { useZendeskWidget } from '@/hooks/useZendeskWidget'
 
 export const metadata: PageMetadata = {
   id: 'classic-authentication',
@@ -29,19 +30,13 @@ export default function ClassicAuthentication() {
 
   useEffect(() => {
     document.title = `Internal Note - ${metadata.title}`
-
-    // Add Zendesk widget script
-    const script = document.createElement('script')
-    script.id = 'ze-snippet'
-    script.src = 'https://static.zdassets.com/ekr/snippet.js?key=0a2feffd-e8f6-4772-96bf-2e1ae82842a9'
-    script.async = true
-    document.body.appendChild(script)
-
-    return () => {
-      const existing = document.getElementById('ze-snippet')
-      if (existing) existing.remove()
-    }
   }, [])
+
+  // Use Zendesk widget with proper cleanup
+  useZendeskWidget({
+    key: '0a2feffd-e8f6-4772-96bf-2e1ae82842a9',
+    type: 'classic'
+  })
 
   const generateUUID = () => {
     return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c: any) =>

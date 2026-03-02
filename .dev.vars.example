@@ -14,3 +14,8 @@ CHAT_SECRET=your_chat_secret_here
 
 # Zendesk SDK JWT credentials
 SDK_SECRET=your_sdk_secret_here
+
+# Zendesk Answer Bot API credentials
+ANSWERBOT_DOMAIN=your_zendesk_subdomain_here
+ANSWERBOT_ADMIN_EMAIL=admin@example.com
+ANSWERBOT_API_TOKEN=your_api_token_here

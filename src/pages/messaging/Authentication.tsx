@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { PageMetadata } from '@/types/page'
+import { useZendeskWidget } from '@/hooks/useZendeskWidget'
 
 export const metadata: PageMetadata = {
   id: 'authentication',
@@ -29,24 +30,13 @@ export default function MessagingAuthentication() {
 
   useEffect(() => {
     document.title = `Internal Note - ${metadata.title}`
+  }, [])
 
-    // Add Zendesk widget script
-    const zendeskConfig = document.createElement('script')
-    zendeskConfig.innerHTML = `
-      window.zEMessenger = {
-        autorender: false,
-      }
-    `
-    document.head.appendChild(zendeskConfig)
-
-    const script = document.createElement('script')
-    script.id = 'ze-snippet'
-    script.src = 'https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4'
-    script.async = true
-    document.body.appendChild(script)
-
-    // Wait for Zendesk to load then render embedded widget
-    script.onload = () => {
+  // Use Zendesk widget with proper cleanup
+  useZendeskWidget({
+    key: 'e125418a-9466-44d8-9b3f-2ac10e911ea4',
+    type: 'messaging',
+    onLoad: () => {
       if (window.zE) {
         window.zE('messenger', 'render', {
           mode: 'embedded',
@@ -56,13 +46,7 @@ export default function MessagingAuthentication() {
         })
       }
     }
-
-    return () => {
-      const existing = document.getElementById('ze-snippet')
-      if (existing) existing.remove()
-      document.head.removeChild(zendeskConfig)
-    }
-  }, [])
+  })
 
   const selectProfile = (profile: 'user' | 'vip') => {
     if (profile === 'user') {

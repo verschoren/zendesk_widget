@@ -224,6 +224,9 @@ MESSAGING_SECRET=your_messaging_secret_key
 GUIDE_SECRET=your_guide_secret_key
 CHAT_SECRET=your_chat_secret_key
 SDK_SECRET=your_sdk_secret_key
+ANSWERBOT_DOMAIN=your_zendesk_subdomain
+ANSWERBOT_ADMIN_EMAIL=admin@example.com
+ANSWERBOT_API_TOKEN=your_api_token
 ```
 
 **Local Development:**
@@ -322,6 +325,75 @@ curl -X POST https://demo.internalnote.com/api/sdk \
   "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
+
+#### Answer Bot API Endpoints
+
+**Base URL:** `/api/answerbot/*`
+
+**For:** Zendesk Answer Bot article recommendations, resolutions, and rejections
+
+##### Get Recommendations
+
+**URL:** `/api/answerbot/recommendations`
+
+**Request:**
+```bash
+curl -X POST https://demo.internalnote.com/api/answerbot/recommendations \
+  -H "Content-Type: application/json" \
+  -d '{
+    "enquiry": "How to reset my password?",
+    "locale": "en-us",
+    "reference": "demo"
+  }'
+```
+
+**Response:** JSON with articles and interaction token
+```json
+{
+  "articles": [
+    {
+      "article_id": "123456",
+      "title": "How to reset your password",
+      "snippet": "To reset your password...",
+      "html_url": "https://support.example.com/..."
+    }
+  ],
+  "interaction_access_token": "abc123..."
+}
+```
+
+##### Mark Article as Resolved
+
+**URL:** `/api/answerbot/resolve`
+
+**Request:**
+```bash
+curl -X POST https://demo.internalnote.com/api/answerbot/resolve \
+  -H "Content-Type: application/json" \
+  -d '{
+    "article_id": "123456",
+    "interaction_access_token": "abc123..."
+  }'
+```
+
+**Response:** JSON with status code
+
+##### Mark Article as Rejected
+
+**URL:** `/api/answerbot/reject`
+
+**Request:**
+```bash
+curl -X POST https://demo.internalnote.com/api/answerbot/reject \
+  -H "Content-Type: application/json" \
+  -d '{
+    "article_id": "123456",
+    "interaction_access_token": "abc123...",
+    "reason_id": 2
+  }'
+```
+
+**Response:** JSON with status code
 
 ### JWT Structure
 
