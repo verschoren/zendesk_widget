@@ -3,6 +3,7 @@ import Sidebar from './Sidebar'
 import MobileSidebar from './MobileSidebar'
 import MobileHeader from './MobileHeader'
 import Footer from './Footer'
+import CachingBanner from '../CachingBanner'
 
 interface AppLayoutProps {
   children: ReactNode
@@ -30,6 +31,9 @@ export default function AppLayout({ children }: AppLayoutProps) {
         {/* Footer */}
         <Footer />
       </main>
+
+      {/* Caching banner (bottom-left overlay) */}
+      <CachingBanner />
     </>
   )
 }
