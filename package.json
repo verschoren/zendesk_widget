@@ -2,6 +2,9 @@
   "name": "zendesk-widget-demo",
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "npm run generate-registry && vite build",
