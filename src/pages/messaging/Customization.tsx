@@ -344,11 +344,11 @@ export default function Customization() {
           <div>
             <section>
               <div className="flex justify-between items-center mb-2">
-                <h2 className="text-xl font-semibold">Generated Code</h2>
+                <h2 className="text-xl font-semibold text-licorice dark:text-white">Generated Code</h2>
                 <Button onClick={handleCopyCode}
                   type="button"
                  >
-                Copy Code
+                Copy code
               </Button>
               </div>
               <pre className="bg-gray-900 p-4 rounded-md overflow-x-auto text-sm" style={{ backgroundColor: '#282c34', padding: '20px' }}>
@@ -364,7 +364,7 @@ export default function Customization() {
                     key={scale}
                     onClick={() => handleScaleClick(scale)}
                     className={`group relative min-w-0 flex-1 overflow-hidden px-4 py-2 text-center text-sm font-medium cursor-pointer ${
-                      contentScale === scale ? 'text-gray-900' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                      contentScale === scale ? 'text-gray-900 dark:text-white' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700'
                     } ${scale === 50 ? 'rounded-l-lg' : ''} ${scale === 200 ? 'rounded-r-lg' : ''}`}
                   >
                     <span>{scale}%</span>
@@ -389,7 +389,7 @@ export default function Customization() {
                     onChange={() => handleSettingChange('hideHeader')}
                     className="h-4 w-4 rounded border-gray-300"
                   />
-                  <label htmlFor="hideHeader" className="text-sm font-medium">
+                  <label htmlFor="hideHeader" className="text-sm font-medium text-licorice dark:text-white">
                     Hide headers everywhere
                   </label>
                 </div>
@@ -401,7 +401,7 @@ export default function Customization() {
                     onChange={() => handleSettingChange('hideNewConversationButton')}
                     className="h-4 w-4 rounded border-gray-300"
                   />
-                  <label htmlFor="hideNewConversationButton" className="text-sm font-medium">
+                  <label htmlFor="hideNewConversationButton" className="text-sm font-medium text-licorice dark:text-white">
                     Hide new conversation button
                   </label>
                 </div>
@@ -414,7 +414,7 @@ export default function Customization() {
                     onChange={() => handleSettingChange('conversationList')}
                     className="h-4 w-4 rounded border-gray-300"
                   />
-                  <label htmlFor="conversationList" className="text-sm font-medium">
+                  <label htmlFor="conversationList" className="text-sm font-medium text-licorice dark:text-white">
                     Hide header for conversation list
                   </label>
                 </div>
