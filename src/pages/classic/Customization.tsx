@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { PageMetadata } from '@/types/page'
+import { useHighlight } from '@/hooks/useHighlight'
 
 export const metadata: PageMetadata = {
   id: 'classic-customization',
@@ -13,6 +14,9 @@ export const metadata: PageMetadata = {
 }
 
 export default function ClassicCustomization() {
+  // Syntax highlighting for code block
+  const codeRef = useHighlight()
+
   const [settings] = useState({
     webWidget: {
       contactOptions: {
@@ -128,7 +132,7 @@ export default function ClassicCustomization() {
       <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto mb-32">
           <pre className="text-sm whitespace-pre-wrap rounded-lg" style={{ backgroundColor: '#282c34', padding: '20px' }}>
-            <code id="codeblock" className="language-json">
+            <code ref={codeRef} id="codeblock" className="language-json">
               {`zESettings = ${JSON.stringify(settings, null, '\t')}`}
             </code>
           </pre>

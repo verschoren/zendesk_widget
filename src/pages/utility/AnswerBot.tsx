@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { PageMetadata } from '@/types/page'
+import { useHighlight } from '@/hooks/useHighlight'
 
 export const metadata: PageMetadata = {
   id: 'answerbot',
@@ -33,6 +34,10 @@ export default function AnswerBot() {
   const [resolveCode, setResolveCode] = useState('')
   const [rejectCode, setRejectCode] = useState('')
   const [resolvedArticles, setResolvedArticles] = useState<Set<string>>(new Set())
+
+  // Syntax highlighting for code blocks
+  const enquiryCodeRef = useHighlight([enquiryCode])
+  const returnCodeRef = useHighlight([returnCode])
   const [rejectedArticles, setRejectedArticles] = useState<Set<string>>(new Set())
 
   useEffect(() => {
@@ -213,7 +218,7 @@ export default function AnswerBot() {
           <div className="w-1/2">
             {enquiryCode && (
               <pre className="rounded-md p-2 text-xs text-blue-400" style={{ backgroundColor: '#282c34' }}>
-                <code className="language-json">{enquiryCode}</code>
+                <code ref={enquiryCodeRef} className="language-json">{enquiryCode}</code>
               </pre>
             )}
           </div>
@@ -308,7 +313,7 @@ export default function AnswerBot() {
 
           {returnCode && (
             <pre className="mt-8 rounded-md p-4 text-xs text-blue-400 w-full overflow-hidden" style={{ backgroundColor: '#282c34' }}>
-              <code className="language-json">{returnCode}</code>
+              <code ref={returnCodeRef} className="language-json">{returnCode}</code>
             </pre>
           )}
 

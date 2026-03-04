@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { PageMetadata } from '@/types/page'
+import { useHighlight } from '@/hooks/useHighlight'
 
 export const metadata: PageMetadata = {
   id: 'classic-guide',
@@ -13,6 +14,9 @@ export const metadata: PageMetadata = {
 }
 
 export default function GuideCustom() {
+  // Syntax highlighting for code block
+  const codeRef = useHighlight()
+
   useEffect(() => {
     document.title = `Internal Note - ${metadata.title}`
 
@@ -23,24 +27,9 @@ export default function GuideCustom() {
     script.async = true
     document.body.appendChild(script)
 
-    // Load highlight.js for syntax highlighting
-    const highlightScript = document.createElement('script')
-    highlightScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js'
-    highlightScript.async = true
-    document.body.appendChild(highlightScript)
-
-    highlightScript.onload = () => {
-      if (window.hljs) {
-        window.hljs.highlightAll()
-      }
-    }
-
     return () => {
       const existing = document.getElementById('ze-snippet')
       if (existing) existing.remove()
-      if (highlightScript.parentNode) {
-        highlightScript.remove()
-      }
     }
   }, [])
 
@@ -70,7 +59,7 @@ export default function GuideCustom() {
       <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto mb-32">
           <pre className="text-sm whitespace-pre-wrap rounded-lg" style={{ backgroundColor: '#282c34', padding: '20px' }}>
-            <code id="codeblock" className="language-json">{`<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <code ref={codeRef} id="codeblock" className="language-json">{`<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {{#if signed_in}}
 <script type="text/javascript">
     console.log("User Logged In");

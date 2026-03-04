@@ -1,5 +1,6 @@
 import { useState, useEffect, FormEvent } from 'react'
 import { PageMetadata } from '@/types/page'
+import { useHighlight } from '@/hooks/useHighlight'
 
 export const metadata: PageMetadata = {
   id: 'customization',
@@ -46,6 +47,9 @@ export default function Customization() {
     messageLog: false,
     hideNewConversationButton: false
   })
+
+  // Syntax highlighting for code block
+  const codeRef = useHighlight([theme, contentScale, settings])
 
   const PRESETS = {
     red: {
@@ -349,7 +353,7 @@ export default function Customization() {
                 </button>
               </div>
               <pre className="bg-gray-900 p-4 rounded-md overflow-x-auto text-sm" style={{ backgroundColor: '#282c34', padding: '20px' }}>
-                <code className="language-javascript">{generateCodeOutput()}</code>
+                <code ref={codeRef} className="language-javascript">{generateCodeOutput()}</code>
               </pre>
             </section>
 
@@ -556,11 +560,10 @@ export default function Customization() {
   )
 }
 
-// Extend window type for Zendesk and highlight.js
+// Extend window type for Zendesk
 declare global {
   interface Window {
     zE?: any
     zEMessenger?: any
-    hljs?: any
   }
 }
