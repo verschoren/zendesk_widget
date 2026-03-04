@@ -36,12 +36,7 @@ export default function HomePage() {
               </h2>
             </div>
             <div className="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
-              <Button
-                as="a"
-                href="https://internalnote.com?utm_source=widget_demo&campaign=demo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Button as="link" to="https://internalnote.com?utm_source=widget_demo&campaign=demo">
                 View Internal Note
               </Button>
             </div>
