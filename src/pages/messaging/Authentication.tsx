@@ -145,7 +145,7 @@ export default function MessagingAuthentication() {
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div
                         onClick={() => selectProfile('user')}
-                        className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white dark:bg-licorice px-6 py-5 shadow-xs hover:border-cactus hover:bg-lime cursor-pointer"
+                        className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white dark:bg-licorice px-6 py-5 shadow-xs hover:border-cactus hover:bg-lime hover:text-licorice cursor-pointer"
                       >
                         <div className="shrink-0">
                           <img className="h-10 w-10 rounded-full" src="/img/regular.png" alt="" />

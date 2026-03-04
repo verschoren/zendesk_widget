@@ -140,7 +140,7 @@ export default function CustomLauncher() {
 
         <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 mb-32">
           <div className="max-w-3xl mx-auto">
-            <p className="text-lg leading-6 text-blue-gray-500">
+            <p className="eading-6 text-licorice dark:text-white">
               This page has 2 ways to open the Zendesk Widget. You can either use the <em>Contact Us</em> button below, or the Custom Launcher at the bottom.
             </p>
             <div className="bg-white dark:bg-licorice border border-gray-200 sm:rounded-lg mt-8">
