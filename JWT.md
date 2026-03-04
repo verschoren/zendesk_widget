@@ -16,13 +16,25 @@ All endpoints serve the same functionality - use whichever fits your deployment 
 ## Authentication Flow
 
 ```
-User Profile Data → JWT Endpoint → Signed JWT Token → Zendesk Messenger
+User Profile Data → JWT Endpoint → [Zendesk User Lookup] → Signed JWT Token → Zendesk Messenger
 ```
 
-1. Collect user information (name, email, external_id)
+1. Collect user information (name, email, optional external_id)
 2. Send POST request to JWT endpoint with user data
-3. Receive signed JWT token
-4. Pass token to Zendesk Messenger via `loginUser` callback
+3. **Endpoint checks Zendesk for existing user:**
+   - If user exists with external_id → uses existing external_id
+   - If user exists without external_id → updates user with generated GUID and uses it
+   - If user doesn't exist → uses provided or generates new external_id
+4. Receive signed JWT token with correct external_id
+5. Pass token to Zendesk Messenger via `loginUser` callback
+
+### Smart External ID Management
+
+The endpoint automatically manages external IDs to ensure consistency:
+
+- **Existing users are preserved**: If a user already exists in Zendesk with an external_id, that ID is always used
+- **Backfill for legacy users**: Users created without external_ids are automatically updated when they authenticate
+- **New user handling**: New users get a generated external_id (base64-encoded email) if none is provided
 
 ## API Specification
 
@@ -41,7 +53,7 @@ Content-Type: application/json
 |-----------|------|----------|-------------|
 | `name` or `user_name` | string | Yes | User's full name |
 | `email` or `user_email` | string | Yes | User's email address |
-| `external_id` | string | Yes | Unique identifier for the user in your system |
+| `external_id` | string | **No** | Unique identifier for the user in your system. If omitted, the endpoint will check Zendesk for existing user or generate a new ID (base64-encoded email) |
 
 **Example Request Body**:
 ```json
@@ -88,6 +100,41 @@ The generated JWT contains the following claims:
 - **Algorithm**: HS256 (HMAC-SHA256)
 - **Header includes**: `alg`, `typ`, `kid` (App ID)
 
+## External ID Decision Flow
+
+When a JWT request is received, the endpoint follows this decision tree:
+
+```
+Request arrives with (name, email, [optional external_id])
+    |
+    ├─ Has Zendesk API credentials? ────NO───> Use provided external_id or generate from email
+    |                                           └─> Generate JWT
+    └─ YES
+        |
+        └─> Search Zendesk for user by email
+            |
+            ├─ User NOT found
+            |   └─> Use provided external_id or generate from email
+            |       └─> Generate JWT (user will be created by Zendesk on first message)
+            |
+            └─ User FOUND
+                |
+                ├─ Has external_id?
+                |   └─ YES ─> Use existing Zendesk external_id
+                |       └─> Generate JWT
+                |
+                └─ NO (legacy user without external_id)
+                    └─> Generate/use provided external_id
+                        └─> Update Zendesk user with external_id
+                            └─> Generate JWT
+```
+
+**Key Points:**
+- Updates to Zendesk always happen **before** JWT generation
+- Existing external_ids are never overwritten
+- Failed API calls don't prevent JWT generation (graceful fallback)
+- All operations are logged for debugging
+
 ## Integration Examples
 
 ### JavaScript (Fetch API)
@@ -95,16 +142,23 @@ The generated JWT contains the following claims:
 ```javascript
 async function authenticateUser(userData) {
   try {
+    // Build request body - external_id is optional
+    const requestBody = {
+      name: userData.name,
+      email: userData.email
+    }
+
+    // Include external_id only if provided
+    if (userData.external_id) {
+      requestBody.external_id = userData.external_id
+    }
+
     const response = await fetch('https://demo.internalnote.com/api/messaging', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        name: userData.name,
-        email: userData.email,
-        external_id: userData.external_id
-      })
+      body: JSON.stringify(requestBody)
     })
 
     if (!response.ok) {
@@ -126,6 +180,20 @@ async function authenticateUser(userData) {
     throw error
   }
 }
+
+// Example usage with automatic external_id
+authenticateUser({
+  name: 'Jane Doe',
+  email: 'jane@example.com'
+  // external_id will be generated automatically
+})
+
+// Example usage with custom external_id
+authenticateUser({
+  name: 'John Smith',
+  email: 'john@example.com',
+  external_id: 'custom-id-12345'
+})
 ```
 
 ### React Example
@@ -256,8 +324,27 @@ const external_id = btoa(user.email) // "maximus@example.com" → "bWF4aW11c0Ble
 const external_id = user.uuid // "550e8400-e29b-41d4-a716-446655440000"
 ```
 
-### User Matching
+### User Matching & External ID Resolution
 
+**When Zendesk API credentials are configured**, the endpoint performs intelligent user lookup:
+
+1. **Search by email**: Queries Zendesk to find existing user
+2. **Check external_id**:
+   - ✅ **Has external_id**: Uses the existing Zendesk external_id (preserves history)
+   - ⚠️ **Missing external_id**: Updates the Zendesk user with generated GUID, then uses it
+   - 🆕 **New user**: Uses provided external_id or generates new one (base64 email)
+
+3. **Update before JWT**: If updating user's external_id, the change is made in Zendesk **before** generating the JWT token. This ensures consistency and prevents conflicts.
+
+**Without API credentials**, the endpoint uses the provided `external_id` or generates one from email.
+
+**Benefits of user lookup**:
+- Preserves existing user history and external_ids
+- Automatically backfills missing external_ids for legacy users
+- Ensures JWT tokens always match Zendesk user records
+- Prevents duplicate users or orphaned conversations
+
+**Zendesk's built-in matching**:
 Zendesk will automatically merge conversations if:
 - The **email** matches an existing user in Zendesk
 - The **external_id** matches an existing user in Zendesk
@@ -269,7 +356,7 @@ This allows users to continue conversations across sessions and devices.
 ### Common Issues
 
 **Issue**: `Missing required parameters` error
-- **Solution**: Ensure all three fields (`name`, `email`, `external_id`) are present and non-empty
+- **Solution**: Ensure `name` and `email` are present and non-empty. `external_id` is now optional.
 
 **Issue**: CORS error in browser console
 - **Solution**: Verify you're calling from an allowed origin (demo.internalnote.com or internalnote.com)
@@ -279,6 +366,15 @@ This allows users to continue conversations across sessions and devices.
 
 **Issue**: Zendesk widget shows "Authentication failed"
 - **Solution**: Verify the JWT token is valid and not expired. Check Zendesk dashboard for authentication errors.
+
+**Issue**: User lookup not working
+- **Solution**: Verify `ANSWERBOT_DOMAIN`, `ANSWERBOT_ADMIN_EMAIL`, and `ANSWERBOT_API_TOKEN` are correctly configured in Cloudflare Pages environment variables
+
+**Issue**: External_id mismatch warnings in Zendesk
+- **Solution**: The endpoint now handles this automatically. If you still see issues, check that the Zendesk API credentials have permission to update users.
+
+**Issue**: Multiple users created for same person
+- **Solution**: Enable user lookup by configuring Zendesk API credentials. This prevents duplicate users by checking email before creating JWT.
 
 ### Testing the Endpoint
 
@@ -300,10 +396,24 @@ curl -X POST https://demo.internalnote.com/api/messaging \
 
 The JWT endpoint requires the following environment variables to be configured:
 
+### Required Variables
+
 | Variable | Description | Example |
 |----------|-------------|---------|
 | `MESSAGING_APP_ID` | Zendesk Messaging App ID (acts as JWT `kid`) | `abc123def456` |
 | `MESSAGING_SECRET` | Zendesk Messaging Secret Key for signing | `your-secret-key-here` |
+
+### Optional Variables (for User Lookup)
+
+These variables enable smart external_id management by checking Zendesk for existing users:
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `ANSWERBOT_DOMAIN` | Your Zendesk subdomain (without .zendesk.com) | `mycompany` |
+| `ANSWERBOT_ADMIN_EMAIL` | Admin email for API authentication | `admin@mycompany.com` |
+| `ANSWERBOT_API_TOKEN` | Zendesk API token for authentication | `your-api-token` |
+
+**Note**: If these optional variables are not set, the endpoint will still work but will use the provided `external_id` or generate a new one without checking Zendesk first.
 
 These are configured in the Cloudflare Pages dashboard under **Settings → Environment Variables**.
 
