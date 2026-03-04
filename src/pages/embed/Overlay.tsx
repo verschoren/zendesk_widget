@@ -121,15 +121,15 @@ export default function Overlay() {
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                   <div>
                     <h3 className="font-semibold text-gray-900">Feature One</h3>
-                    <p className="mt-2 text-gray-600">Description of the first amazing feature</p>
+                    <p className="mt-2 text-gray-600 dark:text-white">Description of the first amazing feature</p>
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Feature Two</h3>
-                    <p className="mt-2 text-gray-600">Description of the second amazing feature</p>
+                    <p className="mt-2 text-gray-600 dark:text-white">Description of the second amazing feature</p>
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Feature Three</h3>
-                    <p className="mt-2 text-gray-600">Description of the third amazing feature</p>
+                    <p className="mt-2 text-gray-600 dark:text-white">Description of the third amazing feature</p>
                   </div>
                 </div>
               </div>

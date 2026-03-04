@@ -50,7 +50,7 @@ export default function HomePage() {
 
       {/* Migration Banner */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-4">
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <div className="bg-blue-50 dark:bg-blue-700 border border-blue-200 rounded-lg p-4">
           <p className="text-sm text-licorice dark:text-white">
             We recently migrated this website to React. Found a bug? Let me know via{' '}
             <a

@@ -74,11 +74,11 @@ export default function Intranet() {
                 <div className="space-y-4">
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-medium">System Maintenance</h3>
-                    <p className="text-sm text-gray-600">Scheduled for this weekend</p>
+                    <p className="text-sm text-gray-600 dark:text-white">Scheduled for this weekend</p>
                   </div>
                   <div className="border-l-4 border-green-500 pl-4">
                     <h3 className="font-medium">New Features Released</h3>
-                    <p className="text-sm text-gray-600">Check out the latest updates</p>
+                    <p className="text-sm text-gray-600 dark:text-white">Check out the latest updates</p>
                   </div>
                 </div>
               </div>

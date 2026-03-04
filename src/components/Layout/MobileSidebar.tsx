@@ -25,7 +25,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
               className="-m-2.5 p-2.5"
             >
               <span className="sr-only">Close sidebar</span>
-              <svg className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+              <svg className="h-6 w-6 text-gray-600 dark:text-white" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>

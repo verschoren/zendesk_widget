@@ -108,7 +108,7 @@ export default function Metadata() {
           {activeTab === 'textfield' && (
             <>
               <div className="mx-auto max-w-2xl lg:mx-0">
-                <p className="mt-6 text-md leading-8 text-gray-600">
+                <p className="mt-6 text-md leading-8 text-gray-600 dark:text-white">
                   Pick a movie and you will see its info prefilled in the Messaging Widget.<br />
                   Note, you can't change a movie via the posters once a conversation has started.
                 </p>
@@ -161,7 +161,7 @@ export default function Metadata() {
           {activeTab === 'dropdown' && (
             <>
               <div className="mx-auto max-w-2xl lg:mx-0">
-                <p className="mt-6 text-md leading-8 text-gray-600">
+                <p className="mt-6 text-md leading-8 text-gray-600 dark:text-white">
                   Pick a location and you will see its info prefilled in the Messaging Widget.<br />
                   Note, you can't change a location via the posters once a conversation has started.
                 </p>

@@ -60,7 +60,7 @@ export default function ProactiveFrench() {
       </header>
 
       <div className="text-center mb-8">
-        <p className="mt-6 text-base leading-7 text-gray-600">This page simulates a french visitor. 🇫🇷</p>
+        <p className="mt-6 text-base leading-7 text-gray-600 dark:text-white">This page simulates a french visitor. 🇫🇷</p>
       </div>
     </>
   )

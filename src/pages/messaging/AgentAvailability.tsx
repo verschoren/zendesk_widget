@@ -55,10 +55,10 @@ export default function AgentAvailability() {
       <div className="mt-8 mb-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <p className="mt-6 text-md leading-8 text-gray-600">
+            <p className="mt-6 text-md leading-8 text-gray-600 dark:text-white">
               Open the widget. It should automatically check for agent availability.
             </p>
-            <p className="mt-6 text-md leading-8 text-gray-600">
+            <p className="mt-6 text-md leading-8 text-gray-600 dark:text-white">
               If not, ask for <em>Agents online</em>.
             </p>
           </div>

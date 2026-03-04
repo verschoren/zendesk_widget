@@ -8,7 +8,8 @@
       "Bash(curl:*)",
       "Bash(grep:*)",
       "Bash(cat:*)",
-      "Bash(/tmp/remove_duplicates.sh:*)"
+      "Bash(/tmp/remove_duplicates.sh:*)",
+      "Bash(/tmp/fix_gray_600.sh:*)"
     ]
   }
 }

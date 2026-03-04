@@ -53,7 +53,7 @@ export default function ProactiveBasic() {
       </header>
 
       <div className="text-center mt-8 mb-8">
-        <p className="mt-6 text-base leading-7 text-gray-600">
+        <p className="mt-6 text-base leading-7 text-gray-600 dark:text-white">
           This will trigger a message after 5 seconds each page visit.
         </p>
       </div>

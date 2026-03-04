@@ -68,7 +68,7 @@ export default function NoBot() {
       <div className="mt-8 mb-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <p className="mt-6 text-md leading-8 text-gray-600">
+            <p className="mt-6 text-md leading-8 text-gray-600 dark:text-white">
               Pick a pill and you will see its info prefilled in the Messaging Widget.<br />
               Note, just like in the Matrix, you can't change your choice once a made it.
             </p>

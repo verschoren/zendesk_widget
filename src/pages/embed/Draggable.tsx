@@ -107,7 +107,7 @@ export default function Draggable() {
           <h1 className="text-3xl font-bold text-gray-900 mb-8">Draggable Widget Demo</h1>
 
           <div className="bg-white dark:bg-licorice rounded-lg shadow p-8">
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg text-gray-600 dark:text-white mb-6">
               Click the button below to open a draggable support widget. You can move it anywhere on the page!
             </p>
             <button

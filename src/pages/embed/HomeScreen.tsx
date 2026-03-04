@@ -71,10 +71,10 @@ export default function HomeScreen() {
               </h1>
               <div className="bg-white dark:bg-licorice rounded-lg shadow p-8 mb-6">
                 <h2 className="text-xl font-semibold mb-4">Welcome to Support</h2>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 dark:text-white mb-4">
                   Experience a custom home screen with curated conversation starters and quick actions.
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-white">
                   The widget on the right shows a customized launcher interface designed to guide users to the right conversation topics quickly.
                 </p>
               </div>

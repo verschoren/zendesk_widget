@@ -476,7 +476,7 @@ export default function Customization() {
                         type="text"
                         value={theme[field as keyof ThemeColors] || ''}
                         onChange={(e) => handleThemeChange(field as keyof ThemeColors, e.target.value)}
-                        className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600"
+                        className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600 dark:text-white"
                         placeholder="#FFFFFF"
                       />
                     </label>
@@ -492,7 +492,7 @@ export default function Customization() {
                         type="text"
                         value={theme[field as keyof ThemeColors] || ''}
                         onChange={(e) => handleThemeChange(field as keyof ThemeColors, e.target.value)}
-                        className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600"
+                        className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600 dark:text-white"
                         placeholder="#FFFFFF"
                       />
                     </label>
@@ -508,7 +508,7 @@ export default function Customization() {
                         type="text"
                         value={theme[field as keyof ThemeColors] || ''}
                         onChange={(e) => handleThemeChange(field as keyof ThemeColors, e.target.value)}
-                        className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600"
+                        className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600 dark:text-white"
                         placeholder="#FFFFFF"
                       />
                     </label>
@@ -524,7 +524,7 @@ export default function Customization() {
                         type="text"
                         value={theme[field as keyof ThemeColors] || ''}
                         onChange={(e) => handleThemeChange(field as keyof ThemeColors, e.target.value)}
-                        className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600"
+                        className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600 dark:text-white"
                         placeholder="#FFFFFF"
                       />
                     </label>
