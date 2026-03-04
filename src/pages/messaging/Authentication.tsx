@@ -26,6 +26,7 @@ export default function MessagingAuthentication() {
     email: '',
     external_id: ''
   })
+  const [autoGenerateExternalId, setAutoGenerateExternalId] = useState(true)
   const [loginSuccess, setLoginSuccess] = useState(false)
   const [logoutSuccess, setLogoutSuccess] = useState(false)
 
@@ -54,29 +55,35 @@ export default function MessagingAuthentication() {
       setUser({
         name: 'Maximus Decimus Meridius',
         email: 'maximus@gladiator.example',
-        external_id: btoa('maximus@gladiator.example')
+        external_id: autoGenerateExternalId ? btoa('maximus@gladiator.example') : ''
       })
     } else if (profile === 'vip') {
       setUser({
         name: 'Vito Corleone',
         email: 'vito@corleone.example',
-        external_id: btoa('vito@corleone.example')
+        external_id: autoGenerateExternalId ? btoa('vito@corleone.example') : ''
       })
     }
   }
 
   const handleLogin = async () => {
     try {
+      // Build request body - only include external_id if it has a value
+      const requestBody: any = {
+        email: user.email,
+        name: user.name
+      }
+
+      if (user.external_id) {
+        requestBody.external_id = user.external_id
+      }
+
       const response = await fetch('/api/messaging', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          external_id: user.external_id,
-          email: user.email,
-          name: user.name
-        })
+        body: JSON.stringify(requestBody)
       })
 
       const jwttoken = await response.text()
@@ -207,7 +214,7 @@ export default function MessagingAuthentication() {
                       onChange={(e) => setUser({
                         ...user,
                         email: e.target.value,
-                        external_id: btoa(e.target.value)
+                        external_id: autoGenerateExternalId ? btoa(e.target.value) : user.external_id
                       })}
                       className="mt-1 block w-full p-2 border-1 border-gray-300 rounded-md shadow-xs text-licorice dark:text-white sm:text-sm"
                     />
@@ -217,14 +224,41 @@ export default function MessagingAuthentication() {
                     <label htmlFor="external_id" className="block text-sm font-medium text-licorice dark:text-white">
                       External ID
                     </label>
+                    <div className="mt-2 flex items-center gap-2 mb-2">
+                      <input
+                        type="checkbox"
+                        id="auto-generate-external-id"
+                        checked={autoGenerateExternalId}
+                        onChange={(e) => {
+                          const isChecked = e.target.checked
+                          setAutoGenerateExternalId(isChecked)
+                          if (isChecked && user.email) {
+                            setUser({ ...user, external_id: btoa(user.email) })
+                          }
+                        }}
+                        className="h-4 w-4 rounded border-gray-300 text-cactus focus:ring-cactus"
+                      />
+                      <label htmlFor="auto-generate-external-id" className="text-sm text-licorice dark:text-white">
+                        Auto-generate external ID from email
+                      </label>
+                    </div>
                     <input
                       type="text"
                       name="external_id"
                       id="external_id"
                       value={user.external_id}
-                      readOnly
-                      className="mt-1 block w-full border-gray-300 border-1 p-2 rounded-md text-licorice dark:text-white sm:text-sm bg-gray-50"
+                      readOnly={autoGenerateExternalId}
+                      onChange={(e) => setUser({ ...user, external_id: e.target.value })}
+                      placeholder={autoGenerateExternalId ? '' : 'Leave empty to test backend user lookup'}
+                      className={`mt-1 block w-full border-gray-300 border-1 p-2 rounded-md text-licorice dark:text-white sm:text-sm ${
+                        autoGenerateExternalId ? 'bg-gray-50' : 'bg-white dark:bg-licorice'
+                      }`}
                     />
+                    {!autoGenerateExternalId && (
+                      <p className="mt-2 text-sm text-blue-600 dark:text-blue-400">
+                        💡 Leave empty to test backend user lookup. The backend will search for existing users by email and use their external_id if found.
+                      </p>
+                    )}
                   </div>
                 </div>
 

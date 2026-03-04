@@ -10,10 +10,13 @@
 
 interface Env {
   GUIDE_SECRET: string
+  ANSWERBOT_DOMAIN?: string
+  ANSWERBOT_ADMIN_EMAIL?: string
+  ANSWERBOT_API_TOKEN?: string
 }
 
 interface UserInfo {
-  external_id: string
+  external_id?: string
   user_email?: string
   email?: string
   user_name?: string
@@ -71,14 +74,14 @@ export async function onRequestPost(context: {
   // Normalize field names (support both user_email/email and user_name/name)
   const email = json.user_email || json.email
   const name = json.user_name || json.name
-  const external_id = json.external_id
+  let external_id = json.external_id
 
-  // Validate required fields
-  if (!external_id || !email || !name) {
+  // Validate required fields (external_id is now optional as we can generate/lookup)
+  if (!email || !name) {
     return new Response(
       JSON.stringify({
         error: 'Missing required parameters',
-        required: ['external_id', 'email (or user_email)', 'name (or user_name)']
+        required: ['email (or user_email)', 'name (or user_name)']
       }),
       {
         status: 400,
@@ -91,6 +94,51 @@ export async function onRequestPost(context: {
   }
 
   try {
+    // Check if we have Zendesk API credentials for user lookup
+    const hasZendeskAPI = env.ANSWERBOT_DOMAIN && env.ANSWERBOT_ADMIN_EMAIL && env.ANSWERBOT_API_TOKEN
+
+    // If we have API access, check for existing user in Zendesk
+    if (hasZendeskAPI) {
+      const existingUser = await findZendeskUserByEmail(email, env)
+
+      if (existingUser) {
+        console.log(`Found existing Zendesk user: ${existingUser.id}`)
+
+        // If user exists and has an external_id, use it
+        if (existingUser.external_id) {
+          console.log(`Using existing external_id: ${existingUser.external_id}`)
+          external_id = existingUser.external_id
+        }
+        // If user exists but no external_id, update them with our generated one
+        else {
+          const generatedExternalId = external_id || generateExternalId(email)
+          console.log(`User exists without external_id, updating with: ${generatedExternalId}`)
+
+          const updated = await updateZendeskUserExternalId(
+            existingUser.id,
+            generatedExternalId,
+            env
+          )
+
+          if (updated) {
+            external_id = generatedExternalId
+          } else {
+            console.warn('Failed to update user external_id, using generated one anyway')
+            external_id = generatedExternalId
+          }
+        }
+      } else {
+        // User doesn't exist in Zendesk yet, use provided or generate external_id
+        external_id = external_id || generateExternalId(email)
+        console.log(`New user, using external_id: ${external_id}`)
+      }
+    } else {
+      // No API access, use provided external_id or generate one
+      external_id = external_id || generateExternalId(email)
+      console.log('No Zendesk API access, using provided/generated external_id')
+    }
+
+    // Generate JWT with the final external_id
     const jwt = await generateClassicWidgetJWT(
       {
         external_id,
@@ -188,6 +236,112 @@ async function generateClassicWidgetJWT(
   const jwt = `${partialToken}.${base64URLStringify(new Uint8Array(signature))}`
 
   return jwt
+}
+
+/**
+ * Search for a Zendesk user by email
+ * Returns the user object if found, null otherwise
+ */
+interface ZendeskUser {
+  id: number
+  email: string
+  name: string
+  external_id: string | null
+}
+
+async function findZendeskUserByEmail(
+  email: string,
+  env: Env
+): Promise<ZendeskUser | null> {
+  if (!env.ANSWERBOT_DOMAIN || !env.ANSWERBOT_ADMIN_EMAIL || !env.ANSWERBOT_API_TOKEN) {
+    return null
+  }
+
+  try {
+    const encodedEmail = encodeURIComponent(email)
+    const searchUrl = `https://${env.ANSWERBOT_DOMAIN}.zendesk.com/api/v2/users/search.json?query=email:${encodedEmail}`
+
+    const credentials = btoa(`${env.ANSWERBOT_ADMIN_EMAIL}/token:${env.ANSWERBOT_API_TOKEN}`)
+
+    const response = await fetch(searchUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Basic ${credentials}`
+      }
+    })
+
+    if (!response.ok) {
+      console.error(`Zendesk search failed: ${response.status} ${response.statusText}`)
+      return null
+    }
+
+    const data = await response.json() as { users: ZendeskUser[] }
+
+    // Return first user if found (email should be unique)
+    if (data.users && data.users.length > 0) {
+      return data.users[0]
+    }
+
+    return null
+  } catch (error) {
+    console.error('Error searching for Zendesk user:', error)
+    return null
+  }
+}
+
+/**
+ * Update a Zendesk user's external_id
+ * Returns true if successful, false otherwise
+ */
+async function updateZendeskUserExternalId(
+  userId: number,
+  externalId: string,
+  env: Env
+): Promise<boolean> {
+  if (!env.ANSWERBOT_DOMAIN || !env.ANSWERBOT_ADMIN_EMAIL || !env.ANSWERBOT_API_TOKEN) {
+    return false
+  }
+
+  try {
+    const updateUrl = `https://${env.ANSWERBOT_DOMAIN}.zendesk.com/api/v2/users/${userId}.json`
+
+    const credentials = btoa(`${env.ANSWERBOT_ADMIN_EMAIL}/token:${env.ANSWERBOT_API_TOKEN}`)
+
+    const response = await fetch(updateUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Basic ${credentials}`
+      },
+      body: JSON.stringify({
+        user: {
+          external_id: externalId
+        }
+      })
+    })
+
+    if (!response.ok) {
+      console.error(`Zendesk user update failed: ${response.status} ${response.statusText}`)
+      const errorBody = await response.text()
+      console.error('Error response:', errorBody)
+      return false
+    }
+
+    console.log(`Successfully updated user ${userId} with external_id: ${externalId}`)
+    return true
+  } catch (error) {
+    console.error('Error updating Zendesk user:', error)
+    return false
+  }
+}
+
+/**
+ * Generate a unique external_id from email
+ * Uses base64 encoding for consistency with existing pattern
+ */
+function generateExternalId(email: string): string {
+  return btoa(email)
 }
 
 /**
