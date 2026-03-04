@@ -56,7 +56,7 @@ export default function HomePage() {
             We recently migrated this website to React. Found a bug? Let me know via{' '}
             <a
               href="mailto:note@internalnote.com"
-              className="text-blue-600 hover:text-blue-800 underline"
+              className="text-blue-600 dark:text-white hover:text-blue-800 underline"
             >
               note@internalnote.com
             </a>
