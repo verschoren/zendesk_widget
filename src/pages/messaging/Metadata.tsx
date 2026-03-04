@@ -88,7 +88,7 @@ export default function Metadata() {
                 className={`whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium ${
                   activeTab === 'textfield'
                     ? 'border-blue-500 text-licorice'
-                    : 'border-transparent text-licorice hover:border-gray-300 hover:text-licorice'
+                    : 'border-transparent text-licorice dark:text-white hover:border-gray-300 hover:text-licorice'
                 }`}
               >
                 Text Field
@@ -97,8 +97,8 @@ export default function Metadata() {
                 onClick={() => setActiveTab('dropdown')}
                 className={`whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium ${
                   activeTab === 'dropdown'
-                    ? 'border-blue-500 text-licorice'
-                    : 'border-transparent text-licorice hover:border-gray-300 hover:text-licorice'
+                    ? 'border-blue-500 text-licorice dark:text-white'
+                    : 'border-transparent text-licorice dark:text-white hover:border-gray-300 hover:text-licorice'
                 }`}
               >
                 Dropdown
@@ -147,7 +147,7 @@ export default function Metadata() {
                 </li>
                 <li>
                   <img
-                    className={`movie aspect-2/3 cursor-pointer w-full rounded-2xl object-cover hover:scale-105 hover:rotate-3 transition-transform ${
+                    className={`movie aspect-2/3 cursor-pointer w-full dark:border dark:border-1 dark:border-white rounded-2xl object-cover hover:scale-105 hover:rotate-3 transition-transform ${
                       selectedMovie === 'Jurassic Park' ? 'border border-8 border-blue-500' : ''
                     }`}
                     src="/img/movies/jurassicpark.jpeg"
