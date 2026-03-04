@@ -65,38 +65,38 @@ export default function Intranet() {
 
       <div className="pt-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">Company Intranet</h1>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Company Intranet</h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <div className="bg-white dark:bg-licorice rounded-lg shadow p-6 mb-6">
-                <h2 className="text-xl font-semibold mb-4">Latest Announcements</h2>
+                <h2 className="text-xl font-semibold mb-4 text-licorice dark:text-white">Latest Announcements</h2>
                 <div className="space-y-4">
                   <div className="border-l-4 border-blue-500 pl-4">
-                    <h3 className="font-medium">System Maintenance</h3>
-                    <p className="text-sm text-gray-600 dark:text-white">Scheduled for this weekend</p>
+                    <h3 className="font-medium text-licorice dark:text-white">System Maintenance</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Scheduled for this weekend</p>
                   </div>
                   <div className="border-l-4 border-green-500 pl-4">
-                    <h3 className="font-medium">New Features Released</h3>
-                    <p className="text-sm text-gray-600 dark:text-white">Check out the latest updates</p>
+                    <h3 className="font-medium text-licorice dark:text-white">New Features Released</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Check out the latest updates</p>
                   </div>
                 </div>
               </div>
 
               <div className="bg-white dark:bg-licorice rounded-lg shadow p-6">
-                <h2 className="text-xl font-semibold mb-4">Support Chat</h2>
+                <h2 className="text-xl font-semibold mb-4 text-licorice dark:text-white">Support Chat</h2>
                 <div id="widget" className="h-[600px] border border-gray-200 rounded"></div>
               </div>
             </div>
 
             <div>
               <div className="bg-white dark:bg-licorice rounded-lg shadow p-6">
-                <h2 className="text-xl font-semibold mb-4">Quick Links</h2>
+                <h2 className="text-xl font-semibold mb-4 text-licorice dark:text-white">Quick Links</h2>
                 <ul className="space-y-2">
-                  <li><a href="#" className="text-blue-600 hover:underline">Employee Directory</a></li>
-                  <li><a href="#" className="text-blue-600 hover:underline">IT Support</a></li>
-                  <li><a href="#" className="text-blue-600 hover:underline">HR Portal</a></li>
-                  <li><a href="#" className="text-blue-600 hover:underline">Benefits</a></li>
+                  <li><a href="#" className="text-blue-600 dark:text-blue-400 hover:underline">Employee Directory</a></li>
+                  <li><a href="#" className="text-blue-600 dark:text-blue-400 hover:underline">IT Support</a></li>
+                  <li><a href="#" className="text-blue-600 dark:text-blue-400 hover:underline">HR Portal</a></li>
+                  <li><a href="#" className="text-blue-600 dark:text-blue-400 hover:underline">Benefits</a></li>
                 </ul>
               </div>
             </div>

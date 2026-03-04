@@ -75,7 +75,7 @@ export default function Overlay() {
           href="https://internalnote.com/embeddable-zendesk-widget?utm_source=demo_pages"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-none rounded-full bg-licorice px-3.5 py-1 text-sm font-semibold text-white shadow-xs hover:bg-gray-700"
+          className="flex-none rounded-full bg-licorice dark:bg-shamrock px-3.5 py-1 text-sm font-semibold text-white shadow-xs hover:bg-gray-700 dark:hover:bg-cactus"
         >
           View article <span aria-hidden="true">&rarr;</span>
         </a>
@@ -107,7 +107,7 @@ export default function Overlay() {
         <main className="bg-white dark:bg-licorice">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
             <div className="text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
                 Overlay Widget Demo
               </h1>
               <p className="mt-4 text-lg text-gray-500">
@@ -116,20 +116,20 @@ export default function Overlay() {
             </div>
 
             <div className="mt-16">
-              <div className="rounded-lg bg-gray-50 px-6 py-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Product Features</h2>
+              <div className="rounded-lg bg-gray-50 dark:bg-gray-900 px-6 py-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Product Features</h2>
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                   <div>
-                    <h3 className="font-semibold text-gray-900">Feature One</h3>
-                    <p className="mt-2 text-gray-600 dark:text-white">Description of the first amazing feature</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">Feature One</h3>
+                    <p className="mt-2 text-gray-600 dark:text-gray-300">Description of the first amazing feature</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Feature Two</h3>
-                    <p className="mt-2 text-gray-600 dark:text-white">Description of the second amazing feature</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">Feature Two</h3>
+                    <p className="mt-2 text-gray-600 dark:text-gray-300">Description of the second amazing feature</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Feature Three</h3>
-                    <p className="mt-2 text-gray-600 dark:text-white">Description of the third amazing feature</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">Feature Three</h3>
+                    <p className="mt-2 text-gray-600 dark:text-gray-300">Description of the third amazing feature</p>
                   </div>
                 </div>
               </div>
@@ -141,7 +141,7 @@ export default function Overlay() {
       {/* Overlay Widget Container */}
       {showWidget && (
         <div className="fixed inset-0 z-40 flex justify-end">
-          <div className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onClick={handleCloseWidget}></div>
+          <div className="absolute inset-0 bg-gray-50 dark:bg-gray-9000 bg-opacity-75 transition-opacity" onClick={handleCloseWidget}></div>
           <div className="relative w-full max-w-md bg-white dark:bg-licorice shadow-xl">
             <div className="absolute top-4 right-4 z-50">
               <button

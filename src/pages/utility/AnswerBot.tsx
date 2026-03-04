@@ -204,10 +204,10 @@ export default function AnswerBot() {
                     id="search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="block w-full rounded-md border-0 px-3 py-1.5 text-licorice dark:text-white shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
+                    className="block w-full rounded-md border-0 px-3 py-1.5 text-licorice shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
                   />
                 </div>
-                <Button type="submit"
+                <Button type="submit" class="mt-2"
                  >
                 Get Suggestions
               </Button>

@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent } from 'react'
+import { useState, useEffect } from 'react'
 import Button from '@/components/Button'
 import { PageMetadata } from '@/types/page'
 import { useHighlight } from '@/hooks/useHighlight'

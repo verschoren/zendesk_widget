@@ -102,17 +102,17 @@ export default function Draggable() {
         </a>
       </div>
 
-      <div className="pt-16 bg-gray-50 min-h-screen">
+      <div className="pt-16 bg-gray-50 dark:bg-gray-900 min-h-screen">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">Draggable Widget Demo</h1>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Draggable Widget Demo</h1>
 
           <div className="bg-white dark:bg-licorice rounded-lg shadow p-8">
-            <p className="text-lg text-gray-600 dark:text-white mb-6">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
               Click the button below to open a draggable support widget. You can move it anywhere on the page!
             </p>
             <button
               onClick={handleGetHelp}
-              className="bg-matcha text-licorice dark:text-white px-6 py-3 rounded-md hover:bg-lime font-semibold"
+              className="bg-matcha dark:bg-shamrock text-licorice dark:text-white px-6 py-3 rounded-md hover:bg-lime dark:hover:bg-cactus font-semibold"
             >
               Get Help
             </button>

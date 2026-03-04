@@ -66,10 +66,10 @@ export default function Contact() {
         </a>
       </div>
 
-      <div className="pt-16 bg-gray-50 min-h-screen">
+      <div className="pt-16 bg-gray-50 dark:bg-gray-900 min-h-screen">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
           <div className="mx-auto max-w-3xl">
-            <h1 className="text-3xl font-bold text-gray-900 mb-8">Contact Us</h1>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Contact Us</h1>
 
             {!showWidget ? (
               <div className="bg-white dark:bg-licorice rounded-lg shadow p-8">
@@ -93,7 +93,7 @@ export default function Contact() {
                     <button
                       type="button"
                       onClick={handleGetSupport}
-                      className="bg-matcha text-licorice dark:text-white px-6 py-2 rounded-md hover:bg-lime"
+                      className="bg-matcha dark:bg-shamrock text-licorice dark:text-white px-6 py-2 rounded-md hover:bg-lime dark:hover:bg-cactus"
                     >
                       Get Live Support
                     </button>
