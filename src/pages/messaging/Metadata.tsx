@@ -87,7 +87,7 @@ export default function Metadata() {
                 onClick={() => setActiveTab('textfield')}
                 className={`whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium ${
                   activeTab === 'textfield'
-                    ? 'border-blue-500 text-licorice'
+                    ? 'border-blue-500 text-licorice dark:text-white'
                     : 'border-transparent text-licorice dark:text-white hover:border-gray-300 hover:text-licorice'
                 }`}
               >
