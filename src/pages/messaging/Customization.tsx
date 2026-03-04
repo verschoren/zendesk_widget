@@ -427,7 +427,7 @@ export default function Customization() {
                     onChange={() => handleSettingChange('messageLog')}
                     className="h-4 w-4 rounded border-gray-300"
                   />
-                  <label htmlFor="messageLog" className="text-sm font-medium">
+                  <label htmlFor="messageLog" className="text-sm font-medium text-licorice dark:text-white">
                     Hide headers for conversation view
                   </label>
                 </div>
@@ -436,7 +436,7 @@ export default function Customization() {
 
             {/* Theme form */}
             <section className="mt-4">
-              <h3 className="text-lg font-semibold mb-4">Configure your theme</h3>
+              <h3 className="text-lg font-semibold mb-4 text-licorice dark:text-white">Configure your theme</h3>
               <form id="theme-form" className="grid gap-3" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid grid-cols-4 gap-2">
                   <Button onClick={() => handlePreset('red')} type="button">
@@ -460,7 +460,7 @@ export default function Customization() {
                 {/* Color inputs */}
                 <div className="grid grid-cols-4 gap-2">
                   {['primary', 'onPrimary', 'message', 'onMessage'].map((field) => (
-                    <label key={field} className="text-sm">
+                    <label key={field} className="text-sm text-licorice dark:text-white">
                       {field}
                       <br />
                       <input
@@ -476,7 +476,7 @@ export default function Customization() {
 
                 <div className="grid grid-cols-4 gap-2">
                   {['businessMessage', 'onBusinessMessage', 'action', 'onAction'].map((field) => (
-                    <label key={field} className="text-sm">
+                    <label key={field} className="text-sm text-licorice dark:text-white">
                       {field}
                       <br />
                       <input
@@ -492,7 +492,7 @@ export default function Customization() {
 
                 <div className="grid grid-cols-4 gap-2">
                   {['background', 'onBackground', 'error', 'onError'].map((field) => (
-                    <label key={field} className="text-sm">
+                    <label key={field} className="text-sm text-licorice dark:text-white">
                       {field}
                       <br />
                       <input
@@ -508,7 +508,7 @@ export default function Customization() {
 
                 <div className="grid grid-cols-4 gap-2">
                   {['notify', 'onNotify', 'onSecondaryAction'].map((field) => (
-                    <label key={field} className="text-sm">
+                    <label key={field} className="text-sm text-licorice dark:text-white">
                       {field}
                       <br />
                       <input
