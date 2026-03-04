@@ -9,7 +9,11 @@
       "Bash(grep:*)",
       "Bash(cat:*)",
       "Bash(/tmp/remove_duplicates.sh:*)",
-      "Bash(/tmp/fix_gray_600.sh:*)"
+      "Bash(/tmp/fix_gray_600.sh:*)",
+      "Bash(/tmp/update_buttons.sh:*)",
+      "Bash(/tmp/fix_duplicates.sh:*)",
+      "Bash(/tmp/replace_buttons.py:*)",
+      "Bash(/tmp/replace_buttons_v2.py:*)"
     ]
   }
 }

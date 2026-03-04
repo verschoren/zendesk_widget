@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Button from '@/components/Button'
 import { PageMetadata } from '@/types/page'
 import { useZendeskWidget } from '@/hooks/useZendeskWidget'
 
@@ -134,20 +135,17 @@ export default function ClassicAuthentication() {
               <h2 className="mt-2 text-xl text-licorice dark:text-white">{metadata.description}</h2>
             </div>
             <div className="w-1/2 justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
-              <a
-                href="/classic/guide-custom"
-                className="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice dark:text-white"
-              >
+              <Button as="link" to="/classic/guide-custom">
                 Guide Embed
-              </a>
-              <a
+              </Button>
+              <Button
+                as="a"
                 href="https://internalnote.com/classic-web-widget-authentication?utm_source=widget_demo&campaign=demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice dark:text-white shadow-xs"
               >
                 Read more
-              </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -220,13 +218,11 @@ export default function ClassicAuthentication() {
               >
                 Logout
               </button>
-              <button
-                type="button"
+              <Button type="button"
                 onClick={handleLogin}
-                className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-xs text-sm font-medium rounded-md text-licorice dark:text-white bg-matcha"
-              >
+               >
                 Login
-              </button>
+              </Button>
             </div>
           </form>
 

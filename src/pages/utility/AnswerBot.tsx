@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Button from '@/components/Button'
 import { PageMetadata } from '@/types/page'
 import { useHighlight } from '@/hooks/useHighlight'
 
@@ -167,22 +168,22 @@ export default function AnswerBot() {
               <h2 className="mt-2 text-xl text-licorice dark:text-white">{metadata.description}</h2>
             </div>
             <div className="w-1/2 justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
-              <a
+              <Button
+                as="a"
                 href="https://internalnote.com/answer-bot-api/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice dark:text-white shadow-xs"
               >
                 Read more
-              </a>
-              <a
+              </Button>
+              <Button
+                as="a"
                 href="https://support.internalnote.com/hc/en-us/sections/9913338409746-Demo-Section"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice dark:text-white shadow-xs"
               >
                 View Articles
-              </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -206,12 +207,10 @@ export default function AnswerBot() {
                     className="block w-full rounded-md border-0 px-3 py-1.5 text-licorice dark:text-white shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="mt-3 inline-flex w-full items-center justify-center rounded-md bg-matcha px-3 py-2 text-sm font-semibold text-licorice dark:text-white shadow-xs hover:bg-lime"
-                >
-                  Get Suggestions
-                </button>
+                <Button type="submit"
+                 >
+                Get Suggestions
+              </Button>
               </form>
             </div>
           </div>

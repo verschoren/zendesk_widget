@@ -1,4 +1,5 @@
 import { PageMetadata } from '@/types/page'
+import Button from '@/components/Button'
 
 export const metadata: PageMetadata = {
   id: 'embed-index',
@@ -92,14 +93,14 @@ export default function EmbedIndex() {
               <h2 className="mt-2 text-xl text-licorice dark:text-white">{metadata.description}</h2>
             </div>
             <div className="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
-              <a
-                target="_blank"
+              <Button
+                as="a"
                 href="https://internalnote.com/embeddable-zendesk-widget?utm_source=demo_pages"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice dark:text-white shadow-xs"
               >
                 Read more
-              </a>
+              </Button>
             </div>
           </div>
         </div>

@@ -54,13 +54,10 @@ export default function CachingBanner() {
               </svg>
             </div>
             <div className="ml-3 flex-1">
-              <h3 className="text-sm font-medium text-licorice dark:text-white">Caching</h3>
+              <h3 className="text-sm font-medium text-licorice dark:text-white">Multiple widgets</h3>
               <div className="mt-2 text-sm text-licorice dark:text-white">
                 <p>
-                  If you experience issues triggering the proactive alerts, clear your LocalStorage and try again.
-                </p>
-                <p>
-                  If the widget does not appear, refresh the page. Since we load different widgets depending on the demo React routing sometimes gets confused.
+                  If the widget does not appear, refresh the page. Since we load different widgets depending on the demo page, sometimes my React page renderer sometimes gets confused.
                 </p>
               </div>
             </div>
