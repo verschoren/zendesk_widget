@@ -116,7 +116,7 @@ export default function CustomLauncher() {
         </div>
       )}
 
-      <main id="content" className="md:pl-72 py-10 px-4 sm:px-6 md:px-8">
+      <main id="content" className="mx-auto max-w-7xl py-10 px-4 sm:px-6 md:px-8">
         <header>
           <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
             <div className="md:flex md:items-center md:justify-between md:space-x-5">
@@ -138,7 +138,7 @@ export default function CustomLauncher() {
           </div>
         </header>
 
-        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 mb-32">
+        <div className="py-6 sm:px-6 lg:px-8 mb-32">
           <div className="max-w-3xl mx-auto">
             <p className="eading-6 text-licorice dark:text-white">
               This page has 2 ways to open the Zendesk Widget. You can either use the <em>Contact Us</em> button below, or the Custom Launcher at the bottom.
