@@ -22,11 +22,38 @@ interface UserInfo {
   name?: string
 }
 
+/**
+ * Allowed origins for CORS
+ */
+const ALLOWED_ORIGINS = [
+  'https://demo.internalnote.com',
+  'https://internalnote.com',
+  'https://www.internalnote.com',
+  'http://localhost:5173',
+  'http://localhost:4173'
+]
+
+/**
+ * Get CORS headers based on request origin
+ */
+function getCorsHeaders(request: Request): Record<string, string> {
+  const origin = request.headers.get('Origin')
+  const allowedOrigin = origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]
+
+  return {
+    'Access-Control-Allow-Origin': allowedOrigin,
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Max-Age': '86400'
+  }
+}
+
 export async function onRequestPost(context: {
   request: Request
   env: Env
 }): Promise<Response> {
   const { request, env } = context
+  const corsHeaders = getCorsHeaders(request)
 
   // Parse request body
   let json: UserInfo
@@ -38,7 +65,7 @@ export async function onRequestPost(context: {
       status: 400,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        ...corsHeaders
       }
     })
   }
@@ -59,7 +86,7 @@ export async function onRequestPost(context: {
         status: 400,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          ...corsHeaders
         }
       }
     )
@@ -79,7 +106,7 @@ export async function onRequestPost(context: {
       status: 200,
       headers: {
         'Content-Type': 'text/plain',
-        'Access-Control-Allow-Origin': '*'
+        ...corsHeaders
       }
     })
   } catch (error) {
@@ -90,7 +117,7 @@ export async function onRequestPost(context: {
         status: 500,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          ...corsHeaders
         }
       }
     )
@@ -98,15 +125,14 @@ export async function onRequestPost(context: {
 }
 
 // Handle OPTIONS requests for CORS preflight
-export async function onRequestOptions(): Promise<Response> {
+export async function onRequestOptions(context: {
+  request: Request
+}): Promise<Response> {
+  const corsHeaders = getCorsHeaders(context.request)
+
   return new Response(null, {
     status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Max-Age': '86400'
-    }
+    headers: corsHeaders
   })
 }
 
