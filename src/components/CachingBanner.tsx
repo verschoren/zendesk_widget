@@ -36,7 +36,7 @@ export default function CachingBanner() {
 
   return (
     <div className="fixed bottom-4 left-4 z-50 max-w-md">
-      <div className="rounded-lg bg-lime shadow-lg border border-gray-200">
+      <div className="rounded-lg bg-lime dark:bg-shamrock shadow-lg border border-gray-200">
         <div className="p-4">
           <div className="flex items-start">
             <div className="shrink-0">
