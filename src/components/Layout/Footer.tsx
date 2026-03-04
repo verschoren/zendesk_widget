@@ -26,7 +26,7 @@ export default function Footer() {
   }, [])
 
   return (
-    <footer className="md:w-[calc(100%_-_288px)] w-full fixed bottom-0 bg-white dark:bg-gray-900">
+    <footer className="md:w-[calc(100%_-_288px)] w-full fixed bottom-0 bg-white dark:bg-licorice">
       <div className="border-t border-gray-900/10 p-4 flex flex-col md:flex-row justify-between w-full items-start md:items-end gap-4 md:gap-0 md:pr-24">
         <div className="min-w-24 w-[calc(100%_-_32px)] md:w-96" id="ghost-signup-form">
         </div>

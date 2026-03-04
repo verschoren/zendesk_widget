@@ -7,7 +7,8 @@
       "Bash(ls:*)",
       "Bash(curl:*)",
       "Bash(grep:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(/tmp/remove_duplicates.sh:*)"
     ]
   }
 }

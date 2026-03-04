@@ -16,7 +16,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
         onClick={onClose}
       />
 
-      <div className="bg-white fixed inset-0 flex">
+      <div className="bg-white dark:bg-licorice fixed inset-0 flex">
         <div className="relative mr-16 flex w-full max-w-xs flex-1">
           <div className="absolute left-full top-0 flex w-16 justify-center pt-5">
             <button

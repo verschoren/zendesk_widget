@@ -122,7 +122,7 @@ export default function ProactiveContact() {
       {showNotification && (
         <div aria-live="assertive" className="logged_in pointer-events-none fixed inset-0 flex items-start px-4 py-4 z-50">
           <div className="flex w-full flex-col items-end space-y-4">
-            <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-gray-300 ring-opacity-5">
+            <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white dark:bg-licorice shadow-lg ring-1 ring-gray-300 ring-opacity-5">
               <div className="p-4">
                 <div className="flex items-start">
                   <div className="shrink-0">
@@ -141,8 +141,8 @@ export default function ProactiveContact() {
                     </svg>
                   </div>
                   <div className="ml-3 w-0 flex-1 pt-0.5">
-                    <p className="text-sm text-licorice">Successfully logged in!</p>
-                    <p className="mt-1 text-sm text-licorice">You are now logged in.</p>
+                    <p className="text-sm text-licorice dark:text-white">Successfully logged in!</p>
+                    <p className="mt-1 text-sm text-licorice dark:text-white">You are now logged in.</p>
                   </div>
                 </div>
               </div>
@@ -155,15 +155,15 @@ export default function ProactiveContact() {
         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
           <div className="md:flex md:items-center md:justify-between md:space-x-5">
             <div>
-              <h1 className="text-3xl text-licorice">{metadata.title}</h1>
-              <h2 className="mt-2 text-xl text-licorice">{metadata.description}</h2>
+              <h1 className="text-3xl text-licorice dark:text-white">{metadata.title}</h1>
+              <h2 className="mt-2 text-xl text-licorice dark:text-white">{metadata.description}</h2>
             </div>
             <div className="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
               <a
                 href="https://internalnote.com/proactive-ticketing-for-messaging/?utm_source=widget_demo&campaign=demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice shadow-xs"
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice dark:text-white shadow-xs"
               >
                 Read more
               </a>
@@ -173,7 +173,7 @@ export default function ProactiveContact() {
       </header>
 
       <div className="text-center mb-32">
-        <h1 className="mt-4 text-3xl font-bold text-licorice sm:text-5xl">Direct to Agent</h1>
+        <h1 className="mt-4 text-3xl font-bold text-licorice dark:text-white sm:text-5xl">Direct to Agent</h1>
         <p className="mt-6 text-base leading-7 text-gray-600">
           Logged in VIP Customers go directly to an Agent.
         </p>
@@ -185,9 +185,9 @@ export default function ProactiveContact() {
           >
             <div className="flex flex-1 flex-col p-8">
               <img className="mx-auto h-32 w-32 shrink-0 rounded-full" src="/img/gladiator.png" alt="Maximus" />
-              <h3 className="mt-6 text-sm text-licorice">Maximus</h3>
+              <h3 className="mt-6 text-sm text-licorice dark:text-white">Maximus</h3>
               <dl className="mt-1 flex grow flex-col justify-between">
-                <dd className="text-sm text-licorice">Spaniard</dd>
+                <dd className="text-sm text-licorice dark:text-white">Spaniard</dd>
                 <dd className="mt-3">
                   <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20">
                     Not a VIP
@@ -203,9 +203,9 @@ export default function ProactiveContact() {
           >
             <div className="flex flex-1 flex-col p-8">
               <img className="mx-auto h-32 w-32 shrink-0 rounded-full" src="/img/godfather.png" alt="Vito Corleone" />
-              <h3 className="mt-6 text-sm text-licorice">Vito Corleone</h3>
+              <h3 className="mt-6 text-sm text-licorice dark:text-white">Vito Corleone</h3>
               <dl className="mt-1 flex grow flex-col justify-between">
-                <dd className="text-sm text-licorice">Godfather</dd>
+                <dd className="text-sm text-licorice dark:text-white">Godfather</dd>
                 <dd className="mt-3">
                   <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                     VIP
@@ -218,13 +218,13 @@ export default function ProactiveContact() {
         <div className="mt-8 flex items-center justify-center gap-x-6">
           <a
             href="/proactive/contact"
-            className="rounded-md bg-matcha px-3.5 py-2.5 text-sm font-semibold text-licorice shadow-xs hover:bg-lime"
+            className="rounded-md bg-matcha px-3.5 py-2.5 text-sm font-semibold text-licorice dark:text-white shadow-xs hover:bg-lime"
           >
             Regular User
           </a>
           <a
             href="/proactive/contact#vip"
-            className="rounded-md bg-matcha px-3.5 py-2.5 text-sm font-semibold text-licorice shadow-xs hover:bg-lime"
+            className="rounded-md bg-matcha px-3.5 py-2.5 text-sm font-semibold text-licorice dark:text-white shadow-xs hover:bg-lime"
           >
             VIP User <span aria-hidden="true">→</span>
           </a>

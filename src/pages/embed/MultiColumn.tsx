@@ -59,7 +59,7 @@ export default function MultiColumn() {
           <img className="h-8 w-auto" src="/img/zendesk.svg" alt="Zendesk" />
           <img className="h-8 w-auto" src="/img/logo.svg" alt="Internal Note" />
         </a>
-        <p className="hidden sm:flex text-sm text-licorice">
+        <p className="hidden sm:flex text-sm text-licorice dark:text-white">
           Change the column sizes at the bottom of the conversation column
         </p>
         <a

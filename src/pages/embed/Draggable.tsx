@@ -89,7 +89,7 @@ export default function Draggable() {
           <img className="h-8 w-auto" src="/img/zendesk.svg" alt="Zendesk" />
           <img className="h-8 w-auto" src="/img/logo.svg" alt="Internal Note" />
         </a>
-        <p className="hidden sm:flex text-sm text-licorice">
+        <p className="hidden sm:flex text-sm text-licorice dark:text-white">
           Click get Help and drag the widget around
         </p>
         <a
@@ -106,13 +106,13 @@ export default function Draggable() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
           <h1 className="text-3xl font-bold text-gray-900 mb-8">Draggable Widget Demo</h1>
 
-          <div className="bg-white rounded-lg shadow p-8">
+          <div className="bg-white dark:bg-licorice rounded-lg shadow p-8">
             <p className="text-lg text-gray-600 mb-6">
               Click the button below to open a draggable support widget. You can move it anywhere on the page!
             </p>
             <button
               onClick={handleGetHelp}
-              className="bg-matcha text-licorice px-6 py-3 rounded-md hover:bg-lime font-semibold"
+              className="bg-matcha text-licorice dark:text-white px-6 py-3 rounded-md hover:bg-lime font-semibold"
             >
               Get Help
             </button>
@@ -122,7 +122,7 @@ export default function Draggable() {
 
       {showWidget && (
         <div
-          className="fixed z-40 w-96 bg-white rounded-lg shadow-2xl"
+          className="fixed z-40 w-96 bg-white dark:bg-licorice rounded-lg shadow-2xl"
           style={{
             left: `${position.x}px`,
             top: `${position.y}px`,
@@ -133,10 +133,10 @@ export default function Draggable() {
             className="bg-matcha px-4 py-3 rounded-t-lg flex justify-between items-center"
             onMouseDown={handleMouseDown}
           >
-            <h3 className="font-semibold text-licorice">Support Chat</h3>
+            <h3 className="font-semibold text-licorice dark:text-white">Support Chat</h3>
             <button
               onClick={() => setShowWidget(false)}
-              className="text-licorice hover:text-gray-700"
+              className="text-licorice dark:text-white hover:text-gray-700"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

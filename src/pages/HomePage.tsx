@@ -29,8 +29,8 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 md:px-8">
           <div className="md:flex md:items-center md:justify-between md:space-x-5">
             <div>
-              <h1 className="text-3xl text-licorice">Internal Note Demo Page</h1>
-              <h2 className="mt-2 text-xl text-licorice">
+              <h1 className="text-3xl text-licorice dark:text-white">Internal Note Demo Page</h1>
+              <h2 className="mt-2 text-xl text-licorice dark:text-white">
                 These demo pages showcase Zendesk features as explained in the articles.
               </h2>
             </div>
@@ -39,7 +39,7 @@ export default function HomePage() {
                 href="https://internalnote.com?utm_source=widget_demo&campaign=demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice shadow-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice dark:text-white shadow-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
               >
                 View Internal Note
               </a>
@@ -51,7 +51,7 @@ export default function HomePage() {
       {/* Migration Banner */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-4">
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <p className="text-sm text-licorice">
+          <p className="text-sm text-licorice dark:text-white">
             We recently migrated this website to React. Found a bug? Let me know via{' '}
             <a
               href="mailto:note@internalnote.com"
@@ -68,7 +68,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
           {navigation.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-xl text-licorice">
+              <p className="text-xl text-licorice dark:text-white">
                 No demo pages available yet. Pages will appear here once they are migrated.
               </p>
             </div>

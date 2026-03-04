@@ -41,7 +41,7 @@ export default function CachingBanner() {
           <div className="flex items-start">
             <div className="shrink-0">
               <svg
-                className="h-5 w-5 text-licorice"
+                className="h-5 w-5 text-licorice dark:text-white"
                 viewBox="0 0 20 20"
                 fill="currentColor"
                 aria-hidden="true"
@@ -54,8 +54,8 @@ export default function CachingBanner() {
               </svg>
             </div>
             <div className="ml-3 flex-1">
-              <h3 className="text-sm font-medium text-licorice">Caching</h3>
-              <div className="mt-2 text-sm text-licorice">
+              <h3 className="text-sm font-medium text-licorice dark:text-white">Caching</h3>
+              <div className="mt-2 text-sm text-licorice dark:text-white">
                 <p>
                   If you experience issues triggering the proactive alerts, clear your LocalStorage and try again.
                 </p>
@@ -67,7 +67,7 @@ export default function CachingBanner() {
             <button
               type="button"
               onClick={handleDismiss}
-              className="ml-3 inline-flex shrink-0 rounded-md text-licorice hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-licorice focus:ring-offset-2 focus:ring-offset-lime"
+              className="ml-3 inline-flex shrink-0 rounded-md text-licorice dark:text-white hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-licorice focus:ring-offset-2 focus:ring-offset-lime"
             >
               <span className="sr-only">Dismiss</span>
               <svg

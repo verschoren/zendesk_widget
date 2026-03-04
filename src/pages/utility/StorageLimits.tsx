@@ -83,15 +83,15 @@ export default function StorageLimits() {
         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 md:px-8">
           <div className="md:flex md:items-center md:justify-between md:space-x-5">
             <div className="w-2/3">
-              <h1 className="text-3xl text-licorice">{metadata.title}</h1>
-              <h2 className="mt-2 text-xl text-licorice">{metadata.description}</h2>
+              <h1 className="text-3xl text-licorice dark:text-white">{metadata.title}</h1>
+              <h2 className="mt-2 text-xl text-licorice dark:text-white">{metadata.description}</h2>
             </div>
             <div className="w-1/3 justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
               <a
                 href="https://internalnote.com/storage-limits/?utm_source=widget_demo&campaign=demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice shadow-xs"
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice dark:text-white shadow-xs"
               >
                 Read Article
               </a>
@@ -103,8 +103,8 @@ export default function StorageLimits() {
       <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <div className="p-4 mx-auto max-w-3xl">
           <div>
-            <h3 className="text-base font-semibold leading-6 text-licorice">Current Zendesk Storage Usage</h3>
-            <dl className="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white border border-gray-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+            <h3 className="text-base font-semibold leading-6 text-licorice dark:text-white">Current Zendesk Storage Usage</h3>
+            <dl className="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white dark:bg-licorice border border-gray-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
               <div className="p-4">
                 <dd className="mt-1 flex items-center justify-left">
                   <div className="w-32">
@@ -112,11 +112,11 @@ export default function StorageLimits() {
                       type="number"
                       value={totalDataStorage || ''}
                       onChange={(e) => setTotalDataStorage(Number(e.target.value))}
-                      className="text-center block w-full rounded-md border-0 py-1.5 text-licorice shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
+                      className="text-center block w-full rounded-md border-0 py-1.5 text-licorice dark:text-white shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
                       placeholder="42"
                     />
                   </div>
-                  <div className="ml-2 text-sm text-licorice">GB Data Storage</div>
+                  <div className="ml-2 text-sm text-licorice dark:text-white">GB Data Storage</div>
                 </dd>
                 <dd className="mt-1 flex items-center justify-left">
                   <div className="w-32">
@@ -124,11 +124,11 @@ export default function StorageLimits() {
                       type="number"
                       value={totalFileStorage || ''}
                       onChange={(e) => setTotalFileStorage(Number(e.target.value))}
-                      className="text-center block w-full rounded-md border-0 py-1.5 text-licorice shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
+                      className="text-center block w-full rounded-md border-0 py-1.5 text-licorice dark:text-white shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
                       placeholder="42"
                     />
                   </div>
-                  <div className="ml-2 text-sm text-licorice">GB File Storage</div>
+                  <div className="ml-2 text-sm text-licorice dark:text-white">GB File Storage</div>
                 </dd>
                 <dd className="mt-1 flex items-center justify-left">
                   <div className="w-32">
@@ -136,23 +136,23 @@ export default function StorageLimits() {
                       type="number"
                       value={totalTickets || ''}
                       onChange={(e) => setTotalTickets(Number(e.target.value))}
-                      className="text-center block w-full rounded-md border-0 py-1.5 text-licorice shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
+                      className="text-center block w-full rounded-md border-0 py-1.5 text-licorice dark:text-white shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
                       placeholder="1138"
                     />
                   </div>
-                  <div className="ml-2 text-sm text-licorice">tickets</div>
+                  <div className="ml-2 text-sm text-licorice dark:text-white">tickets</div>
                 </dd>
               </div>
               <div className="p-4">
                 <div>
-                  <div className="mb-4 text-base font-normal text-licorice">Average Storage</div>
+                  <div className="mb-4 text-base font-normal text-licorice dark:text-white">Average Storage</div>
                   <div className="flex gap-2 items-center">
-                    <dt className="text-sm text-licorice">Data Storage:</dt>
+                    <dt className="text-sm text-licorice dark:text-white">Data Storage:</dt>
                     <dd className="flex items-baseline justify-between text-xl font-semibold text-green-600">
                       {hasData ? (
                         <>
                           <span>{formatBytes(averageDataStorage)[0]}</span>
-                          <span className="ml-2 text-sm text-licorice">{formatBytes(averageDataStorage)[1]} per ticket</span>
+                          <span className="ml-2 text-sm text-licorice dark:text-white">{formatBytes(averageDataStorage)[1]} per ticket</span>
                         </>
                       ) : (
                         'N/A'
@@ -160,12 +160,12 @@ export default function StorageLimits() {
                     </dd>
                   </div>
                   <div className="flex gap-2 items-center">
-                    <dt className="text-sm text-licorice">File Storage:</dt>
+                    <dt className="text-sm text-licorice dark:text-white">File Storage:</dt>
                     <dd className="flex items-baseline justify-between text-xl font-semibold text-green-600">
                       {hasData ? (
                         <>
                           <span>{formatBytes(averageFileStorage)[0]}</span>
-                          <span className="ml-2 text-sm text-licorice">{formatBytes(averageFileStorage)[1]} per ticket</span>
+                          <span className="ml-2 text-sm text-licorice dark:text-white">{formatBytes(averageFileStorage)[1]} per ticket</span>
                         </>
                       ) : (
                         'N/A'
@@ -178,34 +178,34 @@ export default function StorageLimits() {
           </div>
 
           <div className="mt-4">
-            <h3 className="text-base font-semibold leading-6 text-licorice">Reduce Storage</h3>
-            <dl className="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white border border-gray-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+            <h3 className="text-base font-semibold leading-6 text-licorice dark:text-white">Reduce Storage</h3>
+            <dl className="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white dark:bg-licorice border border-gray-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
               <div className="p-4">
                 <dd className="mt-1 flex items-center justify-left">
-                  <div className="text-sm text-licorice">I'll delete&nbsp;</div>
+                  <div className="text-sm text-licorice dark:text-white">I'll delete&nbsp;</div>
                   <div className="w-24">
                     <input
                       type="number"
                       value={goalTickets || ''}
                       onChange={(e) => setGoalTickets(Number(e.target.value))}
-                      className="text-center block w-full rounded-md border-0 py-1.5 text-licorice shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
+                      className="text-center block w-full rounded-md border-0 py-1.5 text-licorice dark:text-white shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
                       placeholder="1138"
                     />
                   </div>
-                  <div className="ml-2 text-sm text-licorice">tickets</div>
+                  <div className="ml-2 text-sm text-licorice dark:text-white">tickets</div>
                 </dd>
                 <dd className="mt-1">
                   {hasData && goalTickets > 0 && (
                     <>
                       <div className="mb-2 flex items-baseline text-2xl font-semibold text-red-600">
-                        <span className="text-sm text-licorice">You saved&nbsp;</span>
+                        <span className="text-sm text-licorice dark:text-white">You saved&nbsp;</span>
                         <span>{formatBytes(savedDataStorage)[0]}</span>
-                        <span className="ml-2 text-sm text-licorice">{formatBytes(savedDataStorage)[1]} of data Storage</span>
+                        <span className="ml-2 text-sm text-licorice dark:text-white">{formatBytes(savedDataStorage)[1]} of data Storage</span>
                       </div>
                       <div className="flex items-baseline text-2xl font-semibold text-red-600">
-                        <span className="text-sm text-licorice">You saved&nbsp;</span>
+                        <span className="text-sm text-licorice dark:text-white">You saved&nbsp;</span>
                         <span>{formatBytes(savedFileStorage)[0]}</span>
-                        <span className="ml-2 text-sm text-licorice">{formatBytes(savedFileStorage)[1]} of file Storage</span>
+                        <span className="ml-2 text-sm text-licorice dark:text-white">{formatBytes(savedFileStorage)[1]} of file Storage</span>
                       </div>
                     </>
                   )}
@@ -213,27 +213,27 @@ export default function StorageLimits() {
               </div>
               <div className="p-4">
                 <dd className="mt-1 flex items-center justify-left">
-                  <div className="text-sm text-licorice">I want to clear&nbsp;</div>
+                  <div className="text-sm text-licorice dark:text-white">I want to clear&nbsp;</div>
                   <div className="w-24">
                     <input
                       type="number"
                       value={goalData || ''}
                       onChange={(e) => setGoalData(Number(e.target.value))}
-                      className="text-center block w-full rounded-md border-0 py-1.5 text-licorice shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
+                      className="text-center block w-full rounded-md border-0 py-1.5 text-licorice dark:text-white shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
                       placeholder="42"
                     />
                   </div>
-                  <div className="ml-2 text-sm text-licorice">GB of File Storage</div>
+                  <div className="ml-2 text-sm text-licorice dark:text-white">GB of File Storage</div>
                 </dd>
                 <dd className="mt-1">
                   {hasData && goalData > 0 && (
                     <>
                       <div className="mb-2 flex items-baseline text-2xl font-semibold text-red-600">
-                        <span className="text-sm text-licorice">You need to delete&nbsp;</span>
+                        <span className="text-sm text-licorice dark:text-white">You need to delete&nbsp;</span>
                         <span>{formatInteger(ticketsNeeded.toFixed(0))}</span>
-                        <span className="ml-2 text-sm text-licorice">tickets</span>
+                        <span className="ml-2 text-sm text-licorice dark:text-white">tickets</span>
                       </div>
-                      <div className="text-sm text-licorice">
+                      <div className="text-sm text-licorice dark:text-white">
                         This also removes {formatBytes(dataRemoved)[0]}{formatBytes(dataRemoved)[1]} of Data Storage
                       </div>
                     </>

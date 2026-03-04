@@ -109,13 +109,13 @@ export default function MessagingAuthentication() {
         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 md:px-8">
           <div className="md:flex md:items-center md:justify-between md:space-x-5">
             <div className="w-2/3">
-              <h1 className="text-3xl text-licorice">{metadata.title}</h1>
-              <h2 className="mt-2 text-xl text-licorice">{metadata.description}</h2>
+              <h1 className="text-3xl text-licorice dark:text-white">{metadata.title}</h1>
+              <h2 className="mt-2 text-xl text-licorice dark:text-white">{metadata.description}</h2>
             </div>
             <div className="w-1/3 mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
               <a
                 href="/guide_messaging"
-                className="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice"
+                className="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice dark:text-white"
               >
                 Guide Embed
               </a>
@@ -123,7 +123,7 @@ export default function MessagingAuthentication() {
                 href="https://internalnote.com/jwt-messaging?utm_source=widget_demo&campaign=demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice shadow-xs"
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice dark:text-white shadow-xs"
               >
                 Read more
               </a>
@@ -147,37 +147,37 @@ export default function MessagingAuthentication() {
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div
                         onClick={() => selectProfile('user')}
-                        className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs hover:border-cactus hover:bg-lime cursor-pointer"
+                        className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white dark:bg-licorice px-6 py-5 shadow-xs hover:border-cactus hover:bg-lime cursor-pointer"
                       >
                         <div className="shrink-0">
                           <img className="h-10 w-10 rounded-full" src="/img/regular.png" alt="" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="text-sm text-licorice">
+                          <p className="text-sm text-licorice dark:text-white">
                             Maximus
                             <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20 ml-2">
                               End User
                             </span>
                           </p>
-                          <p className="truncate text-sm text-licorice">maximus@gladiator.example</p>
+                          <p className="truncate text-sm text-licorice dark:text-white">maximus@gladiator.example</p>
                         </div>
                       </div>
 
                       <div
                         onClick={() => selectProfile('vip')}
-                        className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs hover:border-cactus hover:bg-lime cursor-pointer"
+                        className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white dark:bg-licorice px-6 py-5 shadow-xs hover:border-cactus hover:bg-lime cursor-pointer"
                       >
                         <div className="shrink-0">
                           <img className="h-10 w-10 rounded-full" src="/img/godfather.png" alt="" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="text-sm text-licorice">
+                          <p className="text-sm text-licorice dark:text-white">
                             Vito Corleone
                             <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20 ml-2">
                               VIP
                             </span>
                           </p>
-                          <p className="truncate text-sm text-licorice">vito@corleone.example</p>
+                          <p className="truncate text-sm text-licorice dark:text-white">vito@corleone.example</p>
                         </div>
                       </div>
                     </div>
@@ -225,7 +225,7 @@ export default function MessagingAuthentication() {
                       id="external_id"
                       value={user.external_id}
                       readOnly
-                      className="mt-1 block w-full border-gray-300 border-1 p-2 rounded-md text-licorice sm:text-sm bg-gray-50"
+                      className="mt-1 block w-full border-gray-300 border-1 p-2 rounded-md text-licorice dark:text-white sm:text-sm bg-gray-50"
                     />
                   </div>
                 </div>
@@ -247,7 +247,7 @@ export default function MessagingAuthentication() {
                             href="https://internalnote.com/messaging-authentication-identify-and-merge-existing-users?utm_source=demo"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="whitespace-nowrap font-medium text-blue-700 hover:text-licorice"
+                            className="whitespace-nowrap font-medium text-blue-700 dark:text-blue-400 hover:text-licorice dark:hover:text-white"
                           >
                             Details <span aria-hidden="true">&rarr;</span>
                           </a>
@@ -260,7 +260,7 @@ export default function MessagingAuthentication() {
                     <button
                       type="button"
                       onClick={handleLogin}
-                      className="relative inline-flex items-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-licorice ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                      className="relative inline-flex items-center gap-x-1.5 rounded-md bg-white dark:bg-licorice px-3 py-2 text-sm font-semibold text-licorice dark:text-white ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                     >
                       <svg className="-ml-0.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M3 4a2 2 0 0 0-2 2v1.161l8.441 4.221a1.25 1.25 0 0 0 1.118 0L19 7.162V6a2 2 0 0 0-2-2H3Z" />

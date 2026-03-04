@@ -35,15 +35,15 @@ export default function ProactiveProduct() {
         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
           <div className="md:flex md:items-center md:justify-between md:space-x-5">
             <div className="w-2/3">
-              <h1 className="text-3xl text-licorice">{metadata.title}</h1>
-              <h2 className="mt-2 text-xl text-licorice">{metadata.description}</h2>
+              <h1 className="text-3xl text-licorice dark:text-white">{metadata.title}</h1>
+              <h2 className="mt-2 text-xl text-licorice dark:text-white">{metadata.description}</h2>
             </div>
             <div className="w-1/3 justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
               <a
                 href="https://internalnote.com/proactive-ticketing-for-messaging/?utm_source=widget_demo&campaign=demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice shadow-xs"
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice dark:text-white shadow-xs"
               >
                 Read more
               </a>
@@ -58,8 +58,8 @@ export default function ProactiveProduct() {
             <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
               <div className="lg:col-span-5 lg:col-start-8">
                 <div className="flex justify-between">
-                  <h1 className="text-xl text-licorice">Jurassic Park Tickets</h1>
-                  <p className="text-xl text-licorice">$1138</p>
+                  <h1 className="text-xl text-licorice dark:text-white">Jurassic Park Tickets</h1>
+                  <p className="text-xl text-licorice dark:text-white">$1138</p>
                 </div>
               </div>
 
@@ -74,7 +74,7 @@ export default function ProactiveProduct() {
                 <form>
                   <div className="mt-8">
                     <div className="flex items-center justify-between">
-                      <h2 className="text-sm text-licorice">Experience</h2>
+                      <h2 className="text-sm text-licorice dark:text-white">Experience</h2>
                     </div>
 
                     <fieldset className="mt-2">
@@ -85,7 +85,7 @@ export default function ProactiveProduct() {
                           <span>🦖 VIP Experience</span>
                         </label>
 
-                        <label className="flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1 border-blue-600 text-licorice hover:bg-matcha hover:text-white cursor-pointer">
+                        <label className="flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1 border-blue-600 text-licorice dark:text-white hover:bg-matcha hover:text-white cursor-pointer">
                           <input type="radio" name="size-choice" value="KIDS" className="sr-only" />
                           <span>🦕 KIDS Package</span>
                         </label>
@@ -95,15 +95,15 @@ export default function ProactiveProduct() {
 
                   <button
                     type="submit"
-                    className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-matcha px-8 py-3 text-base text-licorice"
+                    className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-matcha px-8 py-3 text-base text-licorice dark:text-white"
                   >
                     Add to cart
                   </button>
                 </form>
 
                 <div className="mt-10">
-                  <h2 className="text-sm text-licorice">Description</h2>
-                  <div className="prose prose-sm mt-4 text-licorice">
+                  <h2 className="text-sm text-licorice dark:text-white">Description</h2>
+                  <div className="prose prose-sm mt-4 text-licorice dark:text-white">
                     <p>
                       Experience the wonder of Jurassic Park! Walk among the dinosaurs and witness the incredible
                       recreation of these prehistoric creatures. Choose from our VIP experience or family-friendly

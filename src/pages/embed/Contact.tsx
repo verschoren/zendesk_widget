@@ -53,7 +53,7 @@ export default function Contact() {
           <img className="h-8 w-auto" src="/img/zendesk.svg" alt="Zendesk" />
           <img className="h-8 w-auto" src="/img/logo.svg" alt="Internal Note" />
         </a>
-        <p className="hidden sm:flex text-sm text-licorice">
+        <p className="hidden sm:flex text-sm text-licorice dark:text-white">
           Click get support and discover the embedded chat
         </p>
         <a
@@ -72,7 +72,7 @@ export default function Contact() {
             <h1 className="text-3xl font-bold text-gray-900 mb-8">Contact Us</h1>
 
             {!showWidget ? (
-              <div className="bg-white rounded-lg shadow p-8">
+              <div className="bg-white dark:bg-licorice rounded-lg shadow p-8">
                 <form className="space-y-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700">Name</label>
@@ -93,7 +93,7 @@ export default function Contact() {
                     <button
                       type="button"
                       onClick={handleGetSupport}
-                      className="bg-matcha text-licorice px-6 py-2 rounded-md hover:bg-lime"
+                      className="bg-matcha text-licorice dark:text-white px-6 py-2 rounded-md hover:bg-lime"
                     >
                       Get Live Support
                     </button>
@@ -101,7 +101,7 @@ export default function Contact() {
                 </form>
               </div>
             ) : (
-              <div className="bg-white rounded-lg shadow p-8">
+              <div className="bg-white dark:bg-licorice rounded-lg shadow p-8">
                 <h2 className="text-xl font-semibold mb-4">Live Support Chat</h2>
                 <div id="widget" className="h-[600px] border border-gray-200 rounded"></div>
               </div>

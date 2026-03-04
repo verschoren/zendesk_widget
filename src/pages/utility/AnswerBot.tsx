@@ -158,15 +158,15 @@ export default function AnswerBot() {
         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
           <div className="md:flex md:items-center md:justify-between md:space-x-5">
             <div className="w-1/2">
-              <h1 className="text-3xl text-licorice">{metadata.title}</h1>
-              <h2 className="mt-2 text-xl text-licorice">{metadata.description}</h2>
+              <h1 className="text-3xl text-licorice dark:text-white">{metadata.title}</h1>
+              <h2 className="mt-2 text-xl text-licorice dark:text-white">{metadata.description}</h2>
             </div>
             <div className="w-1/2 justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
               <a
                 href="https://internalnote.com/answer-bot-api/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice shadow-xs"
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice dark:text-white shadow-xs"
               >
                 Read more
               </a>
@@ -174,7 +174,7 @@ export default function AnswerBot() {
                 href="https://support.internalnote.com/hc/en-us/sections/9913338409746-Demo-Section"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice shadow-xs"
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice dark:text-white shadow-xs"
               >
                 View Articles
               </a>
@@ -185,9 +185,9 @@ export default function AnswerBot() {
 
       <div className="h-full mb-32">
         <div className="w-full flex p-4 gap-2">
-          <div className="bg-white border-gray-200 border rounded-lg w-1/2">
+          <div className="bg-white dark:bg-licorice border-gray-200 border rounded-lg w-1/2">
             <div className="px-4 py-5 sm:p-6">
-              <h3 className="text-base font-semibold leading-6 text-licorice">Your search</h3>
+              <h3 className="text-base font-semibold leading-6 text-licorice dark:text-white">Your search</h3>
               <form className="mt-5" onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
                 <div className="w-full sm:max-w-xs">
                   <label htmlFor="search" className="sr-only">
@@ -198,12 +198,12 @@ export default function AnswerBot() {
                     id="search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="block w-full rounded-md border-0 px-3 py-1.5 text-licorice shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
+                    className="block w-full rounded-md border-0 px-3 py-1.5 text-licorice dark:text-white shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="mt-3 inline-flex w-full items-center justify-center rounded-md bg-matcha px-3 py-2 text-sm font-semibold text-licorice shadow-xs hover:bg-lime"
+                  className="mt-3 inline-flex w-full items-center justify-center rounded-md bg-matcha px-3 py-2 text-sm font-semibold text-licorice dark:text-white shadow-xs hover:bg-lime"
                 >
                   Get Suggestions
                 </button>
@@ -237,7 +237,7 @@ export default function AnswerBot() {
               >
                 <div className="p-6">
                   <div className="flex items-center space-x-3 justify-between mb-4">
-                    <h3 className="truncate text-sm text-licorice">{article.title}</h3>
+                    <h3 className="truncate text-sm text-licorice dark:text-white">{article.title}</h3>
                     <a href={article.html_url} target="_blank" rel="noopener noreferrer">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +258,7 @@ export default function AnswerBot() {
                       </svg>
                     </a>
                   </div>
-                  <p className="mt-1 text-sm text-licorice h-32 overflow-hidden">{article.snippet}</p>
+                  <p className="mt-1 text-sm text-licorice dark:text-white h-32 overflow-hidden">{article.snippet}</p>
                 </div>
                 {!resolvedArticles.has(article.article_id) && !rejectedArticles.has(article.article_id) && (
                   <div>

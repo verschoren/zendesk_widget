@@ -64,7 +64,7 @@ export default function Overlay() {
           <img className="h-8 w-auto" src="/img/zendesk.svg" alt="Zendesk" />
           <img className="h-8 w-auto" src="/img/logo.svg" alt="Internal Note" />
         </a>
-        <p className="hidden sm:flex text-sm text-licorice gap-1 text-center">
+        <p className="hidden sm:flex text-sm text-licorice dark:text-white gap-1 text-center">
           Click the{' '}
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 inline">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
@@ -83,7 +83,7 @@ export default function Overlay() {
 
       {/* Main Content */}
       <div className="pt-16">
-        <header className="relative bg-white shadow-xs">
+        <header className="relative bg-white dark:bg-licorice shadow-xs">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
@@ -104,7 +104,7 @@ export default function Overlay() {
           </div>
         </header>
 
-        <main className="bg-white">
+        <main className="bg-white dark:bg-licorice">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
             <div className="text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
@@ -142,7 +142,7 @@ export default function Overlay() {
       {showWidget && (
         <div className="fixed inset-0 z-40 flex justify-end">
           <div className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onClick={handleCloseWidget}></div>
-          <div className="relative w-full max-w-md bg-white shadow-xl">
+          <div className="relative w-full max-w-md bg-white dark:bg-licorice shadow-xl">
             <div className="absolute top-4 right-4 z-50">
               <button
                 onClick={handleCloseWidget}

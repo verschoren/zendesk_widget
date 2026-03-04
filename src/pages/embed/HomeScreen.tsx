@@ -49,7 +49,7 @@ export default function HomeScreen() {
           <img className="h-8 w-auto" src="/img/zendesk.svg" alt="Zendesk" />
           <img className="h-8 w-auto" src="/img/logo.svg" alt="Internal Note" />
         </a>
-        <p className="hidden sm:flex text-sm text-licorice">
+        <p className="hidden sm:flex text-sm text-licorice dark:text-white">
           Open the widget to enjoy a custom launcher experience
         </p>
         <a
@@ -69,7 +69,7 @@ export default function HomeScreen() {
               <h1 className="text-3xl font-bold text-gray-900 mb-8">
                 Custom Home Screen Experience
               </h1>
-              <div className="bg-white rounded-lg shadow p-8 mb-6">
+              <div className="bg-white dark:bg-licorice rounded-lg shadow p-8 mb-6">
                 <h2 className="text-xl font-semibold mb-4">Welcome to Support</h2>
                 <p className="text-gray-600 mb-4">
                   Experience a custom home screen with curated conversation starters and quick actions.
@@ -81,7 +81,7 @@ export default function HomeScreen() {
             </div>
 
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-lg shadow sticky top-24">
+              <div className="bg-white dark:bg-licorice rounded-lg shadow sticky top-24">
                 <div id="widget" className="h-[700px]"></div>
               </div>
             </div>

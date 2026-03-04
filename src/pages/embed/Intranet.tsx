@@ -50,7 +50,7 @@ export default function Intranet() {
           <img className="h-8 w-auto" src="/img/zendesk.svg" alt="Zendesk" />
           <img className="h-8 w-auto" src="/img/logo.svg" alt="Internal Note" />
         </a>
-        <p className="hidden sm:flex text-sm text-licorice">
+        <p className="hidden sm:flex text-sm text-licorice dark:text-white">
           Discover an embedded chat right within this page
         </p>
         <a
@@ -69,7 +69,7 @@ export default function Intranet() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-lg shadow p-6 mb-6">
+              <div className="bg-white dark:bg-licorice rounded-lg shadow p-6 mb-6">
                 <h2 className="text-xl font-semibold mb-4">Latest Announcements</h2>
                 <div className="space-y-4">
                   <div className="border-l-4 border-blue-500 pl-4">
@@ -83,14 +83,14 @@ export default function Intranet() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow p-6">
+              <div className="bg-white dark:bg-licorice rounded-lg shadow p-6">
                 <h2 className="text-xl font-semibold mb-4">Support Chat</h2>
                 <div id="widget" className="h-[600px] border border-gray-200 rounded"></div>
               </div>
             </div>
 
             <div>
-              <div className="bg-white rounded-lg shadow p-6">
+              <div className="bg-white dark:bg-licorice rounded-lg shadow p-6">
                 <h2 className="text-xl font-semibold mb-4">Quick Links</h2>
                 <ul className="space-y-2">
                   <li><a href="#" className="text-blue-600 hover:underline">Employee Directory</a></li>

@@ -130,13 +130,13 @@ export default function ClassicAuthentication() {
         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
           <div className="md:flex md:items-center md:justify-between md:space-x-5">
             <div className="w-1/2">
-              <h1 className="text-3xl text-licorice">{metadata.title}</h1>
-              <h2 className="mt-2 text-xl text-licorice">{metadata.description}</h2>
+              <h1 className="text-3xl text-licorice dark:text-white">{metadata.title}</h1>
+              <h2 className="mt-2 text-xl text-licorice dark:text-white">{metadata.description}</h2>
             </div>
             <div className="w-1/2 justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
               <a
                 href="/classic/guide-custom"
-                className="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice"
+                className="inline-flex items-center justify-center rounded-md border bg-matcha px-4 py-2 text-sm text-licorice dark:text-white"
               >
                 Guide Embed
               </a>
@@ -144,7 +144,7 @@ export default function ClassicAuthentication() {
                 href="https://internalnote.com/classic-web-widget-authentication?utm_source=widget_demo&campaign=demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice shadow-xs"
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-matcha px-4 py-2 text-sm text-licorice dark:text-white shadow-xs"
               >
                 Read more
               </a>
@@ -158,14 +158,14 @@ export default function ClassicAuthentication() {
           <form className="mt-6 space-y-8 divide-y divide-y-blue-gray-200">
             <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-6 sm:gap-x-6">
               <div className="sm:col-span-6">
-                <h2 className="text-xl font-medium text-licorice">User Info</h2>
+                <h2 className="text-xl font-medium text-licorice dark:text-white">User Info</h2>
                 <p className="mt-1 text-sm text-blue-gray-500">
                   Fill in this form to authenticate with a random user.
                 </p>
               </div>
 
               <div className="sm:col-span-3">
-                <label htmlFor="name" className="block text-sm font-medium text-licorice">
+                <label htmlFor="name" className="block text-sm font-medium text-licorice dark:text-white">
                   Name
                 </label>
                 <input
@@ -174,12 +174,12 @@ export default function ClassicAuthentication() {
                   id="name"
                   value={user.name}
                   onChange={(e) => setUser({ ...user, name: e.target.value })}
-                  className="px-3 py-1.5 border-gray-300 border block w-full rounded-md shadow-xs text-licorice sm:text-sm"
+                  className="px-3 py-1.5 border-gray-300 border block w-full rounded-md shadow-xs text-licorice dark:text-white sm:text-sm"
                 />
               </div>
 
               <div className="sm:col-span-3">
-                <label htmlFor="email" className="block text-sm font-medium text-licorice">
+                <label htmlFor="email" className="block text-sm font-medium text-licorice dark:text-white">
                   Email
                 </label>
                 <input
@@ -188,12 +188,12 @@ export default function ClassicAuthentication() {
                   id="email"
                   value={user.email}
                   onChange={(e) => setUser({ ...user, email: e.target.value })}
-                  className="px-3 py-1.5 border-gray-300 border mt-1 block w-full rounded-md shadow-xs text-licorice sm:text-sm"
+                  className="px-3 py-1.5 border-gray-300 border mt-1 block w-full rounded-md shadow-xs text-licorice dark:text-white sm:text-sm"
                 />
               </div>
 
               <div className="sm:col-span-6">
-                <label htmlFor="external_id" className="block text-sm font-medium text-licorice">
+                <label htmlFor="external_id" className="block text-sm font-medium text-licorice dark:text-white">
                   External ID
                 </label>
                 <div className="mt-1 flex rounded-md">
@@ -216,14 +216,14 @@ export default function ClassicAuthentication() {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-xs text-sm font-medium text-licorice hover:bg-blue-gray-50"
+                className="bg-white dark:bg-licorice py-2 px-4 border border-gray-300 rounded-md shadow-xs text-sm font-medium text-licorice dark:text-white hover:bg-blue-gray-50"
               >
                 Logout
               </button>
               <button
                 type="button"
                 onClick={handleLogin}
-                className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-xs text-sm font-medium rounded-md text-licorice bg-matcha"
+                className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-xs text-sm font-medium rounded-md text-licorice dark:text-white bg-matcha"
               >
                 Login
               </button>
