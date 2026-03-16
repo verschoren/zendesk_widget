@@ -96,13 +96,15 @@ export async function onRequestPost(context: {
   try {
     // Check if we have Zendesk API credentials for user lookup
     const hasZendeskAPI = env.ANSWERBOT_DOMAIN && env.ANSWERBOT_ADMIN_EMAIL && env.ANSWERBOT_API_TOKEN
+    console.log(`Zendesk API credentials available: ${hasZendeskAPI}`)
 
     // If we have API access, check for existing user in Zendesk
     if (hasZendeskAPI) {
+      console.log(`Looking up user by email: ${email}`)
       const existingUser = await findZendeskUserByEmail(email, env)
 
       if (existingUser) {
-        console.log(`Found existing Zendesk user: ${existingUser.id}`)
+        console.log(`Found existing Zendesk user:`, JSON.stringify(existingUser))
 
         // If user exists and has an external_id, use it
         if (existingUser.external_id) {
@@ -130,7 +132,7 @@ export async function onRequestPost(context: {
       } else {
         // User doesn't exist in Zendesk yet, use provided or generate external_id
         external_id = external_id || generateExternalId(email)
-        console.log(`New user, using external_id: ${external_id}`)
+        console.log(`User not found in Zendesk, using external_id: ${external_id}`)
       }
     } else {
       // No API access, use provided external_id or generate one
@@ -280,9 +282,11 @@ async function findZendeskUserByEmail(
 
     // Return first user if found (email should be unique)
     if (data.users && data.users.length > 0) {
+      console.log(`Found ${data.users.length} user(s) for email ${email}`)
       return data.users[0]
     }
 
+    console.log(`No users found for email ${email}`)
     return null
   } catch (error) {
     console.error('Error searching for Zendesk user:', error)
