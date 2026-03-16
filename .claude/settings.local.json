@@ -16,7 +16,8 @@
       "Bash(/tmp/replace_buttons_v2.py:*)",
       "Bash(/tmp/fix_embed_dark_mode.sh:*)",
       "Bash(/tmp/clean_duplicates.sh:*)",
-      "Bash(xargs:*)"
+      "Bash(xargs:*)",
+      "Bash(wc:*)"
     ]
   }
 }

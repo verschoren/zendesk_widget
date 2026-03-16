@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { PageMetadata } from '@/types/page'
 
 export const metadata: PageMetadata = {
@@ -8,12 +8,30 @@ export const metadata: PageMetadata = {
   name: 'Multi Column',
   icon: '📊',
   path: '/embed/multicolumn',
-  title: 'Multi-Column Widget Demo',
-  description: 'Conversation and message list as separate embedded elements',
+  title: 'Multi Column Widget Demo',
+  description: 'Widget embedded as separate conversation list and message log',
   parentId: 'embeddable_mode'
 }
 
+const navItems = [
+  { name: 'Projects', icon: <path d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" strokeLinecap="round" strokeLinejoin="round" /> },
+  { name: 'Deployments', icon: <path d="M21.75 17.25v-.228a4.5 4.5 0 0 0-.12-1.03l-2.268-9.64a3.375 3.375 0 0 0-3.285-2.602H7.923a3.375 3.375 0 0 0-3.285 2.602l-2.268 9.64a4.5 4.5 0 0 0-.12 1.03v.228m19.5 0a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3m19.5 0a3 3 0 0 0-3-3H5.25a3 3 0 0 0-3 3m16.5 0h.008v.008h-.008v-.008Zm-3 0h.008v.008h-.008v-.008Z" strokeLinecap="round" strokeLinejoin="round" />, active: true },
+  { name: 'Activity', icon: <path d="M9.348 14.652a3.75 3.75 0 0 1 0-5.304m5.304 0a3.75 3.75 0 0 1 0 5.304m-7.425 2.121a6.75 6.75 0 0 1 0-9.546m9.546 0a6.75 6.75 0 0 1 0 9.546M5.106 18.894c-3.808-3.807-3.808-9.98 0-13.788m13.788 0c3.808 3.807 3.808 9.98 0 13.788M12 12h.008v.008H12V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" strokeLinecap="round" strokeLinejoin="round" /> },
+  { name: 'Domains', icon: <path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" strokeLinecap="round" strokeLinejoin="round" /> },
+  { name: 'Usage', icon: <path d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" strokeLinecap="round" strokeLinejoin="round" /> },
+  { name: 'Settings', icon: <><path d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" strokeLinecap="round" strokeLinejoin="round" /><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" strokeLinecap="round" strokeLinejoin="round" /></> }
+]
+
+const teams = [
+  { name: 'Planetaria', initial: 'P' },
+  { name: 'Protocol', initial: 'P' },
+  { name: 'Tailwind Labs', initial: 'T' }
+]
+
 export default function MultiColumn() {
+  const [showWidget, setShowWidget] = useState(false)
+  const [columnWidth, setColumnWidth] = useState(384)
+
   useEffect(() => {
     document.title = `Internal Note - ${metadata.title}`
 
@@ -26,24 +44,32 @@ export default function MultiColumn() {
     document.body.appendChild(script)
 
     script.onload = () => {
-      if (window.zE) {
-        // Render conversation list
-        window.zE('messenger', 'render', {
-          mode: 'embedded',
-          widget: {
-            targetElement: '#conversation-list',
-          },
-          conversationList: { visible: true }
-        })
+      // Wait a bit for DOM to be ready
+      setTimeout(() => {
+        if (window.zE) {
+          window.zE('messenger', 'render', {
+            mode: 'embedded',
+            conversationList: {
+              targetElement: '#widget_conversations',
+            },
+            messageLog: {
+              targetElement: '#widget_messages',
+            },
+          })
 
-        // Render message log
-        window.zE('messenger', 'render', {
-          mode: 'embedded',
-          widget: {
-            targetElement: '#message-log',
-          }
-        })
-      }
+          window.zE('messenger:set', 'customization', {
+            common: {
+              hideHeader: false
+            },
+            conversationList: {
+              hideHeader: true
+            },
+            messageLog: {
+              hideHeader: true
+            }
+          })
+        }
+      }, 100)
     }
 
     return () => {
@@ -68,16 +94,115 @@ export default function MultiColumn() {
         </a>
       </div>
 
-      <div className="pt-16 h-screen flex">
-        {/* Conversation List Column */}
-        <div className="w-1/3 border-r border-gray-200">
-          <div id="conversation-list" className="h-full"></div>
+      <div className="h-screen flex flex-col pt-16">
+        {/* Static sidebar for desktop */}
+        <div className="hidden xl:fixed xl:inset-y-16 xl:z-50 xl:flex xl:w-72 xl:flex-col">
+          <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-50 px-6 ring-1 ring-gray-200">
+            <div className="flex h-16 shrink-0 items-center">
+              <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=blue&shade=600" alt="Your Company" className="h-8 w-auto" />
+            </div>
+            <nav className="flex flex-1 flex-col">
+              <ul role="list" className="flex flex-1 flex-col gap-y-7">
+                <li>
+                  <ul role="list" className="-mx-2 space-y-1">
+                    {navItems.map((item) => (
+                      <li key={item.name}>
+                        <a
+                          href="#"
+                          className={`group flex gap-x-3 rounded-md p-2 text-sm font-semibold ${
+                            item.active
+                              ? 'bg-gray-100 text-blue-600'
+                              : 'text-gray-700 hover:bg-gray-100 hover:text-blue-600'
+                          }`}
+                        >
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`size-6 shrink-0 ${item.active ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600'}`}>
+                            {item.icon}
+                          </svg>
+                          {item.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+                <li>
+                  <div className="text-xs font-semibold text-gray-400">Your teams</div>
+                  <ul role="list" className="-mx-2 mt-2 space-y-1">
+                    {teams.map((team) => (
+                      <li key={team.name}>
+                        <a href="#" className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600">
+                          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-blue-600 group-hover:text-blue-600">
+                            {team.initial}
+                          </span>
+                          <span className="truncate">{team.name}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+                <li className="-mx-6 mt-auto">
+                  <button
+                    onClick={() => setShowWidget(!showWidget)}
+                    className={`flex w-full items-center gap-x-4 px-6 py-3 text-sm font-semibold ${
+                      showWidget
+                        ? 'bg-blue-600 text-white'
+                        : 'text-gray-900 hover:bg-blue-600 hover:text-white'
+                    }`}
+                  >
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" className="size-8 rounded-full bg-gray-100" />
+                    <span>Get Support</span>
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
 
-        {/* Message Log Column */}
-        <div className="w-2/3">
-          <div id="message-log" className="h-full"></div>
+        {/* Main content */}
+        <div className={`flex flex-1 xl:pl-72 ${!showWidget ? 'hidden' : ''}`}>
+          <div className="relative flex flex-1">
+            <aside
+              id="widget_conversations"
+              className="hidden xl:flex flex-col shrink-0 overflow-y-auto border-r border-gray-200 min-w-72"
+              style={{ width: `${columnWidth}px` }}
+            ></aside>
+            {/* Resize handle */}
+            <div
+              className="hidden xl:block absolute top-0 h-full w-1 cursor-col-resize bg-gray-200 hover:bg-blue-500 transition-colors z-10"
+              style={{ left: `${columnWidth}px` }}
+              onMouseDown={(e) => {
+                e.preventDefault()
+                const startX = e.clientX
+                const startWidth = columnWidth
+
+                const handleMouseMove = (moveEvent: MouseEvent) => {
+                  const delta = moveEvent.clientX - startX
+                  const newWidth = Math.max(288, Math.min(600, startWidth + delta))
+                  setColumnWidth(newWidth)
+                }
+
+                const handleMouseUp = () => {
+                  document.removeEventListener('mousemove', handleMouseMove)
+                  document.removeEventListener('mouseup', handleMouseUp)
+                }
+
+                document.addEventListener('mousemove', handleMouseMove)
+                document.addEventListener('mouseup', handleMouseUp)
+              }}
+            />
+            <main id="widget_messages" className="flex-1"></main>
+          </div>
         </div>
+        {!showWidget && (
+          <div className="flex-1 xl:pl-72 flex items-center justify-center">
+            <div className="text-center">
+              <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              <h3 className="mt-2 text-sm font-semibold text-gray-900">No support widget</h3>
+              <p className="mt-1 text-sm text-gray-500">Click "Get Support" in the sidebar to start.</p>
+            </div>
+          </div>
+        )}
       </div>
     </>
   )

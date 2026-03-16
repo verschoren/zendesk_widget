@@ -82,7 +82,7 @@ export default function Intranet() {
         </a>
       </div>
 
-      <div className="absolute top-16 w-full">
+      <div className="pt-16 w-full">
         {/* Intranet Header */}
         <header className="bg-gradient-to-r from-sky-800 to-cyan-600 pb-24">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
