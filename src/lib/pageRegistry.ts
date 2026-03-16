@@ -7,6 +7,7 @@ import * as classic_Authentication from '@/pages/classic/Authentication'
 import * as classic_Customization from '@/pages/classic/Customization'
 import * as classic_GuideCustom from '@/pages/classic/GuideCustom'
 import * as embed_Contact from '@/pages/embed/Contact'
+import * as embed_Conversational from '@/pages/embed/Conversational'
 import * as embed_Draggable from '@/pages/embed/Draggable'
 import * as embed_HomeScreen from '@/pages/embed/HomeScreen'
 import * as embed_Index from '@/pages/embed/Index'
@@ -34,6 +35,7 @@ export const pages: PageMetadata[] = [
   { ...classic_Customization.metadata, component: classic_Customization.default },
   { ...classic_GuideCustom.metadata, component: classic_GuideCustom.default },
   { ...embed_Contact.metadata, component: embed_Contact.default },
+  { ...embed_Conversational.metadata, component: embed_Conversational.default },
   { ...embed_Draggable.metadata, component: embed_Draggable.default },
   { ...embed_HomeScreen.metadata, component: embed_HomeScreen.default },
   { ...embed_Index.metadata, component: embed_Index.default },

@@ -64,13 +64,24 @@ export default function NavigationMenu({ onLinkClick }: NavigationMenuProps) {
     if (hasChildren) {
       return (
         <li key={link.id}>
-          <div
+          <Link
+            to={link.path!}
             className={`flex justify-between items-center rounded-md p-2 text-sm leading-6 cursor-pointer ${
               isActive
                 ? 'bg-lime text-licorice'
                 : 'text-licorice dark:text-white hover:text-licorice hover:bg-matcha'
             }`}
-            onClick={() => toggleChild(link.id)}
+            onClick={(e) => {
+              // Toggle expansion when clicking the chevron area
+              if (e.target instanceof Element && e.target.closest('svg')) {
+                e.preventDefault()
+                toggleChild(link.id)
+              } else {
+                // Navigate and expand when clicking the text
+                toggleChild(link.id)
+                onLinkClick?.()
+              }
+            }}
           >
             <span className="truncate">{link.name}</span>
             <svg
@@ -78,10 +89,15 @@ export default function NavigationMenu({ onLinkClick }: NavigationMenuProps) {
               viewBox="0 0 20 20"
               fill="currentColor"
               className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                toggleChild(link.id)
+              }}
             >
               <path fillRule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
             </svg>
-          </div>
+          </Link>
           {isExpanded && (
             <ul role="list" className="ml-4 mt-1 space-y-1">
               {link.children!.map(child => renderLink(child, level + 1))}

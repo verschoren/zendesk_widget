@@ -38,29 +38,17 @@ export function buildNavigation(pages: PageMetadata[]): NavigationSection[] {
       // Find the parent link in the appropriate category
       const categorySection = grouped[page.category]
       if (categorySection) {
-        let parentLink = categorySection.links.find(link => link.id === page.parentId)
+        const parentLink = categorySection.links.find(link => link.id === page.parentId)
 
-        // If parent doesn't exist, create it
-        if (!parentLink) {
-          parentLink = {
-            id: page.parentId,
-            icon: '↔️',
-            name: 'Embeddable Mode',
-            path: '/embed',
-            title: 'Embeddable Mode',
-            description: 'Demo pages for the new embeddable mode',
-            children: []
+        if (parentLink) {
+          // Initialize children array if it doesn't exist
+          if (!parentLink.children) {
+            parentLink.children = []
           }
-          categorySection.links.push(parentLink)
-        }
 
-        // Initialize children array if it doesn't exist
-        if (!parentLink.children) {
-          parentLink.children = []
+          // Add the child page
+          parentLink.children.push(pageMetadataToNavigationLink(page))
         }
-
-        // Add the child page
-        parentLink.children.push(pageMetadataToNavigationLink(page))
       }
     }
   })
