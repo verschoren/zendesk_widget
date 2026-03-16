@@ -115,19 +115,15 @@ export default function Conversational() {
 
   return (
     <>
-      <div className="fixed top-0 w-full flex h-16 justify-between items-center gap-x-6 bg-matcha px-6 py-2.5 z-50">
-        <a href="/embed" className="flex gap-4 items-center">
-          <img className="h-8 w-auto" src="/img/zendesk.svg" alt="Zendesk" />
-          <img className="h-8 w-auto" src="/img/logo.svg" alt="Internal Note" />
-        </a>
-        <p className="hidden sm:flex text-sm text-licorice dark:text-white">
+      <div className="fixed top-0 w-full flex h-16 justify-start items-center gap-x-6 bg-matcha px-6 py-2.5 z-50">
+        <p className="text-sm text-licorice dark:text-white">
           Type a question and press Enter to start a conversation
         </p>
         <a
           href="https://internalnote.com/embeddable-zendesk-widget?utm_source=demo_pages"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-none rounded-full bg-licorice px-3.5 py-1 text-sm font-semibold text-white shadow-xs"
+          className="rounded-full bg-licorice px-3.5 py-1 text-sm font-semibold text-white shadow-xs"
         >
           View article <span aria-hidden="true">&rarr;</span>
         </a>
