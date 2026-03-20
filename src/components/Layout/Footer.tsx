@@ -26,12 +26,12 @@ export default function Footer() {
   }, [])
 
   return (
-    <footer className="md:w-[calc(100%_-_288px)] w-full fixed bottom-0 bg-white dark:bg-licorice">
-      <div className="border-t border-gray-900/10 p-4 flex flex-col md:flex-row justify-between w-full items-start md:items-end gap-4 md:gap-0 md:pr-24">
-        <div className="min-w-24 w-[calc(100%_-_32px)] md:w-96" id="ghost-signup-form">
+    <footer className="md:hidden w-full fixed bottom-0 bg-white dark:bg-licorice">
+      <div className="border-t border-gray-900/10 p-4 flex flex-col justify-between w-full items-start gap-4">
+        <div className="min-w-24 w-[calc(100%_-_32px)]" id="ghost-signup-form">
         </div>
 
-        <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+        <div className="flex flex-col gap-2">
           <p className="text-xs leading-5 text-licorice dark:text-white">
             &copy; 2022–2026{' '}
             <a

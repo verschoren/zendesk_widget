@@ -94,7 +94,7 @@ export default function MultiColumn() {
         </a>
       </div>
 
-      <div className="h-screen flex flex-col pt-16 pb-40">
+      <div className="h-screen flex flex-col pt-16">
         {/* Static sidebar for desktop */}
         <div className="hidden xl:fixed xl:inset-y-16 xl:z-50 xl:flex xl:w-72 xl:flex-col">
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-50 px-6 ring-1 ring-gray-200">
