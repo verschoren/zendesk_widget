@@ -18,9 +18,29 @@ export default function HomePage() {
     zendeskScript.async = true
     document.body.appendChild(zendeskScript)
 
+    // Load Ghost signup form script
+    const ghostContainer = document.getElementById('homepage-ghost-signup-form')
+    if (ghostContainer) {
+      const ghostScript = document.createElement('script')
+      ghostScript.src = 'https://cdn.jsdelivr.net/ghost/signup-form@~0.1/umd/signup-form.min.js'
+      ghostScript.setAttribute('data-button-color', '#D1F470')
+      ghostScript.setAttribute('data-button-text-color', '#11110D')
+      ghostScript.setAttribute('data-site', 'https://internalnote.com/')
+      ghostScript.async = true
+      ghostContainer.appendChild(ghostScript)
+    }
+
     return () => {
       const existingZendesk = document.getElementById('ze-snippet')
       if (existingZendesk) existingZendesk.remove()
+
+      // Clean up Ghost script
+      const ghostScripts = document.querySelectorAll('script[src*="ghost/signup-form"]')
+      ghostScripts.forEach(script => script.remove())
+
+      // Clean up Ghost form elements
+      const ghostForms = document.querySelectorAll('[data-ghost-form]')
+      ghostForms.forEach(form => form.remove())
     }
   }, [])
 
@@ -43,6 +63,24 @@ export default function HomePage() {
           </div>
         </div>
       </header>
+
+      {/* Newsletter CTA */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-6">
+        <div className="bg-gradient-to-br from-matcha to-lime rounded-xl p-8 md:p-12">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-licorice mb-3">
+                Master Zendesk with Internal Note
+              </h3>
+              <p className="text-base md:text-lg text-licorice/80">
+                Get weekly tips, tutorials, and insights on Zendesk customization and best practices.
+                Join developers building better support experiences.
+              </p>
+            </div>
+            <div className="max-w-xl mx-auto" id="homepage-ghost-signup-form"></div>
+          </div>
+        </div>
+      </div>
 
       {/* Migration Banner */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-4">
