@@ -6,9 +6,10 @@ import { NavigationLink } from '@/types/navigation'
 
 interface NavigationMenuProps {
   onLinkClick?: () => void
+  collapsed?: boolean
 }
 
-export default function NavigationMenu({ onLinkClick }: NavigationMenuProps) {
+export default function NavigationMenu({ onLinkClick, collapsed = false }: NavigationMenuProps) {
   const location = useLocation()
   const navigation = buildNavigation(pages)
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set())
@@ -132,6 +133,27 @@ export default function NavigationMenu({ onLinkClick }: NavigationMenuProps) {
           <span className="truncate">{link.name}</span>
         </Link>
       </li>
+    )
+  }
+
+  if (collapsed) {
+    // Collapsed view - show only icons/indicators
+    return (
+      <ul role="list" className="flex flex-1 flex-col gap-y-2">
+        {navigation.map((section) => (
+          <li key={section.type}>
+            <div
+              className="text-xs font-semibold leading-6 text-licorice dark:text-white flex justify-center items-center cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+              onClick={() => toggleSection(section.type)}
+              title={section.name}
+            >
+              <span className="w-8 h-8 flex items-center justify-center bg-matcha rounded-md text-licorice font-bold">
+                {section.name.charAt(0)}
+              </span>
+            </div>
+          </li>
+        ))}
+      </ul>
     )
   }
 
