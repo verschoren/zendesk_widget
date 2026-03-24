@@ -33,7 +33,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
       <Sidebar collapsed={sidebarCollapsed} onToggle={toggleSidebar} />
 
       {/* Main content */}
-      <main id="content" className={`py-10 px-4 sm:px-6 md:px-8 transition-all duration-300 ${sidebarCollapsed ? 'md:pl-20' : 'md:pl-72'}`}>
+      <main id="content" className={`transition-all duration-300 ${sidebarCollapsed ? 'md:pl-10' : 'md:pl-72'}`}>
         {/* Mobile header */}
         <MobileHeader onMenuOpen={() => setMobileMenuOpen(true)} />
 

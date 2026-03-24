@@ -112,9 +112,9 @@ export default function MessagingAuthentication() {
   }
 
   return (
-    <>
+    <div className="py-10 px-4 sm:px-6 md:px-8">
       <header>
-        <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 md:px-8">
+        <div className="mx-auto max-w-7xl py-6">
           <div className="md:flex md:items-center md:justify-between md:space-x-5">
             <div className="w-2/3">
               <h1 className="text-3xl text-licorice dark:text-white">{metadata.title}</h1>
@@ -352,7 +352,7 @@ export default function MessagingAuthentication() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

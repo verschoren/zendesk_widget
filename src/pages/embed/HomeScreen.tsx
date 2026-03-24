@@ -24,6 +24,7 @@ const categories = [
 export default function HomeScreen() {
   const [showWidget, setShowWidget] = useState(false)
   const [view, setView] = useState<'home' | 'conversation'>('home')
+  const [widgetRendered, setWidgetRendered] = useState(false)
 
   useEffect(() => {
     document.title = `Internal Note - ${metadata.title}`
@@ -36,7 +37,15 @@ export default function HomeScreen() {
     script.async = true
     document.body.appendChild(script)
 
-    script.onload = () => {
+    return () => {
+      const existing = document.getElementById('ze-snippet')
+      if (existing) existing.remove()
+    }
+  }, [])
+
+  // Render the widget when showWidget becomes true
+  useEffect(() => {
+    if (showWidget && !widgetRendered) {
       setTimeout(() => {
         if (window.zE) {
           window.zE('messenger', 'render', {
@@ -56,15 +65,11 @@ export default function HomeScreen() {
               hideNewConversationButton: true
             }
           })
+          setWidgetRendered(true)
         }
       }, 100)
     }
-
-    return () => {
-      const existing = document.getElementById('ze-snippet')
-      if (existing) existing.remove()
-    }
-  }, [])
+  }, [showWidget, widgetRendered])
 
   const handleStartConversation = () => {
     setView('conversation')

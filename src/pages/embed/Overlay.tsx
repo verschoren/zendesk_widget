@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { PageMetadata } from '@/types/page'
 
 export const metadata: PageMetadata = {
@@ -25,6 +25,7 @@ export default function Overlay() {
   const [selectedImage, setSelectedImage] = useState(0)
   const [selectedColor, setSelectedColor] = useState('washed-black')
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null)
+  const widgetContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     document.title = `Internal Note - ${metadata.title}`
@@ -42,6 +43,39 @@ export default function Overlay() {
       if (existing) existing.remove()
     }
   }, [])
+
+  // Handle click outside to close overlay
+  useEffect(() => {
+    if (!showWidget) return
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node
+
+      // Check if click is inside the widget container
+      if (widgetContainerRef.current && widgetContainerRef.current.contains(target)) {
+        return
+      }
+
+      // Check if click is on the AppLayout sidebar (allow sidebar clicks)
+      const sidebar = document.querySelector('aside, nav[class*="sidebar"], div[class*="md:fixed"][class*="md:w-72"]')
+      if (sidebar && sidebar.contains(target)) {
+        return
+      }
+
+      // Close the overlay if clicked outside
+      handleCloseWidget()
+    }
+
+    // Add event listener with a small delay to prevent immediate closure
+    const timeoutId = setTimeout(() => {
+      document.addEventListener('mousedown', handleClickOutside)
+    }, 100)
+
+    return () => {
+      clearTimeout(timeoutId)
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showWidget])
 
   const handleOpenWidget = () => {
     setShowWidget(true)
@@ -68,7 +102,7 @@ export default function Overlay() {
   return (
     <>
       <div className="fixed top-0 w-full flex h-16 justify-start items-center gap-x-6 bg-matcha px-6 py-2.5 z-50">
-        <p className="flex text-sm text-licorice dark:text-white gap-1">
+        <p className="flex text-sm items-center text-licorice dark:text-white gap-1">
           Click the{' '}
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 inline">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
@@ -276,11 +310,11 @@ export default function Overlay() {
         <div className="fixed inset-0 z-50 overflow-hidden bg-transparent">
           <div className="absolute inset-0 pl-10 sm:pl-16">
             <div className={`ml-auto h-full w-full max-w-md transform transition-transform duration-500 ease-in-out ${showWidget ? 'translate-x-0' : 'translate-x-full'}`}>
-              <div className="relative flex h-full flex-col overflow-y-auto bg-white shadow-xl dark:bg-gray-800">
-                <div className="fixed z-40 top-3 right-2 p-2 h-10 w-10 hover:bg-blue-500 rounded-full">
+              <div ref={widgetContainerRef} className="relative flex h-full flex-col overflow-y-auto bg-white shadow-xl dark:bg-gray-800">
+                <div className="fixed z-40 top-3 right-2 p-2 h-10 w-10 rounded-full">
                   <button
                     onClick={handleCloseWidget}
-                    className="relative rounded-md text-white"
+                    className="relative rounded-md text-white bg-[#026adb]"
                   >
                     <span className="sr-only">Close</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-6">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { PageMetadata } from '@/types/page'
 
 export const metadata: PageMetadata = {
@@ -15,7 +15,7 @@ export const metadata: PageMetadata = {
 
 const navItems = [
   { name: 'Projects', icon: <path d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" strokeLinecap="round" strokeLinejoin="round" /> },
-  { name: 'Deployments', icon: <path d="M21.75 17.25v-.228a4.5 4.5 0 0 0-.12-1.03l-2.268-9.64a3.375 3.375 0 0 0-3.285-2.602H7.923a3.375 3.375 0 0 0-3.285 2.602l-2.268 9.64a4.5 4.5 0 0 0-.12 1.03v.228m19.5 0a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3m19.5 0a3 3 0 0 0-3-3H5.25a3 3 0 0 0-3 3m16.5 0h.008v.008h-.008v-.008Zm-3 0h.008v.008h-.008v-.008Z" strokeLinecap="round" strokeLinejoin="round" />, active: true },
+  { name: 'Deployments', icon: <path d="M21.75 17.25v-.228a4.5 4.5 0 0 0-.12-1.03l-2.268-9.64a3.375 3.375 0 0 0-3.285-2.602H7.923a3.375 3.375 0 0 0-3.285 2.602l-2.268 9.64a4.5 4.5 0 0 0-.12 1.03v.228m19.5 0a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3m19.5 0a3 3 0 0 0-3-3H5.25a3 3 0 0 0-3 3m16.5 0h.008v.008h-.008v-.008Zm-3 0h.008v.008h-.008v-.008Z" strokeLinecap="round" strokeLinejoin="round" /> },
   { name: 'Activity', icon: <path d="M9.348 14.652a3.75 3.75 0 0 1 0-5.304m5.304 0a3.75 3.75 0 0 1 0 5.304m-7.425 2.121a6.75 6.75 0 0 1 0-9.546m9.546 0a6.75 6.75 0 0 1 0 9.546M5.106 18.894c-3.808-3.807-3.808-9.98 0-13.788m13.788 0c3.808 3.807 3.808 9.98 0 13.788M12 12h.008v.008H12V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" strokeLinecap="round" strokeLinejoin="round" /> },
   { name: 'Domains', icon: <path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" strokeLinecap="round" strokeLinejoin="round" /> },
   { name: 'Usage', icon: <path d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" strokeLinecap="round" strokeLinejoin="round" /> },
@@ -29,11 +29,65 @@ const teams = [
 ]
 
 export default function MultiColumn() {
-  const [showWidget, setShowWidget] = useState(false)
+  const [showWidget, setShowWidget] = useState(true)
   const [columnWidth, setColumnWidth] = useState(384)
+  const [activeItem, setActiveItem] = useState<string | null>(null)
+  const widgetRendered = useRef(false)
+  const renderTimeout = useRef<number | null>(null)
 
   useEffect(() => {
     document.title = `Internal Note - ${metadata.title}`
+
+    // Prevent multiple renders
+    if (widgetRendered.current) {
+      return
+    }
+
+    // Check if script already exists
+    const existingScript = document.getElementById('ze-snippet')
+    if (existingScript) {
+      // Script already loaded, just render widget if not already rendered
+      if (window.zE && !widgetRendered.current) {
+        // Clear any pending renders
+        if (renderTimeout.current) {
+          clearTimeout(renderTimeout.current)
+        }
+
+        renderTimeout.current = window.setTimeout(() => {
+          // Check if containers exist and aren't already populated
+          const conversationContainer = document.getElementById('widget_conversations')
+          const messageContainer = document.getElementById('widget_messages')
+          if (conversationContainer && messageContainer &&
+              conversationContainer.children.length === 0 &&
+              messageContainer.children.length === 0 &&
+              !widgetRendered.current) {
+            window.zE('messenger', 'render', {
+              mode: 'embedded',
+              conversationList: {
+                targetElement: '#widget_conversations',
+              },
+              messageLog: {
+                targetElement: '#widget_messages',
+              },
+            })
+
+            window.zE('messenger:set', 'customization', {
+              common: {
+                hideHeader: false
+              },
+              conversationList: {
+                hideHeader: true
+              },
+              messageLog: {
+                hideHeader: true
+              }
+            })
+            widgetRendered.current = true
+          }
+        }, 100)
+      }
+      return
+    }
 
     window.zEMessenger = { autorender: false }
 
@@ -44,37 +98,54 @@ export default function MultiColumn() {
     document.body.appendChild(script)
 
     script.onload = () => {
-      // Wait a bit for DOM to be ready
-      setTimeout(() => {
-        if (window.zE) {
-          window.zE('messenger', 'render', {
-            mode: 'embedded',
-            conversationList: {
-              targetElement: '#widget_conversations',
-            },
-            messageLog: {
-              targetElement: '#widget_messages',
-            },
-          })
-
-          window.zE('messenger:set', 'customization', {
-            common: {
-              hideHeader: false
-            },
-            conversationList: {
-              hideHeader: true
-            },
-            messageLog: {
-              hideHeader: true
-            }
-          })
+      if (window.zE && !widgetRendered.current) {
+        // Clear any pending renders
+        if (renderTimeout.current) {
+          clearTimeout(renderTimeout.current)
         }
-      }, 100)
+
+        renderTimeout.current = window.setTimeout(() => {
+          // Check if containers exist and aren't already populated
+          const conversationContainer = document.getElementById('widget_conversations')
+          const messageContainer = document.getElementById('widget_messages')
+          if (conversationContainer && messageContainer &&
+              conversationContainer.children.length === 0 &&
+              messageContainer.children.length === 0 &&
+              !widgetRendered.current) {
+            window.zE('messenger', 'render', {
+              mode: 'embedded',
+              conversationList: {
+                targetElement: '#widget_conversations',
+              },
+              messageLog: {
+                targetElement: '#widget_messages',
+              },
+            })
+
+            window.zE('messenger:set', 'customization', {
+              common: {
+                hideHeader: false
+              },
+              conversationList: {
+                hideHeader: true
+              },
+              messageLog: {
+                hideHeader: true
+              }
+            })
+            widgetRendered.current = true
+          }
+        }, 100)
+      }
     }
 
     return () => {
+      if (renderTimeout.current) {
+        clearTimeout(renderTimeout.current)
+      }
       const existing = document.getElementById('ze-snippet')
       if (existing) existing.remove()
+      // Don't reset widgetRendered on cleanup to prevent re-render in strict mode
     }
   }, [])
 
@@ -96,7 +167,7 @@ export default function MultiColumn() {
 
       <div className="h-screen flex flex-col pt-16">
         {/* Static sidebar for desktop */}
-        <div className="hidden xl:fixed xl:inset-y-16 xl:z-50 xl:flex xl:w-72 xl:flex-col">
+        <div className="hidden xl:fixed xl:top-16 xl:bottom-0 xl:z-50 xl:flex xl:w-72 xl:flex-col">
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-50 px-6 ring-1 ring-gray-200">
             <div className="flex h-16 shrink-0 items-center">
               <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=blue&shade=600" alt="Your Company" className="h-8 w-auto" />
@@ -107,19 +178,23 @@ export default function MultiColumn() {
                   <ul role="list" className="-mx-2 space-y-1">
                     {navItems.map((item) => (
                       <li key={item.name}>
-                        <a
-                          href="#"
-                          className={`group flex gap-x-3 rounded-md p-2 text-sm font-semibold ${
-                            item.active
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault()
+                            setActiveItem(item.name)
+                            setShowWidget(false)
+                          }}
+                          className={`w-full group flex gap-x-3 rounded-md p-2 text-sm font-semibold ${
+                            activeItem === item.name
                               ? 'bg-gray-100 text-blue-600'
                               : 'text-gray-700 hover:bg-gray-100 hover:text-blue-600'
                           }`}
                         >
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`size-6 shrink-0 ${item.active ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600'}`}>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`size-6 shrink-0 ${activeItem === item.name ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600'}`}>
                             {item.icon}
                           </svg>
                           {item.name}
-                        </a>
+                        </button>
                       </li>
                     ))}
                   </ul>
@@ -129,19 +204,37 @@ export default function MultiColumn() {
                   <ul role="list" className="-mx-2 mt-2 space-y-1">
                     {teams.map((team) => (
                       <li key={team.name}>
-                        <a href="#" className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600">
-                          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-blue-600 group-hover:text-blue-600">
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault()
+                            setActiveItem(team.name)
+                            setShowWidget(false)
+                          }}
+                          className={`w-full group flex gap-x-3 rounded-md p-2 text-sm font-semibold ${
+                            activeItem === team.name
+                              ? 'bg-gray-100 text-blue-600'
+                              : 'text-gray-700 hover:bg-gray-100 hover:text-blue-600'
+                          }`}
+                        >
+                          <span className={`flex size-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium ${
+                            activeItem === team.name
+                              ? 'border-blue-600 text-blue-600'
+                              : 'border-gray-200 text-gray-400 group-hover:border-blue-600 group-hover:text-blue-600'
+                          }`}>
                             {team.initial}
                           </span>
                           <span className="truncate">{team.name}</span>
-                        </a>
+                        </button>
                       </li>
                     ))}
                   </ul>
                 </li>
                 <li className="-mx-6 mt-auto">
                   <button
-                    onClick={() => setShowWidget(!showWidget)}
+                    onClick={() => {
+                      setShowWidget(!showWidget)
+                      setActiveItem(null)
+                    }}
                     className={`flex w-full items-center gap-x-4 px-6 py-3 text-sm font-semibold ${
                       showWidget
                         ? 'bg-blue-600 text-white'
@@ -198,7 +291,7 @@ export default function MultiColumn() {
               <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
-              <h3 className="mt-2 text-sm font-semibold text-gray-900">No support widget</h3>
+              <h3 className="mt-2 text-sm font-semibold text-gray-900">Inbox Experience</h3>
               <p className="mt-1 text-sm text-gray-500">Click "Get Support" in the sidebar to start.</p>
             </div>
           </div>
