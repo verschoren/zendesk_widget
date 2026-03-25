@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { PageMetadata } from '@/types/page'
+import InfoBanner from '@/components/InfoBanner'
 
 export const metadata: PageMetadata = {
   id: 'embed-overlay',
@@ -101,25 +102,9 @@ export default function Overlay() {
 
   return (
     <>
-      <div className="fixed top-0 w-full flex h-16 justify-start items-center gap-x-6 bg-matcha px-6 py-2.5 z-50">
-        <p className="flex text-sm items-center text-licorice dark:text-white gap-1">
-          Click the{' '}
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 inline">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
-          </svg>{' '}
-          icon to view an overlayed widget
-        </p>
-        <a
-          href="https://internalnote.com/embeddable-zendesk-widget?utm_source=demo_pages"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full bg-licorice dark:bg-shamrock px-3.5 py-1 text-sm font-semibold text-white shadow-xs hover:bg-gray-700 dark:hover:bg-cactus"
-        >
-          View article <span aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
+      <InfoBanner description="Click the help icon to view an overlayed widget" />
 
-      <div className="pt-16 w-full">
+      <div className="w-full">
         <header className="relative bg-white shadow-xs">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">

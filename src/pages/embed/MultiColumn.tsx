@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { PageMetadata } from '@/types/page'
+import InfoBanner from '@/components/InfoBanner'
 
 export const metadata: PageMetadata = {
   id: 'embed-multicolumn',
@@ -151,30 +152,18 @@ export default function MultiColumn() {
 
   return (
     <>
-      <div className="fixed top-0 w-full flex h-16 justify-start items-center gap-x-6 bg-matcha px-6 py-2.5 z-50">
-        <p className="text-sm text-licorice dark:text-white">
-          Change the column sizes at the bottom of the conversation column
-        </p>
-        <a
-          href="https://internalnote.com/embeddable-zendesk-widget?utm_source=demo_pages"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full bg-licorice px-3.5 py-1 text-sm font-semibold text-white shadow-xs"
-        >
-          View article <span aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
+      <InfoBanner description="Change the column sizes at the bottom of the conversation column" />
 
-      <div className="h-screen flex flex-col pt-16">
+      <div className="h-screen flex flex-col">
         {/* Static sidebar for desktop */}
-        <div className="hidden xl:fixed xl:top-16 xl:bottom-0 xl:z-50 xl:flex xl:w-72 xl:flex-col">
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-50 px-6 ring-1 ring-gray-200">
-            <div className="flex h-16 shrink-0 items-center">
+        <div className="hidden md:fixed md:top-16 md:bottom-0 md:z-50 md:flex md:w-16 xl:w-72 md:flex-col">
+          <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-50 md:px-3 xl:px-6 ring-1 ring-gray-200">
+            <div className="flex h-16 shrink-0 items-center md:justify-center xl:justify-start">
               <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=blue&shade=600" alt="Your Company" className="h-8 w-auto" />
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
-                <li>
+                <li className="hidden xl:block">
                   <ul role="list" className="-mx-2 space-y-1">
                     {navItems.map((item) => (
                       <li key={item.name}>
@@ -199,7 +188,7 @@ export default function MultiColumn() {
                     ))}
                   </ul>
                 </li>
-                <li>
+                <li className="hidden xl:block">
                   <div className="text-xs font-semibold text-gray-400">Your teams</div>
                   <ul role="list" className="-mx-2 mt-2 space-y-1">
                     {teams.map((team) => (
@@ -229,20 +218,22 @@ export default function MultiColumn() {
                     ))}
                   </ul>
                 </li>
-                <li className="-mx-6 mt-auto">
+                <li className="md:-mx-3 xl:-mx-6 mt-auto">
                   <button
                     onClick={() => {
                       setShowWidget(!showWidget)
                       setActiveItem(null)
                     }}
-                    className={`flex w-full items-center gap-x-4 px-6 py-3 text-sm font-semibold ${
+                    className={`flex w-full items-center md:justify-center xl:justify-start gap-x-4 md:px-3 xl:px-6 py-3 text-sm font-semibold ${
                       showWidget
                         ? 'bg-blue-600 text-white'
                         : 'text-gray-900 hover:bg-blue-600 hover:text-white'
                     }`}
                   >
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" className="size-8 rounded-full bg-gray-100" />
-                    <span>Get Support</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+                    </svg>
+                    <span className="hidden xl:inline">Get Support</span>
                   </button>
                 </li>
               </ul>
@@ -251,16 +242,16 @@ export default function MultiColumn() {
         </div>
 
         {/* Main content */}
-        <div className={`flex flex-1 xl:pl-72 ${!showWidget ? 'hidden' : ''}`}>
+        <div className={`flex flex-1 md:pl-24 xl:pl-72 ${!showWidget ? 'hidden' : ''}`}>
           <div className="relative flex flex-1">
             <aside
               id="widget_conversations"
-              className="hidden xl:flex flex-col shrink-0 overflow-y-auto border-r border-gray-200 min-w-72"
+              className="hidden md:flex flex-col shrink-0 overflow-y-auto border-r border-gray-200 min-w-72"
               style={{ width: `${columnWidth}px` }}
             ></aside>
             {/* Resize handle */}
             <div
-              className="hidden xl:block absolute top-0 h-full w-1 cursor-col-resize bg-gray-200 hover:bg-blue-500 transition-colors z-10"
+              className="hidden md:block absolute top-0 h-full w-1 cursor-col-resize bg-gray-200 hover:bg-blue-500 transition-colors z-10"
               style={{ left: `${columnWidth}px` }}
               onMouseDown={(e) => {
                 e.preventDefault()
@@ -286,7 +277,7 @@ export default function MultiColumn() {
           </div>
         </div>
         {!showWidget && (
-          <div className="flex-1 xl:pl-72 flex items-center justify-center">
+          <div className="flex-1 md:pl-24 xl:pl-72 flex items-center justify-center">
             <div className="text-center">
               <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />

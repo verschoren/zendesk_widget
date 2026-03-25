@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { PageMetadata } from '@/types/page'
+import InfoBanner from '@/components/InfoBanner'
 
 export const metadata: PageMetadata = {
   id: 'embed-contact',
@@ -107,21 +108,9 @@ export default function Contact() {
 
   return (
     <>
-      <div className="fixed top-0 w-full flex h-16 justify-start items-center gap-x-6 bg-matcha px-6 py-2.5 z-50">
-        <p className="text-sm text-licorice dark:text-white">
-          Click get support and discover the embedded chat
-        </p>
-        <a
-          href="https://internalnote.com/embeddable-zendesk-widget?utm_source=demo_pages"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full bg-licorice px-3.5 py-1 text-sm font-semibold text-white shadow-xs"
-        >
-          View article <span aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
+      <InfoBanner description="Click get support and discover the embedded chat" />
 
-      <div className="pt-16 w-full bg-white dark:bg-gray-900">
+      <div className="w-full bg-white dark:bg-gray-900">
         {/* Header */}
         <header>
           <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
@@ -132,11 +121,11 @@ export default function Contact() {
                 <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=blue&shade=500" alt="" className="h-8 w-auto hidden dark:block" />
               </a>
             </div>
-            <div className="hidden lg:flex lg:gap-x-12">
-              <a href="#" className="text-sm font-semibold text-gray-900 dark:text-white hover:text-blue-600">Product</a>
-              <a href="#" className="text-sm font-semibold text-gray-900 dark:text-white hover:text-blue-600">Features</a>
-              <a href="#" className="text-sm font-semibold text-gray-900 dark:text-white hover:text-blue-600">Marketplace</a>
-              <a href="#" className="text-sm font-semibold text-gray-900 dark:text-white hover:text-blue-600">Company</a>
+            <div className="flex lg:gap-x-12">
+              <a href="#" className="hidden lg:block text-sm font-semibold text-gray-900 dark:text-white hover:text-blue-600">Product</a>
+              <a href="#" className="hidden lg:block text-sm font-semibold text-gray-900 dark:text-white hover:text-blue-600">Features</a>
+              <a href="#" className="hidden lg:block text-sm font-semibold text-gray-900 dark:text-white hover:text-blue-600">Marketplace</a>
+              <a href="#" className="hidden lg:block text-sm font-semibold text-gray-900 dark:text-white hover:text-blue-600">Company</a>
               <button onClick={handleGetSupport} className="text-sm font-semibold text-gray-900 dark:text-white hover:text-blue-600 cursor-pointer">
                 Get support
               </button>

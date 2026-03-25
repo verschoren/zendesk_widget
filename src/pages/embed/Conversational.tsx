@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { PageMetadata } from '@/types/page'
+import InfoBanner from '@/components/InfoBanner'
 
 export const metadata: PageMetadata = {
   id: 'embed-conversational',
@@ -125,21 +126,9 @@ export default function Conversational() {
 
   return (
     <>
-      <div className="fixed top-0 w-full flex h-16 justify-start items-center gap-x-6 bg-matcha px-6 py-2.5 z-50">
-        <p className="text-sm text-licorice dark:text-white">
-          Type a question and press Enter to start a conversation
-        </p>
-        <a
-          href="https://internalnote.com/embeddable-zendesk-widget?utm_source=demo_pages"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full bg-licorice px-3.5 py-1 text-sm font-semibold text-white shadow-xs"
-        >
-          View article <span aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
+      <InfoBanner description="Type a question and press Enter to start a conversation" />
 
-      <div className="pt-16 min-h-screen bg-cover bg-center bg-no-repeat w-full" style={{ backgroundImage: 'url(/img/mountain.avif)' }}>
+      <div className="min-h-screen bg-cover bg-center bg-no-repeat w-full" style={{ backgroundImage: 'url(/img/mountain.avif)' }}>
         <div className="py-12 w-full">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             {!showWidget ? (

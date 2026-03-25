@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { PageMetadata } from '@/types/page'
+import InfoBanner from '@/components/InfoBanner'
 
 export const metadata: PageMetadata = {
   id: 'embed-homescreen',
@@ -80,23 +81,11 @@ export default function HomeScreen() {
 
   return (
     <>
-      <div className="fixed top-0 w-full flex h-16 justify-start items-center gap-x-6 bg-matcha px-6 py-2.5 z-50">
-        <p className="text-sm text-licorice dark:text-white">
-          Open the widget to enjoy a custom launcher experience
-        </p>
-        <a
-          href="https://internalnote.com/embeddable-zendesk-widget?utm_source=demo_pages"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full bg-licorice px-3.5 py-1 text-sm font-semibold text-white shadow-xs"
-        >
-          View article <span aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
+      <InfoBanner description="Open the widget to enjoy a custom launcher experience" />
 
       <div className="bg-white">
         {/* Hero section */}
-        <div className="relative bg-gray-900 pt-16">
+        <div className="relative bg-gray-900">
           <div className="absolute inset-0 overflow-hidden">
             <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-hero-full-width.jpg" alt="" className="size-full object-cover" />
           </div>

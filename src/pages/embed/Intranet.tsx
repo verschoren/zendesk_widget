@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { PageMetadata } from '@/types/page'
+import InfoBanner from '@/components/InfoBanner'
 
 export const metadata: PageMetadata = {
   id: 'embed-intranet',
@@ -158,21 +159,9 @@ export default function Intranet() {
 
   return (
     <>
-      <div className="fixed top-0 w-full flex h-16 justify-start items-center gap-x-6 bg-matcha px-6 py-2.5 z-50">
-        <p className="text-sm text-licorice dark:text-white">
-          Discover an embedded chat right within this page
-        </p>
-        <a
-          href="https://internalnote.com/embeddable-zendesk-widget?utm_source=demo_pages"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full bg-licorice px-3.5 py-1 text-sm font-semibold text-white shadow-xs"
-        >
-          View article <span aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
+      <InfoBanner description="Discover an embedded chat right within this page" />
 
-      <div className="pt-16 w-full">
+      <div className="w-full">
         {/* Intranet Header */}
         <header className="bg-gradient-to-r from-sky-800 to-cyan-600 pb-24">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
