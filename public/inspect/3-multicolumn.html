@@ -65,6 +65,17 @@
       gap: 1rem;
       margin-bottom: 2rem;
       flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .controls-left {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .controls-right {
+      display: flex;
+      gap: 0.5rem;
     }
     .btn {
       padding: 0.5rem 1rem;
@@ -85,6 +96,35 @@
     }
     .btn-secondary:hover {
       background: #4b5563;
+    }
+    .toggle-group {
+      display: inline-flex;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.375rem;
+      overflow: hidden;
+    }
+    .toggle-btn {
+      padding: 0.5rem 1rem;
+      background: white;
+      color: #6b7280;
+      border: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-right: 1px solid #e5e7eb;
+    }
+    .toggle-btn:last-child {
+      border-right: none;
+    }
+    .toggle-btn:hover {
+      background: #f9fafb;
+    }
+    .toggle-btn.active {
+      background: #f9fafb;
+      color: #11110D;
+      font-weight: 600;
     }
 
     /* Info box */
@@ -234,7 +274,15 @@
 
     <!-- Controls -->
     <div class="controls">
-      <button class="btn btn-secondary" id="debugToggle">Toggle Debug Mode</button>
+      <div class="controls-left">
+        <button class="btn btn-secondary" id="debugToggle">Toggle Debug Mode</button>
+      </div>
+      <div class="controls-right">
+        <div class="toggle-group">
+          <button class="toggle-btn active" id="previewBtn">Preview</button>
+          <button class="toggle-btn" id="codeBtn">Code</button>
+        </div>
+      </div>
     </div>
 
     <!-- Info -->
@@ -247,20 +295,24 @@
       </p>
     </div>
 
-    <!-- Widget Grid -->
-    <div class="widget-grid" data-element="widget-grid">
-      <div class="widget-column" data-element="conversation-column">
-        <h3>Conversation List</h3>
-        <div id="conversation-list" data-element="conversation-list"></div>
-      </div>
-      <div class="widget-column" data-element="message-column">
-        <h3>Message Log</h3>
-        <div id="message-log" data-element="message-log"></div>
+    <!-- Preview Section -->
+    <div id="preview-section">
+      <!-- Widget Grid -->
+      <div class="widget-grid" data-element="widget-grid">
+        <div class="widget-column" data-element="conversation-column">
+          <h3>Conversation List</h3>
+          <div id="conversation-list" data-element="conversation-list"></div>
+        </div>
+        <div class="widget-column" data-element="message-column">
+          <h3>Message Log</h3>
+          <div id="message-log" data-element="message-log"></div>
+        </div>
       </div>
     </div>
 
-    <!-- Code Display -->
-    <div class="code-section">
+    <!-- Code Section -->
+    <div id="code-section" style="display: none;">
+      <div class="code-section">
       <h3>Implementation Code</h3>
       <pre><code><span class="comment">&lt;!-- HTML containers --&gt;</span>
 <span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="value">"conversation-list"</span> <span class="attr">style</span>=<span class="value">"height: 600px;"</span><span class="tag">&gt;&lt;/div&gt;</span>
@@ -303,10 +355,10 @@
 <span class="tag">&lt;/script&gt;</span></code></pre>
     </div>
 
-    <!-- Additional Notes -->
-    <div class="code-section">
-      <h3>Key Configuration</h3>
-      <pre><code><span class="comment">// Multi-column configuration</span>
+      <!-- Additional Notes -->
+      <div class="code-section">
+        <h3>Key Configuration</h3>
+        <pre><code><span class="comment">// Multi-column configuration</span>
 {
   <span class="attr">mode</span>: <span class="string">'embedded'</span>,
   <span class="attr">conversationList</span>: {
@@ -319,6 +371,7 @@
 
 <span class="comment">// Note: Both targets must exist in DOM before render()</span>
 <span class="comment">// Both elements must have defined heights</span></code></pre>
+      </div>
     </div>
   </div>
 
@@ -334,6 +387,26 @@
     // Debug mode toggle
     document.getElementById('debugToggle').addEventListener('click', () => {
       document.body.classList.toggle('debug-mode')
+    })
+
+    // Preview/Code toggle
+    const previewBtn = document.getElementById('previewBtn')
+    const codeBtn = document.getElementById('codeBtn')
+    const previewSection = document.getElementById('preview-section')
+    const codeSection = document.getElementById('code-section')
+
+    previewBtn.addEventListener('click', () => {
+      previewBtn.classList.add('active')
+      codeBtn.classList.remove('active')
+      previewSection.style.display = 'block'
+      codeSection.style.display = 'none'
+    })
+
+    codeBtn.addEventListener('click', () => {
+      codeBtn.classList.add('active')
+      previewBtn.classList.remove('active')
+      previewSection.style.display = 'none'
+      codeSection.style.display = 'block'
     })
 
     // Widget rendering
