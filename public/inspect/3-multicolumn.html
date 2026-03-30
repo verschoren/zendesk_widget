@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Column Embed - Zendesk Embed Inspector</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f9fafb;
+      color: #11110D;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #11110D;
+    }
+    .subtitle {
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid #e5e7eb;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .tab {
+      padding: 0.75rem 1.5rem;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: #6b7280;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .tab:hover {
+      color: #11110D;
+      border-bottom-color: #d1d5db;
+    }
+    .tab.active {
+      color: #3b82f6;
+      border-bottom-color: #3b82f6;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: #2563eb;
+    }
+    .btn-secondary {
+      background: #6b7280;
+    }
+    .btn-secondary:hover {
+      background: #4b5563;
+    }
+
+    /* Info box */
+    .info-box {
+      background: #dbeafe;
+      border: 1px solid #93c5fd;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+    .info-box h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: #1e40af;
+    }
+    .info-box p {
+      font-size: 0.875rem;
+      color: #1e3a8a;
+      line-height: 1.5;
+    }
+
+    /* Widget grid */
+    .widget-grid {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .widget-column {
+      border: 2px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      background: white;
+    }
+    .widget-column h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #6b7280;
+    }
+    #conversation-list {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      background: #f9fafb;
+    }
+    #message-log {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      background: #f9fafb;
+    }
+
+    /* Code block */
+    .code-section {
+      margin-bottom: 2rem;
+    }
+    .code-section h3 {
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+      color: #11110D;
+    }
+    pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    /* Syntax highlighting */
+    .keyword { color: #c792ea; }
+    .string { color: #c3e88d; }
+    .function { color: #82aaff; }
+    .comment { color: #676e95; font-style: italic; }
+    .tag { color: #f07178; }
+    .attr { color: #c792ea; }
+    .value { color: #c3e88d; }
+
+    /* Debug mode */
+    body.debug-mode [data-element] {
+      position: relative;
+    }
+    body.debug-mode [data-element]::before {
+      content: attr(data-element);
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(239, 68, 68, 0.9);
+      color: white;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 10000;
+      pointer-events: none;
+      border-radius: 0.25rem;
+    }
+    body.debug-mode [data-element] {
+      outline: 3px solid #ef4444;
+      outline-offset: -3px;
+    }
+
+    /* Status indicator */
+    .status {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 1rem;
+    }
+    .status.loading {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .status.ready {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    @media (max-width: 1024px) {
+      .widget-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body data-element="body">
+  <div class="container" data-element="container">
+    <h1>
+      3. Multi-Column Embed
+      <span class="status loading" id="status">Loading...</span>
+    </h1>
+    <p class="subtitle">Conversation list and message log in separate containers</p>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <a href="1-floating.html" class="tab">1. Floating</a>
+      <a href="2-embedded.html" class="tab">2. Embedded</a>
+      <a href="3-multicolumn.html" class="tab active">3. Multi-Column</a>
+      <a href="4-custom.html" class="tab">4. Custom Launcher</a>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="btn btn-secondary" id="debugToggle">Toggle Debug Mode</button>
+    </div>
+
+    <!-- Info -->
+    <div class="info-box">
+      <h3>Expected Behavior</h3>
+      <p>
+        The conversation list appears on the left, message log on the right.
+        This split view allows for custom layouts and better integration with your page design.
+        Both components work together as a single widget instance.
+      </p>
+    </div>
+
+    <!-- Widget Grid -->
+    <div class="widget-grid" data-element="widget-grid">
+      <div class="widget-column" data-element="conversation-column">
+        <h3>Conversation List</h3>
+        <div id="conversation-list" data-element="conversation-list"></div>
+      </div>
+      <div class="widget-column" data-element="message-column">
+        <h3>Message Log</h3>
+        <div id="message-log" data-element="message-log"></div>
+      </div>
+    </div>
+
+    <!-- Code Display -->
+    <div class="code-section">
+      <h3>Implementation Code</h3>
+      <pre><code><span class="comment">&lt;!-- HTML containers --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="value">"conversation-list"</span> <span class="attr">style</span>=<span class="value">"height: 600px;"</span><span class="tag">&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="value">"message-log"</span> <span class="attr">style</span>=<span class="value">"height: 600px;"</span><span class="tag">&gt;&lt;/div&gt;</span>
+
+<span class="comment">&lt;!-- Configure autorender: false --&gt;</span>
+<span class="tag">&lt;script&gt;</span>
+  <span class="keyword">window</span>.zEMessenger = { <span class="attr">autorender</span>: <span class="keyword">false</span> }
+<span class="tag">&lt;/script&gt;</span>
+
+<span class="comment">&lt;!-- Load Zendesk snippet --&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">id</span>=<span class="value">"ze-snippet"</span> <span class="attr">src</span>=<span class="value">"https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4"</span><span class="tag">&gt;&lt;/script&gt;</span>
+
+<span class="tag">&lt;script&gt;</span>
+  <span class="comment">// Wait for zE to be available</span>
+  <span class="keyword">const</span> checkWidget = <span class="function">setInterval</span>(() =&gt; {
+    <span class="keyword">if</span> (<span class="keyword">window</span>.zE) {
+      <span class="function">clearInterval</span>(checkWidget)
+
+      <span class="comment">// Render with separate conversation list and message log</span>
+      <span class="keyword">window</span>.<span class="function">zE</span>(<span class="string">'messenger'</span>, <span class="string">'render'</span>, {
+        <span class="attr">mode</span>: <span class="string">'embedded'</span>,
+        <span class="attr">conversationList</span>: {
+          <span class="attr">targetElement</span>: <span class="string">'#conversation-list'</span>
+        },
+        <span class="attr">messageLog</span>: {
+          <span class="attr">targetElement</span>: <span class="string">'#message-log'</span>
+        }
+      }, (error) =&gt; {
+        <span class="keyword">if</span> (error) {
+          <span class="function">console</span>.<span class="function">error</span>(<span class="string">'❌ Render error:'</span>, error)
+        } <span class="keyword">else</span> {
+          <span class="function">console</span>.<span class="function">log</span>(<span class="string">'✅ Multi-column widget rendered'</span>)
+        }
+      })
+    }
+  }, <span class="value">100</span>)
+
+  <span class="function">setTimeout</span>(() =&gt; <span class="function">clearInterval</span>(checkWidget), <span class="value">10000</span>)
+<span class="tag">&lt;/script&gt;</span></code></pre>
+    </div>
+
+    <!-- Additional Notes -->
+    <div class="code-section">
+      <h3>Key Configuration</h3>
+      <pre><code><span class="comment">// Multi-column configuration</span>
+{
+  <span class="attr">mode</span>: <span class="string">'embedded'</span>,
+  <span class="attr">conversationList</span>: {
+    <span class="attr">targetElement</span>: <span class="string">'#conversation-list'</span>  <span class="comment">// Left container</span>
+  },
+  <span class="attr">messageLog</span>: {
+    <span class="attr">targetElement</span>: <span class="string">'#message-log'</span>        <span class="comment">// Right container</span>
+  }
+}
+
+<span class="comment">// Note: Both targets must exist in DOM before render()</span>
+<span class="comment">// Both elements must have defined heights</span></code></pre>
+    </div>
+  </div>
+
+  <!-- Configure Zendesk -->
+  <script>
+    window.zEMessenger = { autorender: false }
+  </script>
+
+  <!-- Load Zendesk Widget -->
+  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e125418a-9466-44d8-9b3f-2ac10e911ea4" async></script>
+
+  <script>
+    // Debug mode toggle
+    document.getElementById('debugToggle').addEventListener('click', () => {
+      document.body.classList.toggle('debug-mode')
+    })
+
+    // Widget rendering
+    const checkWidget = setInterval(() => {
+      if (window.zE) {
+        clearInterval(checkWidget)
+        console.log('🔄 Rendering multi-column widget...')
+
+        // Check if containers exist
+        const convList = document.getElementById('conversation-list')
+        const msgLog = document.getElementById('message-log')
+
+        if (!convList || !msgLog) {
+          console.error('❌ Required containers not found', { convList, msgLog })
+          return
+        }
+
+        // Render widget
+        window.zE('messenger', 'render', {
+          mode: 'embedded',
+          conversationList: {
+            targetElement: '#conversation-list'
+          },
+          messageLog: {
+            targetElement: '#message-log'
+          }
+        }, (error) => {
+          if (error) {
+            console.error('❌ Render error:', {
+              message: error.message,
+              reason: error.reason,
+              type: error.type
+            })
+            document.getElementById('status').textContent = 'Error'
+            document.getElementById('status').className = 'status'
+            document.getElementById('status').style.background = '#fee2e2'
+            document.getElementById('status').style.color = '#991b1b'
+          } else {
+            console.log('✅ Multi-column widget rendered successfully')
+            document.getElementById('status').textContent = 'Ready'
+            document.getElementById('status').className = 'status ready'
+          }
+        })
+      }
+    }, 100)
+
+    setTimeout(() => clearInterval(checkWidget), 10000)
+  </script>
+</body>
+</html>
