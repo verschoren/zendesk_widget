@@ -69,7 +69,7 @@ export default function NavigationMenu({ onLinkClick }: NavigationMenuProps) {
     const linkHasHash = link.path?.includes('#')
     const isActive = linkHasHash
       ? location.pathname + location.hash === link.path
-      : location.pathname === link.path
+      : location.pathname === link.path && !location.hash
     const hasChildren = link.children && link.children.length > 0
     const isExpanded = expandedChildren.has(link.id)
 
