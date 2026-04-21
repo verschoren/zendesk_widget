@@ -24,7 +24,21 @@ export default function NavigationMenu({ onLinkClick }: NavigationMenuProps) {
         setExpandedChildren(prev => new Set(prev).add(currentPage.parentId))
       }
     }
-  }, [location.pathname])
+
+    // Also check virtual links in navigation (like VIP Contact)
+    navigation.forEach(section => {
+      section.links.forEach(link => {
+        const linkHasHash = link.path?.includes('#')
+        const matches = linkHasHash
+          ? location.pathname + location.hash === link.path
+          : location.pathname === link.path
+
+        if (matches) {
+          setExpandedSections(prev => new Set(prev).add(section.type))
+        }
+      })
+    })
+  }, [location.pathname, location.hash])
 
   const toggleSection = (type: string) => {
     setExpandedSections(prev => {
@@ -51,7 +65,11 @@ export default function NavigationMenu({ onLinkClick }: NavigationMenuProps) {
   }
 
   const renderLink = (link: NavigationLink, level = 0) => {
-    const isActive = location.pathname === link.path
+    // Check if link path includes hash, and if so, match both pathname and hash
+    const linkHasHash = link.path?.includes('#')
+    const isActive = linkHasHash
+      ? location.pathname + location.hash === link.path
+      : location.pathname === link.path
     const hasChildren = link.children && link.children.length > 0
     const isExpanded = expandedChildren.has(link.id)
 
