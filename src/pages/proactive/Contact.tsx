@@ -159,14 +159,14 @@ export default function ProactiveContact() {
               <h2 className="mt-2 text-xl text-licorice dark:text-white">{metadata.description}</h2>
             </div>
             <div className="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
-              <Button
-                as="a"
+              <a
                 href="https://internalnote.com/proactive-ticketing-for-messaging/?utm_source=widget_demo&campaign=demo"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="inline-flex items-center rounded-md bg-matcha px-3.5 py-2.5 text-sm font-semibold text-licorice dark:text-white shadow-xs hover:bg-lime"
               >
                 Read more
-              </Button>
+              </a>
             </div>
           </div>
         </div>
