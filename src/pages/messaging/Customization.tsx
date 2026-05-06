@@ -10,7 +10,7 @@ export const metadata: PageMetadata = {
   name: 'Customization',
   icon: '🎨',
   path: '/messaging/customization',
-  title: 'Zendesk Messaging Theme Customizer',
+  title: 'Zendesk Widget Theme Customizer',
   description: 'Customize Widget theme and colors'
 }
 
@@ -48,9 +48,10 @@ export default function Customization() {
     messageLog: false,
     hideNewConversationButton: false
   })
+  const [viewMode, setViewMode] = useState<'configure' | 'code'>('configure')
 
   // Syntax highlighting for code block
-  const codeRef = useHighlight([theme, contentScale, settings])
+  const codeRef = useHighlight([theme, contentScale, settings, viewMode])
 
   const PRESETS = {
     red: {
@@ -319,12 +320,12 @@ export default function Customization() {
   return (
     <>
       <header>
-        <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 md:px-8">
-          <div className="md:flex md:items-center md:justify-between md:space-x-5">
-            <div className="w-2/3">
+        <div className="py-6 px-4 sm:px-6 md:px-8 mt-8">
+          <div className="flex items-center justify-between">
+            <div>
               <h1 className="text-3xl text-licorice dark:text-white">{metadata.title}</h1>
             </div>
-            <div className="w-1/3 mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
+            <div className="flex gap-3">
               <Button
                 as="a"
                 href="https://internalnote.com/custom-widget-themes?utm_source=widget_demo&campaign=demo"
@@ -338,203 +339,239 @@ export default function Customization() {
         </div>
       </header>
 
-      <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 mb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="py-6 px-4 sm:px-6 lg:px-8 mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-6">
           {/* Left column: Form */}
           <div>
-            <section>
-              <div className="flex justify-between items-center mb-2">
-                <h2 className="text-xl font-semibold text-licorice dark:text-white">Generated Code</h2>
-                <Button onClick={handleCopyCode}
-                  type="button"
-                 >
-                Copy code
-              </Button>
-              </div>
-              <pre className="bg-gray-900 p-4 rounded-md overflow-x-auto text-sm" style={{ backgroundColor: '#282c34', padding: '20px' }}>
-                <code ref={codeRef} className="language-javascript">{generateCodeOutput()}</code>
-              </pre>
-            </section>
-
-            {/* Scale tabs */}
-            <section className="mt-4">
-              <nav className="isolate flex divide-x divide-gray-200 rounded-lg bg-white dark:bg-licorice border-gray-200 border-1">
-                {[50, 75, 100, 125, 150, 175, 200].map((scale) => (
-                  <div
-                    key={scale}
-                    onClick={() => handleScaleClick(scale)}
-                    className={`group relative min-w-0 flex-1 overflow-hidden px-4 py-2 text-center text-sm font-medium cursor-pointer ${
-                      contentScale === scale ? 'text-gray-900 dark:text-white' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700'
-                    } ${scale === 50 ? 'rounded-l-lg' : ''} ${scale === 200 ? 'rounded-r-lg' : ''}`}
-                  >
-                    <span>{scale}%</span>
-                    <span
-                      className={`absolute inset-x-0 bottom-0 h-0.5 ${
-                        contentScale === scale ? 'bg-indigo-500' : 'bg-transparent'
-                      }`}
-                    />
-                  </div>
-                ))}
-              </nav>
-            </section>
-
-            {/* Checkboxes */}
-            <section className="mt-4">
-              <fieldset className="grid grid-cols-2 space-y-2">
-                <div className="flex gap-3">
-                  <input
-                    id="hideHeader"
-                    type="checkbox"
-                    checked={settings.hideHeader}
-                    onChange={() => handleSettingChange('hideHeader')}
-                    className="h-4 w-4 rounded border-gray-300"
-                  />
-                  <label htmlFor="hideHeader" className="text-sm font-medium text-licorice dark:text-white">
-                    Hide headers everywhere
-                  </label>
-                </div>
-                <div className="flex gap-3">
-                  <input
-                    id="hideNewConversationButton"
-                    type="checkbox"
-                    checked={settings.hideNewConversationButton}
-                    onChange={() => handleSettingChange('hideNewConversationButton')}
-                    className="h-4 w-4 rounded border-gray-300"
-                  />
-                  <label htmlFor="hideNewConversationButton" className="text-sm font-medium text-licorice dark:text-white">
-                    Hide new conversation button
-                  </label>
-                </div>
-                <div className="flex gap-3">
-                  <input
-                    id="conversationList"
-                    type="checkbox"
-                    checked={settings.conversationList}
-                    disabled={settings.hideHeader}
-                    onChange={() => handleSettingChange('conversationList')}
-                    className="h-4 w-4 rounded border-gray-300"
-                  />
-                  <label htmlFor="conversationList" className="text-sm font-medium text-licorice dark:text-white">
-                    Hide header for conversation list
-                  </label>
-                </div>
-                <div className="flex gap-3">
-                  <input
-                    id="messageLog"
-                    type="checkbox"
-                    checked={settings.messageLog}
-                    disabled={settings.hideHeader}
-                    onChange={() => handleSettingChange('messageLog')}
-                    className="h-4 w-4 rounded border-gray-300"
-                  />
-                  <label htmlFor="messageLog" className="text-sm font-medium text-licorice dark:text-white">
-                    Hide headers for conversation view
-                  </label>
-                </div>
-              </fieldset>
-            </section>
-
-            {/* Theme form */}
-            <section className="mt-4">
-              <h3 className="text-lg font-semibold mb-4 text-licorice dark:text-white">Configure your theme</h3>
-              <form id="theme-form" className="grid gap-3" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-4 gap-2">
-                  <Button onClick={() => handlePreset('red')} type="button">
-                    Red theme
-                  </Button>
-                  <Button onClick={() => handlePreset('blue')} type="button">
-                    Green theme
-                  </Button>
-                  <Button onClick={() => handlePreset('internalnote')} type="button">
-                    Blue theme
-                  </Button>
+            {/* Toggle and Action Buttons */}
+            <section className="mb-4">
+              <div className="flex justify-between items-center">
+                <nav className="isolate flex divide-x divide-gray-200 rounded-lg bg-white dark:bg-licorice border border-gray-200">
                   <button
-                    onClick={handleRandomTheme}
-                    className="inline-flex items-center justify-center rounded-md border border-purple-600 bg-white dark:bg-licorice px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50"
-                    type="button"
+                    onClick={() => setViewMode('configure')}
+                    className={`px-6 py-2 text-sm font-medium rounded-l-lg ${
+                      viewMode === 'configure'
+                        ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400'
+                        : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700 dark:hover:bg-gray-800'
+                    }`}
                   >
-                    Random Theme
+                    Configure
                   </button>
+                  <button
+                    onClick={() => setViewMode('code')}
+                    className={`px-6 py-2 text-sm font-medium rounded-r-lg ${
+                      viewMode === 'code'
+                        ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400'
+                        : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700 dark:hover:bg-gray-800'
+                    }`}
+                  >
+                    Code
+                  </button>
+                </nav>
+                <div className="flex gap-3">
+                  <Button onClick={handleReset} type="button">
+                    Reset
+                  </Button>
+                  <Button onClick={handleCopyCode} type="button">
+                    Copy code
+                  </Button>
                 </div>
-
-                {/* Color inputs */}
-                <div className="grid grid-cols-4 gap-2">
-                  {['primary', 'onPrimary', 'message', 'onMessage'].map((field) => (
-                    <label key={field} className="text-sm text-licorice dark:text-white">
-                      {field}
-                      <br />
-                      <input
-                        type="text"
-                        value={theme[field as keyof ThemeColors] || ''}
-                        onChange={(e) => handleThemeChange(field as keyof ThemeColors, e.target.value)}
-                        className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600"
-                        placeholder="#FFFFFF"
-                      />
-                    </label>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-4 gap-2">
-                  {['businessMessage', 'onBusinessMessage', 'action', 'onAction'].map((field) => (
-                    <label key={field} className="text-sm text-licorice dark:text-white">
-                      {field}
-                      <br />
-                      <input
-                        type="text"
-                        value={theme[field as keyof ThemeColors] || ''}
-                        onChange={(e) => handleThemeChange(field as keyof ThemeColors, e.target.value)}
-                        className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600"
-                        placeholder="#FFFFFF"
-                      />
-                    </label>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-4 gap-2">
-                  {['background', 'onBackground', 'error', 'onError'].map((field) => (
-                    <label key={field} className="text-sm text-licorice dark:text-white">
-                      {field}
-                      <br />
-                      <input
-                        type="text"
-                        value={theme[field as keyof ThemeColors] || ''}
-                        onChange={(e) => handleThemeChange(field as keyof ThemeColors, e.target.value)}
-                        className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600"
-                        placeholder="#FFFFFF"
-                      />
-                    </label>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-4 gap-2">
-                  {['notify', 'onNotify', 'onSecondaryAction'].map((field) => (
-                    <label key={field} className="text-sm text-licorice dark:text-white">
-                      {field}
-                      <br />
-                      <input
-                        type="text"
-                        value={theme[field as keyof ThemeColors] || ''}
-                        onChange={(e) => handleThemeChange(field as keyof ThemeColors, e.target.value)}
-                        className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600"
-                        placeholder="#FFFFFF"
-                      />
-                    </label>
-                  ))}
-                </div>
-              </form>
+              </div>
             </section>
+
+            {/* Configure View */}
+            {viewMode === 'configure' && (
+              <>
+                {/* Theme presets */}
+                <section className="mb-4">
+                  <h3 className="text-lg font-semibold mb-3 text-licorice dark:text-white">Theme Presets</h3>
+                  <div className="grid grid-cols-4 gap-2">
+                    <Button onClick={() => handlePreset('red')} type="button">
+                      Red theme
+                    </Button>
+                    <Button onClick={() => handlePreset('blue')} type="button">
+                      Green theme
+                    </Button>
+                    <Button onClick={() => handlePreset('internalnote')} type="button">
+                      Blue theme
+                    </Button>
+                    <button
+                      onClick={handleRandomTheme}
+                      className="inline-flex items-center justify-center rounded-md border border-purple-600 bg-white dark:bg-licorice px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50"
+                      type="button"
+                    >
+                      Random Theme
+                    </button>
+                  </div>
+                </section>
+
+                {/* Color picker */}
+                <section className="mb-4">
+                  <h3 className="text-lg font-semibold mb-3 text-licorice dark:text-white">Theme Colors</h3>
+                  <form id="theme-form" className="grid gap-3" onSubmit={(e) => e.preventDefault()}>
+                    <div className="grid grid-cols-4 gap-2">
+                      {['primary', 'onPrimary', 'message', 'onMessage'].map((field) => (
+                        <label key={field} className="text-sm text-licorice dark:text-white">
+                          {field}
+                          <br />
+                          <input
+                            type="text"
+                            value={theme[field as keyof ThemeColors] || ''}
+                            onChange={(e) => handleThemeChange(field as keyof ThemeColors, e.target.value)}
+                            className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600"
+                            placeholder="#FFFFFF"
+                          />
+                        </label>
+                      ))}
+                    </div>
+
+                    <div className="grid grid-cols-4 gap-2">
+                      {['businessMessage', 'onBusinessMessage', 'action', 'onAction'].map((field) => (
+                        <label key={field} className="text-sm text-licorice dark:text-white">
+                          {field}
+                          <br />
+                          <input
+                            type="text"
+                            value={theme[field as keyof ThemeColors] || ''}
+                            onChange={(e) => handleThemeChange(field as keyof ThemeColors, e.target.value)}
+                            className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600"
+                            placeholder="#FFFFFF"
+                          />
+                        </label>
+                      ))}
+                    </div>
+
+                    <div className="grid grid-cols-4 gap-2">
+                      {['background', 'onBackground', 'error', 'onError'].map((field) => (
+                        <label key={field} className="text-sm text-licorice dark:text-white">
+                          {field}
+                          <br />
+                          <input
+                            type="text"
+                            value={theme[field as keyof ThemeColors] || ''}
+                            onChange={(e) => handleThemeChange(field as keyof ThemeColors, e.target.value)}
+                            className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600"
+                            placeholder="#FFFFFF"
+                          />
+                        </label>
+                      ))}
+                    </div>
+
+                    <div className="grid grid-cols-4 gap-2">
+                      {['notify', 'onNotify', 'onSecondaryAction'].map((field) => (
+                        <label key={field} className="text-sm text-licorice dark:text-white">
+                          {field}
+                          <br />
+                          <input
+                            type="text"
+                            value={theme[field as keyof ThemeColors] || ''}
+                            onChange={(e) => handleThemeChange(field as keyof ThemeColors, e.target.value)}
+                            className="w-full px-2 py-1.5 border rounded-md text-sm text-gray-600"
+                            placeholder="#FFFFFF"
+                          />
+                        </label>
+                      ))}
+                    </div>
+                  </form>
+                </section>
+
+                {/* Scale tabs */}
+                <section className="mb-4">
+                  <h3 className="text-lg font-semibold mb-3 text-licorice dark:text-white">Content Scale</h3>
+                  <nav className="isolate flex divide-x divide-gray-200 rounded-lg bg-white dark:bg-licorice border-gray-200 border-1">
+                    {[50, 75, 100, 125, 150, 175, 200].map((scale) => (
+                      <div
+                        key={scale}
+                        onClick={() => handleScaleClick(scale)}
+                        className={`group relative min-w-0 flex-1 overflow-hidden px-4 py-2 text-center text-sm font-medium cursor-pointer ${
+                          contentScale === scale ? 'text-gray-900 dark:text-white' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                        } ${scale === 50 ? 'rounded-l-lg' : ''} ${scale === 200 ? 'rounded-r-lg' : ''}`}
+                      >
+                        <span>{scale}%</span>
+                        <span
+                          className={`absolute inset-x-0 bottom-0 h-0.5 ${
+                            contentScale === scale ? 'bg-indigo-500' : 'bg-transparent'
+                          }`}
+                        />
+                      </div>
+                    ))}
+                  </nav>
+                </section>
+
+                {/* Checkboxes */}
+                <section className="mb-4">
+                  <h3 className="text-lg font-semibold mb-3 text-licorice dark:text-white">Widget Settings</h3>
+                  <fieldset className="grid grid-cols-2 space-y-2">
+                    <div className="flex gap-3">
+                      <input
+                        id="hideHeader"
+                        type="checkbox"
+                        checked={settings.hideHeader}
+                        onChange={() => handleSettingChange('hideHeader')}
+                        className="h-4 w-4 rounded border-gray-300"
+                      />
+                      <label htmlFor="hideHeader" className="text-sm font-medium text-licorice dark:text-white">
+                        Hide headers everywhere
+                      </label>
+                    </div>
+                    <div className="flex gap-3">
+                      <input
+                        id="hideNewConversationButton"
+                        type="checkbox"
+                        checked={settings.hideNewConversationButton}
+                        onChange={() => handleSettingChange('hideNewConversationButton')}
+                        className="h-4 w-4 rounded border-gray-300"
+                      />
+                      <label htmlFor="hideNewConversationButton" className="text-sm font-medium text-licorice dark:text-white">
+                        Hide new conversation button
+                      </label>
+                    </div>
+                    <div className="flex gap-3">
+                      <input
+                        id="conversationList"
+                        type="checkbox"
+                        checked={settings.conversationList}
+                        disabled={settings.hideHeader}
+                        onChange={() => handleSettingChange('conversationList')}
+                        className="h-4 w-4 rounded border-gray-300"
+                      />
+                      <label htmlFor="conversationList" className="text-sm font-medium text-licorice dark:text-white">
+                        Hide header for conversation list
+                      </label>
+                    </div>
+                    <div className="flex gap-3">
+                      <input
+                        id="messageLog"
+                        type="checkbox"
+                        checked={settings.messageLog}
+                        disabled={settings.hideHeader}
+                        onChange={() => handleSettingChange('messageLog')}
+                        className="h-4 w-4 rounded border-gray-300"
+                      />
+                      <label htmlFor="messageLog" className="text-sm font-medium text-licorice dark:text-white">
+                        Hide headers for conversation view
+                      </label>
+                    </div>
+                  </fieldset>
+                </section>
+              </>
+            )}
+
+            {/* Code View */}
+            {viewMode === 'code' && (
+              <section>
+                <h2 className="text-xl font-semibold text-licorice dark:text-white mb-3">Generated Code</h2>
+                <pre className="bg-gray-900 p-4 rounded-md overflow-x-auto text-sm" style={{ backgroundColor: '#282c34', padding: '20px' }}>
+                  <code ref={codeRef} className="language-javascript">{generateCodeOutput()}</code>
+                </pre>
+              </section>
+            )}
           </div>
 
           {/* Right column: Preview */}
           <div>
             <section>
-              <div className="flex gap-4 justify-between w-[320px] mb-2">
-                <h2 className="text-xl font-semibold">Preview</h2>
-                <Button onClick={handleReset} type="button">
-                  Reset
-                </Button>
-              </div>
-              <div id="widget" className="w-[320px] h-[500px] rounded-md border-gray-100 overflow-hidden" />
+              <div id="widget" className="w-full h-[600px] rounded-xl border-gray-100 overflow-hidden shadow-lg" />
             </section>
           </div>
         </div>
